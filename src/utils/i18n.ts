@@ -1,5 +1,3 @@
-import type { Locales } from "intlayer";
-
 export const locales = ["en", "pt", "fr", "es", "zh", "ja", "en-GB"] as const;
 export type Locale = (typeof locales)[number];
 

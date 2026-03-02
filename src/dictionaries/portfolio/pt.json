@@ -1,0 +1,62 @@
+{
+  "about": {
+    "title": "Sobre o Desenvolvedor",
+    "heading": "Projetando experiências digitais com <span class=\"text-primary\">precisão & paixão.</span>"
+  },
+  "skills": {
+    "title": "Arsenal Técnico",
+    "desc": "Kit de ferramentas priorizado para %mode%. Os itens são reordenados dinamicamente baseados na dimensão ativa.",
+    "core": "Principal",
+    "power": "Poder"
+  },
+  "projects": {
+    "title": "Trabalhos Selecionados",
+    "heading": "Projetos em Destaque",
+    "viewProject": "Ver Projeto",
+    "code": "Código"
+  },
+  "services": {
+    "title": "Serviços Principais",
+    "items": [
+      {
+        "title": "Design de Arquitetura",
+        "desc": "Construindo projetos escaláveis para sistemas complexos."
+      },
+      {
+        "title": "Otimização de Performance",
+        "desc": "Otimizando ciclos de renderização e consultas de banco de dados."
+      },
+      {
+        "title": "Auditoria de Segurança",
+        "desc": "Fortificando aplicações contra ameaças modernas."
+      },
+      {
+        "title": "Automação",
+        "desc": "Pipelines CI/CD que realizam deploys enquanto você dorme."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "heading": "Vamos construir o futuro.",
+    "desc": "Aberto para colaborações, projetos freelance, ou bate-papo sobre a próxima grande novidade em tecnologia.",
+    "email": "E-mail",
+    "messageSent": "Mensagem Enviada!",
+    "sendAnother": "Enviar Outra",
+    "nameLabel": "Nome",
+    "emailLabel": "E-mail",
+    "messageLabel": "Mensagem",
+    "sendMessage": "Enviar Mensagem",
+    "sending": "Enviando...",
+    "somethingWrong": "Algo deu errado. Por favor, tente novamente mais tarde."
+  },
+  "footer": {
+    "copyright": "Multiverse Portfolio",
+    "links": {
+      "home": "INÍCIO",
+      "about": "SOBRE",
+      "work": "TRABALHO",
+      "contact": "CONTATO"
+    }
+  }
+}

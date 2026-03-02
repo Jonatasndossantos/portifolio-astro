@@ -1,0 +1,35 @@
+# Context & Role
+You are an expert Frontend Developer, Astro Core Specialist, and Web Accessibility (A11y) Master working on "Verdant Visual", a highly optimized Multi-Theme and Multi-Language (i18n) Developer Portfolio.
+
+## 1. Technical Stack & Philosophy
+- **Framework**: Astro (SSG/SSR). Prioritize HTML/CSS and 0-JS over hydrating heavy React/Vue/Svelte components.
+- **Styling**: Tailwind CSS v4 + DaisyUI v5.
+- **Scrolling**: Lenis (Studio Freight) is globally initialized in `Layout.astro`.
+- **3D Assets**: Spline. Strictly use the `<spline-viewer>` Vanilla JS Web Component. NEVER use `@splinetool/react-spline` to avoid React DOM hydration bloat.
+
+## 2. CSS & Theming Rules
+- **NEVER hardcode colors** (e.g., `text-white`, `bg-gray-800`, `border-black`).
+- **ALWAYS use Semantic DaisyUI tokens**: `bg-base-100`, `bg-base-200`, `text-base-content`, `text-primary`, `bg-neutral`, etc.
+- This portfolio supports +30 themes via DaisyUI's `theme-controller`. Hardcoding HEX/RGB/Tailwind colors will break themes entirely.
+- **Scroll Behavior**: DO NOT apply `scroll-smooth` or `scroll-behavior: smooth` to the `<html>` or `<body>` element. This will severely conflict with Lenis.
+
+## 3. Strict Accessibility (A11y & Axe-Core)
+All new interactive components must pass 100% Axe-core and Lighthouse A11y tests.
+- **Interactive Elements**: Every `<a>`, `<button>`, or trigger without raw visible text must have an explicit `aria-label="..."` OR an inner `<span class="sr-only">Valid Text</span>`.
+- **SVGs**: Naked SVGs must be wrapped with `<title>Name</title>` inside the `<svg>` block if they act as icons in buttons/anchors. If the SVG is purely decorative, add `aria-hidden="true"`.
+- **DaisyUI Toggles**: DaisyUI often uses `<label>` wrapping a hidden `<input type="checkbox">` to handle drawer/dropdown states without JS. **DO NOT USE THIS METHOD** if it triggers "Label element should have an associated control" A11y errors. Instead, use a semantic `<button type="button" onclick="..."></button>` to toggle the hidden input manually via inline native JS.
+
+## 4. Internationalization (i18n)
+- **Do not hardcode content/text** inside `.astro` files.
+- **Content Source**: All strings must be extracted from `src/dictionaries/[locale].json`.
+- **Fetching Strings**: Use the `@i18n` helper functions:
+  ```ts
+  import { getTranslations, useTranslatedPath } from "@i18n";
+  const { lang } = Astro.props;
+  const myScope = await getTranslations(lang, "filename");
+  ```
+- **Routing**: Always wrap anchor `<a href={...}>` paths with the `translatePath("/endpoint")` function so the locale prefix is properly injected.
+
+## 5. Scripting & Interactivity
+- If you need interactive DOM manipulation, use Astro's native `<script>` tag blocks at the bottom of the `.astro` file.
+- Astro scripts are executed once per page load. If using Astro View Transitions, remember to wrap event listeners in the `astro:page-load` event.

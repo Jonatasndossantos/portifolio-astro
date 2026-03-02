@@ -1,0 +1,44 @@
+---
+import { getTranslations } from "@i18n";
+import { Globe, Cpu, Shield, Terminal } from "lucide-react";
+
+interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
+
+// Map indices to strictly match the translation JSON order to their respective static icons.
+const iconMap = [Globe, Cpu, Shield, Terminal];
+---
+
+<section id="services" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2
+            class="text-3xl font-bold text-base-content mb-12 border-l-4 border-primary pl-4"
+        >
+            {t.services.title}
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {
+                t.services.items.map((service: any, index: number) => {
+                    const IconComponent = iconMap[index] || Terminal;
+                    return (
+                        <div class="p-6 bg-base-100 border border-base-content/10 rounded-xl hover:shadow-xl hover:border-primary/30 transition-all hover:-translate-y-1 group">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                                <IconComponent className="w-6 h-6 text-primary group-hover:text-primary-content transition-colors" />
+                            </div>
+                            <h3 class="text-xl font-bold text-base-content mb-2">
+                                {service.title}
+                            </h3>
+                            <p class="text-base-content/60 text-sm">
+                                {service.desc}
+                            </p>
+                        </div>
+                    );
+                })
+            }
+        </div>
+    </div>
+</section>

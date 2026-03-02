@@ -1,0 +1,62 @@
+{
+  "about": {
+    "title": "About Developer",
+    "heading": "Engineering digital experiences with <span class=\"text-primary\">precision & passion.</span>"
+  },
+  "skills": {
+    "title": "Technical Arsenal",
+    "desc": "Prioritized toolkit for %mode%. Items are dynamically reordered based on the active dimension.",
+    "core": "Core",
+    "power": "Power"
+  },
+  "projects": {
+    "title": "Selected Works",
+    "heading": "Featured Projects",
+    "viewProject": "View Project",
+    "code": "Code"
+  },
+  "services": {
+    "title": "Core Services",
+    "items": [
+      {
+        "title": "Architecture Design",
+        "desc": "Building scalable blueprints for complex systems."
+      },
+      {
+        "title": "Performance Tuning",
+        "desc": "Optimizing render cycles and database queries."
+      },
+      {
+        "title": "Security Audits",
+        "desc": "Fortifying applications against modern threats."
+      },
+      {
+        "title": "Automation",
+        "desc": "CI/CD pipelines that deploy while you sleep."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "heading": "Let's build the future.",
+    "desc": "Open for collaborations, freelance projects, or just a chat about the next big thing in tech.",
+    "email": "Email",
+    "messageSent": "Message Sent!",
+    "sendAnother": "Send Another",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "sendMessage": "Send Message",
+    "sending": "Sending...",
+    "somethingWrong": "Something went wrong. Please try again later."
+  },
+  "footer": {
+    "copyright": "Multiverse Portfolio",
+    "links": {
+      "home": "HOME",
+      "about": "ABOUT",
+      "work": "WORK",
+      "contact": "CONTACT"
+    }
+  }
+}

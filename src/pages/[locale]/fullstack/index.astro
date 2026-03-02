@@ -1,9 +1,16 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@islands/Hero.astro";
+import About from "@components/sections/About.astro";
+import Skills from "@components/sections/Skills.astro";
+import Projects from "@components/sections/Projects.astro";
+import Services from "@components/sections/Services.astro";
+import Contact from "@components/sections/Contact.astro";
+import Footer from "@components/layout/Footer.astro";
 import { Mode } from "../../../types";
 import { getTranslations, locales } from "@i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import type { CuratedProfile } from "../../../types";
 
 export function getStaticPaths() {
     return locales.map((locale) => ({
@@ -21,6 +28,38 @@ const profile = (await getTranslations(lang, "profile")) as Record<
 >;
 const bio = (profile.bio as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
 const role = (profile.role as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
+
+const tPortfolio = (await getTranslations(lang, "portfolio")) as Record<
+    string,
+    any
+>;
+
+const profileData: CuratedProfile = {
+    name: "Jônatas Nascimento dos Santos",
+    role: role,
+    bio: bio,
+    availableForHire: true,
+    socials: {
+        github: "https://github.com/jonatasndossantos",
+        linkedin: "https://linkedin.com/in/jonatasndossantos",
+        email: "jonatasndossantos@gmail.com",
+    },
+};
+
+// Pre-process skills for the current Mode
+const currentSkills = (tPortfolio.skills.list as any[])
+    .map((s) => ({
+        ...s,
+        currentRelevance: s.relevance?.[Mode.FULLSTACK] || 0,
+    }))
+    .sort((a, b) => b.currentRelevance - a.currentRelevance);
+
+// Pre-process projects for the current language and Mode
+const currentProjects = (tPortfolio.projects.list as any[]).map((p) => ({
+    ...p,
+    displayDescription:
+        p.description?.[Mode.FULLSTACK] || p.description?.["fullstack"] || "",
+}));
 ---
 
 <Layout
@@ -30,6 +69,22 @@ const role = (profile.role as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
 >
     <main class="relative w-full overflow-hidden">
         <Hero mode={Mode.FULLSTACK} lang={locale} />
-        <div class="relative z-10 bg-base-100"></div>
+        <div class="relative z-10 bg-base-100">
+            <About
+                skills={currentSkills}
+                profile={profileData}
+                mode={Mode.FULLSTACK}
+                lang={locale}
+            />
+            <Skills
+                skills={currentSkills}
+                mode={Mode.FULLSTACK}
+                lang={locale}
+            />
+            <Projects projects={currentProjects} lang={locale} />
+            <Services lang={locale} />
+            <Contact profile={profileData} lang={locale} />
+            <Footer lang={locale} />
+        </div>
     </main>
 </Layout>

@@ -1,5 +1,4 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
 import ThemeToggle from "../ui/ThemeToggle.astro";
 import LanguageToggle from "./LanguageToggle.astro";
 import { getTranslations } from "@i18n";
@@ -126,7 +125,7 @@ const iconLinks: {
     </div>
 
     <!-- Mobile Sidebar -->
-    <div class="drawer-side pointer-events-auto z-[100]">
+    <div class="drawer-side pointer-events-auto z-100">
         <div
             onclick="document.getElementById('nav-drawer').click()"
             aria-hidden="true"

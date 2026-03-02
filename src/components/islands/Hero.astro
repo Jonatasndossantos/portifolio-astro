@@ -1,17 +1,6 @@
 ---
-import { type Mode } from "../../types";
-import gsap from "gsap";
-import lenis from "lenis";
-import { ArrowDown } from "lucide-react";
-import { tv } from "tailwind-variants";
-import { twMerge } from "tailwind-merge";
-import type { ComponentProps } from "react";
-import SplineViewer from "./SplineViewer";
+import { Volume2, VolumeX } from "lucide-react";
 import { getTranslations } from "@i18n";
-
-const heroVariants = tv({
-    base: "relative min-h-screen w-full flex flex-col justify-center px-6 lg:px-20 overflow-hidden pt-32 pb-20",
-});
 
 /**
  * Hero receives pre-resolved, locale+mode-aware strings from the Astro parent.
@@ -29,11 +18,40 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
     import { Application } from "@splinetool/runtime";
 
     const canvas = document.getElementById("canvas3d") as HTMLCanvasElement;
+    const muteBtn = document.getElementById("mute-btn");
+    const iconMute = document.getElementById("icon-mute");
+    const iconVol = document.getElementById("icon-vol");
+
     if (canvas) {
         const app = new Application(canvas);
         app.load(
             "https://prod.spline.design/VG3XFeiaQtFZaSOq/scene.splinecode",
-        );
+        ).then(() => {
+            let isMuted = true;
+
+            if (muteBtn) {
+                // Ensure audio handles browser policies correctly via user click.
+                muteBtn.addEventListener("click", () => {
+                    isMuted = !isMuted;
+
+                    if (isMuted) {
+                        iconMute?.classList.remove("hidden");
+                        iconVol?.classList.add("hidden");
+                    } else {
+                        iconMute?.classList.add("hidden");
+                        iconVol?.classList.remove("hidden");
+                    }
+
+                    // Tell Spline's internal Howler instance to change global volume.
+                    try {
+                        // @ts-ignore
+                        app.setVolume(isMuted ? 0 : 1);
+                    } catch (e) {
+                        console.warn("Spline Audio Error:", e);
+                    }
+                });
+            }
+        });
     }
 </script>
 
@@ -112,4 +130,18 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
             {profile.scroll}
         </div>
     </div>
+
+    <!-- Audio Toggle Button -->
+    <button
+        id="mute-btn"
+        class="btn btn-circle btn-ghost bg-base-100/30 backdrop-blur-md absolute bottom-10 left-6 md:left-20 z-10 group hover:bg-base-100/60 transition-all border border-base-content/10"
+        aria-label="Toggle Spline Audio"
+    >
+        <div id="icon-mute">
+            <VolumeX className="size-5 text-base-content opacity-70" />
+        </div>
+        <div id="icon-vol" class="hidden">
+            <Volume2 className="size-5 text-base-content opacity-70" />
+        </div>
+    </button>
 </section>

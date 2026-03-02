@@ -1,0 +1,74 @@
+---
+import { getTranslations } from "@i18n";
+import { Cpu, Globe, Terminal, Cloud, Database, Bot } from "lucide-react";
+import type { Skill } from "../../types";
+
+interface Props {
+    skills: (Skill & { currentRelevance: number })[];
+    mode: string;
+    lang: string;
+}
+
+const { skills, mode, lang } = Astro.props;
+const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
+
+// Replace %mode% with the actual mode name requested
+const description = (t.skills.desc as string).replace("%mode%", mode);
+---
+
+<section id="skills" class="py-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-base-content mb-2">{t.skills.title}</h2>
+        <p class="text-base-content/60 mb-8 max-w-2xl">
+            {description}
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {skills.map((skill, index) => {
+                const isCore = index < 3;
+                return (
+                    <div class:list={[
+                        "relative p-4 rounded-xl border bg-base-200/50 backdrop-blur-sm transition-all duration-300 group hover:border-base-content/30 border-base-content/5",
+                        isCore ? "shadow-lg ring-1 ring-primary/30" : ""
+                    ]}>
+                        {isCore && (
+                            <div class="absolute -top-2 -right-2 bg-primary text-primary-content text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider shadow-sm">
+                                {t.skills.core}
+                            </div>
+                        )}
+                        
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class:list={["p-2 rounded-lg bg-base-100", isCore ? "text-primary shadow-sm" : "text-base-content/50"]}>
+                                {(() => {
+                                    switch(skill.category) {
+                                        case "language": return <Cpu className="w-4 h-4" />;
+                                        case "framework": return <Globe className="w-4 h-4" />;
+                                        case "tool": return <Terminal className="w-4 h-4" />;
+                                        case "cloud": return <Cloud className="w-4 h-4" />;
+                                        case "data": return <Database className="w-4 h-4" />;
+                                        case "ai": return <Bot className="w-4 h-4" />;
+                                        default: return <Cpu className="w-4 h-4" />;
+                                    }
+                                })()}
+                            </span>
+                            <span class="font-semibold text-base-content/90 truncate">{skill.name}</span>
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="w-full bg-base-content/10 h-1.5 rounded-full overflow-hidden mt-3">
+                            <div 
+                                class="h-full rounded-full transition-all duration-1000 ease-out bg-primary"
+                                style={`width: ${skill.currentRelevance * 10}%`}
+                            ></div>
+                        </div>
+                        
+                        <div class="mt-2 flex justify-between text-[10px] text-base-content/50 uppercase font-medium">
+                            <span>{t.skills.power}</span>
+                            <span>{skill.currentRelevance}/10</span>
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+    </div>
+</section>

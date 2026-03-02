@@ -1,0 +1,275 @@
+{
+  "about": {
+    "title": "About Developer",
+    "heading": "Engineering digital experiences with <span class=\"text-primary\">precision & passion.</span>"
+  },
+  "skills": {
+    "title": "Technical Arsenal",
+    "desc": "Prioritized toolkit for %mode%. Items are dynamically reordered based on the active dimension.",
+    "core": "Core",
+    "power": "Power",
+    "list": [
+      {
+        "id": "react",
+        "name": "React.js",
+        "category": "framework",
+        "relevance": {
+          "fullstack": 10,
+          "frontend": 10,
+          "backend": 3,
+          "devops": 1,
+          "database": 1,
+          "ai": 4
+        }
+      },
+      {
+        "id": "node",
+        "name": "Node.js",
+        "category": "language",
+        "relevance": {
+          "fullstack": 10,
+          "frontend": 5,
+          "backend": 10,
+          "devops": 5,
+          "database": 6,
+          "ai": 8
+        }
+      },
+      {
+        "id": "aws",
+        "name": "AWS",
+        "category": "cloud",
+        "relevance": {
+          "fullstack": 8,
+          "frontend": 2,
+          "backend": 9,
+          "devops": 10,
+          "database": 8,
+          "ai": 7
+        }
+      },
+      {
+        "id": "docker",
+        "name": "Docker/K8s",
+        "category": "tool",
+        "relevance": {
+          "fullstack": 7,
+          "frontend": 2,
+          "backend": 8,
+          "devops": 10,
+          "database": 6,
+          "ai": 6
+        }
+      },
+      {
+        "id": "postgresql",
+        "name": "PostgreSQL",
+        "category": "data",
+        "relevance": {
+          "fullstack": 8,
+          "frontend": 1,
+          "backend": 9,
+          "devops": 5,
+          "database": 10,
+          "ai": 5
+        }
+      },
+      {
+        "id": "python",
+        "name": "Python",
+        "category": "language",
+        "relevance": {
+          "fullstack": 6,
+          "frontend": 1,
+          "backend": 8,
+          "devops": 7,
+          "database": 7,
+          "ai": 10
+        }
+      },
+      {
+        "id": "tensorflow",
+        "name": "TensorFlow",
+        "category": "ai",
+        "relevance": {
+          "fullstack": 4,
+          "frontend": 1,
+          "backend": 5,
+          "devops": 3,
+          "database": 4,
+          "ai": 10
+        }
+      },
+      {
+        "id": "redis",
+        "name": "Redis",
+        "category": "data",
+        "relevance": {
+          "fullstack": 7,
+          "frontend": 2,
+          "backend": 9,
+          "devops": 6,
+          "database": 10,
+          "ai": 4
+        }
+      }
+    ]
+  },
+  "projects": {
+    "title": "Selected Works",
+    "heading": "Featured Projects",
+    "viewProject": "View Project",
+    "code": "Code",
+    "list": [
+      {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "React.js",
+          "Laravel",
+          "OpenAI",
+          "GCP"
+        ],
+        "description": {
+          "fullstack": "Complete automation system for public document generation (Law 14.133/2021) using AI (GPT-4) and Laravel.",
+          "frontend": "Modern, responsive Web Interface built with React and Inertia.js, focused on user experience for document management.",
+          "backend": "Robust Laravel backend managing processing queues, Word template generation, and OpenAI API integration.",
+          "devops": "Monitoring with Laravel Telescope and automated deployment on Google Cloud Platform.",
+          "database": "Secure management of institutional data and generated documents, with access control and versioning.",
+          "ai": "Advanced integration with GPT-4 for contextual generation of 5 types of legal and technical documents."
+        }
+      },
+      {
+        "id": "8",
+        "title": "VitaNexus",
+        "slug": "vitanexus",
+        "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
+        "technologies": [
+          "Laravel 10",
+          "PHP 8",
+          "SQLite",
+          "Bootstrap 5"
+        ],
+        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
+        "description": {
+          "fullstack": "Comprehensive health monitoring application tracking metrics like BMI, hydration, and blood pressure using Laravel and Bootstrap.",
+          "frontend": "Responsive, accessible interface designed with Bootstrap 5 to ensure easy data entry for vital health stats across devices.",
+          "backend": "Secure Laravel architecture handling complex health calculations and user authentication with Laravel Breeze.",
+          "devops": "Lightweight deployment strategy using SQLite, optimized for easy installation and maintenance.",
+          "database": "Efficient SQLite schema designed to store historical health data and user habits with privacy in mind.",
+          "ai": "Algorithmic calculation of caloric needs and hydration targets based on individual user data profiles."
+        }
+      },
+      {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "technologies": [
+          "Laravel",
+          "Tailwind",
+          "MySQL",
+          "Azure"
+        ],
+        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
+        "description": {
+          "fullstack": "Tech news portal combating disinformation with secure authentication (OAuth) and content moderation, built with Laravel and Tailwind.",
+          "frontend": "Modern, responsive interface using Blade templates and Tailwind CSS, optimized for readability and content discovery.",
+          "backend": "Robust MVC architecture connecting external RSS APIs and managing user roles/permissions via Laravel Breeze.",
+          "devops": "Deployed on Azure App Service with automated testing pipelines using PEST framework.",
+          "database": "Relational MySQL schema designed to efficiently handle categorized news, comments, and user profiles.",
+          "ai": "Algorithmic feed curation and potential integration for automated fact-checking and content verification."
+        }
+      },
+      {
+        "id": "10",
+        "title": "ZK Business Support",
+        "slug": "zk-business-support",
+        "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://o8u.64c.myftpupload.com/",
+        "technologies": [
+          "WordPress",
+          "Custom CSS",
+          "PHP",
+          "SEO"
+        ],
+        "description": {
+          "fullstack": "Custom WordPress solution tailored for high performance with advanced caching, local SEO optimization, and bespoke CSS styling.",
+          "frontend": "Developed a unique visual identity using custom CSS and high-fidelity responsive design to reflect the professional brand image.",
+          "backend": "Customized WordPress CMS architecture to efficiently manage service portfolios and client testimonials.",
+          "devops": "Implemented aggressive caching layers and asset optimization to achieve top-tier PageSpeed insights scores.",
+          "database": "Optimized database queries for custom post types, ensuring minimal latency for dynamic content rendering.",
+          "ai": "Leveraged AI-driven SEO tools for keyword analysis and content structuring to maximize local search visibility."
+        }
+      },
+      {
+        "id": "11",
+        "title": "Espresso D' Amore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
+        "technologies": [
+          "Laravel 12",
+          "Inertia.js",
+          "Expo",
+          "Supabase",
+          "OpenAI"
+        ],
+        "description": {
+          "fullstack": "A dual-ecosystem consisting of a Laravel/Inertia ERP for management and an Expo/Supabase mobile app for orders and payments.",
+          "frontend": "Built two distinct interfaces: a data-rich administration dashboard with React/Inertia and a fluid mobile ordering experience using Expo.",
+          "backend": "Hybrid backend architecture utilizing Laravel 12 for core business logic and Supabase for real-time client data and authentication.",
+          "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
+          "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
+          "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
+        }
+      }
+    ]
+  },
+  "services": {
+    "title": "Core Services",
+    "items": [
+      {
+        "title": "Architecture Design",
+        "desc": "Building scalable blueprints for complex systems."
+      },
+      {
+        "title": "Performance Tuning",
+        "desc": "Optimizing render cycles and database queries."
+      },
+      {
+        "title": "Security Audits",
+        "desc": "Fortifying applications against modern threats."
+      },
+      {
+        "title": "Automation",
+        "desc": "CI/CD pipelines that deploy while you sleep."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "heading": "Let's build the future.",
+    "desc": "Open for collaborations, freelance projects, or just a chat about the next big thing in tech.",
+    "email": "Email",
+    "messageSent": "Message Sent!",
+    "sendAnother": "Send Another",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "sendMessage": "Send Message",
+    "sending": "Sending...",
+    "somethingWrong": "Something went wrong. Please try again later."
+  },
+  "footer": {
+    "copyright": "Multiverse Portfolio",
+    "links": {
+      "home": "HOME",
+      "about": "ABOUT",
+      "work": "WORK",
+      "contact": "CONTACT"
+    }
+  }
+}

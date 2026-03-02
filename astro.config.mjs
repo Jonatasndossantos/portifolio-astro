@@ -26,5 +26,8 @@ export default defineConfig({
       prefixDefaultLocale: true
     }
   },
+  image: {
+    domains: ["github.com", "images.unsplash.com"],
+  },
   integrations: [sitemap(), react()]
 });
