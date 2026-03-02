@@ -1,6 +1,8 @@
 ---
 import { Volume2, VolumeX } from "lucide-react";
 import { getTranslations } from "@i18n";
+import { Image } from "astro:assets";
+import bgFallback from "../../assets/Underwater Transition@1-1920x919.png";
 
 /**
  * Hero receives pre-resolved, locale+mode-aware strings from the Astro parent.
@@ -23,35 +25,79 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
     const iconVol = document.getElementById("icon-vol");
 
     if (canvas) {
-        const app = new Application(canvas);
-        app.load(
-            "https://prod.spline.design/VG3XFeiaQtFZaSOq/scene.splinecode",
-        ).then(() => {
-            let isMuted = true;
+        let app: Application | null = null;
+        let isLoaded = false;
+        let isMuted = true;
 
-            if (muteBtn) {
-                // Ensure audio handles browser policies correctly via user click.
-                muteBtn.addEventListener("click", () => {
-                    isMuted = !isMuted;
+        const initSpline = () => {
+            if (isLoaded) return;
+            isLoaded = true;
+            app = new Application(canvas);
+            app.load(
+                "https://prod.spline.design/LemjWKcGZtc47q1C/scene.splinecode",
+            ).then(() => {
+                canvas.classList.remove("opacity-0");
+                const fallback = document.getElementById("spline-fallback");
+                if (fallback) fallback.classList.add("opacity-0");
 
-                    if (isMuted) {
-                        iconMute?.classList.remove("hidden");
-                        iconVol?.classList.add("hidden");
+                try {
+                    if (typeof (app as any).setVolume === "function")
+                        (app as any).setVolume(isMuted ? 0 : 1);
+                } catch (e) {}
+            });
+        };
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        if (!isLoaded) {
+                            // Delay loading slightly so it doesn't block LCP
+                            setTimeout(initSpline, 500);
+                        } else if (app) {
+                            try {
+                                if (typeof (app as any).play === "function")
+                                    (app as any).play();
+                            } catch (e) {}
+                        }
                     } else {
-                        iconMute?.classList.add("hidden");
-                        iconVol?.classList.remove("hidden");
+                        if (app) {
+                            try {
+                                if (typeof (app as any).stop === "function")
+                                    (app as any).stop();
+                            } catch (e) {}
+                        }
                     }
+                });
+            },
+            { threshold: 0 },
+        );
 
-                    // Tell Spline's internal Howler instance to change global volume.
+        observer.observe(canvas);
+
+        if (muteBtn) {
+            // Ensure audio handles browser policies correctly via user click.
+            muteBtn.addEventListener("click", () => {
+                isMuted = !isMuted;
+
+                if (isMuted) {
+                    iconMute?.classList.remove("hidden");
+                    iconVol?.classList.add("hidden");
+                } else {
+                    iconMute?.classList.add("hidden");
+                    iconVol?.classList.remove("hidden");
+                }
+
+                if (app) {
                     try {
-                        // @ts-ignore
-                        app.setVolume(isMuted ? 0 : 1);
+                        if (typeof (app as any).setVolume === "function")
+                            (app as any).setVolume(isMuted ? 0 : 1);
                     } catch (e) {
                         console.warn("Spline Audio Error:", e);
                     }
-                });
-            }
-        });
+                }
+            });
+        }
     }
 </script>
 
@@ -59,7 +105,17 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
     class="relative min-h-screen w-full flex flex-col justify-center px-6 lg:px-20 overflow-hidden pt-32 pb-20"
 >
     <div class="absolute inset-0 z-0 opacity-60 hero-parallax">
-        <canvas id="canvas3d" class="w-full h-full border-0 relative z-0"
+        <Image
+            id="spline-fallback"
+            src={bgFallback}
+            alt="Hero Background"
+            class="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000"
+            loading="eager"
+            fetchpriority="high"
+        />
+        <canvas
+            id="canvas3d"
+            class="absolute inset-0 w-full h-full border-0 z-10 transition-opacity duration-1000 opacity-0"
         ></canvas>
 
         <!-- Watermark Hider via Gradient -->
