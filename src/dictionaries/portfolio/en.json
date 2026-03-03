@@ -225,6 +225,48 @@
           "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
           "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
         }
+      },
+      {
+        "id": "12",
+        "title": "LA Pool Club",
+        "slug": "la-pool-club",
+        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://lapoolclub.co.uk/",
+        "technologies": [
+          "WordPress",
+          "UI/UX Design",
+          "CSS",
+          "Performance"
+        ],
+        "description": {
+          "fullstack": "Complete WordPress solution for a premium billiards club, focused on UI/UX improvements, CSS styling, and system layout recovery.",
+          "frontend": "Revamped the user interface with customized CSS, ensuring a responsive and visually appealing booking and membership experience.",
+          "backend": "Optimized the WordPress core, improved layout stability, and recovered lost data through advanced database restoration techniques.",
+          "devops": "Implemented performance adjustments and layout stabilizations for a smoother user experience and faster load times.",
+          "database": "Recovered and structured booking data and club information, ensuring continuous operation.",
+          "ai": "Leveraged design intelligence to elevate the overall layout and user journey for membership conversions."
+        }
+      },
+      {
+        "id": "13",
+        "title": "Brighton Cakes",
+        "slug": "brighton-cakes",
+        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://brightoncakes.co.uk",
+        "technologies": [
+          "WordPress",
+          "PHP",
+          "CSS",
+          "SEO"
+        ],
+        "description": {
+          "fullstack": "Custom WordPress site for Makecakes, featuring a bespoke theme, performance optimization, and tailored user experience.",
+          "frontend": "Designed and developed a responsive, visually appealing frontend using custom CSS and WordPress themes.",
+          "backend": "Configured and optimized the WordPress backend for secure content management and fast loading times.",
+          "devops": "Implemented caching strategies and performance optimizations for reliable delivery of high-quality image assets.",
+          "database": "Optimized WordPress database for fast queries and efficient execution of custom post types.",
+          "ai": "Utilized AI-generated assets and content structuring for improved SEO and user engagement."
+        }
       }
     ]
   },

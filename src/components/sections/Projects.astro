@@ -72,12 +72,19 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
                                 </p>
 
                                 <div class="card-actions flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mt-auto">
+                                    <a
+                                        href={`/${lang}/projects/${project.slug}`}
+                                        class="btn btn-primary btn-sm rounded-full text-xs"
+                                        aria-label={`Read Case Study for ${project.title}`}
+                                    >
+                                        Case Study
+                                    </a>
                                     {project.demoUrl && (
                                         <a
                                             href={project.demoUrl}
                                             target="_blank"
                                             rel="noreferrer"
-                                            class="btn btn-primary btn-sm rounded-full text-xs"
+                                            class="btn btn-outline btn-sm rounded-full text-xs border-white/20 text-white hover:bg-white/10"
                                             aria-label={`Demo of ${project.title}`}
                                         >
                                             <ExternalLink className="size-4" />

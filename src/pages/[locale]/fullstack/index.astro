@@ -7,6 +7,7 @@ import Projects from "@components/sections/Projects.astro";
 import Services from "@components/sections/Services.astro";
 import Contact from "@components/sections/Contact.astro";
 import Footer from "@components/layout/Footer.astro";
+import GraphIsland from "@components/GraphIsland.astro";
 import { Mode } from "../../../types";
 import { getTranslations, locales } from "@i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -81,7 +82,28 @@ const currentProjects = (tPortfolio.projects.list as any[]).map((p) => ({
                 mode={Mode.FULLSTACK}
                 lang={locale}
             />
+
             <Projects projects={currentProjects} lang={locale} />
+
+            <section
+                class="w-full py-20 px-6 lg:px-20 bg-base-100 flex flex-col items-center"
+            >
+                <div class="max-w-7xl w-full">
+                    <h2 class="text-3xl font-bold mb-4 font-syncopate">
+                        Interactive <span class="text-primary"
+                            >Knowledge Graph</span
+                        >
+                    </h2>
+                    <p class="mb-10 opacity-70 max-w-2xl">
+                        This is my entire Second Brain network plotted out. You
+                        are seeing the actual `.mdx` nodes and their semantic
+                        relationships (`topics`, `tags`, `services`). Try
+                        zooming and dragging the nodes!
+                    </p>
+                    <GraphIsland />
+                </div>
+            </section>
+
             <Services lang={locale} />
             <Contact profile={profileData} lang={locale} />
             <Footer lang={locale} />

@@ -1,14 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import tailwindcss from '@tailwindcss/vite';
-
 import sitemap from "@astrojs/sitemap";
-
 import react from "@astrojs/react";
+import mdx from "@astrojs/mdx";
+import remarkWikiLink from "remark-wiki-link";
 
 import { locales, defaultLocale } from "./src/i18n/config";
-
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,5 +27,10 @@ export default defineConfig({
   image: {
     domains: ["github.com", "images.unsplash.com"],
   },
-  integrations: [sitemap(), react()]
+  markdown: {
+    remarkPlugins: [
+      [remarkWikiLink, { pathFormat: 'relative', wikiLinkClassName: 'wiki-link text-primary underline' }]
+    ]
+  },
+  integrations: [sitemap(), react(), mdx()]
 });

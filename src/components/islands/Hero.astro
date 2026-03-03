@@ -43,7 +43,9 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
                 try {
                     if (typeof (app as any).setVolume === "function")
                         (app as any).setVolume(isMuted ? 0 : 1);
-                } catch (e) {}
+                } catch (e) {
+                    console.warn("Spline Volume Init Error:", e);
+                }
             });
         };
 
@@ -58,14 +60,18 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
                             try {
                                 if (typeof (app as any).play === "function")
                                     (app as any).play();
-                            } catch (e) {}
+                            } catch (e) {
+                                console.warn("Spline Play Error:", e);
+                            }
                         }
                     } else {
                         if (app) {
                             try {
                                 if (typeof (app as any).stop === "function")
                                     (app as any).stop();
-                            } catch (e) {}
+                            } catch (e) {
+                                console.warn("Spline Stop Error:", e);
+                            }
                         }
                     }
                 });
@@ -141,40 +147,56 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
     <header
         class="relative z-10 w-full max-w-4xl hero-parallax text-left flex flex-col justify-center"
     >
-        <h1
-            class="text-6xl md:text-8xl font-bold leading-tight tracking-tighter mb-2 text-balance break-keep"
-        >
-            {profile.greeting}
-        </h1>
-
-        <h2
-            class="opacity-80 text-4xl md:text-5xl font-light mb-8 text-balance break-keep"
-        >
-            {profile.modes[mode].role}
-        </h2>
-
-        <div
-            class="text-2xl md:text-3xl font-medium mb-8 flex flex-wrap gap-2 items-center"
-        >
-            <span>{profile.providingSolutionsFor}</span>
-            <span
-                class="text-rotate h-10 inline-block overflow-hidden align-bottom"
+        <div class="overflow-hidden">
+            <h1
+                class="text-6xl md:text-8xl font-bold leading-tight tracking-tighter mb-2 text-balance break-keep"
+                data-gsap="hero-title"
             >
-                <span class="flex flex-col text-left">
-                    <span class="text-accent h-10">{profile.designers}</span>
-                    <span class="text-secondary h-10">{profile.developers}</span
-                    >
-                    <span class="text-primary h-10">{profile.managers}</span>
-                    <span class="text-accent h-10">{profile.designers}</span>
-                </span>
-            </span>
+                {profile.greeting}
+            </h1>
         </div>
 
-        <p
-            class="text-lg md:text-xl max-w-xl leading-relaxed mb-10 text-pretty opacity-80 break-keep"
-        >
-            {profile.modes[mode].bio}
-        </p>
+        <div class="overflow-hidden">
+            <h2
+                class="opacity-80 text-4xl md:text-5xl font-light mb-8 text-balance break-keep"
+                data-gsap="hero-role"
+            >
+                {profile.modes[mode].role}
+            </h2>
+        </div>
+
+        <div class="overflow-hidden">
+            <div
+                class="text-2xl md:text-3xl font-medium mb-8 flex flex-wrap gap-2 items-center"
+                data-gsap="hero-rotating-text"
+            >
+                <span>{profile.providingSolutionsFor}</span>
+                <span
+                    class="text-rotate h-10 inline-block overflow-hidden align-bottom"
+                >
+                    <span class="flex flex-col text-left">
+                        <span class="text-accent h-10">{profile.designers}</span
+                        >
+                        <span class="text-secondary h-10"
+                            >{profile.developers}</span
+                        >
+                        <span class="text-primary h-10">{profile.managers}</span
+                        >
+                        <span class="text-accent h-10">{profile.designers}</span
+                        >
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="overflow-hidden">
+            <p
+                class="text-lg md:text-xl max-w-xl leading-relaxed mb-10 text-pretty opacity-80 break-keep"
+                data-gsap="hero-bio"
+            >
+                {profile.modes[mode].bio}
+            </p>
+        </div>
     </header>
 
     <div
@@ -190,14 +212,21 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
     <!-- Audio Toggle Button -->
     <button
         id="mute-btn"
+        type="button"
         class="btn btn-circle btn-ghost bg-base-100/30 backdrop-blur-md absolute bottom-10 left-6 md:left-20 z-10 group hover:bg-base-100/60 transition-all border border-base-content/10"
         aria-label="Toggle Spline Audio"
     >
         <div id="icon-mute">
-            <VolumeX className="size-5 text-base-content opacity-70" />
+            <VolumeX
+                aria-hidden="true"
+                className="size-5 text-base-content opacity-70"
+            />
         </div>
         <div id="icon-vol" class="hidden">
-            <Volume2 className="size-5 text-base-content opacity-70" />
+            <Volume2
+                aria-hidden="true"
+                className="size-5 text-base-content opacity-70"
+            />
         </div>
     </button>
 </section>

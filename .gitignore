@@ -11,6 +11,8 @@ node_modules/
 .agents
 doc/
 old/
+Obsidian-to-Astro/
+second-brain-public/
 
 # logs
 npm-debug.log*

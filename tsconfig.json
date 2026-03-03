@@ -6,7 +6,10 @@
     ".intlayer/**/*.ts"
   ],
   "exclude": [
-    "dist"
+    "dist",
+    "old",
+    "Obsidian-to-Astro",
+    "second-brain-public"
   ],
   "compilerOptions": {
     "jsx": "react-jsx",

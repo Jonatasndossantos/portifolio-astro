@@ -1,0 +1,241 @@
+---
+
+---
+
+<div
+    class="w-full h-[500px] border border-base-content/10 rounded-2xl bg-[#0f172a] overflow-hidden relative"
+    id="graph-wrapper"
+>
+    <!-- We force a dark slate background for the graph `#0f172a` so the explicit colors always pop perfectly -->
+    <div id="graph-container" class="w-full h-full"></div>
+    <div
+        class="absolute bottom-4 right-4 bg-slate-900/80 rounded-lg p-3 text-xs opacity-90 shadow-lg pointer-events-none text-slate-200 border border-slate-700/50"
+    >
+        <ul class="space-y-1">
+            <li class="flex items-center">
+                <span
+                    class="inline-block w-3 h-3 rounded-full bg-[#38bdf8] border border-[#0284c7] mr-2"
+                ></span> Projects
+            </li>
+            <li class="flex items-center">
+                <span
+                    class="inline-block w-3 h-3 rounded-full bg-[#a78bfa] border border-[#7c3aed] mr-2"
+                ></span> Blog
+            </li>
+            <li class="flex items-center">
+                <span
+                    class="inline-block w-3 h-3 rounded-full bg-[#facc15] border border-[#ca8a04] mr-2"
+                ></span> Services
+            </li>
+            <li class="flex items-center">
+                <span
+                    class="inline-block w-3 h-3 rounded-full bg-[#34d399] border border-[#059669] mr-2"
+                ></span> Topics
+            </li>
+            <li class="flex items-center">
+                <span
+                    class="inline-block w-3 h-3 rounded-full bg-[#94a3b8] border border-[#475569] mr-2"
+                ></span> Tags
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    import * as d3 from "d3";
+
+    async function initGraph() {
+        // Cache bust the JSON payload so Astro/Browsers don't hang on to the broken version
+        const res = await fetch("/graph.json?v=" + new Date().getTime());
+        if (!res.ok) return;
+        const data = await res.json();
+
+        const container = document.getElementById("graph-container");
+        if (!container) return;
+        container.innerHTML = ""; // Clear existing on SPA load
+
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        const colorMap: Record<string, { fill: string; stroke: string }> = {
+            projects: { fill: "#38bdf8", stroke: "#0284c7" },
+            blog: { fill: "#a78bfa", stroke: "#7c3aed" },
+            services: { fill: "#facc15", stroke: "#ca8a04" },
+            topics: { fill: "#34d399", stroke: "#059669" },
+            tags: { fill: "#94a3b8", stroke: "#475569" },
+            unknown: { fill: "#64748b", stroke: "#334155" },
+        };
+
+        // Using similar physics configuration from second-brain-public
+        const repelForce = 0.5;
+        const linkDistance = 60;
+
+        // Setup node radius math matching second-brain-public logic
+        const nodeRadius = (d: any) => {
+            const weight = d.weight || 0;
+            // base + sqrt(weight)
+            return 8 + Math.sqrt(weight) * 4;
+        };
+
+        // Create simulation
+        const simulation = d3
+            .forceSimulation(data.nodes)
+            .force("charge", d3.forceManyBody().strength(-200 * repelForce))
+            .force(
+                "link",
+                d3
+                    .forceLink(data.links)
+                    .id((d: any) => d.id)
+                    .distance(linkDistance),
+            )
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force(
+                "collide",
+                d3.forceCollide().radius((d: any) => nodeRadius(d) + 15),
+            );
+
+        const svg = d3
+            .select("#graph-container")
+            .append("svg")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .call(
+                d3
+                    .zoom()
+                    .scaleExtent([0.25, 4])
+                    .on("zoom", (e) => {
+                        svgGroup.attr("transform", e.transform);
+                    }),
+            )
+            .append("g");
+
+        const svgGroup = svg;
+
+        // Draw Links
+        const link = svgGroup
+            .append("g")
+            .selectAll("line")
+            .data(data.links)
+            .join("line")
+            .attr("stroke", "#475569") // Explicit slate-600 hex color to ensure lines appear
+            .attr("stroke-width", 2)
+            .attr("stroke-opacity", 0.6);
+
+        // Draw Nodes
+        const node = svgGroup
+            .append("g")
+            .selectAll("circle")
+            .data(data.nodes)
+            .join("circle")
+            .attr("r", nodeRadius)
+            .attr(
+                "fill",
+                (d: any) => colorMap[d.group]?.fill || colorMap.unknown.fill,
+            )
+            .attr(
+                "stroke",
+                (d: any) =>
+                    colorMap[d.group]?.stroke || colorMap.unknown.stroke,
+            )
+            .attr("stroke-width", 2)
+            .style("cursor", "pointer")
+            .on("click", (event: any, d: any) => {
+                // Navigate to the node (assuming /[locale]/{group}/{slug})
+                const lang = window.location.pathname.split("/")[1] || "en";
+
+                // Parse the taxonomy route: e.g topics/software-engineering
+                // Or project route: projects/gov-docs-ai
+                window.location.href = `/${lang}/${d.id}`;
+            })
+            .on("mouseover", function (event: any, d: any) {
+                // Highlight Node
+                d3.select(this).attr("stroke", "#fff").attr("stroke-width", 3);
+
+                // Highlight connected edges
+                link.attr("stroke", (l: any) =>
+                    l.source.id === d.id || l.target.id === d.id
+                        ? "#94a3b8"
+                        : "#334155",
+                )
+                    .attr("stroke-width", (l: any) =>
+                        l.source.id === d.id || l.target.id === d.id ? 3 : 2,
+                    )
+                    .attr("stroke-opacity", (l: any) =>
+                        l.source.id === d.id || l.target.id === d.id ? 1 : 0.2,
+                    );
+            })
+            .on("mouseout", function (event: any, d: any) {
+                // Remove highlight from Node
+                d3.select(this)
+                    .attr("stroke-width", 2)
+                    .attr(
+                        "stroke",
+                        colorMap[d.group]?.stroke || colorMap.unknown.stroke,
+                    );
+
+                // Reset edges
+                link.attr("stroke", "#475569")
+                    .attr("stroke-width", 2)
+                    .attr("stroke-opacity", 0.6);
+            })
+            .call(drag(simulation));
+
+        // Draw node labels
+        const label = svgGroup
+            .append("g")
+            .selectAll("text")
+            .data(data.nodes)
+            .join("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", (d: any) => nodeRadius(d) + 14)
+            .attr("font-size", (d: any) =>
+                ["topics"].includes(d.group) ? "12px" : "10px",
+            )
+            .attr("font-weight", (d: any) =>
+                ["topics"].includes(d.group) ? "600" : "400",
+            )
+            .attr("fill", "#cbd5e1") // Explicit slate-300 color for high contrast
+            .style("pointer-events", "none")
+            .style("user-select", "none")
+            .text((d: any) => d.label);
+
+        node.append("title").text((d: any) => `${d.label} (${d.group})`);
+
+        // Animation tick
+        simulation.on("tick", () => {
+            link.attr("x1", (d: any) => d.source.x)
+                .attr("y1", (d: any) => d.source.y)
+                .attr("x2", (d: any) => d.target.x)
+                .attr("y2", (d: any) => d.target.y);
+
+            node.attr("cx", (d: any) => d.x).attr("cy", (d: any) => d.y);
+            label.attr("x", (d: any) => d.x).attr("y", (d: any) => d.y);
+        });
+
+        // Drag functions
+        function drag(simulation: any) {
+            function dragstarted(event: any) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                event.subject.fx = event.subject.x;
+                event.subject.fy = event.subject.y;
+            }
+            function dragged(event: any) {
+                event.subject.fx = event.x;
+                event.subject.fy = event.y;
+            }
+            function dragended(event: any) {
+                if (!event.active) simulation.alphaTarget(0);
+                event.subject.fx = null;
+                event.subject.fy = null;
+            }
+            return d3
+                .drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", initGraph);
+    document.addEventListener("astro:page-load", initGraph);
+</script>
