@@ -1,5 +1,5 @@
 ---
-import { getTranslations } from "@i18n";
+import { getTranslations, useTranslatedPath } from "@i18n";
 
 interface Props {
     lang: string;
@@ -7,6 +7,11 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
+const translatePath = useTranslatedPath(lang);
+const navRecord = (await getTranslations(lang, "nav")) as Record<
+    string,
+    string
+>;
 ---
 
 <footer
@@ -34,9 +39,18 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
             </p>
         </div>
 
-        <nav class="flex gap-8 text-xs font-mono text-base-content/70">
-            <a href="/" class="hover:text-primary transition-colors"
+        <nav
+            class="flex gap-8 text-xs font-mono text-base-content/70 flex-wrap justify-center"
+        >
+            <a
+                href={translatePath("/")}
+                class="hover:text-primary transition-colors"
                 >{t.footer.links.home}</a
+            >
+            <a
+                href={translatePath("/ecosystem")}
+                class="hover:text-primary font-bold uppercase tracking-wider text-primary transition-colors"
+                >{navRecord.ecosystem || "Ecosystem"}</a
             >
             <a href="#about" class="hover:text-primary transition-colors"
                 >{t.footer.links.about}</a

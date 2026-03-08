@@ -5,7 +5,7 @@ import { getTranslations } from "@i18n";
 import { useTranslatedPath } from "@i18n";
 import Icon from "./Icon.astro";
 import { iconPaths } from "../IconPaths";
-import { Layers, Menu } from "lucide-react";
+import { Search, Layers, Menu } from "lucide-react";
 
 const { lang } = Astro.props;
 const translatePath = useTranslatedPath(lang);
@@ -50,7 +50,7 @@ const iconLinks: {
             >
                 <div class="navbar-start">
                     <a
-                        href={translatePath("/")}
+                        href={translatePath("/fullstack")}
                         class="btn btn-ghost h-auto py-2 px-3 gap-3"
                     >
                         <div
@@ -86,6 +86,13 @@ const iconLinks: {
 
                 <div class="navbar-end gap-2 pr-2 w-full flex justify-end">
                     <div class="hidden lg:flex items-center gap-2">
+                        <a
+                            href={translatePath("/ecosystem")}
+                            class="btn btn-ghost btn-sm btn-circle mr-2 hidden lg:flex"
+                            aria-label={navRecord.ecosystem || "Ecosystem"}
+                        >
+                            <Search className="size-5" />
+                        </a>
                         {
                             iconLinks.map((link) => (
                                 <a
@@ -163,8 +170,16 @@ const iconLinks: {
             </div>
 
             <div class="flex flex-col gap-6">
+                <!-- Ecosystem Link Mobile -->
+                <a
+                    href={translatePath("/ecosystem")}
+                    class="btn btn-primary w-full shadow-md text-xs tracking-widest uppercase"
+                >
+                    {navRecord.ecosystem || "ECOSYSTEM"}
+                </a>
+
                 <!-- Socials -->
-                <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-3 mt-2">
                     <span
                         class="text-sm font-medium opacity-60 uppercase tracking-widest px-1"
                         >Network</span

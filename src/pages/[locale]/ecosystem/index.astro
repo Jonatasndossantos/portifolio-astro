@@ -1,0 +1,244 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import { getTranslations, locales } from "@i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+export function getStaticPaths() {
+    return locales.map((locale) => ({
+        params: { locale },
+        props: { locale },
+    }));
+}
+
+const { locale } = Astro.params;
+const lang = getRelativeLocaleUrl(locale);
+const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
+
+const allTags = await getCollection("tags");
+
+// Sort tags alphabetically
+allTags.sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+// Extract unique categories for filter tabs
+const categories = [...new Set(allTags.map((tag) => tag.data.category))].sort();
+
+// Helper to map category to a nice color/styling
+const getBadgeClass = (cat: string) => {
+    switch (cat) {
+        case "framework":
+            return "badge-primary";
+        case "language":
+            return "badge-secondary";
+        case "cloud":
+            return "badge-accent";
+        case "data":
+            return "badge-info";
+        case "ai":
+            return "badge-success";
+        case "tool":
+            return "badge-ghost";
+        default:
+            return "badge-neutral";
+    }
+};
+---
+
+<Layout
+    title="Ecosystem | Verdant Visual"
+    description="A complete taxonomy of my technological skills, frameworks, and tools."
+    lang={locale}
+>
+    <main
+        class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative overflow-hidden"
+    >
+        <div class="max-w-7xl mx-auto relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold font-syncopate mb-6">
+                Tech <span class="text-primary opacity-80">Ecosystem</span>
+            </h1>
+            <p class="text-xl opacity-70 mb-12 max-w-2xl text-balance">
+                The centralized nervous system of tools, languages, and
+                frameworks that I have mastered and actively use across my
+                projects.
+            </p>
+
+            <!-- Search & Filtering Engine (Zero-React via Native Alpine/Vanilla JS behavior) -->
+            <div
+                class="flex flex-col md:flex-row gap-4 mb-10 w-full justify-between items-center bg-base-200/50 p-4 rounded-2xl backdrop-blur-sm border border-base-content/5"
+                id="filter-controls"
+            >
+                <div class="relative w-full md:w-96">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 absolute left-4 top-1/2 -translate-y-1/2 opacity-50"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        ><path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        ></path></svg
+                    >
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search technologies..."
+                        class="input input-bordered w-full pl-12 bg-base-100/50 focus:bg-base-100 transition-colors"
+                        aria-label="Search Ecosystem"
+                    />
+                </div>
+
+                <div class="flex gap-2 flex-wrap justify-end">
+                    <button
+                        class="btn btn-sm btn-active filter-btn"
+                        data-category="all"
+                        aria-label="Show All Categories">All</button
+                    >
+                    {
+                        categories.map((cat) => (
+                            <button
+                                class="btn btn-sm filter-btn uppercase text-xs"
+                                data-category={cat}
+                                aria-label={`Filter by ${cat}`}
+                            >
+                                {cat}
+                            </button>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Ecosystem Grid -->
+            <div
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+                id="ecosystem-grid"
+            >
+                {
+                    allTags.map((tag) => (
+                        <a
+                            href={`/${locale}/tags/${tag.id}`}
+                            class="ecosystem-card relative p-5 rounded-2xl border bg-base-200/30 backdrop-blur-sm transition-all duration-300 group hover:border-primary/50 hover:bg-base-200/80 border-base-content/10 flex flex-col h-full"
+                            data-category={tag.data.category}
+                            data-title={tag.data.title.toLowerCase()}
+                        >
+                            <div class="flex justify-between items-start mb-4">
+                                {tag.data.icon ? (
+                                    <img
+                                        src={`https://cdn.simpleicons.org/${tag.data.icon}/${tag.data.category === "cloud" ? "f59e0b" : "ffffff"}`}
+                                        alt={tag.data.title}
+                                        class="w-8 h-8 opacity-80 group-hover:opacity-100 transition-opacity"
+                                        loading="lazy"
+                                    />
+                                ) : (
+                                    <div class="w-8 h-8 rounded bg-base-content/10 flex items-center justify-center text-xs font-bold text-base-content/50">
+                                        {tag.data.title.charAt(0)}
+                                    </div>
+                                )}
+                                <span
+                                    class={`badge badge-sm badge-outline text-[10px] uppercase tracking-wider ${getBadgeClass(tag.data.category)}`}
+                                >
+                                    {tag.data.category}
+                                </span>
+                            </div>
+
+                            <h3 class="font-bold text-lg text-base-content mb-1 group-hover:text-primary transition-colors">
+                                {tag.data.title}
+                            </h3>
+                            <p class="text-xs text-base-content/50 line-clamp-2 mt-auto">
+                                {tag.data.description}
+                            </p>
+                        </a>
+                    ))
+                }
+            </div>
+
+            <div id="no-results" class="hidden text-center py-20 w-full">
+                <p class="text-2xl font-bold opacity-30">
+                    No technologies found.
+                </p>
+                <p class="text-sm opacity-50 mt-2">
+                    Try adjusting your search or filters.
+                </p>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<script>
+    // Vanilla JS Client-Side Filtering (0-React)
+    function setupFilters() {
+        const searchInput = document.getElementById(
+            "search-input",
+        ) as HTMLInputElement;
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const cards = document.querySelectorAll(".ecosystem-card");
+        const noResults = document.getElementById("no-results");
+
+        if (!searchInput || !filterBtns.length || !cards.length) return;
+
+        let currentSearch = "";
+        let currentCategory = "all";
+
+        const applyFilters = () => {
+            let visibleCount = 0;
+
+            cards.forEach((c) => {
+                const card = c as HTMLElement;
+                const matchesSearch =
+                    card.dataset.title?.includes(currentSearch) || false;
+                const matchesCategory =
+                    currentCategory === "all" ||
+                    card.dataset.category === currentCategory;
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = "flex";
+                    // Trigger reflow for animation
+                    void card.offsetWidth;
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+                    visibleCount++;
+                } else {
+                    card.style.opacity = "0";
+                    card.style.transform = "translateY(10px)";
+                    setTimeout(() => {
+                        if (card.style.opacity === "0")
+                            card.style.display = "none";
+                    }, 300);
+                }
+            });
+
+            if (noResults) {
+                noResults.classList.toggle("hidden", visibleCount > 0);
+            }
+        };
+
+        // Search Listener
+        searchInput.addEventListener("input", (e) => {
+            currentSearch = (e.target as HTMLInputElement).value.toLowerCase();
+            applyFilters();
+        });
+
+        // Category Listeners
+        filterBtns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                // Update active button styling
+                filterBtns.forEach((b) =>
+                    b.classList.remove("btn-active", "btn-primary"),
+                );
+                const target = e.currentTarget as HTMLElement;
+                target.classList.add("btn-active");
+                if (target.dataset.category !== "all")
+                    target.classList.add("btn-primary");
+
+                currentCategory = target.dataset.category || "all";
+                applyFilters();
+            });
+        });
+    }
+
+    // Run on init and Astro view transitions
+    document.addEventListener("astro:page-load", setupFilters);
+    setupFilters();
+</script>

@@ -7,121 +7,16 @@
     "title": "Technical Arsenal",
     "desc": "Prioritized toolkit for %mode%. Items are dynamically reordered based on the active dimension.",
     "core": "Core",
-    "power": "Power",
-    "list": [
-      {
-        "id": "react",
-        "name": "React.js",
-        "category": "framework",
-        "relevance": {
-          "fullstack": 10,
-          "frontend": 10,
-          "backend": 3,
-          "devops": 1,
-          "database": 1,
-          "ai": 4
-        }
-      },
-      {
-        "id": "node",
-        "name": "Node.js",
-        "category": "language",
-        "relevance": {
-          "fullstack": 10,
-          "frontend": 5,
-          "backend": 10,
-          "devops": 5,
-          "database": 6,
-          "ai": 8
-        }
-      },
-      {
-        "id": "aws",
-        "name": "AWS",
-        "category": "cloud",
-        "relevance": {
-          "fullstack": 8,
-          "frontend": 2,
-          "backend": 9,
-          "devops": 10,
-          "database": 8,
-          "ai": 7
-        }
-      },
-      {
-        "id": "docker",
-        "name": "Docker/K8s",
-        "category": "tool",
-        "relevance": {
-          "fullstack": 7,
-          "frontend": 2,
-          "backend": 8,
-          "devops": 10,
-          "database": 6,
-          "ai": 6
-        }
-      },
-      {
-        "id": "postgresql",
-        "name": "PostgreSQL",
-        "category": "data",
-        "relevance": {
-          "fullstack": 8,
-          "frontend": 1,
-          "backend": 9,
-          "devops": 5,
-          "database": 10,
-          "ai": 5
-        }
-      },
-      {
-        "id": "python",
-        "name": "Python",
-        "category": "language",
-        "relevance": {
-          "fullstack": 6,
-          "frontend": 1,
-          "backend": 8,
-          "devops": 7,
-          "database": 7,
-          "ai": 10
-        }
-      },
-      {
-        "id": "tensorflow",
-        "name": "TensorFlow",
-        "category": "ai",
-        "relevance": {
-          "fullstack": 4,
-          "frontend": 1,
-          "backend": 5,
-          "devops": 3,
-          "database": 4,
-          "ai": 10
-        }
-      },
-      {
-        "id": "redis",
-        "name": "Redis",
-        "category": "data",
-        "relevance": {
-          "fullstack": 7,
-          "frontend": 2,
-          "backend": 9,
-          "devops": 6,
-          "database": 10,
-          "ai": 4
-        }
-      }
-    ]
+    "power": "Power"
   },
   "projects": {
     "title": "Selected Works",
     "heading": "Featured Projects",
     "viewProject": "View Project",
     "code": "Code",
-    "list": [
-      {
+    "caseStudy": "Case Study",
+    "items": {
+      "gov-docs-ai": {
         "id": "7",
         "title": "Public Docs AI",
         "slug": "gov-docs-ai",
@@ -141,7 +36,7 @@
           "ai": "Advanced integration with GPT-4 for contextual generation of 5 types of legal and technical documents."
         }
       },
-      {
+      "vitanexus": {
         "id": "8",
         "title": "VitaNexus",
         "slug": "vitanexus",
@@ -162,7 +57,7 @@
           "ai": "Algorithmic calculation of caloric needs and hydration targets based on individual user data profiles."
         }
       },
-      {
+      "jynsge-news": {
         "id": "9",
         "title": "JYNSGE News",
         "slug": "jynsge-news",
@@ -183,7 +78,7 @@
           "ai": "Algorithmic feed curation and potential integration for automated fact-checking and content verification."
         }
       },
-      {
+      "zk-business-support": {
         "id": "10",
         "title": "ZK Business Support",
         "slug": "zk-business-support",
@@ -204,7 +99,7 @@
           "ai": "Leveraged AI-driven SEO tools for keyword analysis and content structuring to maximize local search visibility."
         }
       },
-      {
+      "espresso-d-amore": {
         "id": "11",
         "title": "Espresso D' Amore",
         "slug": "espresso-d-amore",
@@ -226,7 +121,7 @@
           "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
         }
       },
-      {
+      "la-pool-club": {
         "id": "12",
         "title": "LA Pool Club",
         "slug": "la-pool-club",
@@ -247,7 +142,7 @@
           "ai": "Leveraged design intelligence to elevate the overall layout and user journey for membership conversions."
         }
       },
-      {
+      "brighton-cakes": {
         "id": "13",
         "title": "Brighton Cakes",
         "slug": "brighton-cakes",
@@ -268,8 +163,7 @@
           "ai": "Utilized AI-generated assets and content structuring for improved SEO and user engagement."
         }
       }
-    ],
-    "caseStudy": "Case Study"
+    }
   },
   "services": {
     "title": "Core Services",

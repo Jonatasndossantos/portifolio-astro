@@ -1,10 +1,14 @@
 ---
 import { getTranslations } from "@i18n";
 import { Cpu, Globe, Terminal, Cloud, Database, Bot } from "lucide-react";
-import type { Skill } from "../../types";
 
 interface Props {
-    skills: (Skill & { currentRelevance: number })[];
+    skills: {
+        id: string;
+        name: string;
+        category: "language" | "framework" | "tool" | "cloud" | "data" | "ai";
+        currentRelevance: number;
+    }[];
     mode: string;
     lang: string;
 }

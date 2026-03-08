@@ -15,7 +15,16 @@ const tags = defineCollection({
     schema: z.object({
         title: z.string(),
         description: z.string(),
-        icon: z.string().optional()
+        icon: z.string().optional(),
+        category: z.enum([
+            "language",
+            "framework",
+            "tool",
+            "cloud",
+            "data",
+            "ai"
+        ]),
+        relevance: z.record(z.string(), z.number()).optional() // e.g. { fullstack: 10, frontend: 2 }
     })
 });
 

@@ -1,6 +1,6 @@
 import { locales, defaultLocale } from './config';
 
-export const showDefaultLang = false;
+export const showDefaultLang = true;
 
 export function getLangFromUrl(url: URL) {
     const [, lang] = url.pathname.split('/');

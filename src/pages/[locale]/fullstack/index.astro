@@ -47,20 +47,48 @@ const profileData: CuratedProfile = {
     },
 };
 
+import { getCollection } from "astro:content";
+
+// Fetch tags collection for skills
+const allTags = await getCollection("tags");
+
 // Pre-process skills for the current Mode
-const currentSkills = (tPortfolio.skills.list as any[])
+const currentSkills = allTags
     .map((s) => ({
-        ...s,
-        currentRelevance: s.relevance?.[Mode.FULLSTACK] || 0,
+        id: s.id.replace(/\.mdx?$/, ""),
+        name: s.data.title,
+        category: s.data.category,
+        currentRelevance: s.data.relevance?.[Mode.FULLSTACK] || 0,
     }))
-    .sort((a, b) => b.currentRelevance - a.currentRelevance);
+    // Optional: filter out tags that have 0 relevance for this mode to avoid clutter
+    .filter((s) => s.currentRelevance > 0)
+    .sort((a, b) => b.currentRelevance - a.currentRelevance)
+    .slice(0, 10); // Display top 10 core skills in the Hero/About
+
+// Fetch projects collection
+const allProjects = await getCollection("projects");
 
 // Pre-process projects for the current language and Mode
-const currentProjects = (tPortfolio.projects.list as any[]).map((p) => ({
-    ...p,
-    displayDescription:
-        p.description?.[Mode.FULLSTACK] || p.description?.["fullstack"] || "",
-}));
+const currentProjects = allProjects.slice(0, 7).map((p) => {
+    const cleanId = p.id.replace(/\.mdx?$/, "");
+    return {
+        id: cleanId,
+        title: p.data.title,
+        imageUrl: p.data.heroImage || "",
+        demoUrl: p.data.demoUrl,
+        repoUrl: p.data.repoUrl,
+        technologies: p.data.tags
+            ? p.data.tags.map((t: any) => {
+                  const techId = (t.id || t).toString().replace(/\.mdx?$/, "");
+                  return {
+                      id: techId,
+                      name: techId.replace(/-/g, " "),
+                  };
+              })
+            : [],
+        displayDescriptionTextKey: `projects.items.${cleanId}.description.fullstack`,
+    };
+});
 ---
 
 <Layout
@@ -100,6 +128,19 @@ const currentProjects = (tPortfolio.projects.list as any[]).map((p) => ({
                         relationships (`topics`, `tags`, `services`). Try
                         zooming and dragging the nodes!
                     </p>
+                    <div class="flex flex-row gap-2">
+                        <h3 class="text-primary">primary</h3>
+                        <h3 class="text-secondary">secondary</h3>
+                        <h3 class="text-accent">accent</h3>
+                        <h3 class="text-success">success</h3>
+                        <h3 class="text-warning">warning</h3>
+                        <h3 class="text-error">error</h3>
+                        <h3 class="text-info">info</h3>
+                        <h3 class="text-neutral">neutral</h3>
+                        <h3 class="text-base">base</h3>
+                        <h3 class="text-base-content">base-content</h3>
+                    </div>
+
                     <GraphIsland />
                 </div>
             </section>

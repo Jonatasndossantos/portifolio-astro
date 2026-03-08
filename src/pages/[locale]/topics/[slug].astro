@@ -1,0 +1,182 @@
+---
+import { getCollection, render } from "astro:content";
+import { locales, getTranslations } from "@i18n";
+import Layout from "@layouts/Layout.astro";
+import GraphIsland from "@components/GraphIsland.astro";
+
+export async function getStaticPaths() {
+    const topics = await getCollection("topics");
+
+    return locales.flatMap((locale) =>
+        topics.map((topic) => {
+            const cleanId = topic.id.replace(/\.mdx?$/, "");
+            return {
+                params: { locale, slug: cleanId },
+                props: { locale, topic, cleanId },
+            };
+        }),
+    );
+}
+
+const { locale, slug } = Astro.params;
+const { topic, cleanId } = Astro.props;
+
+const t = (await getTranslations(locale, "portfolio")) as any;
+
+// Find all content that references this topic
+const allProjects = await getCollection("projects");
+const allBlogs = await getCollection("blog");
+const allServices = await getCollection("services");
+
+const relatedProjects = allProjects.filter((p) =>
+    p.data.relatedTopics?.some(
+        (ref: any) => (ref.id || ref).replace(/\.mdx?$/, "") === cleanId,
+    ),
+);
+
+const relatedBlogs = allBlogs.filter((b) =>
+    b.data.relatedTopics?.some(
+        (ref: any) => (ref.id || ref).replace(/\.mdx?$/, "") === cleanId,
+    ),
+);
+
+const relatedServices = allServices.filter((s) =>
+    s.data.relatedTopics?.some(
+        (ref: any) => (ref.id || ref).replace(/\.mdx?$/, "") === cleanId,
+    ),
+);
+
+const { Content } = await render(topic);
+---
+
+<Layout
+    title={`${topic.data.title} | Topic`}
+    description={topic.data.description}
+    lang={locale}
+>
+    <main
+        class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative overflow-hidden"
+    >
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="flex items-center gap-6 mb-8">
+                {
+                    topic.data.icon ? (
+                        <img
+                            src={`https://cdn.simpleicons.org/${topic.data.icon}/ffffff`}
+                            alt={topic.data.title}
+                            class="w-16 h-16 object-contain"
+                        />
+                    ) : (
+                        <div class="w-16 h-16 rounded bg-base-200 flex items-center justify-center text-3xl font-bold">
+                            {topic.data.title.charAt(0)}
+                        </div>
+                    )
+                }
+                <div>
+                    <span
+                        class="badge badge-accent badge-outline uppercase tracking-wider text-xs mb-2"
+                    >
+                        Topic Domain
+                    </span>
+                    <h1 class="text-5xl font-bold font-syncopate">
+                        {topic.data.title}
+                    </h1>
+                </div>
+            </div>
+
+            <article
+                class="prose prose-lg prose-invert mb-16 max-w-none prose-p:text-base-content/70"
+            >
+                <Content />
+            </article>
+
+            <div class="mb-16">
+                <h2
+                    class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4"
+                >
+                    Knowledge Graph
+                </h2>
+                <GraphIsland focusId={`topics/${cleanId}`} />
+            </div>
+
+            {
+                relatedProjects.length > 0 && (
+                    <div class="mb-12">
+                        <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
+                            Projects mapped to {topic.data.title}
+                        </h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {relatedProjects.map((p) => (
+                                <a
+                                    href={`/${locale}/projects/${p.id}`}
+                                    class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
+                                >
+                                    <div class="card-body p-6">
+                                        <h3 class="card-title text-lg">
+                                            {p.data.title}
+                                        </h3>
+                                        <p class="text-sm opacity-70">
+                                            View Case Study &rarr;
+                                        </p>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
+
+            {
+                relatedBlogs.length > 0 && (
+                    <div class="mb-12">
+                        <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
+                            Second Brain Notes
+                        </h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {relatedBlogs.map((b) => (
+                                <a
+                                    href={`/${locale}/blog/${b.id}`}
+                                    class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
+                                >
+                                    <div class="card-body p-6">
+                                        <h3 class="card-title text-lg">
+                                            {b.data.title}
+                                        </h3>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
+
+            {
+                relatedServices.length > 0 && (
+                    <div class="mb-12">
+                        <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
+                            Related Services
+                        </h2>
+                        <div class="flex flex-wrap gap-4">
+                            {relatedServices.map((s) => (
+                                <span class="badge badge-lg p-5 bg-base-200">
+                                    {s.data.title}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
+
+            {
+                relatedProjects.length === 0 &&
+                    relatedBlogs.length === 0 &&
+                    relatedServices.length === 0 && (
+                        <div class="text-center py-10 opacity-50 border border-dashed border-base-content/20 rounded-xl">
+                            No connections mapped to {topic.data.title} yet in
+                            the Second Brain.
+                        </div>
+                    )
+            }
+        </div>
+    </main>
+</Layout>

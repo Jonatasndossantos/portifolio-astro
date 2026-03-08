@@ -2,16 +2,21 @@
 import { getTranslations } from "@i18n";
 import { Image } from "astro:assets";
 import { Cpu, Globe, Code, Terminal, Database, Cloud } from "lucide-react";
-import type { Skill, CuratedProfile } from "../../types";
+import type { CuratedProfile } from "../../types";
 
 interface Props {
-    skills: (Skill & { currentRelevance: number })[];
+    skills: {
+        id: string;
+        name: string;
+        category: string;
+        currentRelevance: number;
+    }[];
     profile: CuratedProfile;
     mode: string;
     lang: string;
 }
 
-const { skills, profile, lang } = Astro.props;
+const { skills, profile, mode, lang } = Astro.props;
 const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
 ---
 

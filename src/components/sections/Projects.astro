@@ -1,16 +1,25 @@
 ---
-import { getTranslations } from "@i18n";
+import { getTranslations, useTranslatedPath } from "@i18n";
 import { Image } from "astro:assets";
 import { ExternalLink, Github } from "lucide-react";
-import type { Project } from "../../types";
+import Translate from "../Translate.astro";
 
 interface Props {
-    projects: (Project & { displayDescription: string })[];
+    projects: {
+        id: string;
+        title: string;
+        imageUrl: string;
+        demoUrl?: string;
+        repoUrl?: string;
+        technologies: { id: string; name: string }[];
+        displayDescriptionTextKey: string;
+    }[];
     lang: string;
 }
 
 const { projects, lang } = Astro.props;
 const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
+const translatePath = useTranslatedPath(lang);
 ---
 
 <section id="projects" class="py-32 px-6 lg:px-20 relative z-10">
@@ -46,7 +55,10 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
                         >
                             <figure>
                                 <Image
-                                    src={project.imageUrl}
+                                    src={
+                                        project.imageUrl ||
+                                        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800"
+                                    }
                                     alt={project.title}
                                     inferSize={true}
                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
@@ -58,22 +70,41 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
                                     {project.technologies
                                         .slice(0, 3)
                                         .map((tech) => (
-                                            <span class="badge badge-outline badge-sm uppercase text-[10px] tracking-wider border-base-content/20 bg-base-100/20 backdrop-blur-sm text-base-content">
-                                                {tech}
-                                            </span>
+                                            <a
+                                                href={translatePath(
+                                                    `/tags/${tech.id}`,
+                                                )}
+                                                class="badge badge-outline badge-sm uppercase text-[10px] tracking-wider border-base-content/20 bg-base-100/20 hover:bg-primary hover:text-primary-content transition-colors backdrop-blur-sm text-base-content relative z-20"
+                                            >
+                                                {tech.name}
+                                            </a>
                                         ))}
                                 </div>
 
-                                <h3 class="card-title text-3xl font-bold text-white mb-2 shadow-sm">
-                                    {project.title}
+                                <h3 class="card-title text-3xl font-bold text-white mb-2 shadow-sm relative z-20">
+                                    <a
+                                        href={translatePath(
+                                            `/projects/${project.id}`,
+                                        )}
+                                        class="hover:text-primary transition-colors cursor-pointer"
+                                    >
+                                        {project.title}
+                                    </a>
                                 </h3>
-                                <p class="text-white/80 text-sm line-clamp-2 mb-6 group-hover:text-white transition-colors grow-0">
-                                    {project.displayDescription}
+                                <p class="text-white/80 text-sm line-clamp-2 mb-6 group-hover:text-white transition-colors grow-0 relative z-20">
+                                    <Translate
+                                        textKey={
+                                            project.displayDescriptionTextKey
+                                        }
+                                        lang={lang}
+                                    />
                                 </p>
 
-                                <div class="card-actions flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mt-auto">
+                                <div class="card-actions flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mt-auto relative z-20">
                                     <a
-                                        href={`/${lang}/projects/${project.slug}`}
+                                        href={translatePath(
+                                            `/projects/${project.id}`,
+                                        )}
                                         class="btn btn-primary btn-sm rounded-full text-xs"
                                         aria-label={`Read Case Study for ${project.title}`}
                                     >
