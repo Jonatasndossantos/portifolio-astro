@@ -85,7 +85,7 @@ const { focusId } = Astro.props;
         const nodeRadius = (d: any) => {
             const weight = d.weight || 0;
             // base + sqrt(weight)
-            return 8 + Math.sqrt(weight) * 4;
+            return 6 + Math.sqrt(weight) * 2.5;
         };
 
         // Create simulation

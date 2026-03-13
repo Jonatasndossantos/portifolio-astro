@@ -1,6 +1,6 @@
-# Verdant Visual — Multiverse Portfolio
+# Jõnatas — Portfolio
 
-Welcome to the **Multiverse Portfolio**! This is a cutting-edge, highly optimized, and interactive developer portfolio built with modern web standards.
+Welcome to the **Portfolio**! This is a cutting-edge, highly optimized, and interactive developer portfolio built with modern web standards.
 
 ## ✨ Key Features
 

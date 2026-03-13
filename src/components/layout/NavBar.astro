@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from "../ui/ThemeToggle.astro";
 import LanguageToggle from "./LanguageToggle.astro";
+import translate from "../Translate.astro";
 import { getTranslations } from "@i18n";
 import { useTranslatedPath } from "@i18n";
 import Icon from "./Icon.astro";
@@ -52,12 +53,14 @@ const iconLinks: {
                     <a
                         href={translatePath("/fullstack")}
                         class="btn btn-ghost h-auto py-2 px-3 gap-3"
+                        aria-label={`${navRecord.name ?? "Home"} ${navRecord.prefix ?? ""}`}
                     >
                         <div
                             class="relative flex items-center justify-center size-8"
                         >
                             <Layers
                                 className="size-6 relative z-10 transition-transform hover:rotate-12 text-primary"
+                                aria-hidden="true"
                             />
                             <div
                                 class="absolute inset-0 blur-md rounded-full bg-base-content/10"
@@ -91,7 +94,7 @@ const iconLinks: {
                             class="btn btn-ghost btn-sm btn-circle mr-2 hidden lg:flex"
                             aria-label={navRecord.ecosystem || "Ecosystem"}
                         >
-                            <Search className="size-5" />
+                            <Search className="size-5" aria-hidden="true" />
                         </a>
                         {
                             iconLinks.map((link) => (
@@ -122,7 +125,7 @@ const iconLinks: {
                             aria-label="open sidebar"
                             class="btn btn-square btn-ghost"
                         >
-                            <Menu className="size-6" />
+                            <Menu className="size-6" aria-hidden="true" />
                             <span class="sr-only">Open Menu</span>
                         </button>
                     </div>

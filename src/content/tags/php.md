@@ -1,6 +1,7 @@
 ---
-title: "php"
+title: "PHP"
 description: "Technology used in Verdant Visual projects."
-category: "tool"
+category: "language"
+icon: "php"
 ---
 
