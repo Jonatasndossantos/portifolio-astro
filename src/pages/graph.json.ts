@@ -38,8 +38,16 @@ export async function GET({ request }: { request: Request }) {
         }
     };
 
-    // Helper: Strip extension
-    const cleanId = (id: string) => id.replace(/\.mdx?$/, "");
+    // Helper: Strip extension and language prefix (e.g. pt/my-post.md -> my-post)
+    const cleanId = (id: string) => {
+        let clean = id.replace(/\.mdx?$/, "");
+        const parts = clean.split('/');
+        // If it's inside a locale folder, strip the locale
+        if (parts.length > 1 && ['en', 'pt', 'es', 'fr', 'zh', 'ja', 'en-GB'].includes(parts[0])) {
+            return parts.slice(1).join('/');
+        }
+        return clean;
+    };
 
     // Helper: Resolve SVG Icon CDN
     const getIconInfo = (icon?: string) => icon ? `https://cdn.simpleicons.org/${icon}/ffffff` : undefined;

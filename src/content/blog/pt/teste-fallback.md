@@ -1,6 +1,8 @@
 ---
 title: "Artigo Sem Tradução"
 date: 2024-03-15
+tags: ["node"]
+relatedTopics: ["software-engineering"]
 ---
 
 Este artigo não possui um arquivo equivalente na pasta `en/`.

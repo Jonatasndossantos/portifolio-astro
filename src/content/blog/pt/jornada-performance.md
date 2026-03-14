@@ -1,6 +1,8 @@
 ---
 title: "A Jornada para a Perfomance Extrema"
 date: 2024-03-14
+tags: ["performance", "seo", "css"]
+relatedTopics: ["software-engineering"]
 ---
 
 Neste artigo em português, eu exploro todos os caminhos para extrair 100 de performance no Lighthouse do Google.

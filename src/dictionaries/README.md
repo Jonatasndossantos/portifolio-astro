@@ -9,41 +9,25 @@ O conteúdo vive aqui como JSON puro — desacoplado de TypeScript, frameworks e
 
 | Princípio | Decisão |
 |---|---|
-| Fonte da verdade | JSON por locale em `src/dictionaries/` |
+| Fonte da verdade | JSON por locale em `src/dictionaries/` (ex: `ui/pt.json`) |
 | Roteamento i18n | Astro nativo (`/[locale]/...`) |
-| Tradução automática | `npx intlayer fill` (preenche línguas faltantes via IA) |
-| Componentes | Recebem locale como prop, leem JSON via `getTranslations` |
+| Componentes | Usam a função Laravel-style `__()` |
+| Textos Grandes | Usam Coleções de Conteúdo (Pastas `pt`, `en` no `.md`) |
 | Build | 100% estático — sem requisições em runtime |
 
 ---
 
 ## Estrutura de pastas
 
+Textos curtos de UI (Botões, Menus) vivem em pastas genéricas:
+
 ```
 src/dictionaries/
-  nav/                ← key = "nav"
+  ui/
     en.json
     pt.json
-    fr.json           ← gerado por `intlayer fill`
-    es.json
-    zh.json
-    ja.json
-    en-GB.json
-  theme/              ← key = "theme"
-    en.json
-    pt.json
-    ...
-  fullstack-hero/     ← key = "fullstack-hero"  ← hífen, NUNCA barra
-    en.json
-    pt.json
-    ...
+    fr.json
 ```
-
-> [!IMPORTANT]
-> O **key do intlayer é o nome da pasta** diretamente dentro de `src/dictionaries/`.
-> Use **hífen** para separar conceitos compostos (ex: `fullstack-hero`).
-> **NUNCA use barras/subpastas** como chave — o intlayer não cria subdiretórios
-> em `.intlayer/dictionary/` e vai falhar com ENOENT.
 
 ---
 
@@ -67,19 +51,17 @@ Cada arquivo é **um único locale**, com chaves flat:
 
 ### Astro (build-time, zero JS)
 
+Usamos o clássico formato Laravel `__()`:
+
 ```astro
 ---
-import { getTranslations } from '../i18n/index';
-import { getLangFromUrl } from '../i18n/utils';
-
-const lang = getLangFromUrl(Astro.url);
-
-// key = nome da pasta em src/dictionaries/
-const nav = await getTranslations(lang, 'nav');
+import { useTranslator } from '../i18n/index';
+// Retorna a função tradutora que já pega o JSON certo ou faz fallback pra String
+const __ = await useTranslator(lang, 'ui');
 ---
 
-<span>{nav.title}</span>
-<a href="...">{nav.fullstack}</a>
+<span>{__('Home')}</span>
+<a href="...">{__('Welcome, :name', { name: 'Jhon' })}</a>
 ```
 
 ### React (recebe como prop do Astro pai)
@@ -105,40 +87,13 @@ const HeroComponent = ({ bio, role }: { bio: string; role: string }) => (
 ## Workflow de traduções
 
 ```bash
-# 1. Criar/editar o arquivo base (sempre em inglês)
-#    src/dictionaries/nav/en.json
-
-# 2. Construir os dicionários intlayer (verifica estrutura)
-npx intlayer build
-
-# 3. Preencher traduções faltantes via IA (requer OPENAI_API_KEY no .env)
-npx intlayer fill
-
-# 4. (Opcional) Sincronizar com o CMS do intlayer
-npx intlayer push   # envia para o CMS
-npx intlayer pull   # baixa do CMS
-
-# 5. Verificar o que foi descoberto
-npx intlayer content list   # lista arquivos .content.ts (locais)
-npx intlayer build          # mostra "Plugin content: N/N" — este é o nosso número
+# 1. Adicionar as traduções no arquivo em português (seu main)
+#    src/dictionaries/ui/pt.json
+# 2. Replicar a chave no `en.json`.
 ```
 
 > [!NOTE]
-> `intlayer content list` conta apenas arquivos `.content.ts` locais — retorna 0,
-> pois usamos só JSON. O número real está em **"Plugin content: N/N"** no `intlayer build`.
-
----
-
-## Adicionar um novo namespace
-
-1. Criar a pasta e o arquivo base inglês:
-   ```bash
-   mkdir src/dictionaries/fullstack-hero
-   # criar src/dictionaries/fullstack-hero/en.json
-   ```
-2. Rodar `npx intlayer build` — deve aparecer no "Plugin content"
-3. Rodar `npx intlayer fill` para preencher os outros locales
-4. Usar com `getTranslations(lang, 'fullstack-hero')` no componente
+> Para posts de Blog ou Textos Grandes, NÃO USE os arquivos JSON. Use o sistema de Content Collections do Astro (`src/content/blog/pt/...`). O Astro já está programado para fazer Fallback automático de rotas caso falte tradução.
 
 ---
 

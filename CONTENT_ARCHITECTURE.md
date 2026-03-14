@@ -68,16 +68,20 @@ When writing content inside MDX files, you can use the syntax `[[Link Name]]` in
 
 ## 5. Internationalization (i18n)
 
-The `.mdx` files are treated strictly as **Structural Vessels**.
-Do NOT hardcode strings (like "Overview" or "Features") inside the Markdown files.
+We employ a dual-strategy for translations to maximize Developer Experience (DX) while keeping the bundle at zero JS.
 
-Instead, import the `<Translate textKey="..." />` component and pull the text at build-time from `src/dictionaries/portfolio/[locale].json` managed by Intlayer.
+### A. Small UI Strings (JSON Dictionaries)
+For buttons, nav items, and generic UI text we use a custom Laravel-style `__` translator. These strings are stored in `src/dictionaries/ui/[locale].json`.
 
-```mdx
-import Translate from '../../components/Translate.astro';
-
-### <Translate textKey="projects.gov_docs.backend_title" />
-<Translate textKey="projects.gov_docs.backend_desc" />
+```astro
+---
+import { useTranslator } from "@i18n";
+const __ = await useTranslator(Astro.props.lang);
+---
+<a href="/">{__('Home')}</a>
 ```
 
-This prevents the nightmare of duplicating 50 markdown files just to support 5 different languages.
+### B. Deep Content (Astro Content Collections & Markdown)
+Articles, Service Pages, and Projects are written purely in `.md` or `.mdx` separated by locale folders (`src/content/blog/pt/my-post.md` & `src/content/blog/en/my-post.md`).
+
+**The Fallback System**: To never punish users with 404 pages natively, Astro is configured to gracefully fallback if a translation is missing. If an English user requests an untranslated Portuguese post, they will see the Portuguese content with a warning alert banner at the top, ensuring the website feels fully cohesive even while translations are pending.

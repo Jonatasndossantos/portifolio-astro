@@ -1,6 +1,8 @@
 ---
 title: "The Journey to Extreme Performance"
 date: 2024-03-14
+tags: ["performance", "seo", "css"]
+relatedTopics: ["software-engineering"]
 ---
 
 In this English article, I explore all the paths to extract a 100 performance score on Google Lighthouse.

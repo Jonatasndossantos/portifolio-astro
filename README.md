@@ -41,7 +41,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## 🛠️ Modifying the Content
 
-1. **Translations**: To edit bio, roles, or names, update the files inside `src/dictionaries/[locale].json`.
+1. **Translations**: To edit UI text (buttons, menus), update `src/dictionaries/ui/[locale].json`. For deep content (Blog, Projects), edit the `.md` files inside `src/content/<collection>/[locale]/`.
 2. **Themes**: Open `src/components/ui/ThemeToggle.astro` to add or remove DaisyUI themes from the dropdown list.
 3. **3D Models**: Open `Hero.astro` and swap the URL inside the `<spline-viewer>` component.
 
