@@ -1,11 +1,21 @@
 {
     "Home": "Início",
-    "Ecosystem": "Ecossistema",
+    "Search": "Buscar",
     "About us": "Sobre nós",
     "Work": "Projetos",
     "Contact": "Contato",
     "Blog": "Blog",
     "Read more": "Ler mais",
     "Back to Blog": "Voltar ao Blog",
-    "Untranslated Warning": "Este artigo não tem tradução para o seu idioma. Exibindo versão original."
+    "Untranslated Warning": "Este artigo não tem tradução para o seu idioma. Exibindo versão original.",
+    "Portfolio Title": "Portfólio Multiverso",
+    "Preferences": "Preferências",
+    "Interface": "Interface",
+    "Theme": "Tema",
+    "Language": "Idioma",
+    "Network": "Redes",
+    "Open Menu": "Abrir Menu",
+    "Close Menu": "Fechar Menu",
+    "Change Theme": "Mudar Tema",
+    "Change Language": "Mudar Idioma"
 }

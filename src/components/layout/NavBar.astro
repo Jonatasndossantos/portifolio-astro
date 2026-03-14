@@ -2,23 +2,17 @@
 import ThemeToggle from "../ui/ThemeToggle.astro";
 import LanguageToggle from "./LanguageToggle.astro";
 import translate from "../Translate.astro";
-import { getTranslations } from "@i18n";
-import { useTranslatedPath } from "@i18n";
+import { useTranslator, useTranslatedPath, getTranslations } from "@i18n";
 import Icon from "./Icon.astro";
 import { iconPaths } from "../IconPaths";
 import { Search, Layers, Menu } from "lucide-react";
 
 const { lang } = Astro.props;
 const translatePath = useTranslatedPath(lang);
+const __ = await useTranslator(lang);
 
-const navRecord = (await getTranslations(lang, "nav")) as Record<
-    string,
-    string
->;
-const themeRecord = (await getTranslations(lang, "theme")) as Record<
-    string,
-    string
->;
+const navName = "JÔNATAS";
+const navPrefix = ".DEV";
 
 const iconLinks: {
     label: string;
@@ -53,7 +47,7 @@ const iconLinks: {
                     <a
                         href={translatePath("/fullstack")}
                         class="btn btn-ghost h-auto py-2 px-3 gap-3"
-                        aria-label={`${navRecord.name ?? "Home"} ${navRecord.prefix ?? ""}`}
+                        aria-label={`${navName} ${navPrefix}`}
                     >
                         <div
                             class="relative flex items-center justify-center size-8"
@@ -71,17 +65,13 @@ const iconLinks: {
                             <span
                                 class="font-bold text-base leading-tight tracking-wider text-base-content group-hover:text-primary transition-colors"
                             >
-                                {(navRecord.name ?? "").toUpperCase()}
-                                <span class="opacity-50"
-                                    >{
-                                        (navRecord.prefix ?? "").toUpperCase()
-                                    }</span
-                                >
+                                {navName}
+                                <span class="opacity-50">{navPrefix}</span>
                             </span>
                             <span
                                 class="text-[10px] uppercase tracking-[0.2em] opacity-60 mt-0.5"
                             >
-                                {navRecord.title ?? ""}
+                                {__("Portfolio Title")}
                             </span>
                         </div>
                     </a>
@@ -92,9 +82,10 @@ const iconLinks: {
                         <a
                             href={translatePath("/ecosystem")}
                             class="btn btn-ghost btn-sm btn-circle mr-2 hidden lg:flex"
-                            aria-label={navRecord.ecosystem || "Ecosystem"}
+                            aria-label={__("Search")}
+                            title={__("Search")}
                         >
-                            <Search className="size-5" aria-hidden="true" />
+                            <Search className="" aria-hidden="true" />
                         </a>
                         {
                             iconLinks.map((link) => (
@@ -103,16 +94,18 @@ const iconLinks: {
                                     class="btn btn-ghost btn-sm btn-circle"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    title={link.label}
-                                    aria-label={link.label}
+                                    title={__(link.label)}
+                                    aria-label={__(link.label)}
                                 >
-                                    <Icon icon={link.icon} size="1.2rem" />
-                                    <span class="sr-only">{link.label}</span>
+                                    <Icon icon={link.icon} class="" />
+                                    <span class="sr-only">
+                                        {__(link.label)}
+                                    </span>
                                 </a>
                             ))
                         }
                         <div class="w-px h-6 bg-base-content/20 mx-2"></div>
-                        <ThemeToggle locale={lang} themeDict={themeRecord} />
+                        <ThemeToggle locale={lang} />
                         <div class="w-px h-6 bg-base-content/20 mx-2"></div>
                         <LanguageToggle currentLocale={lang} />
                     </div>
@@ -122,11 +115,11 @@ const iconLinks: {
                         <button
                             type="button"
                             onclick="document.getElementById('nav-drawer').click()"
-                            aria-label="open sidebar"
+                            aria-label={__("Open Menu")}
                             class="btn btn-square btn-ghost"
                         >
                             <Menu className="size-6" aria-hidden="true" />
-                            <span class="sr-only">Open Menu</span>
+                            <span class="sr-only">{__("Open Menu")}</span>
                         </button>
                     </div>
                 </div>
@@ -148,11 +141,11 @@ const iconLinks: {
             <div
                 class="flex items-center justify-between mb-8 pb-4 border-b border-base-content/10"
             >
-                <span class="text-xl font-bold">Preferences</span>
+                <span class="text-xl font-bold">{__("Preferences")}</span>
                 <button
                     type="button"
                     onclick="document.getElementById('nav-drawer').click()"
-                    aria-label="close sidebar"
+                    aria-label={__("Close Menu")}
                     class="btn btn-circle btn-ghost btn-sm"
                 >
                     <svg
@@ -168,7 +161,7 @@ const iconLinks: {
                             stroke-width="2"
                             d="M6 18L18 6M6 6l12 12"></path></svg
                     >
-                    <span class="sr-only">Close Menu</span>
+                    <span class="sr-only">{__("Close Menu")}</span>
                 </button>
             </div>
 
@@ -176,16 +169,18 @@ const iconLinks: {
                 <!-- Ecosystem Link Mobile -->
                 <a
                     href={translatePath("/ecosystem")}
+                    title={__("Search")}
+                    aria-label={__("Search")}
                     class="btn btn-primary w-full shadow-md text-xs tracking-widest uppercase"
                 >
-                    {navRecord.ecosystem || "ECOSYSTEM"}
+                    {__("Search")}
                 </a>
 
                 <!-- Socials -->
                 <div class="flex flex-col gap-3 mt-2">
                     <span
                         class="text-sm font-medium opacity-60 uppercase tracking-widest px-1"
-                        >Network</span
+                        >{__("Network")}</span
                     >
                     <div class="flex flex-row flex-wrap gap-2">
                         {
@@ -195,11 +190,13 @@ const iconLinks: {
                                     class="btn btn-ghost btn-square bg-base-100 hover:bg-base-300 transition-colors"
                                     target="_blank"
                                     rel="noopener"
-                                    title={link.label}
-                                    aria-label={link.label}
+                                    title={__(link.label)}
+                                    aria-label={__(link.label)}
                                 >
-                                    <Icon icon={link.icon} size="1.5rem" />
-                                    <span class="sr-only">{link.label}</span>
+                                    <Icon icon={link.icon} class="" />
+                                    <span class="sr-only">
+                                        {__(link.label)}
+                                    </span>
                                 </a>
                             ))
                         }
@@ -210,19 +207,20 @@ const iconLinks: {
                 <div class="flex flex-col gap-4 mt-4">
                     <span
                         class="text-sm font-medium opacity-60 uppercase tracking-widest px-1"
-                        >Interface</span
+                        >{__("Interface")}</span
                     >
                     <div class="flex flex-col gap-4 bg-base-100 p-4 rounded-xl">
                         <div class="flex items-center justify-between">
-                            <span class="font-medium text-sm">Theme</span>
-                            <ThemeToggle
-                                locale={lang}
-                                themeDict={themeRecord}
-                            />
+                            <span class="font-medium text-sm"
+                                >{__("Theme")}</span
+                            >
+                            <ThemeToggle locale={lang} />
                         </div>
                         <div class="divider my-0 opacity-20"></div>
                         <div class="flex items-center justify-between">
-                            <span class="font-medium text-sm">Language</span>
+                            <span class="font-medium text-sm"
+                                >{__("Language")}</span
+                            >
                             <LanguageToggle currentLocale={lang} />
                         </div>
                     </div>
