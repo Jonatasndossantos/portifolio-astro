@@ -23,10 +23,10 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   i18n: {
-    defaultLocale: defaultLocale,
+    defaultLocale: "pt",
     locales: [...locales],
     routing: {
-      prefixDefaultLocale: true
+      prefixDefaultLocale: false
     }
   },
   image: {

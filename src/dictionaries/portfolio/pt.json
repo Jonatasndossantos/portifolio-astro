@@ -14,7 +14,156 @@
     "heading": "Projetos em Destaque",
     "viewProject": "Ver Projeto",
     "code": "Código",
-    "caseStudy": "Estudo de Caso"
+    "caseStudy": "Estudo de Caso",
+    "items": {
+      "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "React.js",
+          "Laravel",
+          "OpenAI",
+          "GCP"
+        ],
+        "description": {
+          "fullstack": "Sistema completo de automação para geração de documentos públicos (Lei 14.133/2021) usando IA (GPT-4) e Laravel.",
+          "frontend": "Interface Web moderna e responsiva construída com React e Inertia.js, focada na experiência do usuário para gestão de documentos.",
+          "backend": "Backend Laravel robusto gerenciando filas de processamento, geração de templates Word e integração com API OpenAI.",
+          "devops": "Monitoramento com Laravel Telescope e deploy automatizado na Google Cloud Platform.",
+          "database": "Gestão segura de dados institucionais e documentos gerados, com controle de acesso e versionamento.",
+          "ai": "Integração avançada com GPT-4 para geração contextual de 5 tipos de documentos legais e técnicos."
+        }
+      },
+      "vitanexus": {
+        "id": "8",
+        "title": "VitaNexus",
+        "slug": "vitanexus",
+        "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
+        "technologies": [
+          "Laravel 10",
+          "PHP 8",
+          "SQLite",
+          "Bootstrap 5"
+        ],
+        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
+        "description": {
+          "fullstack": "Aplicação abrangente de monitoramento de saúde rastreando métricas como IMC, hidratação e pressão arterial usando Laravel e Bootstrap.",
+          "frontend": "Interface responsiva e acessível projetada com Bootstrap 5 para garantir fácil entrada de dados vitais de saúde em vários dispositivos.",
+          "backend": "Arquitetura Laravel segura lidando com cálculos complexos de saúde e autenticação de usuário com Laravel Breeze.",
+          "devops": "Estratégia de deploy leve usando SQLite, otimizada para fácil instalação e manutenção.",
+          "database": "Esquema SQLite eficiente projetado para armazenar dados históricos de saúde e hábitos do usuário com privacidade.",
+          "ai": "Cálculo algorítmico de necessidades calóricas e metas de hidratação com base em perfis de dados individuais dos usuários."
+        }
+      },
+      "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "technologies": [
+          "Laravel",
+          "Tailwind",
+          "MySQL",
+          "Azure"
+        ],
+        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
+        "description": {
+          "fullstack": "Portal de notícias tecnológicas combatendo desinformação com autenticação segura (OAuth) e moderação de conteúdo, construído com Laravel e Tailwind.",
+          "frontend": "Interface moderna e responsiva usando templates Blade e Tailwind CSS, otimizada para legibilidade e descoberta de conteúdo.",
+          "backend": "Arquitetura MVC robusta conectando APIs RSS externas e gerenciando papéis/permissões de usuários via Laravel Breeze.",
+          "devops": "Implantado no Azure App Service com pipelines de teste automatizados usando o framework PEST.",
+          "database": "Esquema MySQL relacional projetado para lidar eficientemente com notícias categorizadas, comentários e perfis de usuários.",
+          "ai": "Curadoria de feed algorítmica e integração potencial para verificação automatizada de fatos e conteúdo."
+        }
+      },
+      "zk-business-support": {
+        "id": "10",
+        "title": "ZK Business Support",
+        "slug": "zk-business-support",
+        "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://o8u.64c.myftpupload.com/",
+        "technologies": [
+          "WordPress",
+          "Custom CSS",
+          "PHP",
+          "SEO"
+        ],
+        "description": {
+          "fullstack": "Solução WordPress personalizada para alta performance com cache avançado, otimização SEO local e estilo CSS sob medida.",
+          "frontend": "Desenvolvi uma identidade visual única usando CSS personalizado e design responsivo de alta fidelidade para refletir a imagem profissional da marca.",
+          "backend": "Arquitetura CMS WordPress customizada para gerenciar eficientemente portfólios de serviços e depoimentos de clientes.",
+          "devops": "Implementei camadas de cache agressivas e otimização de ativos para alcançar as melhores pontuações no PageSpeed Insights.",
+          "database": "Consultas de banco de dados otimizadas para tipos de post personalizados, garantindo latência mínima para renderização de conteúdo dinâmico.",
+          "ai": "Aproveitei ferramentas de SEO orientadas por IA para análise de palavras-chave e estruturação de conteúdo para maximizar a visibilidade em buscas locais."
+        }
+      },
+      "espresso-d-amore": {
+        "id": "11",
+        "title": "Espresso D' Amore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
+        "technologies": [
+          "Laravel 12",
+          "Inertia.js",
+          "Expo",
+          "Supabase",
+          "OpenAI"
+        ],
+        "description": {
+          "fullstack": "Um ecossistema dual consistindo de um ERP Laravel/Inertia para gestão e um aplicativo móvel Expo/Supabase para pedidos e pagamentos.",
+          "frontend": "Construí duas interfaces distintas: um dashboard administrativo rico em dados com React/Inertia e uma experiência de pedido móvel fluida usando Expo.",
+          "backend": "Arquitetura de backend híbrida utilizando Laravel 12 para a lógica de negócio principal e Supabase para dados de clientes em tempo real e autenticação.",
+          "devops": "Gerenciei pipelines de build modernos para web apps baseados em Vite e geração de APKs móveis, garantindo atualizações perfeitas em todas as plataformas.",
+          "database": "Implementei uma estratégia de banco de dados dividida: MySQL para relacionamentos complexos de ERP e PostgreSQL (Supabase) para consultas de clientes em alta velocidade.",
+          "ai": "Integração com OpenAI para automatizar a gestão de inventário, prevendo falta de estoque e gerando automaticamente ordens de compra para fornecedores."
+        }
+      },
+      "la-pool-club": {
+        "id": "12",
+        "title": "LA Pool Club",
+        "slug": "la-pool-club",
+        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://lapoolclub.co.uk/",
+        "technologies": [
+          "WordPress",
+          "UI/UX Design",
+          "CSS",
+          "Performance"
+        ],
+        "description": {
+          "fullstack": "Solução completa WordPress para um clube de bilhar premium, focada em melhorias de UI/UX, estilo CSS e recuperação de layout do sistema.",
+          "frontend": "Revitalizei a interface do usuário com CSS personalizado, garantindo uma experiência de reserva e associação responsiva e visualmente atraente.",
+          "backend": "Otimizei o núcleo do WordPress, melhorei a estabilidade do layout e recuperei dados perdidos através de técnicas avançadas de restauração de banco de dados.",
+          "devops": "Implementei ajustes de performance e estabilizações de layout para uma experiência de usuário mais suave e tempos de carregamento mais rápidos.",
+          "database": "Recuperei e estruturei dados de reservas e informações do clube, garantindo a operação contínua.",
+          "ai": "Aproveitei a inteligência de design para elevar o layout geral e a jornada do usuário para conversões de associação."
+        }
+      },
+      "brighton-cakes": {
+        "id": "13",
+        "title": "Brighton Cakes",
+        "slug": "brighton-cakes",
+        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://brightoncakes.co.uk",
+        "technologies": [
+          "WordPress",
+          "PHP",
+          "CSS",
+          "SEO"
+        ],
+        "description": {
+          "fullstack": "Site WordPress personalizado para Makecakes, apresentando um tema sob medida, otimização de performance e experiência do usuário personalizada.",
+          "frontend": "Projetei e desenvolvi um frontend responsivo e visualmente atraente usando CSS personalizado e temas WordPress.",
+          "backend": "Configurei e otimizei o backend WordPress para gestão de conteúdo segura e tempos de carregamento rápidos.",
+          "devops": "Implementei estratégias de cache e otimizações de performance para entrega confiável de ativos de imagem de alta qualidade.",
+          "database": "Otimizei o banco de dados WordPress para consultas rápidas e execução eficiente de tipos de post personalizados.",
+          "ai": "Utilizei ativos gerados por IA e estruturação de conteúdo para melhorar o SEO e o engajamento do usuário."
+        }
+      }
+    }
   },
   "services": {
     "title": "Serviços Principais",
@@ -40,7 +189,7 @@
   "contact": {
     "title": "Entre em Contato",
     "heading": "Vamos construir o futuro.",
-    "desc": "Aberto para colaborações, projetos freelance, ou bate-papo sobre a próxima grande novidade em tecnologia.",
+    "desc": "Aberto para colaborações, projetos freelance, ou apenas um bate-papo sobre a próxima grande novidade na tecnologia.",
     "email": "E-mail",
     "messageSent": "Mensagem Enviada!",
     "sendAnother": "Enviar Outra",
@@ -52,7 +201,7 @@
     "somethingWrong": "Algo deu errado. Por favor, tente novamente mais tarde."
   },
   "footer": {
-    "copyright": "Multiverse Portfolio",
+    "copyright": "Jônatas Nascimento dos Santos",
     "links": {
       "home": "INÍCIO",
       "about": "SOBRE",

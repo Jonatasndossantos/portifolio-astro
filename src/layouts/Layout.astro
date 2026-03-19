@@ -10,13 +10,13 @@ interface Props {
 }
 
 const {
-	title = "Jônatas.Dev",
-	description = "Multiverse Portfolio — Full-Stack, Frontend, Backend, DevOps, Database & AI",
-	lang = "en",
+	title = "Jônatas N. dos Santos",
+	description = "Portfólio Oficial — Especialista Full-Stack, IA e Arquitetura de Software",
+	lang = "pt",
 	canonicalUrl = Astro.url.href,
 } = Astro.props;
 
-const ogTitle = `${title} | Jônatas.Dev`;
+const ogTitle = title === "Jônatas N. dos Santos" ? title : `${title} | Jônatas N. dos Santos`;
 ---
 
 <!doctype html>
@@ -29,7 +29,7 @@ const ogTitle = `${title} | Jônatas.Dev`;
 		<title>{ogTitle}</title>
 		<meta name="description" content={description} />
 		<meta name="robots" content="index, follow" />
-		<meta name="author" content="Jônatas N. dos Santos" />
+		<meta name="author" content="Jônatas Nascimento dos Santos" />
 		<link rel="canonical" href={canonicalUrl} />
 
 		<!-- Open Graph -->

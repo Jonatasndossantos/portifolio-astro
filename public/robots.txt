@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jhon-portfolio.com/sitemap-index.xml
+Sitemap: https://jonatasndossantos.com/sitemap-index.xml
