@@ -1,13 +1,6 @@
 ---
-import { getTranslations } from "@i18n";
-import {
-    Send,
-    Linkedin,
-    Github,
-    Mail,
-    CheckCircle,
-    AlertCircle,
-} from "lucide-react";
+import { getTranslations, useTranslator } from "@i18n";
+import { Icon } from "astro-icon/components";
 import type { CuratedProfile } from "../../types";
 
 interface Props {
@@ -17,6 +10,7 @@ interface Props {
 
 const { profile, lang } = Astro.props;
 const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
+const __ = await useTranslator(lang);
 ---
 
 <section id="contact" class="py-32 px-6 lg:px-20 relative z-10 overflow-hidden">
@@ -47,13 +41,13 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
                 <div class="flex flex-col gap-4">
                     <a
                         href={`mailto:${profile.socials.email}`}
-                        class="flex items-center gap-4 p-4 glass rounded-xl hover:bg-base-content/5 transition-all group border border-base-content/10"
-                        aria-label="Email Me"
+                        class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 glass rounded-xl hover:bg-base-content/5 transition-all group border border-base-content/10 text-center sm:text-left"
+                        aria-label="Email"
                     >
                         <div
                             class="p-3 bg-base-100 rounded-full text-primary group-hover:scale-110 transition-transform"
                         >
-                            <Mail size={24} />
+                            <Icon name="lucide:mail" class="size-6" />
                         </div>
                         <div>
                             <div
@@ -72,13 +66,13 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
                         href={profile.socials.linkedin}
                         target="_blank"
                         rel="noreferrer"
-                        class="flex items-center gap-4 p-4 glass rounded-xl hover:bg-base-content/5 transition-all group border border-base-content/10"
-                        aria-label="My LinkedIn"
+                        class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 glass rounded-xl hover:bg-base-content/5 transition-all group border border-base-content/10 text-center sm:text-left"
+                        aria-label="LinkedIn"
                     >
                         <div
                             class="p-3 bg-base-100 rounded-full text-primary group-hover:scale-110 transition-transform"
                         >
-                            <Linkedin size={24} />
+                            <Icon name="lucide:linkedin" class="size-6" />
                         </div>
                         <div>
                             <div
@@ -97,13 +91,13 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
                         href={profile.socials.github}
                         target="_blank"
                         rel="noreferrer"
-                        class="flex items-center gap-4 p-4 glass rounded-xl hover:bg-base-content/5 transition-all group border border-base-content/10"
-                        aria-label="My GitHub"
+                        class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 glass rounded-xl hover:bg-base-content/5 transition-all group border border-base-content/10 text-center sm:text-left"
+                        aria-label="GitHub"
                     >
                         <div
                             class="p-3 bg-base-100 rounded-full text-primary group-hover:scale-110 transition-transform"
                         >
-                            <Github size={24} />
+                            <Icon name="simple-icons:github" class="size-6" />
                         </div>
                         <div>
                             <div
@@ -125,17 +119,18 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
             <form
                 id="contact-form"
                 class="glass p-8 rounded-3xl border border-base-content/10 space-y-6 relative overflow-hidden bg-base-200/50 shadow-2xl"
+                data-sending-text={__("SENDING...")}
             >
                 <div
                     id="form-success"
-                    class="hidden absolute inset-0 bg-base-200/95 backdrop-blur-md z-20 flex-col items-center justify-center text-center p-8 animate-fade-in"
+                    class="hidden absolute inset-0 bg-base-200/95 backdrop-blur-md z-20 flex-col items-center justify-center text-center p-6 sm:p-8 animate-fade-in"
                 >
-                    <CheckCircle size={64} className="text-success mb-4" />
+                    <Icon name="lucide:check-circle" class="size-16 text-success mb-4" />
                     <h4 class="text-2xl font-bold text-base-content mb-2">
                         {t.contact.messageSent}
                     </h4>
                     <p class="text-base-content/70">
-                        Thanks for reaching out! I'll get back to you soon.
+                        {__("Thanks for reaching out! I'll get back to you soon.")}
                     </p>
                     <button
                         type="button"
@@ -194,7 +189,7 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
                     id="form-error"
                     class="hidden items-center gap-2 text-error text-sm bg-error/10 p-3 rounded-lg border border-error/20"
                 >
-                    <AlertCircle size={20} />
+                    <Icon name="lucide:alert-circle" class="size-5" />
                     <span>{t.contact.somethingWrong}</span>
                 </div>
 
@@ -204,9 +199,7 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
                     class="btn btn-primary w-full tracking-widest uppercase group"
                 >
                     <span id="submit-text">{t.contact.sendMessage}</span>
-                    <Send
-                        className="size-4 group-hover:translate-x-1 transition-transform"
-                    />
+                    <Icon name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" />
                 </button>
             </form>
         </div>
@@ -234,7 +227,8 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
             // Disable button during flight
             submitBtn.disabled = true;
             const originalText = submitText!.innerText;
-            submitText!.innerText = "SENDING...";
+            const sendingText = form.getAttribute("data-sending-text") || "SENDING...";
+            submitText!.innerText = sendingText;
             errorAlert!.classList.add("hidden");
 
             const formData = new FormData(form);

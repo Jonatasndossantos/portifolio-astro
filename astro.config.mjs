@@ -7,6 +7,11 @@ import mdx from "@astrojs/mdx";
 import remarkWikiLink from "remark-wiki-link";
 
 import { locales, defaultLocale } from "./src/i18n/config";
+import { loadEnv } from "vite";
+
+import icon from "astro-icon";
+
+const env = loadEnv("all", process.cwd());
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,5 +37,5 @@ export default defineConfig({
       [remarkWikiLink, { pathFormat: 'relative', wikiLinkClassName: 'wiki-link text-primary underline' }]
     ]
   },
-  integrations: [sitemap(), react(), mdx()]
+  integrations: [sitemap(), react(), mdx(), icon()]
 });

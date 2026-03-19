@@ -5,46 +5,46 @@ import Layout from "@layouts/Layout.astro";
 import GraphIsland from "@components/GraphIsland.astro";
 
 export async function getStaticPaths() {
-    const tags = await getCollection("tags");
+    const services = await getCollection("services");
 
     return locales.flatMap((locale) =>
-        tags.map((tag) => {
-            const cleanId = tag.id.replace(/\.mdx?$/, "");
+        services.map((service) => {
+            const cleanId = service.id.replace(/\.mdx?$/, "");
             return {
                 params: { locale, slug: cleanId },
-                props: { locale, tag, cleanId },
+                props: { locale, service, cleanId },
             };
         }),
     );
 }
 
 const { locale } = Astro.params;
-const { tag, cleanId } = Astro.props;
+const { service, cleanId } = Astro.props;
 
-// Find all content that references this tag
+// Find all content that references this service
 const allProjects = await getCollection("projects");
 const allBlogs = await getCollection("blog");
 
-// In Astro 3.5+, references are parsed as objects `{ id, collection }`
-// when queried with `getEntry`, but in `data` they are objects.
 const relatedProjects = allProjects.filter((p) =>
-    p.data.tags?.some(
-        (ref: any) => (ref.id || ref).replace(/\.mdx?$/, "") === cleanId,
-    ),
+    p.data.relatedServices?.some((ref: any) => {
+        const refId = typeof ref === 'string' ? ref : ref.id;
+        return refId.replace(/\.mdx?$/, "") === cleanId;
+    }),
 );
 
-const relatedBlogs = allBlogs.filter((b) =>
-    b.data.tags?.some(
-        (ref: any) => (ref.id || ref).replace(/\.mdx?$/, "") === cleanId,
-    ),
-);
+// ctaService is a single reference, not an array
+const relatedBlogs = allBlogs.filter((b) => {
+    if (!b.data.ctaService) return false;
+    const ctaId = typeof b.data.ctaService === 'string' ? b.data.ctaService : (b.data.ctaService as any).id;
+    return ctaId.replace(/\.mdx?$/, "") === cleanId;
+});
 
-const { Content } = await render(tag);
+const { Content } = await render(service);
 ---
 
 <Layout
-    title={`${tag.data.title} | Taxonomy`}
-    description={tag.data.description}
+    title={`${service.data.title} | Services`}
+    description={`Service details for ${service.data.title}`}
     lang={locale}
 >
     <main
@@ -52,36 +52,42 @@ const { Content } = await render(tag);
     >
         <div class="max-w-4xl mx-auto relative z-10">
             <a
-                href={`/${locale}/ecosystem`}
+                href={`/${locale}/services`}
                 class="btn btn-ghost btn-sm mb-8 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
             >
-                &larr; Back to Ecosystem
+                &larr; Back to Services
             </a>
 
-            <div class="flex items-center gap-6 mb-8">
-                {
-                    tag.data.icon ? (
-                        <img
-                            src={`https://cdn.simpleicons.org/${tag.data.icon}/${tag.data.category === "cloud" ? "f59e0b" : "ffffff"}`}
-                            alt={tag.data.title}
-                            class="w-16 h-16 object-contain"
-                        />
-                    ) : (
-                        <div class="w-16 h-16 rounded bg-base-200 flex items-center justify-center text-3xl font-bold">
-                            {tag.data.title.charAt(0)}
-                        </div>
-                    )
-                }
-                <div>
-                    <span
-                        class="badge badge-primary badge-outline uppercase tracking-wider text-xs mb-2"
-                    >
-                        {tag.data.category}
-                    </span>
-                    <h1 class="text-5xl font-bold font-syncopate">
-                        {tag.data.title}
-                    </h1>
+            <div class="flex flex-col md:flex-row md:items-center gap-6 mb-8 justify-between">
+                <div class="flex items-center gap-6">
+                    {
+                        service.data.icon ? (
+                            <div class="w-16 h-16 rounded bg-base-200 flex items-center justify-center text-3xl">
+                                {service.data.icon}
+                            </div>
+                        ) : (
+                            <div class="w-16 h-16 rounded bg-base-200 flex items-center justify-center text-3xl font-bold">
+                                💼
+                            </div>
+                        )
+                    }
+                    <div>
+                        <span
+                            class="badge badge-primary badge-outline uppercase tracking-wider text-xs mb-2"
+                        >
+                            Service
+                        </span>
+                        <h1 class="text-4xl md:text-5xl font-bold font-syncopate">
+                            {service.data.title}
+                        </h1>
+                    </div>
                 </div>
+                {service.data.priceStartingAt && (
+                    <div class="text-left md:text-right mt-4 md:mt-0 p-4 bg-base-200 rounded-xl border border-base-content/10">
+                        <div class="text-sm opacity-70 uppercase tracking-wider mb-1">Starting At</div>
+                        <div class="text-3xl font-bold text-primary">${service.data.priceStartingAt}</div>
+                    </div>
+                )}
             </div>
 
             <article
@@ -96,19 +102,19 @@ const { Content } = await render(tag);
                 >
                     Knowledge Graph
                 </h2>
-                <GraphIsland focusId={`tags/${cleanId}`} />
+                <GraphIsland focusId={`services/${cleanId}`} />
             </div>
 
             {
                 relatedProjects.length > 0 && (
                     <div class="mb-12">
                         <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            Projects using {tag.data.title}
+                            Projects using this Service
                         </h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {relatedProjects.map((p) => (
                                 <a
-                                    href={`/${locale}/projects/${p.id}`}
+                                    href={`/${locale}/projects/${p.id.replace(/\.mdx?$/, "")}`}
                                     class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
                                 >
                                     <div class="card-body p-6">
@@ -116,7 +122,6 @@ const { Content } = await render(tag);
                                             {p.data.title}
                                         </h3>
                                         <p class="text-sm opacity-70 line-clamp-2">
-                                            {/* Pulling desc from dict via t.projects.items if migrated, or just generic */}
                                             View Case Study &rarr;
                                         </p>
                                     </div>
@@ -131,12 +136,12 @@ const { Content } = await render(tag);
                 relatedBlogs.length > 0 && (
                     <div class="mb-12">
                         <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            Articles discussing {tag.data.title}
+                            Related Articles
                         </h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {relatedBlogs.map((b) => (
                                 <a
-                                    href={`/${locale}/blog/${b.id}`}
+                                    href={`/${locale}/blog/${b.id.replace(/\.mdx?$/, "")}`}
                                     class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
                                 >
                                     <div class="card-body p-6">
@@ -147,15 +152,6 @@ const { Content } = await render(tag);
                                 </a>
                             ))}
                         </div>
-                    </div>
-                )
-            }
-
-            {
-                relatedProjects.length === 0 && relatedBlogs.length === 0 && (
-                    <div class="text-center py-10 opacity-50 border border-dashed border-base-content/20 rounded-xl">
-                        No connections mapped to {tag.data.title} yet in the
-                        Second Brain.
                     </div>
                 )
             }

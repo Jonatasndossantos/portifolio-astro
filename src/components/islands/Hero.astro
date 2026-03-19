@@ -1,6 +1,6 @@
 ---
-import { Volume2, VolumeX } from "lucide-react";
-import { getTranslations } from "@i18n";
+import { Icon } from "astro-icon/components";
+import { getTranslations, useTranslator } from "@i18n";
 import { Image } from "astro:assets";
 import bgFallback from "../../assets/Underwater Transition@1-1920x919.png";
 
@@ -14,6 +14,7 @@ import bgFallback from "../../assets/Underwater Transition@1-1920x919.png";
 
 const { lang, mode } = Astro.props;
 const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
+const __ = await useTranslator(lang);
 ---
 
 <script>
@@ -114,7 +115,7 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
         <Image
             id="spline-fallback"
             src={bgFallback}
-            alt="Hero Background"
+            alt={__("Hero Background")}
             class="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000"
             loading="eager"
             fetchpriority="high"
@@ -126,13 +127,13 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
 
         <!-- Watermark Hider via Gradient -->
         <div
-            class="absolute bottom-0 right-0 w-64 h-24 bg-gradient-to-tl from-base-300 via-base-300/60 to-transparent z-10 pointer-events-none"
+            class="absolute bottom-0 right-0 w-64 h-24 bg-linear-to-tl from-base-300 via-base-300/60 to-transparent z-10 pointer-events-none"
         >
         </div>
     </div>
 
     <div
-        class="absolute inset-0 bg-gradient-to-t from-base-300/90 via-base-300/40 to-transparent z-0 pointer-events-none"
+        class="absolute inset-0 bg-linear-to-t from-base-300/90 via-base-300/40 to-transparent z-0 pointer-events-none"
     >
     </div>
     <div
@@ -205,23 +206,22 @@ const profile = (await getTranslations(lang, "profile")) as Record<string, any>;
         </div>
     </div>
 
-    <!-- Audio Toggle Button -->
     <button
         id="mute-btn"
         type="button"
         class="btn btn-circle btn-ghost bg-base-100/30 backdrop-blur-md absolute bottom-10 left-6 md:left-20 z-10 group hover:bg-base-100/60 transition-all border border-base-content/10"
-        aria-label="Toggle Spline Audio"
+        aria-label={__("Toggle Spline Audio")}
     >
         <div id="icon-mute">
-            <VolumeX
+            <Icon name="lucide:volume-x"
                 aria-hidden="true"
-                className="size-5 text-base-content opacity-70"
+                class="size-5 text-base-content opacity-70"
             />
         </div>
         <div id="icon-vol" class="hidden">
-            <Volume2
+            <Icon name="lucide:volume-2"
                 aria-hidden="true"
-                className="size-5 text-base-content opacity-70"
+                class="size-5 text-base-content opacity-70"
             />
         </div>
     </button>

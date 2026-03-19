@@ -41,3 +41,30 @@ export async function getTranslations<T extends FlatDictionary = FlatDictionary>
         return fallback.default as T;
     }
 }
+
+/**
+ * Laravel-style translation helper for small UI strings.
+ * Usage:
+ *   const __ = await useTranslator(locale);
+ *   __('Home')
+ *   __('Welcome, :name', { name: 'Jhon' })
+ */
+export async function useTranslator(locale: string, dictName = 'ui') {
+    let dict: Record<string, string> = {};
+    try {
+        const file = await import(`../dictionaries/${dictName}/${locale}.json`);
+        dict = file.default;
+    } catch {
+        // Safe to ignore, fallback to raw string will be used
+    }
+    
+    return function __(text: string, replacements?: Record<string, string>) {
+        let result = dict[text] || text;
+        if (replacements) {
+            for (const [key, value] of Object.entries(replacements)) {
+                result = result.replace(new RegExp(`:${key}`, 'g'), value);
+            }
+        }
+        return result;
+    }
+}

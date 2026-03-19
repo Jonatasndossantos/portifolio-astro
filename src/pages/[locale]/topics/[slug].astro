@@ -18,10 +18,8 @@ export async function getStaticPaths() {
     );
 }
 
-const { locale, slug } = Astro.params;
+const { locale } = Astro.params;
 const { topic, cleanId } = Astro.props;
-
-const t = (await getTranslations(locale, "portfolio")) as any;
 
 // Find all content that references this topic
 const allProjects = await getCollection("projects");

@@ -1,0 +1,99 @@
+---
+import { getCollection, render } from "astro:content";
+import { locales, useTranslatedPath, useTranslator } from "@i18n";
+import Layout from "@layouts/Layout.astro";
+
+// Generate paths for ALL posts in ALL locales
+export async function getStaticPaths() {
+    const allPosts = await getCollection("blog");
+    
+    // Extract unique slugs (ignoring the language prefix like pt/ or en/)
+    const uniqueSlugs = new Set<string>();
+    allPosts.forEach(post => {
+        const parts = post.id.split('/');
+        if (parts.length > 1) {
+            // Remove the extension from the slug so the URL is clean: pt/my-post.md -> my-post
+            const cleanSlug = parts.slice(1).join('/').replace(/\.mdx?$/, "");
+            uniqueSlugs.add(cleanSlug);
+        }
+    });
+
+    return locales.flatMap(locale => 
+        Array.from(uniqueSlugs).map(slug => {
+            // 1. Try to find the exact match for this locale (ignoring extension in our search idea)
+            // post.id contains the extension, so we need to match carefully
+            let postToRender = allPosts.find(p => p.id.replace(/\.mdx?$/, "") === `${locale}/${slug}`);
+            let isFallback = false;
+
+            // 2. If it doesn't exist, fallback to the default language (pt)
+            if (!postToRender) {
+                postToRender = allPosts.find(p => p.id.replace(/\.mdx?$/, "") === `pt/${slug}`);
+                isFallback = true;
+                
+                // 3. Extreme fallback: if 'pt' doesn't exist for some reason, just grab whatever is available
+                if (!postToRender) {
+                     postToRender = allPosts.find(p => p.id.replace(/\.mdx?$/, "").endsWith(`/${slug}`));
+                }
+            }
+
+            return {
+                params: { locale, slug },
+                // Pass the found post and fallback status to the component
+                props: { post: postToRender, isFallback, locale }
+            };
+        })
+    );
+}
+
+const { post, isFallback, locale } = Astro.props;
+const { Content } = await render(post);
+
+const translatePath = useTranslatedPath(locale);
+const __ = await useTranslator(locale);
+---
+
+<Layout
+    title={`${post.data.title} | Blog`}
+    description={`Blog post: ${post.data.title}`}
+    lang={locale}
+>
+    <main class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative">
+        <div class="max-w-3xl mx-auto z-10 relative">
+            <a
+                href={`/${locale}/blog`}
+                class="btn btn-ghost btn-sm mb-8 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
+            >
+                &larr; {__("Back to Blog")}
+            </a>
+
+            {isFallback && (
+                <div role="alert" class="alert alert-warning mb-8 bg-warning/20 border-warning text-warning-content rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                    <span>{__("Untranslated Warning")}</span>
+                </div>
+            )}
+
+            <header class="mb-12 border-b border-base-content/10 pb-8">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="badge badge-primary badge-outline uppercase tracking-wider text-xs">
+                        Article
+                    </span>
+                    <time class="text-sm opacity-60 font-mono">
+                        {new Date(post.data.date).toLocaleDateString(locale, {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        })}
+                    </time>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold font-syncopate leading-tight">
+                    {post.data.title}
+                </h1>
+            </header>
+
+            <article class="prose prose-lg prose-invert max-w-none prose-p:text-base-content/80 prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary-focus">
+                <Content />
+            </article>
+        </div>
+    </main>
+</Layout>

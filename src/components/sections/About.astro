@@ -1,7 +1,7 @@
 ---
-import { getTranslations } from "@i18n";
+import { getTranslations, useTranslator } from "@i18n";
 import { Image } from "astro:assets";
-import { Cpu, Globe, Code, Terminal, Database, Cloud } from "lucide-react";
+import { Icon } from "astro-icon/components";
 import type { CuratedProfile } from "../../types";
 
 interface Props {
@@ -18,6 +18,7 @@ interface Props {
 
 const { skills, profile, mode, lang } = Astro.props;
 const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
+const __ = await useTranslator(lang);
 ---
 
 <section id="about" class="py-32 px-6 lg:px-20 relative z-10">
@@ -40,7 +41,7 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
                 >
                     <Image
                         src="https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/perfil.jfif?raw=true"
-                        alt="Profile"
+                        alt={__("Profile")}
                         width={320}
                         height={320}
                         class="w-full h-full object-cover"
@@ -73,21 +74,21 @@ const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
                                 {(() => {
                                     switch (skill.category) {
                                         case "framework":
-                                            return <Globe className="size-6" />;
+                                            return <Icon name="lucide:globe" class="size-6" />;
                                         case "language":
-                                            return <Code className="size-6" />;
+                                            return <Icon name="lucide:code" class="size-6" />;
                                         case "tool":
                                             return (
-                                                <Terminal className="size-6" />
+                                                <Icon name="lucide:terminal" class="size-6" />
                                             );
                                         case "data":
                                             return (
-                                                <Database className="size-6" />
+                                                <Icon name="lucide:database" class="size-6" />
                                             );
                                         case "cloud":
-                                            return <Cloud className="size-6" />;
+                                            return <Icon name="lucide:cloud" class="size-6" />;
                                         default:
-                                            return <Cpu className="size-6" />;
+                                            return <Icon name="lucide:cpu" class="size-6" />;
                                     }
                                 })()}
                             </div>

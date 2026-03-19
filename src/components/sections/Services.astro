@@ -1,6 +1,6 @@
 ---
 import { getTranslations } from "@i18n";
-import { Globe, Cpu, Shield, Terminal } from "lucide-react";
+import { Icon } from "astro-icon/components";
 
 interface Props {
     lang: string;
@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
 
 // Map indices to strictly match the translation JSON order to their respective static icons.
-const iconMap = [Globe, Cpu, Shield, Terminal];
+const iconMap = ["lucide:globe", "lucide:cpu", "lucide:shield", "lucide:terminal"];
 ---
 
 <section id="services" class="py-20 relative">
@@ -23,11 +23,11 @@ const iconMap = [Globe, Cpu, Shield, Terminal];
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {
                 t.services.items.map((service: any, index: number) => {
-                    const IconComponent = iconMap[index] || Terminal;
+                    const iconName = iconMap[index] || "lucide:terminal";
                     return (
                         <div class="p-6 bg-base-100 border border-base-content/10 rounded-xl hover:shadow-xl hover:border-primary/30 transition-all hover:-translate-y-1 group">
                             <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-                                <IconComponent className="w-6 h-6 text-primary group-hover:text-primary-content transition-colors" />
+                                <Icon name={iconName} class="w-6 h-6 text-primary group-hover:text-primary-content transition-colors" />
                             </div>
                             <h3 class="text-xl font-bold text-base-content mb-2">
                                 {service.title}

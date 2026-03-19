@@ -1,6 +1,6 @@
 ---
 import { getTranslations } from "@i18n";
-import { Cpu, Globe, Terminal, Cloud, Database, Bot } from "lucide-react";
+import { Icon } from "astro-icon/components";
 
 interface Props {
     skills: {
@@ -45,13 +45,13 @@ const description = (t.skills.desc as string).replace("%mode%", mode);
                             <span class:list={["p-2 rounded-lg bg-base-100", isCore ? "text-primary shadow-sm" : "text-base-content/50"]}>
                                 {(() => {
                                     switch(skill.category) {
-                                        case "language": return <Cpu className="w-4 h-4" />;
-                                        case "framework": return <Globe className="w-4 h-4" />;
-                                        case "tool": return <Terminal className="w-4 h-4" />;
-                                        case "cloud": return <Cloud className="w-4 h-4" />;
-                                        case "data": return <Database className="w-4 h-4" />;
-                                        case "ai": return <Bot className="w-4 h-4" />;
-                                        default: return <Cpu className="w-4 h-4" />;
+                                        case "language": return <Icon name="lucide:cpu" class="w-4 h-4" />;
+                                        case "framework": return <Icon name="lucide:globe" class="w-4 h-4" />;
+                                        case "tool": return <Icon name="lucide:terminal" class="w-4 h-4" />;
+                                        case "cloud": return <Icon name="lucide:cloud" class="w-4 h-4" />;
+                                        case "data": return <Icon name="lucide:database" class="w-4 h-4" />;
+                                        case "ai": return <Icon name="lucide:bot" class="w-4 h-4" />;
+                                        default: return <Icon name="lucide:cpu" class="w-4 h-4" />;
                                     }
                                 })()}
                             </span>

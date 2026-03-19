@@ -1,7 +1,7 @@
 ---
-import { getTranslations, useTranslatedPath } from "@i18n";
+import { getTranslations, useTranslatedPath, useTranslator } from "@i18n";
 import { Image } from "astro:assets";
-import { ExternalLink, Github } from "lucide-react";
+import { Icon } from "astro-icon/components";
 import Translate from "../Translate.astro";
 
 interface Props {
@@ -20,6 +20,7 @@ interface Props {
 const { projects, lang } = Astro.props;
 const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
 const translatePath = useTranslatedPath(lang);
+const __ = await useTranslator(lang);
 ---
 
 <section id="projects" class="py-32 px-6 lg:px-20 relative z-10">
@@ -106,7 +107,7 @@ const translatePath = useTranslatedPath(lang);
                                             `/projects/${project.id}`,
                                         )}
                                         class="btn btn-primary btn-sm rounded-full text-xs"
-                                        aria-label={`Read Case Study for ${project.title}`}
+                                        aria-label={`${__("Read Case Study for")} ${project.title}`}
                                     >
                                         {t.projects.caseStudy}
                                     </a>
@@ -116,9 +117,9 @@ const translatePath = useTranslatedPath(lang);
                                             target="_blank"
                                             rel="noreferrer"
                                             class="btn btn-outline btn-sm rounded-full text-xs border-white/20 text-white hover:bg-white/10"
-                                            aria-label={`Demo of ${project.title}`}
+                                            aria-label={`${__("Demo of")} ${project.title}`}
                                         >
-                                            <ExternalLink className="size-4" />
+                                            <Icon name="lucide:external-link" class="size-4" />
                                             {t.projects.viewProject}
                                         </a>
                                     )}
@@ -128,9 +129,9 @@ const translatePath = useTranslatedPath(lang);
                                             target="_blank"
                                             rel="noreferrer"
                                             class="btn btn-ghost btn-sm rounded-full text-xs text-white hover:bg-base-content/20"
-                                            aria-label={`Source Code of ${project.title}`}
+                                            aria-label={`${__("Source Code of")} ${project.title}`}
                                         >
-                                            <Github className="size-4" />
+                                            <Icon name="lucide:github" class="size-4" />
                                             {t.projects.code}
                                         </a>
                                     )}

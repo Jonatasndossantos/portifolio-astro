@@ -1,11 +1,18 @@
 ---
+import { getTranslations, useTranslator } from "@i18n";
+
 export interface Props {
     locale?: string;
-    themeDict?: Record<string, string>;
 }
 
-const { themeDict = {} } = Astro.props;
-const label = themeDict["label"] || "Theme";
+const { locale = "en" } = Astro.props;
+const __ = await useTranslator(locale);
+const themeDict = (await getTranslations(locale, "theme")) as Record<
+    string,
+    string
+>;
+
+const label = themeDict["label"] || __("Theme");
 
 const themeKeys = [
     "light",
@@ -51,20 +58,20 @@ const themesList = themeKeys.map((key) => ({
 }));
 ---
 
-<div title="Change Theme" class="dropdown dropdown-end block">
+<div title={__("Change Theme")} class="dropdown dropdown-end block">
     <div
         tabindex="0"
         role="button"
         class="btn group btn-sm gap-1.5 px-1.5 btn-ghost"
-        aria-label="Change Theme"
+        aria-label={__("Change Theme")}
     >
         <div
             class="bg-base-100 group-hover:border-base-content/20 border-base-content/10 grid shrink-0 grid-cols-2 gap-0.5 rounded-md border p-1 transition-colors"
         >
-            <div class="bg-base-content size-1 rounded-full"></div>
-            <div class="bg-primary size-1 rounded-full"></div>
-            <div class="bg-secondary size-1 rounded-full"></div>
-            <div class="bg-accent size-1 rounded-full"></div>
+            <div class="bg-base-content size-1.5 rounded-full"></div>
+            <div class="bg-primary size-1.5 rounded-full"></div>
+            <div class="bg-secondary size-1.5 rounded-full"></div>
+            <div class="bg-accent size-1.5 rounded-full"></div>
         </div>
         <svg
             width="12px"

@@ -1,5 +1,5 @@
 ---
-import { getTranslations, useTranslatedPath } from "@i18n";
+import { getTranslations, useTranslatedPath, useTranslator } from "@i18n";
 
 interface Props {
     lang: string;
@@ -8,10 +8,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
 const translatePath = useTranslatedPath(lang);
-const navRecord = (await getTranslations(lang, "nav")) as Record<
-    string,
-    string
->;
+const __ = await useTranslator(lang);
 ---
 
 <footer
@@ -45,21 +42,21 @@ const navRecord = (await getTranslations(lang, "nav")) as Record<
             <a
                 href={translatePath("/")}
                 class="hover:text-primary transition-colors"
-                >{t.footer.links.home}</a
+                >{__('Home')}</a
             >
             <a
                 href={translatePath("/ecosystem")}
                 class="hover:text-primary font-bold uppercase tracking-wider text-primary transition-colors"
-                >{navRecord.ecosystem || "Ecosystem"}</a
+                >{__('Ecosystem')}</a
             >
             <a href="#about" class="hover:text-primary transition-colors"
-                >{t.footer.links.about}</a
+                >{__('About us')}</a
             >
             <a href="#projects" class="hover:text-primary transition-colors"
-                >{t.footer.links.work}</a
+                >{__('Work')}</a
             >
             <a href="#contact" class="hover:text-primary transition-colors"
-                >{t.footer.links.contact}</a
+                >{__('Contact')}</a
             >
         </nav>
     </aside>

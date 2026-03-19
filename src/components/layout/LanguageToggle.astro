@@ -6,7 +6,8 @@ import {
     getPathWithoutLocale,
     defaultLocale,
 } from "@i18n";
-import { getTranslations } from "@i18n";
+import { getTranslations, useTranslator } from "@i18n";
+import { Icon } from "astro-icon/components";
 
 interface Props {
     currentLocale?: string;
@@ -20,16 +21,20 @@ const langDict = (await getTranslations(currentLocale, "language")) as Record<
     string,
     string
 >;
+const __ = await useTranslator(currentLocale);
 ---
 
-<div title="Change Language" class="dropdown dropdown-end block">
+<div title={__("Change Language")} class="dropdown dropdown-end block">
     <div
         tabindex="0"
         role="button"
-        class="btn group btn-sm gap-1.5 px-1.5 btn-ghost"
-        aria-label="Change Language"
+        class="btn group btn-sm gap-1 px-2 btn-ghost"
+        aria-label={__("Change Language")}
     >
-        <span class="uppercase font-semibold text-xs">{currentLocale}</span>
+        <div class="relative flex items-center justify-center pt-0.5">
+            <Icon name="lucide:globe" class="size-5 opacity-80 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+            <span class="absolute -bottom-1 -right-2 uppercase font-black text-[8px] leading-none tracking-widest opacity-90 bg-base-100 rounded-[2px] px-0.5 border border-base-content/10">{currentLocale}</span>
+        </div>
         <svg
             width="12px"
             height="12px"
@@ -37,8 +42,7 @@ const langDict = (await getTranslations(currentLocale, "language")) as Record<
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 2048 2048"
         >
-            <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"
-            ></path>
+            <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
         </svg>
     </div>
     <div
@@ -47,7 +51,7 @@ const langDict = (await getTranslations(currentLocale, "language")) as Record<
     >
         <ul class="menu menu-sm gap-1">
             <li class="menu-title px-2 py-1 text-xs font-medium opacity-70">
-                Language
+                {langDict["label"] || __("Language")}
             </li>
             {
                 locales.map((locale) => (
