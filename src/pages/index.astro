@@ -1,5 +1,171 @@
 ---
-// Root redirect — no locale, just send to default
-// Astro handles this at SSG time: creates a /index.html that redirects
-return Astro.redirect("/en/fullstack", 301);
+import Layout from "@layouts/Layout.astro";
+import Hero from "@islands/Hero.astro";
+import About from "@components/sections/About.astro";
+import Skills from "@components/sections/Skills.astro";
+import Projects from "@components/sections/Projects.astro";
+import Services from "@components/sections/Services.astro";
+import Contact from "@components/sections/Contact.astro";
+import Footer from "@components/layout/Footer.astro";
+import GraphIsland from "@components/GraphIsland.astro";
+import { Mode } from "../types";
+import { getTranslations, locales } from "@i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { CuratedProfile } from "../types";
+
+import { defaultLocale as locale } from "@i18n";
+const lang = locale;
+
+const profile = (await getTranslations(lang, "profile")) as Record<
+    string,
+    unknown
+>;
+const bio = (profile.bio as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
+const role = (profile.role as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
+
+const tPortfolio = (await getTranslations(lang, "portfolio")) as Record<
+    string,
+    any
+>;
+
+const profileData: CuratedProfile = {
+    name: "Jônatas Nascimento dos Santos",
+    role: role,
+    bio: bio,
+    availableForHire: true,
+    socials: {
+        github: "https://github.com/jonatasndossantos",
+        linkedin: "https://linkedin.com/in/jonatasndossantos",
+        email: "jonatasndossantos@gmail.com",
+    },
+};
+
+import { getCollection } from "astro:content";
+
+// Fetch tags collection for skills
+const allTags = await getCollection("tags");
+
+// Pre-process skills for the current Mode
+const currentSkills = allTags
+    .map((s) => ({
+        id: s.id.replace(/\.mdx?$/, ""),
+        name: s.data.title,
+        category: s.data.category,
+        currentRelevance: s.data.relevance?.[Mode.FULLSTACK] || 0,
+    }))
+    // Optional: filter out tags that have 0 relevance for this mode to avoid clutter
+    .filter((s) => s.currentRelevance > 0)
+    .sort((a, b) => b.currentRelevance - a.currentRelevance)
+    .slice(0, 10); // Display top 10 core skills in the Hero/About
+
+// Fetch projects collection
+const allProjects = await getCollection("projects");
+
+// Pre-process projects for the current language and Mode
+const currentProjects = allProjects.slice(0, 7).map((p) => {
+    const cleanId = p.id.replace(/\.mdx?$/, "");
+    return {
+        id: cleanId,
+        title: p.data.title,
+        imageUrl: p.data.heroImage || "",
+        demoUrl: p.data.demoUrl,
+        repoUrl: p.data.repoUrl,
+        technologies: p.data.tags
+            ? p.data.tags.map((t: any) => {
+                  const techId = (t.id || t).toString().replace(/\.mdx?$/, "");
+                  return {
+                      id: techId,
+                      name: techId.replace(/-/g, " "),
+                  };
+              })
+            : [],
+        displayDescriptionTextKey: `projects.items.${cleanId}.description.fullstack`,
+    };
+});
 ---
+
+<Layout
+    title="Fullstack"
+    description={`${role} — ${bio.slice(0, 120)}...`}
+    lang={locale}
+>
+    <main class="relative w-full overflow-hidden">
+        <Hero mode={Mode.FULLSTACK} lang={locale} />
+        <div class="relative z-10 bg-base-100">
+            <About
+                skills={currentSkills}
+                profile={profileData}
+                mode={Mode.FULLSTACK}
+                lang={locale}
+            />
+            <Skills
+                skills={currentSkills}
+                mode={Mode.FULLSTACK}
+                lang={locale}
+            />
+
+            <Projects projects={currentProjects} lang={locale} />
+
+            <section
+                class="w-full py-20 px-6 lg:px-20 bg-base-100 flex flex-col items-center"
+            >
+                <div class="max-w-7xl w-full">
+                    <h2 class="text-3xl font-bold mb-4 font-syncopate">
+                        Interactive <span class="text-primary"
+                            >Knowledge Graph</span
+                        >
+                    </h2>
+                    <p class="mb-10 opacity-70 max-w-2xl">
+                        This is my entire Second Brain network plotted out. You
+                        are seeing the actual `.mdx` nodes and their semantic
+                        relationships (`topics`, `tags`, `services`). Try
+                        zooming and dragging the nodes!
+                    </p>
+                    <div class="flex flex-row gap-2">
+                        <h3 class="text-primary">primary</h3>
+                        <h3 class="text-secondary">secondary</h3>
+                        <h3 class="text-accent">accent</h3>
+                        <h3 class="text-success">success</h3>
+                        <h3 class="text-warning">warning</h3>
+                        <h3 class="text-error">error</h3>
+                        <h3 class="text-info">info</h3>
+                        <h3 class="text-neutral">neutral</h3>
+                        <h3 class="text-base">base</h3>
+                        <h3 class="text-base-content">base-content</h3>
+                    </div>
+
+                    <GraphIsland />
+                </div>
+            </section>
+
+            <Services lang={locale} />
+            <Contact profile={profileData} lang={locale} />
+            <Footer lang={locale} />
+        </div>
+    </main>
+
+    <script is:inline>
+        // Automatic language detection and redirection
+        const supportedLocales = ["en", "pt", "fr", "es", "zh", "ja"];
+        const defaultLocale = "en";
+        
+        const preferredLocale = localStorage.getItem('preferred-locale');
+        
+        if (preferredLocale && preferredLocale !== defaultLocale && supportedLocales.includes(preferredLocale)) {
+            // Respect existing preference
+            window.location.pathname = `/${preferredLocale}/`;
+        } else if (!preferredLocale) {
+            // First visit: detect browser language
+            const browserLang = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+            const shortLang = browserLang.split('-')[0].toLowerCase();
+            
+            if (shortLang !== defaultLocale && supportedLocales.includes(shortLang)) {
+                localStorage.setItem('preferred-locale', shortLang);
+                window.location.pathname = `/${shortLang}/`;
+            } else {
+                // Set default preference so we don't keep detecting
+                localStorage.setItem('preferred-locale', defaultLocale);
+            }
+        }
+    </script>
+</Layout>

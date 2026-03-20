@@ -1,7 +1,7 @@
 {
   "name": "jonatas-portfolio",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -48,7 +48,7 @@
     "vite": "^6.0.0"
   },
   "overrides": {
-    "lodash": "^4.17.23", 
+    "lodash": "^4.17.23",
     "simple-git": "^3.33.0",
     "fastify": "^5.8.0"
   },
