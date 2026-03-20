@@ -30,10 +30,6 @@ const profile = (await getTranslations(lang, "profile")) as Record<
 const bio = (profile.bio as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
 const role = (profile.role as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
 
-const tPortfolio = (await getTranslations(lang, "portfolio")) as Record<
-    string,
-    any
->;
 
 const profileData: CuratedProfile = {
     name: "Jônatas Nascimento dos Santos",

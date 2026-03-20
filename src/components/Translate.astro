@@ -26,7 +26,6 @@ const dict = (await getTranslations(lang, "portfolio")) as Record<string, any>;
 function getNestedValue(obj: any, path: string): string {
     return path.split(".").reduce((curr, key) => {
         // Handle array indices and object keys
-        const isArray = Array.isArray(curr);
         return curr && curr[key] !== undefined ? curr[key] : curr;
     }, obj) as string;
 }

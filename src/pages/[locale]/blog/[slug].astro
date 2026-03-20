@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import { locales, useTranslatedPath, useTranslator } from "@i18n";
+import { locales, useTranslator } from "@i18n";
 import Layout from "@layouts/Layout.astro";
 
 // Generate paths for ALL posts in ALL locales
@@ -46,9 +46,13 @@ export async function getStaticPaths() {
 }
 
 const { post, isFallback, locale } = Astro.props;
+
+if (!post) {
+    return Astro.redirect(`/${locale}/404`);
+}
+
 const { Content } = await render(post);
 
-const translatePath = useTranslatedPath(locale);
 const __ = await useTranslator(locale);
 ---
 

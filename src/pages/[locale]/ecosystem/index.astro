@@ -1,8 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import { getTranslations, locales } from "@i18n";
-import { getRelativeLocaleUrl } from "astro:i18n";
+import { locales } from "@i18n";
 
 export function getStaticPaths() {
     return locales.map((locale) => ({
@@ -12,8 +11,7 @@ export function getStaticPaths() {
 }
 
 const { locale } = Astro.params;
-const lang = getRelativeLocaleUrl(locale);
-const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
+// const lang = getRelativeLocaleUrl(locale);
 
 const allTags = await getCollection("tags");
 

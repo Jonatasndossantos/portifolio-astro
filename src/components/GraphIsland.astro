@@ -144,12 +144,12 @@ const __ = await useTranslator(lang);
             .join("g")
             .attr("class", "node-group")
             .style("cursor", (d: any) => (d.hasRoute ? "pointer" : "default"))
-            .on("click", (event: any, d: any) => {
+            .on("click", (_event: any, d: any) => {
                 if (!d.hasRoute) return;
                 const lang = window.location.pathname.split("/")[1] || "en";
                 window.location.href = `/${lang}/${d.id}`;
             })
-            .on("mouseover", function (event: any, d: any) {
+            .on("mouseover", function (_event: any, d: any) {
                 // Highlight Node
                 d3.select(this)
                     .select("circle")
@@ -169,7 +169,7 @@ const __ = await useTranslator(lang);
                         l.source.id === d.id || l.target.id === d.id ? 1 : 0.2,
                     );
             })
-            .on("mouseout", function (event: any, d: any) {
+            .on("mouseout", function (_event: any, d: any) {
                 // Remove highlight from Node
                 d3.select(this)
                     .select("circle")

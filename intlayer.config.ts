@@ -29,7 +29,7 @@ const config: IntlayerConfig = {
              * intlayer dictionaries pull  → pulls from Intlayer CMS
              */
             source: ({ key, locale }) => `./src/dictionaries/${key}/${locale}.json`,
-        }),
+        }) as any,
     ],
     ai: {
         provider: "openai",

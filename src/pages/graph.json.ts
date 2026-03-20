@@ -74,8 +74,8 @@ export async function GET({ request }: { request: Request }) {
 
         b.data.relatedTopics?.forEach((ref: any) => addLink(bId, `topics/${cleanId(ref.id || ref)}`));
         b.data.tags?.forEach((ref: any) => addLink(bId, `tags/${cleanId(ref.id || ref)}`));
-        if (b.data.relatedProject) addLink(bId, `projects/${cleanId(b.data.relatedProject.id || b.data.relatedProject)}`);
-        if (b.data.ctaService) addLink(bId, `services/${cleanId(b.data.ctaService.id || b.data.ctaService)}`);
+        if (b.data.relatedProject) addLink(bId, `projects/${cleanId(b.data.relatedProject.id)}`);
+        if (b.data.ctaService) addLink(bId, `services/${cleanId(b.data.ctaService.id)}`);
     });
 
     // 5. Map Services (hasRoute = true)

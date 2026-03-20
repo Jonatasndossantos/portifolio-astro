@@ -16,7 +16,7 @@ interface Props {
     lang: string;
 }
 
-const { skills, profile, mode, lang } = Astro.props;
+const { skills, profile, lang } = Astro.props;
 const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
 const __ = await useTranslator(lang);
 ---
