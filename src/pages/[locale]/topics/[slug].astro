@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import { locales } from "@i18n";
+import { locales, getTranslations, useTranslatedPath } from "@i18n";
 import Layout from "@layouts/Layout.astro";
 import GraphIsland from "@components/GraphIsland.astro";
 
@@ -45,10 +45,12 @@ const relatedServices = allServices.filter((s) =>
 );
 
 const { Content } = await render(topic);
+const tPortfolio = (await getTranslations(locale, "portfolio")) as Record<string, any>;
+const translatePath = useTranslatedPath(locale);
 ---
 
 <Layout
-    title={`${topic.data.title} | Topic`}
+    title={`${topic.data.title} | ${tPortfolio.services.title.replace(/s$/i, "")}`}
     description={topic.data.description}
     lang={locale}
 >
@@ -56,6 +58,13 @@ const { Content } = await render(topic);
         class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative overflow-hidden"
     >
         <div class="max-w-4xl mx-auto relative z-10">
+            <a
+                href={translatePath("/ecosystem")}
+                class="btn btn-ghost btn-sm mb-8 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
+            >
+                &larr; {tPortfolio.taxonomy.backToEcosystem}
+            </a>
+
             <div class="flex items-center gap-6 mb-8">
                 {
                     topic.data.icon ? (
@@ -92,7 +101,7 @@ const { Content } = await render(topic);
                 <h2
                     class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4"
                 >
-                    Knowledge Graph
+                    {tPortfolio.graph.knowledgeTitle}
                 </h2>
                 <GraphIsland focusId={`topics/${cleanId}`} />
             </div>
@@ -101,12 +110,12 @@ const { Content } = await render(topic);
                 relatedProjects.length > 0 && (
                     <div class="mb-12">
                         <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            Projects mapped to {topic.data.title}
+                            {tPortfolio.taxonomy.projectsMappedTo} {topic.data.title}
                         </h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {relatedProjects.map((p) => (
                                 <a
-                                    href={`/${locale}/projects/${p.id}`}
+                                    href={translatePath(`/projects/${p.id.replace(/\.mdx?$/, "")}`)}
                                     class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
                                 >
                                     <div class="card-body p-6">
@@ -128,12 +137,12 @@ const { Content } = await render(topic);
                 relatedBlogs.length > 0 && (
                     <div class="mb-12">
                         <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            Second Brain Notes
+                            {tPortfolio.taxonomy.secondBrainNotes}
                         </h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {relatedBlogs.map((b) => (
                                 <a
-                                    href={`/${locale}/blog/${b.id}`}
+                                    href={translatePath(`/blog/${b.id.replace(/\.mdx?$/, "")}`)}
                                     class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
                                 >
                                     <div class="card-body p-6">
@@ -152,7 +161,7 @@ const { Content } = await render(topic);
                 relatedServices.length > 0 && (
                     <div class="mb-12">
                         <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            Related Services
+                            {tPortfolio.taxonomy.relatedServices}
                         </h2>
                         <div class="flex flex-wrap gap-4">
                             {relatedServices.map((s) => (
@@ -170,8 +179,7 @@ const { Content } = await render(topic);
                     relatedBlogs.length === 0 &&
                     relatedServices.length === 0 && (
                         <div class="text-center py-10 opacity-50 border border-dashed border-base-content/20 rounded-xl">
-                            No connections mapped to {topic.data.title} yet in
-                            the Second Brain.
+                            {tPortfolio.graph.noConnections.replace("%name%", topic.data.title)}
                         </div>
                     )
             }

@@ -59,5 +59,40 @@
       "work": "WORK",
       "contact": "CONTACT"
     }
+  },
+  "ecosystem": {
+    "title": "Écosystème Tech",
+    "desc": "Le système nerveux centralisé des outils, langages et frameworks que je maîtrise et utilise activement dans mes projets.",
+    "search": "Rechercher des technologies...",
+    "noResults": "Aucune technologie trouvée.",
+    "tryAdjusting": "Essayez d'ajuster votre recherche ou vos filtres.",
+    "badgeFramework": "Framework",
+    "badgeLanguage": "Langage",
+    "badgeCloud": "Cloud",
+    "badgeData": "Données",
+    "badgeAi": "IA",
+    "badgeTool": "Outil"
+  },
+  "graph": {
+    "title": "Graphe de Connaissances Interactif",
+    "desc": "Voici tout mon réseau de Second Cerveau tracé. Vous voyez les nœuds .mdx réels et leurs relations sémantiques (sujets, tags, services). Essayez de zoomer et de faire glisser les nœuds !",
+    "knowledgeTitle": "Graphe de Connaissances",
+    "noConnections": "Aucune connexion mappée pour %name% pour le moment dans le Second Cerveau."
+  },
+  "taxonomy": {
+    "relatedProjects": "Projets utilisant",
+    "relatedArticles": "Articles traitant de",
+    "relatedServices": "Services Connexes",
+    "projectsUsingService": "Projets utilisant ce Service",
+    "projectsMappedTo": "Projets mappés à",
+    "secondBrainNotes": "Notes du Second Cerveau",
+    "contextDeepDives": "📚 Contexte et Approfondissements Techniques",
+    "readMoreTech": "Lire plus sur les décisions techniques derrière ce projet :",
+    "needSimilarResults": "🤝 Besoin de résultats similaires ?",
+    "specializedServices": "Je propose des services spécialisés pour vous aider à construire des solutions comme celle-ci.",
+    "backToPortfolio": "← Retour au Portefeuille",
+    "backToEcosystem": "← Retour à l'Écosystème",
+    "backToServices": "← Retour aux Services",
+    "startingAt": "À partir de"
   }
 }

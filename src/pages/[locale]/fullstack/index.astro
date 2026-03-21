@@ -9,7 +9,7 @@ import Contact from "@components/sections/Contact.astro";
 import Footer from "@components/layout/Footer.astro";
 import GraphIsland from "@components/GraphIsland.astro";
 import { Mode } from "../../../types";
-import { getTranslations, locales } from "@i18n";
+import { getTranslations, locales, useTranslator } from "@i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import type { CuratedProfile } from "../../../types";
 
@@ -30,6 +30,8 @@ const profile = (await getTranslations(lang, "profile")) as Record<
 const bio = (profile.bio as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
 const role = (profile.role as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
 
+
+const __ = await useTranslator(locale as string);
 
 const profileData: CuratedProfile = {
     name: "Jônatas Nascimento dos Santos",
@@ -88,7 +90,7 @@ const currentProjects = allProjects.slice(0, 7).map((p) => {
 ---
 
 <Layout
-    title="Fullstack"
+    title={(__("Home") ?? "Fullstack")}
     description={`${role} — ${bio.slice(0, 120)}...`}
     lang={locale}
 >
@@ -114,15 +116,12 @@ const currentProjects = allProjects.slice(0, 7).map((p) => {
             >
                 <div class="max-w-7xl w-full">
                     <h2 class="text-3xl font-bold mb-4 font-syncopate">
-                        Interactive <span class="text-primary"
-                            >Knowledge Graph</span
+                        {tPortfolio.graph.title.split(" ").slice(0, -2).join(" ")} <span class="text-primary"
+                            >{tPortfolio.graph.title.split(" ").slice(-2).join(" ")}</span
                         >
                     </h2>
                     <p class="mb-10 opacity-70 max-w-2xl">
-                        This is my entire Second Brain network plotted out. You
-                        are seeing the actual `.mdx` nodes and their semantic
-                        relationships (`topics`, `tags`, `services`). Try
-                        zooming and dragging the nodes!
+                        {tPortfolio.graph.desc}
                     </p>
                     <div class="flex flex-row gap-2">
                         <h3 class="text-primary">primary</h3>
@@ -137,7 +136,7 @@ const currentProjects = allProjects.slice(0, 7).map((p) => {
                         <h3 class="text-base-content">base-content</h3>
                     </div>
 
-                    <GraphIsland />
+                    <GraphIsland lang={locale} />
                 </div>
             </section>
 

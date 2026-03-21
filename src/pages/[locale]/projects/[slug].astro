@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { getCollection, getEntry, render } from "astro:content";
-import { locales } from "@i18n";
+import { locales, getTranslations, useTranslatedPath } from "@i18n";
 
 export async function getStaticPaths() {
     const projects = await getCollection("projects");
@@ -26,6 +26,8 @@ export async function getStaticPaths() {
 }
 
 const { project, locale } = Astro.props;
+const tPortfolio = (await getTranslations(locale, "portfolio")) as Record<string, any>;
+const translatePath = useTranslatedPath(locale);
 const { Content } = await render(project);
 
 // Manually resolve relationships using Astro Content Collections getEntry
@@ -68,7 +70,7 @@ const relatedPostsRaw =
 const relatedPosts = relatedPostsRaw.filter(Boolean);
 ---
 
-<Layout title={`${project.data.title} | Case Study`} lang={locale}>
+<Layout title={`${project.data.title} | ${tPortfolio.projects.caseStudy}`} lang={locale}>
     <main
         class="w-full min-h-screen bg-base-100 text-base-content pt-32 pb-20 px-6 lg:px-20 relative z-10"
     >
@@ -98,11 +100,10 @@ const relatedPosts = relatedPostsRaw.filter(Boolean);
                     relatedPosts.length > 0 && (
                         <div class="bg-base-200/50 p-6 rounded-2xl">
                             <h3 class="text-xl font-bold mb-4">
-                                📚 Context & Tech Deep Dives
+                                {tPortfolio.taxonomy.contextDeepDives}
                             </h3>
                             <p class="text-sm opacity-80 mb-4">
-                                Read more about the tech decisions behind this
-                                project:
+                                {tPortfolio.taxonomy.readMoreTech}
                             </p>
                             <ul class="space-y-3">
                                 {relatedPosts.map((post) => (
@@ -142,11 +143,10 @@ const relatedPosts = relatedPostsRaw.filter(Boolean);
                     relatedServices.length > 0 && (
                         <div class="bg-primary/5 p-6 rounded-2xl border border-primary/20">
                             <h3 class="text-xl font-bold mb-4 text-primary">
-                                🤝 Need similar results?
+                                {tPortfolio.taxonomy.needSimilarResults}
                             </h3>
                             <p class="mb-5 opacity-80 text-sm">
-                                I offer specialized services to help you build
-                                solutions like this.
+                                {tPortfolio.taxonomy.specializedServices}
                             </p>
                             <div class="flex flex-col gap-3">
                                 {relatedServices.map((service) => (
@@ -168,9 +168,9 @@ const relatedPosts = relatedPostsRaw.filter(Boolean);
 
             <div class="mt-16 text-center not-prose">
                 <a
-                    href={`/${locale}/fullstack`}
+                    href={translatePath("/")}
                     class="btn btn-ghost rounded-full px-8"
-                    >← Back to Portfolio</a
+                    >{tPortfolio.taxonomy.backToPortfolio}</a
                 >
             </div>
         </div>

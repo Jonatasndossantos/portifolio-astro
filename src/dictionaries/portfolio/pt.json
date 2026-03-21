@@ -208,5 +208,42 @@
       "work": "TRABALHO",
       "contact": "CONTATO"
     }
+  },
+  "ecosystem": {
+    "title": "Ecossistema Tech",
+    "desc": "O sistema nervoso centralizado de ferramentas, linguagens e frameworks que eu domino e uso ativamente em meus projetos.",
+    "search": "Buscar tecnologias...",
+    "noResults": "Nenhuma tecnologia encontrada.",
+    "tryAdjusting": "Tente ajustar sua busca ou filtros.",
+    "all": "Todos",
+    "filterBy": "Filtrar por",
+    "badgeFramework": "Framework",
+    "badgeLanguage": "Linguagem",
+    "badgeCloud": "Nuvem",
+    "badgeData": "Dados",
+    "badgeAi": "IA",
+    "badgeTool": "Ferramenta"
+  },
+  "graph": {
+    "title": "Grafo de Conhecimento Interativo",
+    "desc": "Esta é toda a minha rede de Segundo Cérebro traçada. Você está vendo os nós reais de .mdx e seus relacionamentos semânticos (tópicos, tags, serviços). Tente dar zoom e arrastar os nós!",
+    "knowledgeTitle": "Grafo de Conhecimento",
+    "noConnections": "Nenhuma conexão mapeada para %name% ainda no Segundo Cérebro."
+  },
+  "taxonomy": {
+    "relatedProjects": "Projetos usando",
+    "relatedArticles": "Artigos discutindo",
+    "relatedServices": "Serviços Relacionados",
+    "projectsUsingService": "Projetos usando este Serviço",
+    "projectsMappedTo": "Projetos mapeados para",
+    "secondBrainNotes": "Notas do Segundo Cérebro",
+    "contextDeepDives": "📚 Contexto & Tech Deep Dives",
+    "readMoreTech": "Leia mais sobre as decisões técnicas por trás deste projeto:",
+    "needSimilarResults": "🤝 Precisa de resultados semelhantes?",
+    "specializedServices": "Ofereço serviços especializados para ajudá-lo a construir soluções como esta.",
+    "backToPortfolio": "← Voltar ao Portfólio",
+    "backToEcosystem": "← Voltar ao Ecossistema",
+    "backToServices": "← Voltar aos Serviços",
+    "startingAt": "A partir de"
   }
 }

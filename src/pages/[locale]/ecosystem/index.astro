@@ -52,12 +52,10 @@ const getBadgeClass = (cat: string) => {
     >
         <div class="max-w-7xl mx-auto relative z-10">
             <h1 class="text-5xl md:text-7xl font-bold font-syncopate mb-6">
-                Tech <span class="text-primary opacity-80">Ecosystem</span>
+                Tech <span class="text-primary opacity-80">{t.ecosystem.title.replace("Tech ", "")}</span>
             </h1>
             <p class="text-xl opacity-70 mb-12 max-w-2xl text-balance">
-                The centralized nervous system of tools, languages, and
-                frameworks that I have mastered and actively use across my
-                projects.
+                {t.ecosystem.desc}
             </p>
 
             <!-- Search & Filtering Engine (Zero-React via Native Alpine/Vanilla JS behavior) -->
@@ -82,9 +80,9 @@ const getBadgeClass = (cat: string) => {
                     <input
                         type="text"
                         id="search-input"
-                        placeholder="Search technologies..."
+                        placeholder={t.ecosystem.search}
                         class="input input-bordered w-full pl-12 bg-base-100/50 focus:bg-base-100 transition-colors"
-                        aria-label="Search Ecosystem"
+                        aria-label={t.ecosystem.search}
                     />
                 </div>
 
@@ -92,14 +90,14 @@ const getBadgeClass = (cat: string) => {
                     <button
                         class="btn btn-sm btn-active filter-btn"
                         data-category="all"
-                        aria-label="Show All Categories">All</button
+                        aria-label={t.ecosystem.all || "All"}>{t.ecosystem.all || "All"}</button
                     >
                     {
                         categories.map((cat) => (
                             <button
                                 class="btn btn-sm filter-btn uppercase text-xs"
                                 data-category={cat}
-                                aria-label={`Filter by ${cat}`}
+                                aria-label={`${t.ecosystem.filterBy || "Filter by"} ${cat}`}
                             >
                                 {cat}
                             </button>
@@ -154,10 +152,10 @@ const getBadgeClass = (cat: string) => {
 
             <div id="no-results" class="hidden text-center py-20 w-full">
                 <p class="text-2xl font-bold opacity-30">
-                    No technologies found.
+                    {t.ecosystem.noResults}
                 </p>
                 <p class="text-sm opacity-50 mt-2">
-                    Try adjusting your search or filters.
+                    {t.ecosystem.tryAdjusting}
                 </p>
             </div>
         </div>

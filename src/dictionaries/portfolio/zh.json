@@ -59,5 +59,40 @@
       "work": "WORK",
       "contact": "CONTACT"
     }
+  },
+  "ecosystem": {
+    "title": "技术生态系统",
+    "desc": "由我在项目中熟练掌握并积极使用的工具、语言和框架组成的中心化神经系统。",
+    "search": "搜索技术...",
+    "noResults": "未找到相关技术。",
+    "tryAdjusting": "尝试调整您的搜索或筛选条件。",
+    "badgeFramework": "框架",
+    "badgeLanguage": "语言",
+    "badgeCloud": "云服务",
+    "badgeData": "数据",
+    "badgeAi": "人工智能",
+    "badgeTool": "工具"
+  },
+  "graph": {
+    "title": "交互式知识图谱",
+    "desc": "这是我整个第二大脑网络的规划图。您看到的是实际的 .mdx 节点及其语义关系（主题、标签、服务）。尝试缩放和拖动节点！",
+    "knowledgeTitle": "知识图谱",
+    "noConnections": "第二大脑中尚未映射 %name% 的连接。"
+  },
+  "taxonomy": {
+    "relatedProjects": "使用项目",
+    "relatedArticles": "相关文章",
+    "relatedServices": "相关服务",
+    "projectsUsingService": "使用此服务的项目",
+    "projectsMappedTo": "映射到此主题的项目",
+    "secondBrainNotes": "第二大脑笔记",
+    "contextDeepDives": "📚 背景与技术深潜",
+    "readMoreTech": "阅读有关此项目背后的技术决策：",
+    "needSimilarResults": "🤝 需要类似的结果吗？",
+    "specializedServices": "我提供专业服务，帮助您构建类似的解决方案。",
+    "backToPortfolio": "← 返回投资组合",
+    "backToEcosystem": "← 返回生态系统",
+    "backToServices": "← 返回服务",
+    "startingAt": "起价"
   }
 }

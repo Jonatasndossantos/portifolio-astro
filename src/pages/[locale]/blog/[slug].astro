@@ -57,14 +57,14 @@ const __ = await useTranslator(locale);
 ---
 
 <Layout
-    title={`${post.data.title} | Blog`}
-    description={`Blog post: ${post.data.title}`}
+    title={`${post.data.title} | ${__("Blog")}`}
+    description={`${__("Blog post:")} ${post.data.title}`}
     lang={locale}
 >
     <main class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative">
         <div class="max-w-3xl mx-auto z-10 relative">
             <a
-                href={`/${locale}/blog`}
+                href={translatePath("/blog")}
                 class="btn btn-ghost btn-sm mb-8 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
             >
                 &larr; {__("Back to Blog")}
@@ -80,7 +80,7 @@ const __ = await useTranslator(locale);
             <header class="mb-12 border-b border-base-content/10 pb-8">
                 <div class="flex items-center gap-4 mb-4">
                     <span class="badge badge-primary badge-outline uppercase tracking-wider text-xs">
-                        Article
+                        {__("Article")}
                     </span>
                     <time class="text-sm opacity-60 font-mono">
                         {new Date(post.data.date).toLocaleDateString(locale, {

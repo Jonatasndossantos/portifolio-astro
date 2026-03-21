@@ -14,10 +14,17 @@ interface Props {
 
 const { textKey, lang = "en", vars = {} } = Astro.props;
 
-// A generic "global" object that imports from Intlayer
-// (For this example, we'll try to use the raw `profile` or `portfolio` dicts.)
-// If we create a separate namespace per project, we'd pass that instead.
+// Load the requested language dictionary
 const dict = (await getTranslations(lang, "portfolio")) as Record<string, any>;
+
+// Load the English fallback dictionary if we aren't already in English
+let fallbackDict = null;
+if (lang !== "en") {
+    fallbackDict = (await getTranslations("en", "portfolio")) as Record<
+        string,
+        any
+    >;
+}
 
 /**
  * Access deeply nested values by string literal.
@@ -32,6 +39,11 @@ function getNestedValue(obj: any, path: string): string {
 
 let translatedText = getNestedValue(dict, textKey);
 
+// Try fallback if not found in primary dictionary
+if (!translatedText && fallbackDict) {
+    translatedText = getNestedValue(fallbackDict, textKey);
+}
+
 // Basic variable replacement {{varName}}
 if (translatedText && typeof translatedText === "string") {
     Object.keys(vars).forEach((vKey) => {
@@ -40,7 +52,7 @@ if (translatedText && typeof translatedText === "string") {
     });
 }
 
-// Fallback to exactly the key string in development if not found
+// Final fallback to exactly the key string if truly missing everywhere
 if (typeof translatedText !== "string") {
     translatedText = `[MISSING: ${textKey}]`;
 }

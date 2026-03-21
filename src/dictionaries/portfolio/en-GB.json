@@ -5,7 +5,7 @@
   },
   "skills": {
     "title": "Technical Arsenal",
-    "desc": "Prioritized toolkit for %mode%. Items are dynamically reordered based on the active dimension.",
+    "desc": "Prioritised toolkit for %mode%. Items are dynamically reordered based on the active dimension.",
     "core": "Core",
     "power": "Power"
   },
@@ -29,7 +29,7 @@
         ],
         "description": {
           "fullstack": "Complete automation system for public document generation (Law 14.133/2021) using AI (GPT-4) and Laravel.",
-          "frontend": "Modern, responsive Web Interface built with React and Inertia.js, focused on user experience for document management.",
+          "frontend": "Modern, responsive Web Interface built with React and Inertia.js, focussed on user experience for document management.",
           "backend": "Robust Laravel backend managing processing queues, Word template generation, and OpenAI API integration.",
           "devops": "Monitoring with Laravel Telescope and automated deployment on Google Cloud Platform.",
           "database": "Secure management of institutional data and generated documents, with access control and versioning.",
@@ -52,7 +52,7 @@
           "fullstack": "Comprehensive health monitoring application tracking metrics like BMI, hydration, and blood pressure using Laravel and Bootstrap.",
           "frontend": "Responsive, accessible interface designed with Bootstrap 5 to ensure easy data entry for vital health stats across devices.",
           "backend": "Secure Laravel architecture handling complex health calculations and user authentication with Laravel Breeze.",
-          "devops": "Lightweight deployment strategy using SQLite, optimized for easy installation and maintenance.",
+          "devops": "Lightweight deployment strategy using SQLite, optimised for easy installation and maintenance.",
           "database": "Efficient SQLite schema designed to store historical health data and user habits with privacy in mind.",
           "ai": "Algorithmic calculation of caloric needs and hydration targets based on individual user data profiles."
         }
@@ -71,10 +71,10 @@
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
         "description": {
           "fullstack": "Tech news portal combating disinformation with secure authentication (OAuth) and content moderation, built with Laravel and Tailwind.",
-          "frontend": "Modern, responsive interface using Blade templates and Tailwind CSS, optimized for readability and content discovery.",
+          "frontend": "Modern, responsive interface using Blade templates and Tailwind CSS, optimised for readability and content discovery.",
           "backend": "Robust MVC architecture connecting external RSS APIs and managing user roles/permissions via Laravel Breeze.",
           "devops": "Deployed on Azure App Service with automated testing pipelines using PEST framework.",
-          "database": "Relational MySQL schema designed to efficiently handle categorized news, comments, and user profiles.",
+          "database": "Relational MySQL schema designed to efficiently handle categorised news, comments, and user profiles.",
           "ai": "Algorithmic feed curation and potential integration for automated fact-checking and content verification."
         }
       },
@@ -91,12 +91,12 @@
           "SEO"
         ],
         "description": {
-          "fullstack": "Custom WordPress solution tailored for high performance with advanced caching, local SEO optimization, and bespoke CSS styling.",
+          "fullstack": "Custom WordPress solution tailored for high performance with advanced caching, local SEO optimisation, and bespoke CSS styling.",
           "frontend": "Developed a unique visual identity using custom CSS and high-fidelity responsive design to reflect the professional brand image.",
-          "backend": "Customized WordPress CMS architecture to efficiently manage service portfolios and client testimonials.",
-          "devops": "Implemented aggressive caching layers and asset optimization to achieve top-tier PageSpeed insights scores.",
-          "database": "Optimized database queries for custom post types, ensuring minimal latency for dynamic content rendering.",
-          "ai": "Leveraged AI-driven SEO tools for keyword analysis and content structuring to maximize local search visibility."
+          "backend": "Customised WordPress CMS architecture to efficiently manage service portfolios and client testimonials.",
+          "devops": "Implemented aggressive caching layers and asset optimisation to achieve top-tier PageSpeed insights scores.",
+          "database": "Optimised database queries for custom post types, ensuring minimal latency for dynamic content rendering.",
+          "ai": "Leveraged AI-driven SEO tools for keyword analysis and content structuring to maximise local search visibility."
         }
       },
       "espresso-d-amore": {
@@ -115,7 +115,7 @@
         "description": {
           "fullstack": "A dual-ecosystem consisting of a Laravel/Inertia ERP for management and an Expo/Supabase mobile app for orders and payments.",
           "frontend": "Built two distinct interfaces: a data-rich administration dashboard with React/Inertia and a fluid mobile ordering experience using Expo.",
-          "backend": "Hybrid backend architecture utilizing Laravel 12 for core business logic and Supabase for real-time client data and authentication.",
+          "backend": "Hybrid backend architecture utilising Laravel 12 for core business logic and Supabase for real-time client data and authentication.",
           "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
           "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
           "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
@@ -134,10 +134,10 @@
           "Performance"
         ],
         "description": {
-          "fullstack": "Complete WordPress solution for a premium billiards club, focused on UI/UX improvements, CSS styling, and system layout recovery.",
-          "frontend": "Revamped the user interface with customized CSS, ensuring a responsive and visually appealing booking and membership experience.",
-          "backend": "Optimized the WordPress core, improved layout stability, and recovered lost data through advanced database restoration techniques.",
-          "devops": "Implemented performance adjustments and layout stabilizations for a smoother user experience and faster load times.",
+          "fullstack": "Complete WordPress solution for a premium billiards club, focussed on UI/UX improvements, CSS styling, and system layout recovery.",
+          "frontend": "Revamped the user interface with customised CSS, ensuring a responsive and visually appealing booking and membership experience.",
+          "backend": "Optimised the WordPress core, improved layout stability, and recovered lost data through advanced database restoration techniques.",
+          "devops": "Implemented performance adjustments and layout stabilisations for a smoother user experience and faster load times.",
           "database": "Recovered and structured booking data and club information, ensuring continuous operation.",
           "ai": "Leveraged design intelligence to elevate the overall layout and user journey for membership conversions."
         }
@@ -155,12 +155,12 @@
           "SEO"
         ],
         "description": {
-          "fullstack": "Custom WordPress site for Makecakes, featuring a bespoke theme, performance optimization, and tailored user experience.",
+          "fullstack": "Custom WordPress site for Makecakes, featuring a bespoke theme, performance optimisation, and tailored user experience.",
           "frontend": "Designed and developed a responsive, visually appealing frontend using custom CSS and WordPress themes.",
-          "backend": "Configured and optimized the WordPress backend for secure content management and fast loading times.",
-          "devops": "Implemented caching strategies and performance optimizations for reliable delivery of high-quality image assets.",
-          "database": "Optimized WordPress database for fast queries and efficient execution of custom post types.",
-          "ai": "Utilized AI-generated assets and content structuring for improved SEO and user engagement."
+          "backend": "Configured and optimised the WordPress backend for secure content management and fast loading times.",
+          "devops": "Implemented caching strategies and performance optimisations for reliable delivery of high-quality image assets.",
+          "database": "Optimised WordPress database for fast queries and efficient execution of custom post types.",
+          "ai": "Utilised AI-generated assets and content structuring for improved SEO and user engagement."
         }
       }
     }
@@ -174,7 +174,7 @@
       },
       {
         "title": "Performance Tuning",
-        "desc": "Optimizing render cycles and database queries."
+        "desc": "Optimising render cycles and database queries."
       },
       {
         "title": "Security Audits",
@@ -201,7 +201,7 @@
     "somethingWrong": "Something went wrong. Please try again later."
   },
   "footer": {
-    "copyright": "Jônatas Nascimento dos Santos",
+    "copyright": "Multiverse Portfolio",
     "links": {
       "home": "HOME",
       "about": "ABOUT",
@@ -211,12 +211,10 @@
   },
   "ecosystem": {
     "title": "Tech Ecosystem",
-    "desc": "The centralized nervous system of tools, languages, and frameworks that I have mastered and actively use across my projects.",
+    "desc": "The centralised nervous system of tools, languages, and frameworks that I have mastered and actively use across my projects.",
     "search": "Search technologies...",
     "noResults": "No technologies found.",
     "tryAdjusting": "Try adjusting your search or filters.",
-    "all": "All",
-    "filterBy": "Filter by",
     "badgeFramework": "Framework",
     "badgeLanguage": "Language",
     "badgeCloud": "Cloud",
@@ -240,7 +238,7 @@
     "contextDeepDives": "📚 Context & Tech Deep Dives",
     "readMoreTech": "Read more about the tech decisions behind this project:",
     "needSimilarResults": "🤝 Need similar results?",
-    "specializedServices": "I offer specialized services to help you build solutions like this.",
+    "specializedServices": "I offer specialised services to help you build solutions like this.",
     "backToPortfolio": "← Back to Portfolio",
     "backToEcosystem": "← Back to Ecosystem",
     "backToServices": "← Back to Services",

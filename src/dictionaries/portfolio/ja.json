@@ -59,5 +59,40 @@
       "work": "WORK",
       "contact": "CONTACT"
     }
+  },
+  "ecosystem": {
+    "title": "技術エコシステム",
+    "desc": "プロジェクトで熟練し、活用しているツール、言語、フレームワークで構成される中心的な神経システム。",
+    "search": "技術を検索...",
+    "noResults": "技術が見つかりませんでした。",
+    "tryAdjusting": "検索語やフィルターを調整してみてください。",
+    "badgeFramework": "フレームワーク",
+    "badgeLanguage": "言語",
+    "badgeCloud": "クラウド",
+    "badgeData": "データ",
+    "badgeAi": "AI",
+    "badgeTool": "ツール"
+  },
+  "graph": {
+    "title": "インタラクティブ知識グラフ",
+    "desc": "これは私の「第二の脳」ネットワーク全体をプロットしたものです。実際の .mdx ノードとその意味的な関係（トピック、タグ、サービス）が表示されています。ノードのズームやドラッグを試してみてください！",
+    "knowledgeTitle": "知識グラフ",
+    "noConnections": "「第二の脳」にはまだ %name% にマップされた接続がありません。"
+  },
+  "taxonomy": {
+    "relatedProjects": "使用プロジェクト",
+    "relatedArticles": "関連記事",
+    "relatedServices": "関連サービス",
+    "projectsUsingService": "このサービスを使用するプロジェクト",
+    "projectsMappedTo": "このトピックにマップされたプロジェクト",
+    "secondBrainNotes": "第二の脳ノート",
+    "contextDeepDives": "📚 文脈と技術的な深掘り",
+    "readMoreTech": "このプロジェクトの背後にある技術的な決定について詳しく読む：",
+    "needSimilarResults": "🤝 同様の成果が必要ですか？",
+    "specializedServices": "このようなソリューションの構築を支援するための専門的なサービスを提供しています。",
+    "backToPortfolio": "← ポートフォリオに戻る",
+    "backToEcosystem": "← エコシステムに戻る",
+    "backToServices": "← サービスに戻る",
+    "startingAt": "開始価格"
   }
 }

@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import { locales } from "@i18n";
+import { locales, getTranslations, useTranslatedPath } from "@i18n";
 import Layout from "@layouts/Layout.astro";
 import GraphIsland from "@components/GraphIsland.astro";
 
@@ -40,6 +40,8 @@ const relatedBlogs = allBlogs.filter((b) =>
 );
 
 const { Content } = await render(tag);
+const tPortfolio = (await getTranslations(locale, "portfolio")) as Record<string, any>;
+const translatePath = useTranslatedPath(locale);
 ---
 
 <Layout
@@ -52,10 +54,10 @@ const { Content } = await render(tag);
     >
         <div class="max-w-4xl mx-auto relative z-10">
             <a
-                href={`/${locale}/ecosystem`}
+                href={translatePath("/ecosystem")}
                 class="btn btn-ghost btn-sm mb-8 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
             >
-                &larr; Back to Ecosystem
+                &larr; {tPortfolio.taxonomy.backToEcosystem}
             </a>
 
             <div class="flex items-center gap-6 mb-8">
@@ -94,7 +96,7 @@ const { Content } = await render(tag);
                 <h2
                     class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4"
                 >
-                    Knowledge Graph
+                    {tPortfolio.graph.knowledgeTitle}
                 </h2>
                 <GraphIsland focusId={`tags/${cleanId}`} />
             </div>
@@ -103,12 +105,12 @@ const { Content } = await render(tag);
                 relatedProjects.length > 0 && (
                     <div class="mb-12">
                         <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            Projects using {tag.data.title}
+                            {tPortfolio.taxonomy.relatedProjects} {tag.data.title}
                         </h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {relatedProjects.map((p) => (
                                 <a
-                                    href={`/${locale}/projects/${p.id}`}
+                                    href={translatePath(`/projects/${p.id.replace(/\.mdx?$/, "")}`)}
                                     class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
                                 >
                                     <div class="card-body p-6">
@@ -131,12 +133,12 @@ const { Content } = await render(tag);
                 relatedBlogs.length > 0 && (
                     <div class="mb-12">
                         <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            Articles discussing {tag.data.title}
+                            {tPortfolio.taxonomy.relatedArticles} {tag.data.title}
                         </h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {relatedBlogs.map((b) => (
                                 <a
-                                    href={`/${locale}/blog/${b.id}`}
+                                    href={translatePath(`/blog/${b.id.replace(/\.mdx?$/, "")}`)}
                                     class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
                                 >
                                     <div class="card-body p-6">
@@ -154,8 +156,7 @@ const { Content } = await render(tag);
             {
                 relatedProjects.length === 0 && relatedBlogs.length === 0 && (
                     <div class="text-center py-10 opacity-50 border border-dashed border-base-content/20 rounded-xl">
-                        No connections mapped to {tag.data.title} yet in the
-                        Second Brain.
+                        {tPortfolio.graph.noConnections.replace("%name%", tag.data.title)}
                     </div>
                 )
             }

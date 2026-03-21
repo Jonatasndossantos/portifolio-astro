@@ -1,5 +1,5 @@
 {
-    "Home": "Start",
+    "Home": "home",
     "Search": "Search",
     "About us": "About",
     "Work": "My Work",
@@ -29,5 +29,8 @@
     "Demo of": "Demo of",
     "Source Code of": "Source Code of",
     "Hero Background": "Hero Background",
-    "Toggle Spline Audio": "Toggle Spline Audio"
+    "Toggle Spline Audio": "Toggle Spline Audio",
+    "Article": "Article",
+    "Blog post:": "Blog post:",
+    "Multilingual blog": "Multilingual blog"
 }
