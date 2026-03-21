@@ -11,9 +11,10 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
     currentLocale?: string;
+    class?: string;
 }
 
-const { currentLocale = defaultLocale } = Astro.props;
+const { currentLocale = defaultLocale, class: className } = Astro.props;
 
 const currentPath = getPathWithoutLocale(Astro.url.pathname);
 
@@ -24,16 +25,19 @@ const langDict = (await getTranslations(currentLocale, "language")) as Record<
 const __ = await useTranslator(currentLocale);
 ---
 
-<div title={__("Change Language")} class="dropdown dropdown-end block">
+<div title={__("Change Language")} class:list={["dropdown dropdown-end sm:dropdown-bottom dropdown-top block", className]}>
     <div
         tabindex="0"
         role="button"
-        class="btn group btn-sm gap-1 px-2 btn-ghost"
+        class="btn group btn-sm gap-2 px-2 btn-ghost w-full justify-between sm:w-auto sm:justify-center"
         aria-label={__("Change Language")}
     >
-        <div class="relative flex items-center justify-center pt-0.5">
-            <Icon name="lucide:globe" class="size-5 opacity-80 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
-            <span class="absolute -bottom-1 -right-2 uppercase font-black text-[8px] leading-none tracking-widest opacity-90 bg-base-100 rounded-[2px] px-0.5 border border-base-content/10">{currentLocale}</span>
+        <div class="flex items-center gap-3">
+            <div class="relative flex items-center justify-center pt-0.5">
+                <Icon name="lucide:globe" class="size-5 opacity-80 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+                <span class="absolute -bottom-1 -right-2 uppercase font-black text-[8px] leading-none tracking-widest opacity-90 bg-base-100 rounded-[2px] px-0.5 border border-base-content/10">{currentLocale}</span>
+            </div>
+            <span class="font-medium text-sm sm:hidden">{langDict["label"] || __("Language")}</span>
         </div>
         <svg
             width="12px"
@@ -47,9 +51,9 @@ const __ = await useTranslator(currentLocale);
     </div>
     <div
         tabindex="0"
-        class="dropdown-content bg-base-200 text-base-content rounded-box top-px max-h-[calc(100vh-10rem)] w-56 overflow-y-auto border-(length:--border) border-white/5 shadow-2xl outline-(length:--border) outline-black/5 mt-16"
+        class="dropdown-content bg-base-200 text-base-content rounded-box bottom-full mb-2 sm:top-px sm:mt-16 max-h-[50vh] sm:max-h-[calc(100vh-12rem)] w-[calc(100vw-8rem)] sm:w-56 overflow-y-auto border-(length:--border) border-white/5 shadow-2xl outline-(length:--border) outline-black/5 z-50"
     >
-        <ul class="menu menu-sm gap-1">
+        <ul class="menu menu-sm gap-1 p-2">
             <li class="menu-title px-2 py-1 text-xs font-medium opacity-70">
                 {langDict["label"] || __("Language")}
             </li>

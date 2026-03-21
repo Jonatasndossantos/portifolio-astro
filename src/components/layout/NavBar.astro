@@ -35,7 +35,7 @@ const iconLinks: {
     <div class="drawer-content pointer-events-auto flex flex-col w-full">
         <!-- Navbar -->
         <div
-            class="navbar w-full bg-base-100/90 backdrop-blur-xl border-b border-base-content/10 text-base-content"
+            class="navbar w-full bg-base-100/60 backdrop-blur-xl border-b border-base-content/10 text-base-content"
         >
             <div
                 class="mx-auto flex w-full max-w-7xl items-center px-4 sm:px-6 lg:px-8"
@@ -177,9 +177,9 @@ const iconLinks: {
                     href={translatePath("/ecosystem")}
                     title={__("Search")}
                     aria-label={__("Search")}
-                    class="btn btn-primary w-full shadow-md text-xs tracking-widest uppercase"
+                    class="btn btn-primary w-full shadow-md flex items-center justify-center"
                 >
-                    {__("Search")}
+                    <Icon name="lucide:search" class="size-6" />
                 </a>
 
                 <!-- Socials -->
@@ -188,21 +188,24 @@ const iconLinks: {
                         class="text-sm font-medium opacity-60 uppercase tracking-widest px-1"
                         >{__("Network")}</span
                     >
-                    <div class="flex flex-row flex-wrap gap-2">
+                    <div class="flex flex-col gap-2 bg-base-100 p-2 rounded-xl border border-base-content/5">
                         {
                             iconLinks.map((link) => (
                                 <a
                                     href={link.href}
-                                    class="btn btn-ghost btn-square bg-base-100 hover:bg-base-300 transition-colors"
+                                    class="btn btn-ghost w-full justify-between h-auto py-3 px-4"
                                     target="_blank"
                                     rel="noopener"
                                     title={__(link.label)}
                                     aria-label={__(link.label)}
                                 >
-                                    <Icon name={link.icon} class="size-5" />
-                                    <span class="sr-only">
-                                        {__(link.label)}
-                                    </span>
+                                    <div class="flex items-center gap-3">
+                                        <Icon name={link.icon} class="size-6" />
+                                        <span class="font-medium text-sm">
+                                            {__(link.label)}
+                                        </span>
+                                    </div>
+                                    <Icon name="lucide:external-link" class="size-4 opacity-50" />
                                 </a>
                             ))
                         }
@@ -215,20 +218,10 @@ const iconLinks: {
                         class="text-sm font-medium opacity-60 uppercase tracking-widest px-1"
                         >{__("Interface")}</span
                     >
-                    <div class="flex flex-col gap-4 bg-base-100 p-4 rounded-xl">
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-sm"
-                                >{__("Theme")}</span
-                            >
-                            <ThemeToggle locale={lang} />
-                        </div>
-                        <div class="divider my-0 opacity-20"></div>
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-sm"
-                                >{__("Language")}</span
-                            >
-                            <LanguageToggle currentLocale={lang} />
-                        </div>
+                    <div class="flex flex-col gap-2 bg-base-100 p-2 rounded-xl border border-base-content/5">
+                        <ThemeToggle locale={lang} class="w-full" />
+                        <div class="divider my-0 opacity-10"></div>
+                        <LanguageToggle currentLocale={lang} class="w-full" />
                     </div>
                 </div>
             </div>

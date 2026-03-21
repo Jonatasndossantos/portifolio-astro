@@ -10,10 +10,11 @@ import Footer from "@components/layout/Footer.astro";
 import GraphIsland from "@components/GraphIsland.astro";
 import { Mode } from "../types";
 import { getTranslations } from "@i18n";
-import { defaultLocale as locale } from "@i18n";
+import { defaultLocale as locale, useTranslator } from "@i18n";
 import type { CuratedProfile } from "../types";
 
-const lang = locale;
+const lang = Astro.currentLocale;
+const __ = await useTranslator(lang);
 const profile = (await getTranslations(lang, "profile")) as Record<
     string,
     unknown
@@ -104,8 +105,8 @@ const currentProjects = allProjects.slice(0, 7).map((p) => {
             >
                 <div class="max-w-7xl w-full">
                     <h2 class="text-3xl font-bold mb-4 font-syncopate">
-                        Interactive <span class="text-primary"
-                            >Knowledge Graph</span
+                        {__('Interactive')} <span class="text-primary"
+                            >{__('Knowledge Graph')}</span
                         >
                     </h2>
 

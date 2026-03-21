@@ -9,9 +9,18 @@ import Contact from "@components/sections/Contact.astro";
 import Footer from "@components/layout/Footer.astro";
 import GraphIsland from "@components/GraphIsland.astro";
 import { Mode } from "../../types";
-import { getTranslations, locales, defaultLocale } from "@i18n";
-import { getRelativeLocaleUrl } from "astro:i18n";
+import { getTranslations } from "@i18n";
+import { defaultLocale, useTranslator, locales } from "@i18n";
 import type { CuratedProfile } from "../../types";
+
+const { locale  } = Astro.params;
+const lang = Astro.currentLocale;
+
+const __ = await useTranslator(lang);
+const profile = (await getTranslations(lang, "profile")) as Record<
+    string,
+    unknown
+>;
 
 export function getStaticPaths() {
     return locales
@@ -22,16 +31,9 @@ export function getStaticPaths() {
         }));
 }
 
-const { locale } = Astro.params;
-const lang = getRelativeLocaleUrl(locale);
 
-const profile = (await getTranslations(lang, "profile")) as Record<
-    string,
-    unknown
->;
 const bio = (profile.bio as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
 const role = (profile.role as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
-
 
 const profileData: CuratedProfile = {
     name: "Jônatas Nascimento dos Santos",
@@ -116,28 +118,10 @@ const currentProjects = allProjects.slice(0, 7).map((p) => {
             >
                 <div class="max-w-7xl w-full">
                     <h2 class="text-3xl font-bold mb-4 font-syncopate">
-                        Interactive <span class="text-primary"
-                            >Knowledge Graph</span
+                        {__('Interactive')} <span class="text-primary"
+                            >{__('Knowledge Graph')}</span
                         >
                     </h2>
-                    <p class="mb-10 opacity-70 max-w-2xl">
-                        This is my entire Second Brain network plotted out. You
-                        are seeing the actual `.mdx` nodes and their semantic
-                        relationships (`topics`, `tags`, `services`). Try
-                        zooming and dragging the nodes!
-                    </p>
-                    <div class="flex flex-row gap-2">
-                        <h3 class="text-primary">primary</h3>
-                        <h3 class="text-secondary">secondary</h3>
-                        <h3 class="text-accent">accent</h3>
-                        <h3 class="text-success">success</h3>
-                        <h3 class="text-warning">warning</h3>
-                        <h3 class="text-error">error</h3>
-                        <h3 class="text-info">info</h3>
-                        <h3 class="text-neutral">neutral</h3>
-                        <h3 class="text-base">base</h3>
-                        <h3 class="text-base-content">base-content</h3>
-                    </div>
 
                     <GraphIsland />
                 </div>
@@ -148,4 +132,6 @@ const currentProjects = allProjects.slice(0, 7).map((p) => {
             <Footer lang={locale} />
         </div>
     </main>
+
+
 </Layout>
