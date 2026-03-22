@@ -59,7 +59,13 @@ const themesList = themeKeys.map((key) => ({
 }));
 ---
 
-<div title={__("Change Theme")} class:list={["dropdown dropdown-end sm:dropdown-bottom dropdown-top block", className]}>
+<div
+    title={__("Change Theme")}
+    class:list={[
+        "dropdown dropdown-end sm:dropdown-bottom dropdown-top block",
+        className,
+    ]}
+>
     <div
         tabindex="0"
         role="button"
@@ -68,7 +74,7 @@ const themesList = themeKeys.map((key) => ({
     >
         <div class="flex items-center gap-3">
             <div
-                class="bg-base-100 group-hover:border-base-content/20 border-base-content/10 grid shrink-0 grid-cols-2 gap-0.5 rounded-md border p-1 transition-colors"
+                class="bg-base-100 group-hover:border-base-content/20 border-base-content/10 grid shrink-0 grid-cols-2 gap-0.5 rounded-box border p-1 transition-colors"
             >
                 <div class="bg-base-content size-1.5 rounded-full"></div>
                 <div class="bg-primary size-1.5 rounded-full"></div>
@@ -90,7 +96,7 @@ const themesList = themeKeys.map((key) => ({
     </div>
     <ul
         tabindex="0"
-        class="dropdown-content bg-base-200 text-base-content rounded-box bottom-full mb-2 sm:top-px sm:mt-16 max-h-[50vh] sm:max-h-[calc(100vh-12rem)] w-[calc(100vw-8rem)] sm:w-56 overflow-y-auto border-(length:--border) border-white/5 shadow-2xl outline-(length:--border) outline-black/5 p-2 z-50"
+        class="dropdown-content bg-base-200 text-base-content rounded-box mb-2 sm:top-px sm:mt-16 max-h-[50vh] sm:max-h-[calc(100vh-12rem)] w-[calc(100vw-8rem)] sm:w-56 overflow-y-auto border-(length:--border) border-white/5 shadow-2xl outline-(length:--border) outline-black/5 p-2 z-50"
     >
         <li class="menu-title px-2 py-1 text-xs font-medium opacity-70">
             {label}

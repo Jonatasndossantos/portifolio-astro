@@ -25,7 +25,13 @@ const langDict = (await getTranslations(currentLocale, "language")) as Record<
 const __ = await useTranslator(currentLocale);
 ---
 
-<div title={__("Change Language")} class:list={["dropdown dropdown-end sm:dropdown-bottom dropdown-top block", className]}>
+<div
+    title={__("Change Language")}
+    class:list={[
+        "dropdown dropdown-end sm:dropdown-bottom dropdown-top block",
+        className,
+    ]}
+>
     <div
         tabindex="0"
         role="button"
@@ -34,10 +40,19 @@ const __ = await useTranslator(currentLocale);
     >
         <div class="flex items-center gap-3">
             <div class="relative flex items-center justify-center pt-0.5">
-                <Icon name="lucide:globe" class="size-5 opacity-80 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
-                <span class="absolute -bottom-1 -right-2 uppercase font-black text-[8px] leading-none tracking-widest opacity-90 bg-base-100 rounded-[2px] px-0.5 border border-base-content/10">{currentLocale}</span>
+                <Icon
+                    name="lucide:globe"
+                    class="size-5 opacity-80 group-hover:opacity-100 transition-opacity"
+                    aria-hidden="true"
+                />
+                <span
+                    class="absolute -bottom-1 -right-2 uppercase font-black text-[8px] leading-none tracking-widest opacity-90 bg-base-100 rounded-[2px] px-0.5 border border-base-content/10"
+                    >{currentLocale}</span
+                >
             </div>
-            <span class="font-medium text-sm sm:hidden">{langDict["label"] || __("Language")}</span>
+            <span class="font-medium text-sm sm:hidden"
+                >{langDict["label"] || __("Language")}</span
+            >
         </div>
         <svg
             width="12px"
@@ -46,12 +61,13 @@ const __ = await useTranslator(currentLocale);
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 2048 2048"
         >
-            <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+            <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"
+            ></path>
         </svg>
     </div>
     <div
         tabindex="0"
-        class="dropdown-content bg-base-200 text-base-content rounded-box bottom-full mb-2 sm:top-px sm:mt-16 max-h-[50vh] sm:max-h-[calc(100vh-12rem)] w-[calc(100vw-8rem)] sm:w-56 overflow-y-auto border-(length:--border) border-white/5 shadow-2xl outline-(length:--border) outline-black/5 z-50"
+        class="dropdown-content bg-base-200 text-base-content rounded-box mb-2 sm:top-px sm:mt-16 max-h-[50vh] sm:max-h-[calc(100vh-12rem)] w-[calc(100vw-8rem)] sm:w-56 overflow-y-auto border-(length:--border) border-white/5 shadow-2xl outline-(length:--border) outline-black/5 z-50"
     >
         <ul class="menu menu-sm gap-1 p-2">
             <li class="menu-title px-2 py-1 text-xs font-medium opacity-70">
@@ -103,11 +119,11 @@ const __ = await useTranslator(currentLocale);
 
 <script is:inline>
     // Save user preference when they manually switch languages
-    document.querySelectorAll('[data-locale-link]').forEach(link => {
-        link.addEventListener('click', () => {
-            const locale = link.getAttribute('data-locale-link');
+    document.querySelectorAll("[data-locale-link]").forEach((link) => {
+        link.addEventListener("click", () => {
+            const locale = link.getAttribute("data-locale-link");
             if (locale) {
-                localStorage.setItem('preferred-locale', locale);
+                localStorage.setItem("preferred-locale", locale);
             }
         });
     });
