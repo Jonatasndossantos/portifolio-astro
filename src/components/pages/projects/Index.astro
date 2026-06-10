@@ -1,0 +1,143 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import { useTranslator, useTranslatedPath } from "@i18n";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import SearchFilters from "@components/ui/SearchFilters.astro";
+import ProjectCard from "@components/ui/ProjectCard.astro";
+import GraphIsland from "@components/GraphIsland.astro";
+
+const { lang: locale } = Astro.props;
+const __ = await useTranslator(locale);
+const translatePath = useTranslatedPath(locale);
+
+const allProjectsUnfiltered = await getCollection("projects");
+
+const uniqueProjectIds = [...new Set(allProjectsUnfiltered.map(p => 
+    p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "")
+))];
+
+const allProjects = [];
+for (const id of uniqueProjectIds) {
+    let entry = allProjectsUnfiltered.find(p => p.id.replace(/\.mdx?$/, "") === `${locale}/${id}`);
+    if (!entry) {
+        // Fallback to whichever is found first
+        entry = allProjectsUnfiltered.find(p => p.id.replace(/\.mdx?$/, "").endsWith(`/${id}`));
+    }
+    if (entry) {
+        allProjects.push(entry);
+    }
+}
+
+// Pre-process projects for consistent card mapping
+let projectsData = allProjects.map((p) => {
+    const cleanId = p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "");
+    const primaryTopic = p.data.relatedTopics && p.data.relatedTopics.length > 0 
+        ? p.data.relatedTopics[0].id.replace(/\.mdx?$/, "")
+        : "other";
+        
+    return {
+        id: cleanId,
+        title: p.data.title,
+        imageUrl: p.data.heroImage || "",
+        demoUrl: p.data.demoUrl,
+        repoUrl: p.data.repoUrl,
+        technologies: p.data.tags
+            ? p.data.tags.map((t: any) => ({
+                  id: (t.id || t).replace(/\.mdx?$/, ""),
+                  name: (t.id || t).split('/').pop()?.replace(/-/g, " ") || "Tech",
+              }))
+            : [],
+        description: p.data.description || "",
+        date: p.data.date,
+        relevance: p.data.relevance || 0,
+        role: p.data.role,
+        company: p.data.company,
+        category: primaryTopic,
+        searchableText: `${p.data.title} ${p.data.role || ''} ${p.data.company || ''} ${p.data.description || ''}`.toLowerCase()
+    };
+});
+
+// Sort by Relevance (DESC), then by Date (DESC)
+projectsData.sort((a, b) => {
+    if (b.relevance !== a.relevance) {
+        return b.relevance - a.relevance;
+    }
+    const dateB = b.date ? new Date(b.date).getTime() : 0;
+    const dateA = a.date ? new Date(a.date).getTime() : 0;
+    return dateB - dateA;
+});
+
+// Extract unique categories for the filter component
+const uniqueCategories = [...new Set(projectsData.map(p => p.category))].filter(c => c !== "other");
+---
+
+<Layout
+    title={__("Featured Projects")}
+    description={__("A selected list of my most important and technically challenging projects.")}
+    lang={locale}
+>
+    <main class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative">
+        <div class="max-w-7xl mx-auto">
+            <SectionHeader 
+                label={__("Portfolio")}
+                title={__("Featured")}
+                highlightedTitle={__("Projects")}
+                description={__("A selected list of my most important and technically challenging projects.")}
+                viewAllLink={translatePath("/ecosystem")}
+                viewAllLabel={__("Explore Knowledge")}
+            />
+
+            <SearchFilters 
+                searchPlaceholder={__("Search projects...")}
+                categories={uniqueCategories}
+                allLabel={__("All")}
+                filterByLabel={__("Filter by")}
+                gridId="projects-grid"
+                cardClass="project-card-filter"
+            />
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                {
+                    projectsData.map((project, index) => (
+                        <div 
+                            class="project-card-filter h-full" 
+                            data-title={__(project.title)}
+                            data-category={project.category}
+                            data-searchable={project.searchableText}
+                        >
+                            <ProjectCard 
+                                project={project}
+                                lang={locale}
+                                isFeatured={index === 0}
+                                isLcp={index === 0}
+                                caseStudyLabel={__("Case Study")}
+                                viewProjectLabel={__("View Project")}
+                                codeLabel={__("Code")}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div id="no-results" class="hidden text-center py-20 w-full bg-base-200/20 rounded-3xl border border-dashed border-base-content/10 mt-8">
+                <p class="text-2xl font-bold opacity-30">
+                    {__("No projects found.")}
+                </p>
+                <p class="text-sm opacity-50 mt-2">
+                    {__("Try adjusting your search or filters.")}
+                </p>
+            </div>
+
+            <!-- Knowledge Graph Section -->
+            <div class="mt-32">
+                 <SectionHeader 
+                    label={__("Interactive Knowledge Graph")}
+                    title={__("Interactive")}
+                    highlightedTitle={__("Ecosystem")}
+                 />
+                 <GraphIsland lang={locale} />
+            </div>
+        </div>
+    </main>
+</Layout>

@@ -1,0 +1,81 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import { useTranslator } from "@i18n";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import SearchFilters from "@components/ui/SearchFilters.astro";
+import TechCard from "@components/ui/TechCard.astro";
+import GraphIsland from "@components/GraphIsland.astro";
+
+const { lang: locale } = Astro.props;
+const __ = await useTranslator(locale);
+const allTopics = await getCollection("topics");
+allTopics.sort((a, b) => a.data.title.localeCompare(b.data.title));
+const categories = [...new Set(allTopics.map((topic) => topic.data.category || __("All")))].sort();
+---
+
+<Layout
+    title={__("Study Topics")}
+    description={__("Knowledge domains I've been exploring deeply.")}
+    lang={locale}
+>
+    <main
+        class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative overflow-hidden"
+    >
+        <div class="max-w-7xl mx-auto relative z-10">
+            <SectionHeader 
+                label={__("Study Topics")}
+                title={__("Study")}
+                highlightedTitle={__("Topics")}
+                description={__("Knowledge domains I've been exploring deeply.")}
+            />
+
+            <SearchFilters 
+                searchPlaceholder={__("Search technologies...")}
+                categories={categories}
+                allLabel={__("All")}
+                filterByLabel={__("Filter by")}
+                gridId="topics-grid"
+                cardClass="knowledge-card"
+            />
+
+            <!-- Topics Grid -->
+            <div
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+                id="topics-grid"
+            >
+                {
+                    allTopics.map((topic) => (
+                        <TechCard
+                            id={topic.id}
+                            title={topic.data.title}
+                            description={topic.data.description}
+                            icon={topic.data.icon}
+                            category={topic.data.category || __("All")}
+                            lang={locale}
+                        />
+                    ))
+                }
+            </div>
+
+            <div id="no-results" class="hidden text-center py-20 w-full bg-base-200/20 rounded-3xl border border-dashed border-base-content/10 mt-8">
+                <p class="text-2xl font-bold opacity-30">
+                    {__("No technologies found.")}
+                </p>
+                <p class="text-sm opacity-50 mt-2">
+                    {__("Try adjusting your search or filters.")}
+                </p>
+            </div>
+
+            <!-- Knowledge Graph Section -->
+            <div class="mt-32">
+                 <SectionHeader 
+                    label={__("Interactive Knowledge Graph")}
+                    title={__("Interactive")}
+                    highlightedTitle={__("Ecosystem")}
+                 />
+                 <GraphIsland lang={locale} />
+            </div>
+        </div>
+    </main>
+</Layout>

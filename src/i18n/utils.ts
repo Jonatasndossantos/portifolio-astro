@@ -1,3 +1,4 @@
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import { locales, defaultLocale } from './config';
 
 export const showDefaultLang = false;
@@ -10,7 +11,8 @@ export function getLangFromUrl(url: URL) {
 
 export function useTranslatedPath(lang: string) {
     return function translatePath(path: string, l: string = lang) {
-        return !showDefaultLang && l === defaultLocale ? path : `/${l}${path}`
+        const normalizedPath = path.startsWith('/') ? path.slice(1) : path;
+        return getRelativeLocaleUrl(l, normalizedPath);
     }
 }
 

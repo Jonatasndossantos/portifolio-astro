@@ -1,98 +1,265 @@
 {
   "about": {
-    "title": "About Developer",
-    "heading": "Engineering digital experiences with <span class=\"text-primary\">precision & passion.</span>"
+    "label": "Le Développeur",
+    "title": "Ingénierie",
+    "highlightedTitle": "Expériences Digitales",
+    "bio": "Je crée des expériences digitales immersives, comblant le fossé entre la logique robuste et le design fluide. Je livre des solutions complètes, de la base de données au pixel."
   },
   "skills": {
-    "title": "Technical Arsenal",
-    "desc": "Prioritized toolkit for %mode%. Items are dynamically reordered based on the active dimension.",
-    "core": "Core",
-    "power": "Power"
+    "label": "Technologies",
+    "title": "Arsenal",
+    "highlightedTitle": "Technique",
+    "desc": "Boîte à outils priorisée pour %mode%. Les éléments sont réordonnés dynamiquement selon la dimension active.",
+    "core": "Principal",
+    "power": "Pouvoir"
   },
   "projects": {
-    "title": "Selected Works",
-    "heading": "Featured Projects",
-    "viewProject": "View Project",
+    "label": "Portfolio",
+    "title": "Projets",
+    "highlightedTitle": "Vedettes",
+    "viewProject": "Voir le Projet",
     "code": "Code",
-    "caseStudy": "Étude de Cas"
+    "caseStudy": "Étude de Cas",
+    "items": {
+      "gov-docs-ai": {
+        "id": "7",
+        "title": "IA de Docs Publics",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "React.js",
+          "Laravel",
+          "OpenAI",
+          "GCP"
+        ],
+        "description": {
+          "fullstack": "Moteur d'IA autonome forçant une ingénierie stricte via JSON Schemas, éradiquant les hallucinations textuelles dans la génération contractuelle légale.",
+          "frontend": "Interface Web moderne et responsive construite avec React et Inertia.js.",
+          "backend": "Backend Laravel robuste gérant les files d'attente et l'intégration OpenAI.",
+          "devops": "Surveillance avec Laravel Telescope et déploiement automatisé sur GCP.",
+          "database": "Gestion sécurisée des données institutionnelles et des documents générés.",
+          "ai": "Intégration avancée avec GPT-4 pour la génération contextuelle de documents légaux."
+        }
+      },
+      "vitanexus": {
+        "id": "8",
+        "title": "VitaNexus",
+        "slug": "vitanexus",
+        "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
+        "technologies": [
+          "Laravel 10",
+          "PHP 8"
+        ],
+        "description": {
+          "fullstack": "Application complète de suivi de santé utilisant Laravel et Bootstrap.",
+          "frontend": "Interface responsive conçue avec Bootstrap 5 pour la saisie de données vitales.",
+          "backend": "Architecture Laravel sécurisée gérant des calculs de santé complexes.",
+          "devops": "Stratégie de déploiement léger utilisant SQLite.",
+          "database": "Schéma SQLite efficace pour stocker les données historiques de santé.",
+          "ai": "Calcul algorithmique des besoins caloriques basé sur le profil utilisateur."
+        }
+      },
+      "jynsge-news": {
+        "id": "9",
+        "title": "Nouvelles JYNSGE",
+        "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "technologies": [
+          "Laravel",
+          "Tailwind",
+          "Azure"
+        ],
+        "description": {
+          "fullstack": "Portail d'informations Full-Stack hyper performant, offrant une compatibilité Server-Side Rendering pour le meilleur référencement en temps réel garanti.",
+          "frontend": "Interface moderne utilisant des modèles Blade et Tailwind CSS.",
+          "backend": "Architecture MVC robuste connectant des APIs RSS externes.",
+          "devops": "Déployé sur Azure App Service avec des pipelines de tests automatisés.",
+          "database": "Schéma MySQL relationnel pour gérer les actualités et profils utilisateurs.",
+          "ai": "Curation algorithmique du flux et intégration potentielle pour la vérification des faits."
+        }
+      },
+      "zk-business-support": {
+        "id": "10",
+        "title": "ZK Business Support",
+        "slug": "zk-business-support",
+        "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800",
+        "technologies": [
+          "WordPress",
+          "SEO"
+        ],
+        "description": {
+          "fullstack": "Solution WordPress personnalisée pour la haute performance et l'optimisation SEO locale.",
+          "frontend": "Identité visuelle unique avec CSS personnalisé et design responsive.",
+          "backend": "Architecture CMS personnalisée pour gérer les portefeuilles de services.",
+          "devops": "Couches de cache agressives pour atteindre les meilleurs scores PageSpeed.",
+          "database": "Requêtes optimisées pour les types de posts personnalisés.",
+          "ai": "Outils SEO pilotés par l'IA pour l'analyse des mots-clés."
+        }
+      },
+      "espresso-d-amore": {
+        "id": "11",
+        "title": "Cafétéria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800",
+        "technologies": [
+          "Laravel 12",
+          "Expo",
+          "Supabase"
+        ],
+        "description": {
+          "fullstack": "Vitrine numérique End-to-End dotée d'une ergonomie hautement responsive pour gérer et propulser efficacement la livraison opérationnelle locale.",
+          "frontend": "Dashboard administratif avec React/Inertia et expérience mobile Expo.",
+          "backend": "Backend hybride avec Laravel 12 et Supabase pour les données en temps réel.",
+          "devops": "Pipelines de build modernes pour les web apps et APK mobiles.",
+          "database": "Stratégie de base de données scindée : MySQL pour l'ERP et Supabase pour les clients.",
+          "ai": "Intégration OpenAI pour prédire les ruptures de stock et générer des commandes."
+        }
+      },
+      "la-pool-club": {
+        "id": "12",
+        "title": "LA Pool Club",
+        "slug": "la-pool-club",
+        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800",
+        "technologies": [
+          "WordPress",
+          "Performance"
+        ],
+        "description": {
+          "fullstack": "Solution WordPress complète pour un club de billard premium axée sur l'UI/UX.",
+          "frontend": "Interface revitalisée avec du CSS personnalisé pour une expérience attrayante.",
+          "backend": "Noyau WordPress optimisé avec récupération des données et stabilité.",
+          "devops": "Ajustements de performance et stabilisation du design pour un chargement rapide.",
+          "database": "Données de réservation structurées pour assurer le fonctionnement continu.",
+          "ai": "Intelligence de conception pour élever le parcours utilisateur vers les conversions."
+        }
+      },
+      "brighton-cakes": {
+        "id": "13",
+        "title": "Brighton Cakes",
+        "slug": "brighton-cakes",
+        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800",
+        "technologies": [
+          "WordPress",
+          "PHP",
+          "SEO"
+        ],
+        "description": {
+          "fullstack": "Site WordPress personnalisé avec thème sur mesure et optimisation des performances.",
+          "frontend": "Frontend responsive et visuellement attrayant utilisant des thèmes WordPress.",
+          "backend": "Backend configuré pour la gestion sécurisée du contenu.",
+          "devops": "Stratégies de cache pour une livraison fiable d'actifs de haute qualité.",
+          "database": "Base de données optimisée pour des requêtes rapides de posts personnalisés.",
+          "ai": "Structuration du contenu générée par l'IA pour améliorer l'engagement."
+        }
+      },
+      "plataforma-lumen": {
+        "description": {
+          "fullstack": "SaaS Enterprise B2G ultra-performant propulsé par Laravel Octane, gérant des workflows publics complexes avec un état in-memory et une latence nulle."
+        },
+        "title": "Plateforme Lumen"
+      },
+      "rag-legal-chatbot": {
+        "description": {
+          "fullstack": "Assistant virtuel avancé utilisant l'IA et RAG natif pour analyser des contextes juridiques et des fichiers internes en temps réel via Vector Search."
+        },
+        "title": "Chatbot Légal RAG"
+      },
+      "doc-automation-saas": {
+        "description": {
+          "fullstack": "Architecture automatisée qui accélère drastiquement la création de rapports gouvernementaux grâce à des travailleurs de file d'attente asynchrones."
+        },
+        "title": "Automatisation de Docs"
+      },
+      "gov-lumen-rescue": {
+        "description": {
+          "fullstack": "Refonte d'un système gouvernemental en crise, stoppant les conditions de concurrence et apportant la réactivité asynchrone à un monolithe obsolète."
+        },
+        "title": "Sauvetage GovTech"
+      },
+      "alura-plus": {
+        "description": {
+          "fullstack": "Intégration HTML/CSS parfaite du pixel mettant en œuvre des grilles CSS modernes pour s'adapter à une large gamme écologique de tailles d'écrans."
+        },
+        "title": "Alura Plus"
+      },
+      "adventure-text-game": {
+        "description": {
+          "fullstack": "Moteur narratif interactif en JS Vanilla qui modifie les états du DOM à la volée, en répondant aux embranchements d'une arborescence de choix."
+        },
+        "title": "Un Jeu d'Aventure"
+      }
+    }
   },
   "services": {
-    "title": "Core Services",
+    "label": "Expertise",
+    "title": "Services d'",
+    "highlightedTitle": "Ingénierie",
+    "desc": "Solutions d'architecture scalables et audits de performance.",
     "items": [
       {
-        "title": "Architecture Design",
-        "desc": "Building scalable blueprints for complex systems."
+        "title": "Design d'Architecture",
+        "desc": "Plans scalables pour systèmes complexes."
       },
       {
-        "title": "Performance Tuning",
-        "desc": "Optimizing render cycles and database queries."
+        "title": "Optimisation Performance",
+        "desc": "Optimisation des cycles et requêtes."
       },
       {
-        "title": "Security Audits",
-        "desc": "Fortifying applications against modern threats."
+        "title": "Audits Sécurité",
+        "desc": "Renforcement contre les menaces modernes."
       },
       {
-        "title": "Automation",
-        "desc": "CI/CD pipelines that deploy while you sleep."
+        "title": "Automatisation",
+        "desc": "Pipelines CI/CD pour des déploiements sans faille."
       }
     ]
   },
   "contact": {
-    "title": "Get In Touch",
-    "heading": "Let's build the future.",
-    "desc": "Open for collaborations, freelance projects, or just a chat about the next big thing in tech.",
+    "title": "Contact",
+    "heading": "Construisons l'avenir.",
+    "desc": "Ouvert aux collaborations, projets freelance ou discussions tech.",
     "email": "Email",
-    "messageSent": "Message Sent!",
-    "sendAnother": "Send Another",
-    "nameLabel": "Name",
+    "messageSent": "Message Envoyé!",
+    "sendAnother": "Envoyer un Autre",
+    "nameLabel": "Nom",
     "emailLabel": "Email",
     "messageLabel": "Message",
-    "sendMessage": "Send Message",
-    "sending": "Sending...",
-    "somethingWrong": "Something went wrong. Please try again later."
+    "sendMessage": "Envoyer Message",
+    "sending": "Envoi...",
+    "somethingWrong": "Une erreur est survenue. Réessayez plus tard."
   },
   "footer": {
-    "copyright": "Multiverse Portfolio",
+    "copyright": "Jônatas Nascimento dos Santos",
     "links": {
-      "home": "HOME",
-      "about": "ABOUT",
-      "work": "WORK",
+      "home": "ACCUEIL",
+      "about": "À PROPOS",
+      "work": "TRAVAIL",
       "contact": "CONTACT"
     }
   },
-  "ecosystem": {
-    "title": "Écosystème Tech",
-    "desc": "Le système nerveux centralisé des outils, langages et frameworks que je maîtrise et utilise activement dans mes projets.",
-    "search": "Rechercher des technologies...",
-    "noResults": "Aucune technologie trouvée.",
-    "tryAdjusting": "Essayez d'ajuster votre recherche ou vos filtres.",
-    "badgeFramework": "Framework",
-    "badgeLanguage": "Langage",
-    "badgeCloud": "Cloud",
-    "badgeData": "Données",
-    "badgeAi": "IA",
-    "badgeTool": "Outil"
+  "blog": {
+    "title": "Blog Technique",
+    "desc": "Réflexions sur l'ingénierie logicielle et l'architecture."
+  },
+  "knowledge": {
+    "title": "Connaissance",
+    "desc": "Exploration des technologies.",
+    "search": "Chercher...",
+    "all": "Tous",
+    "filterBy": "Filtrer par"
   },
   "graph": {
-    "title": "Graphe de Connaissances Interactif",
-    "desc": "Voici tout mon réseau de Second Cerveau tracé. Vous voyez les nœuds .mdx réels et leurs relations sémantiques (sujets, tags, services). Essayez de zoomer et de faire glisser les nœuds !",
-    "knowledgeTitle": "Graphe de Connaissances",
-    "noConnections": "Aucune connexion mappée pour %name% pour le moment dans le Second Cerveau."
+    "title": "Graphe Interactif",
+    "desc": "Réseau Second Brain."
   },
   "taxonomy": {
-    "relatedProjects": "Projets utilisant",
-    "relatedArticles": "Articles traitant de",
-    "relatedServices": "Services Connexes",
-    "projectsUsingService": "Projets utilisant ce Service",
-    "projectsMappedTo": "Projets mappés à",
-    "secondBrainNotes": "Notes du Second Cerveau",
-    "contextDeepDives": "📚 Contexte et Approfondissements Techniques",
-    "readMoreTech": "Lire plus sur les décisions techniques derrière ce projet :",
-    "needSimilarResults": "🤝 Besoin de résultats similaires ?",
-    "specializedServices": "Je propose des services spécialisés pour vous aider à construire des solutions comme celle-ci.",
-    "backToPortfolio": "← Retour au Portefeuille",
-    "backToEcosystem": "← Retour à l'Écosystème",
-    "backToServices": "← Retour aux Services",
+    "backToPortfolio": "← Retour",
     "startingAt": "À partir de"
+  },
+  "ui": {
+    "View All": "Tout Voir",
+    "exploreKnowledge": "Explorer Tech",
+    "Interactive": "Interactif",
+    "Knowledge Graph": "Graphe de Connaissance"
   }
 }

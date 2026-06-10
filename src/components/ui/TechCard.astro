@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { useTranslatedPath } from "@i18n";
+import { useTranslatedPath, useTranslator } from "@i18n";
 import { getSafeIcon } from "../../utils/icon-helper";
 import { marked } from "marked";
 
@@ -32,6 +32,7 @@ const styles = CATEGORY_STYLES[category?.toLowerCase()] || {
 };
 
 const iconName = getSafeIcon({ icon, id, title, category });
+const __ = await useTranslator(lang);
 
 // Handle "boring" default description from Obsidian/Content Collections
 const isGenericDescription =
@@ -39,8 +40,10 @@ const isGenericDescription =
     !description;
 
 const finalDescription = isGenericDescription
-    ? `Explore how **${title}** is integrated into my ecosystem as a key ${category}.`
-    : description;
+    ? __("Explore how **%title%** is integrated into my knowledge base as a key %category%.")
+        .replace("%title%", __(title))
+        .replace("%category%", __(category))
+    : __(description);
 
 // Parse markdown for the description (to support links, bold, etc.)
 const descriptionHtml = marked.parseInline(finalDescription);
@@ -48,10 +51,10 @@ const descriptionHtml = marked.parseInline(finalDescription);
 
 <a
     href={translatePath(`/tags/${id}`)}
-    class="ecosystem-card relative p-5 rounded-box border bg-base-200/30 backdrop-blur-sm transition-all duration-300 group hover:border-primary/50 hover:bg-base-200/80 border-base-content/10 flex flex-col h-full"
-    data-category={category}
-    data-title={title.toLowerCase()}
-    aria-label={`View details for ${title}`}
+    class="knowledge-card relative p-5 rounded-box border bg-base-200/30 backdrop-blur-sm transition-all duration-300 group hover:border-primary/50 hover:bg-base-200/80 border-base-content/10 flex flex-col h-full"
+    data-category={__(category)}
+    data-title={__(title).toLowerCase()}
+    aria-label={`${__("View details for")} ${__(title)}`}
 >
     <div class="flex justify-between items-start mb-4">
         <div class="w-8 h-8 flex items-center justify-center">
@@ -63,6 +66,7 @@ const descriptionHtml = marked.parseInline(finalDescription);
                     styles.text,
                     "opacity-70 group-hover:opacity-100",
                 ]}
+                aria-hidden="true"
             />
         </div>
         <span
@@ -71,7 +75,7 @@ const descriptionHtml = marked.parseInline(finalDescription);
                 styles.badge,
             ]}
         >
-            {category}
+            {__(category)}
         </span>
     </div>
 

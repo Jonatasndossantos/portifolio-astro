@@ -1,0 +1,36 @@
+---
+import { getTranslations, useTranslator, useTranslatedPath } from "@i18n";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import GraphIsland from "@components/GraphIsland.astro";
+
+interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+const __ = await useTranslator(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<section id="ecosystem" class="py-32 px-6 lg:px-20 relative bg-base-100 z-10 overflow-hidden">
+    <!-- Decorative Blob (Optional matching Contact style) -->
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-[calc(var(--radius-box)*2)] pointer-events-none"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10 w-full">
+        <SectionHeader 
+            label={__("Connection of Knowledge")}
+            title={__("Interactive")}
+            highlightedTitle={__("Ecosystem")}
+            description={__("This graph is clickable and navigable. Explore the nodes to discover connections.")}
+            viewAllLink={translatePath("/tags")}
+            viewAllLabel={__("Explore Knowledge")}
+        />
+
+        <div class="w-full">
+            <GraphIsland lang={lang} />
+        </div>
+    </div>
+</section>

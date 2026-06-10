@@ -1,0 +1,159 @@
+---
+interface Props {
+    searchPlaceholder: string;
+    categories?: string[];
+    allLabel: string;
+    filterByLabel: string;
+    gridId: string; // The ID of the grid container to filter
+    cardClass: string; // The class of the cards to filter
+}
+
+const { 
+    searchPlaceholder, 
+    categories = [], 
+    allLabel, 
+    filterByLabel,
+    gridId,
+    cardClass
+} = Astro.props;
+---
+
+<div
+    class="flex flex-col md:flex-row gap-6 mb-12 w-full justify-between items-center bg-base-200/40 p-6 rounded-3xl backdrop-blur-md border border-base-content/5 shadow-inner"
+    id="filter-controls"
+    data-grid-id={gridId}
+    data-card-class={cardClass}
+>
+    <!-- Search Bar -->
+    <div class="relative w-full md:w-[450px] group">
+        <div class="absolute inset-y-0 left-5 flex items-center pointer-events-none opacity-40 group-focus-within:opacity-100 transition-opacity">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+            </svg>
+        </div>
+        <input
+            type="text"
+            id="search-input"
+            placeholder={searchPlaceholder}
+            class="input input-lg input-bordered w-full pl-14 pr-6 bg-base-100/50 focus:bg-base-100 border-base-content/10 focus:border-primary transition-all rounded-2xl text-base shadow-sm font-medium"
+            aria-label={searchPlaceholder}
+        />
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter">
+            Search
+        </div>
+    </div>
+
+    <!-- Category Filters -->
+    {categories.length > 0 && (
+        <div class="flex gap-2 flex-wrap justify-end">
+            <button
+                class="btn btn-sm px-6 rounded-xl btn-active filter-btn border-none shadow-sm"
+                data-category="all"
+                aria-label={allLabel}
+            >
+                {allLabel}
+            </button>
+            {
+                categories.map((cat) => (
+                    <button
+                        class="btn btn-sm px-5 rounded-xl filter-btn border-none bg-base-100/50 hover:bg-base-100 shadow-sm uppercase text-[10px] font-bold tracking-widest transition-all"
+                        data-category={cat}
+                        aria-label={`${filterByLabel} ${cat}`}
+                    >
+                        {cat}
+                    </button>
+                ))
+            }
+        </div>
+    )}
+</div>
+
+<script>
+    function setupFilters() {
+        const controls = document.getElementById("filter-controls");
+        if (!controls) return;
+
+        const gridId = controls.dataset.gridId;
+        const cardClass = controls.dataset.cardClass;
+        const searchInput = document.getElementById("search-input") as HTMLInputElement;
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const grid = gridId ? document.getElementById(gridId) : null;
+        const cards = cardClass ? document.querySelectorAll(`.${cardClass}`) : [];
+        const noResults = document.getElementById("no-results");
+
+        if (!searchInput || !grid || !cards.length) return;
+
+        let currentSearch = "";
+        let currentCategory = "all";
+
+        const applyFilters = () => {
+            let visibleCount = 0;
+
+            cards.forEach((c) => {
+                const card = c as HTMLElement;
+                const searchableText = card.dataset.searchable?.toLowerCase() || 
+                    card.dataset.title?.toLowerCase() || 
+                    card.innerText.toLowerCase();
+                    
+                const matchesSearch = searchableText.includes(currentSearch);
+                const matchesCategory =
+                    currentCategory === "all" ||
+                    card.dataset.category === currentCategory;
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = ""; 
+                    setTimeout(() => {
+                        card.style.opacity = "1";
+                        card.style.transform = "scale(1)";
+                    }, 50);
+                    visibleCount++;
+                } else {
+                    card.style.opacity = "0";
+                    card.style.transform = "scale(0.95)";
+                    setTimeout(() => {
+                        if (card.style.opacity === "0")
+                            card.style.display = "none";
+                    }, 250);
+                }
+            });
+
+            if (noResults) {
+                noResults.classList.toggle("hidden", visibleCount > 0);
+            }
+        };
+
+        searchInput.addEventListener("input", (e) => {
+            currentSearch = (e.target as HTMLInputElement).value.toLowerCase();
+            applyFilters();
+        });
+
+        filterBtns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                filterBtns.forEach((b) =>
+                    b.classList.remove("btn-active", "btn-primary")
+                );
+                const target = e.currentTarget as HTMLElement;
+                target.classList.add("btn-active");
+                if (target.dataset.category !== "all")
+                    target.classList.add("btn-primary");
+
+                currentCategory = target.dataset.category || "all";
+                applyFilters();
+            });
+        });
+    }
+
+    document.addEventListener("astro:page-load", setupFilters);
+    setupFilters();
+</script>

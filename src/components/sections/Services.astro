@@ -1,40 +1,61 @@
 ---
-import { getTranslations } from "@i18n";
-import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+import { getTranslations, useTranslatedPath, useTranslator } from "@i18n";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import ServiceCard from "@components/ui/ServiceCard.astro";
 
 interface Props {
     lang: string;
 }
 
 const { lang } = Astro.props;
-const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
+const translatePath = useTranslatedPath(lang);
+const __ = await useTranslator(lang);
 
-// Map indices to strictly match the translation JSON order to their respective static icons.
-const iconMap = ["lucide:globe", "lucide:cpu", "lucide:shield", "lucide:terminal"];
+// Fetch dynamic services collection
+const services = await getCollection("services");
+
+// Static icons for services (matching by index or id)
+const iconMap: Record<string, string> = {
+    "saas-architecture": "lucide:layout",
+    "ai-engineering": "lucide:message-square",
+    "legacy-rescue": "lucide:refresh-cw",
+    "devops-strategy": "lucide:terminal",
+};
 ---
 
-<section id="services" class="py-20 relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <h2
-            class="text-3xl font-bold text-base-content mb-12 border-l-4 border-primary pl-4"
-        >
-            {t.services.title}
-        </h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<section id="services" class="py-32 px-6 lg:px-20 relative bg-base-100">
+    <div class="max-w-7xl mx-auto">
+        <SectionHeader
+            label={__("Expertise")}
+            title={__("My")}
+            highlightedTitle={__("Services")}
+            description={__(
+                "Specialized consulting and architecture design for complex systems.",
+            )}
+            viewAllLink={translatePath("/services")}
+            viewAllLabel={__("All Services")}
+        />
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {
-                t.services.items.map((service: any, index: number) => {
-                    const iconName = iconMap[index] || "lucide:terminal";
+                services.slice(0, 4).map((service) => {
+                    const cleanId = service.id.replace(/\.mdx?$/, "");
+                    const iconName = iconMap[cleanId] || "lucide:terminal";
                     return (
-                        <div class="p-6 bg-base-100 border border-base-content/10 rounded-xl hover:shadow-xl hover:border-primary/30 transition-all hover:-translate-y-1 group">
-                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-                                <Icon name={iconName} class="w-6 h-6 text-primary group-hover:text-primary-content transition-colors" />
-                            </div>
-                            <h3 class="text-xl font-bold text-base-content mb-2">
-                                {service.title}
-                            </h3>
-                            <p class="text-base-content/60 text-sm">
-                                {service.desc}
-                            </p>
+                        <div
+                            class="service-card-filter h-full"
+                            data-title={(service.data as any).title}
+                        >
+                            <ServiceCard
+                                id={cleanId}
+                                title={__((service.data as any).title)}
+                                description={__(
+                                    (service.data as any).description || "",
+                                )}
+                                icon={iconName}
+                                lang={lang}
+                            />
                         </div>
                     );
                 })

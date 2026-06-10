@@ -1,0 +1,61 @@
+---
+import { render } from "astro:content";
+import { useTranslator, useTranslatedPath } from "@i18n";
+import Layout from "@layouts/Layout.astro";
+
+const { post, isFallback, lang: locale } = Astro.props;
+
+if (!post) {
+    return Astro.redirect(`/${locale}/404`);
+}
+
+const { Content } = await render(post);
+const __ = await useTranslator(locale);
+const translatePath = useTranslatedPath(locale);
+---
+
+<Layout
+    title={`${post.data.title} | ${__("Blog")}`}
+    description={`${__("Blog post:")} ${post.data.title}`}
+    lang={locale}
+>
+    <main class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative">
+        <div class="max-w-3xl mx-auto z-10 relative">
+            <a
+                href={translatePath("/blog")}
+                class="btn btn-ghost btn-sm mb-8 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
+            >
+                &larr; {__("Back to Blog")}
+            </a>
+
+            {isFallback && (
+                <div role="alert" class="alert alert-warning mb-8 bg-warning/20 border-warning text-warning-content rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                    <span>{__("Untranslated Warning")}</span>
+                </div>
+            )}
+
+            <header class="mb-12 border-b border-base-content/10 pb-8">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="badge badge-primary badge-outline uppercase tracking-wider text-xs">
+                        {__("Article")}
+                    </span>
+                    <time class="text-sm opacity-60 font-mono">
+                        {new Date(post.data.date).toLocaleDateString(locale, {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        })}
+                    </time>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold font-syncopate leading-tight">
+                    {post.data.title}
+                </h1>
+            </header>
+
+            <article class="prose prose-lg prose-invert max-w-none prose-p:text-base-content/80 prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary-focus">
+                <Content />
+            </article>
+        </div>
+    </main>
+</Layout>

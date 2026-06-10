@@ -1,0 +1,79 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+// i18n functions load below
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import SearchFilters from "@components/ui/SearchFilters.astro";
+import BlogCard from "@components/ui/BlogCard.astro";
+import GraphIsland from "@components/GraphIsland.astro";
+
+import { useTranslator, useTranslatedPath } from "@i18n";
+
+const { lang: locale } = Astro.props;
+const __ = await useTranslator(locale);
+const translatePath = useTranslatedPath(locale);
+
+const allPosts = await getCollection("blog");
+
+// Sort posts by date descending
+allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<Layout
+    title={__("Logbook")}
+    description={__("Thoughts, experiments, and technical deep-dives.")}
+    lang={locale}
+>
+    <main class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative">
+        <div class="max-w-7xl mx-auto">
+            <SectionHeader 
+                label={__("Logbook")}
+                title={__("My")}
+                highlightedTitle={__("Blog")}
+                description={__("Thoughts, experiments, and technical deep-dives.")}
+                viewAllLink={translatePath("/ecosystem")}
+                viewAllLabel={__("Explore Knowledge")}
+            />
+
+            <SearchFilters 
+                searchPlaceholder={__("Search blogs...")}
+                allLabel={__("All")}
+                filterByLabel={__("Filter by")}
+                gridId="blog-grid"
+                cardClass="blog-card-filter"
+            />
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
+                {
+                    allPosts.map((post) => (
+                        <div class="blog-card-filter h-full" data-title={post.data.title}>
+                            <BlogCard 
+                                post={post}
+                                lang={locale}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div id="no-results" class="hidden text-center py-20 w-full bg-base-200/20 rounded-3xl border border-dashed border-base-content/10 mt-8">
+                <p class="text-2xl font-bold opacity-30">
+                    {__("No blogs found.")}
+                </p>
+                <p class="text-sm opacity-50 mt-2">
+                    {__("Try adjusting your search or filters.")}
+                </p>
+            </div>
+
+            <!-- Knowledge Graph Section -->
+            <div class="mt-32">
+                 <SectionHeader 
+                    label={__("Interactive Knowledge Graph")}
+                    title={__("Interactive")}
+                    highlightedTitle={__("Ecosystem")}
+                 />
+                 <GraphIsland lang={locale} />
+            </div>
+        </div>
+    </main>
+</Layout>

@@ -1,196 +1,216 @@
 {
   "about": {
-    "title": "About Developer",
-    "heading": "Engineering digital experiences with <span class=\"text-primary\">precision & passion.</span>",
-    "bio": "I create immersive digital experiences, bridging the gap between robust logic and fluid design. I deliver complete solutions from database to pixel."
+    "label": "The Developer",
+    "title": "Engineering",
+    "highlightedTitle": "Digital Experiences",
+    "intro1": "I am Jônatas Nascimento, 19 years old from Extrema - MG, fully focused on global operations and challenges.",
+    "intro2": "I don't just write code; I build resilient applications. I navigate naturally from root infrastructure (operating Linux/Docker environments via SSH) to Research & Development (R&D), creating advanced AI integrations with Function Calling and Chatbots. I work as a Mid-Level Full-Stack Developer, but the complexity of my deliverables and the architectures I lead reflect Senior-level expertise.",
+    "stackTitle": "My Core Stack",
+    "stackText": "The core of my engineering is <strong>PHP</strong> with the modern <strong>Laravel</strong> ecosystem. Although I master <strong>React</strong> on the front-end for interactive interfaces, I have a strong technical preference for using <strong>Blade</strong> or <strong>Livewire</strong>. An architectural decision to ensure absolute cohesion, extreme delivery speed, and optimized performance.",
+    "timelineTitle": "The Journey",
+    "timelineSubtitle": "Great architectures aren't built overnight; they are forged under pressure. This is my background's evolution:",
+    "timeline": [
+      {
+        "date": "Feb 2023 - Jun 2024",
+        "title": "The Forging (McDonald's)",
+        "desc": "Where I learned relentless execution under pressure, strict SLAs, and pure resilience. The unofficial SRE training."
+      },
+      {
+        "date": "Apr 2024 - Jul 2025",
+        "title": "The Base (SENAC)",
+        "desc": "Technical course focusing on web systems fundamentals and full-stack architecture."
+      },
+      {
+        "date": "Jun 2024 - Present",
+        "title": "End-to-End Architect (Freelancer)",
+        "desc": "Architect and Engineer responsible for platforms like Cafeteria Damore and JYNSGE News, orchestrating infrastructure and complex integrations."
+      },
+      {
+        "date": "Mar 2025 - Nov 2025",
+        "title": "Tech Lead & Architect (LUMEN Consultoria)",
+        "desc": "Built the Lumen Platform (B2G SaaS) from scratch. Implemented Laravel Octane, autonomous AI R&D, and resolved complex legacy Race Conditions."
+      },
+      {
+        "date": "May 2025 - Present",
+        "title": "The Anchor (UNIVESP)",
+        "desc": "Bachelor's Degree in Computer Engineering, diving into deep layers and low-level architectures."
+      }
+    ]
   },
   "skills": {
-    "title": "Technical Arsenal",
+    "label": "Technologies",
+    "title": "Technical",
+    "highlightedTitle": "Arsenal",
     "desc": "Prioritized toolkit for %mode%. Items are dynamically reordered based on the active dimension.",
     "core": "Core",
     "power": "Power"
   },
   "projects": {
-    "title": "Selected Works",
-    "heading": "Featured Projects",
+    "label": "Portfolio",
+    "title": "Featured",
+    "highlightedTitle": "Projects",
     "viewProject": "View Project",
     "code": "Code",
     "caseStudy": "Case Study",
     "items": {
-      "gov-docs-ai": {
-        "id": "7",
-        "title": "Public Docs AI",
-        "slug": "gov-docs-ai",
+      "plataforma-lumen": {
+        "id": "1",
+        "title": "Lumen Platform",
+        "slug": "plataforma-lumen",
         "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
         "technologies": [
-          "React.js",
-          "Laravel",
-          "OpenAI",
-          "GCP"
-        ],
-        "description": {
-          "fullstack": "Complete automation system for public document generation (Law 14.133/2021) using AI (GPT-4) and Laravel.",
-          "frontend": "Modern, responsive Web Interface built with React and Inertia.js, focused on user experience for document management.",
-          "backend": "Robust Laravel backend managing processing queues, Word template generation, and OpenAI API integration.",
-          "devops": "Monitoring with Laravel Telescope and automated deployment on Google Cloud Platform.",
-          "database": "Secure management of institutional data and generated documents, with access control and versioning.",
-          "ai": "Advanced integration with GPT-4 for contextual generation of 5 types of legal and technical documents."
-        }
-      },
-      "vitanexus": {
-        "id": "8",
-        "title": "VitaNexus",
-        "slug": "vitanexus",
-        "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
-        "technologies": [
-          "Laravel 10",
-          "PHP 8",
-          "SQLite",
-          "Bootstrap 5"
-        ],
-        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
-        "description": {
-          "fullstack": "Comprehensive health monitoring application tracking metrics like BMI, hydration, and blood pressure using Laravel and Bootstrap.",
-          "frontend": "Responsive, accessible interface designed with Bootstrap 5 to ensure easy data entry for vital health stats across devices.",
-          "backend": "Secure Laravel architecture handling complex health calculations and user authentication with Laravel Breeze.",
-          "devops": "Lightweight deployment strategy using SQLite, optimized for easy installation and maintenance.",
-          "database": "Efficient SQLite schema designed to store historical health data and user habits with privacy in mind.",
-          "ai": "Algorithmic calculation of caloric needs and hydration targets based on individual user data profiles."
-        }
-      },
-      "jynsge-news": {
-        "id": "9",
-        "title": "JYNSGE News",
-        "slug": "jynsge-news",
-        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
-        "technologies": [
-          "Laravel",
-          "Tailwind",
-          "MySQL",
-          "Azure"
-        ],
-        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
-        "description": {
-          "fullstack": "Tech news portal combating disinformation with secure authentication (OAuth) and content moderation, built with Laravel and Tailwind.",
-          "frontend": "Modern, responsive interface using Blade templates and Tailwind CSS, optimized for readability and content discovery.",
-          "backend": "Robust MVC architecture connecting external RSS APIs and managing user roles/permissions via Laravel Breeze.",
-          "devops": "Deployed on Azure App Service with automated testing pipelines using PEST framework.",
-          "database": "Relational MySQL schema designed to efficiently handle categorized news, comments, and user profiles.",
-          "ai": "Algorithmic feed curation and potential integration for automated fact-checking and content verification."
-        }
-      },
-      "zk-business-support": {
-        "id": "10",
-        "title": "ZK Business Support",
-        "slug": "zk-business-support",
-        "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
-        "demoUrl": "https://o8u.64c.myftpupload.com/",
-        "technologies": [
-          "WordPress",
-          "Custom CSS",
-          "PHP",
-          "SEO"
-        ],
-        "description": {
-          "fullstack": "Custom WordPress solution tailored for high performance with advanced caching, local SEO optimization, and bespoke CSS styling.",
-          "frontend": "Developed a unique visual identity using custom CSS and high-fidelity responsive design to reflect the professional brand image.",
-          "backend": "Customized WordPress CMS architecture to efficiently manage service portfolios and client testimonials.",
-          "devops": "Implemented aggressive caching layers and asset optimization to achieve top-tier PageSpeed insights scores.",
-          "database": "Optimized database queries for custom post types, ensuring minimal latency for dynamic content rendering.",
-          "ai": "Leveraged AI-driven SEO tools for keyword analysis and content structuring to maximize local search visibility."
-        }
-      },
-      "espresso-d-amore": {
-        "id": "11",
-        "title": "Espresso D' Amore",
-        "slug": "espresso-d-amore",
-        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
-        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
-        "technologies": [
           "Laravel 12",
-          "Inertia.js",
-          "Expo",
-          "Supabase",
+          "Octane",
+          "FrankenPHP",
+          "Multi-Tenancy",
           "OpenAI"
         ],
         "description": {
-          "fullstack": "A dual-ecosystem consisting of a Laravel/Inertia ERP for management and an Expo/Supabase mobile app for orders and payments.",
-          "frontend": "Built two distinct interfaces: a data-rich administration dashboard with React/Inertia and a fluid mobile ordering experience using Expo.",
-          "backend": "Hybrid backend architecture utilizing Laravel 12 for core business logic and Supabase for real-time client data and authentication.",
-          "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
-          "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
-          "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
+          "fullstack": "High-performance Enterprise B2G SaaS powered by Laravel Octane, handling complex public procurement workflows with in-memory state and zero latency.",
+          "backend": "High-performance architecture with Laravel Octane and FrankenPHP, drastically reducing boot times for heavy requests.",
+          "frontend": "Dynamic content blocks with Alpine.js and granular JSON Schemas generated by AI.",
+          "ai": "Granular AI generation where legal document sections are independent, editable blocks with regeneration capability.",
+          "devops": "CI/CD pipeline with dedicated Queue Workers for AI processing, preventing timeouts via front-end polling."
         }
       },
-      "la-pool-club": {
-        "id": "12",
-        "title": "LA Pool Club",
-        "slug": "la-pool-club",
-        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
-        "demoUrl": "https://lapoolclub.co.uk/",
+      "rag-legal-chatbot": {
+        "id": "2",
+        "title": "RAG Legal Chatbot",
+        "slug": "rag-legal-chatbot",
+        "imageUrl": "https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=800",
         "technologies": [
-          "WordPress",
-          "UI/UX Design",
-          "CSS",
-          "Performance"
+          "Laravel 12",
+          "React 19",
+          "Inertia 2.0",
+          "OpenAI Assistants"
         ],
         "description": {
-          "fullstack": "Complete WordPress solution for a premium billiards club, focused on UI/UX improvements, CSS styling, and system layout recovery.",
-          "frontend": "Revamped the user interface with customized CSS, ensuring a responsive and visually appealing booking and membership experience.",
-          "backend": "Optimized the WordPress core, improved layout stability, and recovered lost data through advanced database restoration techniques.",
-          "devops": "Implemented performance adjustments and layout stabilizations for a smoother user experience and faster load times.",
-          "database": "Recovered and structured booking data and club information, ensuring continuous operation.",
-          "ai": "Leveraged design intelligence to elevate the overall layout and user journey for membership conversions."
+          "fullstack": "Advanced virtual assistant driven by AI and native RAG, capable of querying complex legal contexts and analyzing proprietary files via real-time Vector Search.",
+          "backend": "Migration to OpenAI Assistants API for native File Search and high-precision document indexing.",
+          "frontend": "Real-time UX with React 19 and Server-Sent Events (SSE) to eliminate loading states using the useStream hook.",
+          "ai": "Engineering custom Function Calling (Tools) allowing the LLM to query the SQL database in real-time.",
+          "devops": "Monetization and token-gating logic that tracks AI consumption and blocks requests when quotas are exhausted."
         }
       },
-      "brighton-cakes": {
-        "id": "13",
-        "title": "Brighton Cakes",
-        "slug": "brighton-cakes",
-        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
-        "demoUrl": "https://brightoncakes.co.uk",
+      "doc-automation-saas": {
+        "id": "3",
+        "title": "Doc Automation SaaS",
+        "slug": "doc-automation-saas",
+        "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800",
         "technologies": [
-          "WordPress",
-          "PHP",
-          "CSS",
-          "SEO"
+          "Laravel 11",
+          "React",
+          "OpenAI",
+          "CI/CD"
         ],
         "description": {
-          "fullstack": "Custom WordPress site for Makecakes, featuring a bespoke theme, performance optimization, and tailored user experience.",
-          "frontend": "Designed and developed a responsive, visually appealing frontend using custom CSS and WordPress themes.",
-          "backend": "Configured and optimized the WordPress backend for secure content management and fast loading times.",
-          "devops": "Implemented caching strategies and performance optimizations for reliable delivery of high-quality image assets.",
-          "database": "Optimized WordPress database for fast queries and efficient execution of custom post types.",
-          "ai": "Utilized AI-generated assets and content structuring for improved SEO and user engagement."
+          "fullstack": "Automated pipeline that reduced public document generation from months to minutes using asynchronous background queues and heavy processing workflows.",
+          "backend": "High-performance SPA backend with Laravel 11 and asynchronous queues handling heavy background loads.",
+          "frontend": "Responsive administrative dashboard with React (Inertia.js), user management, and metrics visualization.",
+          "ai": "Implementation of strict JSON Schemas to prevent 'hallucinations' in technical documents (ETP, DFD, Risk Matrices).",
+          "devops": "Full server configuration (Linux/Nginx) from scratch and automated CI/CD pipelines via GitHub Actions."
         }
+      },
+      "gov-lumen-rescue": {
+        "id": "4",
+        "title": "GovTech Rescue",
+        "slug": "gov-lumen-rescue",
+        "imageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800",
+        "technologies": [
+          "AngularJS",
+          "RxJS",
+          "Firebase",
+          "GovTech"
+        ],
+        "description": {
+          "fullstack": "Deep refactoring of a legacy government system, eliminating critical Race Conditions and stabilizing an obsolete state-machine architecture with RxJS.",
+          "backend": "Resolved complex Race Conditions in a Document Chat module using RxJS Observables and reactive patterns.",
+          "frontend": "Refactor of monolithic TypeScript files and fixing legacy browser responsive layout bugs.",
+          "ai": "Deep-dive technical audit (150+ hours) demonstrating stack financial unsustainability via ROI and TCO metrics.",
+          "devops": "Architecture design for transition to Single-Tenant Docker/Kubernetes with 2FA and law-required Audit Logs."
+        }
+      },
+      "alura-plus": {
+        "id": "5",
+        "title": "Alura Plus",
+        "slug": "alura-plus",
+        "imageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800",
+        "technologies": [
+          "HTML",
+          "CSS",
+          "Figma"
+        ],
+        "description": {
+          "fullstack": "Semantic structuring implementation with advanced responsive layouts, applying modern CSS Grid and Flexbox techniques for true-to-design fidelity.",
+          "frontend": "Practical implementation of Flexbox and Grid layouts optimized for cross-browser compatibility.",
+          "ai": "Automated deployment integrated with GitHub for instant public visualization of the project."
+        }
+      },
+      "adventure-text-game": {
+        "id": "6",
+        "title": "Adventure Text Game",
+        "slug": "adventure-text-game",
+        "imageUrl": "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800",
+        "technologies": [
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ],
+        "description": {
+          "fullstack": "Pure JS interactive narrative engine, mutating the DOM in real-time based on complex player decisions and branching story states dynamically.",
+          "backend": "Pure JS state management logic handling narrative branching and player choices.",
+          "frontend": "Minimalist, immersive interface with dynamic scene updates through DOM manipulation.",
+          "ai": "Branched storytelling allowing multiple player experiences based on decision-making profiles."
+        }
+      },
+      "gov-docs-ai": {
+        "description": {
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
+        },
+        "title": "Public Docs AI"
+      },
+      "espresso-d-amore": {
+        "description": {
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
+        },
+        "title": "Cafeteria Damore"
+      },
+      "jynsge-news": {
+        "description": {
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
+        },
+        "title": "JYNSGE News"
       }
     }
   },
   "services": {
-    "title": "Core Services",
+    "label": "Specialties",
+    "title": "Tailored",
+    "highlightedTitle": "Engineering",
+    "desc": "I help companies transition from isolated tools to scalable, intelligent SaaS ecosystems.",
     "items": [
       {
-        "title": "Architecture Design",
-        "desc": "Building scalable blueprints for complex systems."
+        "title": "SaaS Architecture",
+        "desc": "Designing complex Multi-Tenancy systems with data isolation and high performance."
       },
       {
-        "title": "Performance Tuning",
-        "desc": "Optimizing render cycles and database queries."
+        "title": "AI Engineering",
+        "desc": "Integrating RAG, Function Calling, and Streaming for corporate intelligent assistants."
       },
       {
-        "title": "Security Audits",
-        "desc": "Fortifying applications against modern threats."
+        "title": "Legacy Rescue",
+        "desc": "Audit, refactor, and stabilization of critical systems with high technical debt."
       },
       {
-        "title": "Automation",
-        "desc": "CI/CD pipelines that deploy while you sleep."
+        "title": "DevOps Strategy",
+        "desc": "Agile CI/CD, server provisioning, and asynchronous workers for global scale."
       }
     ]
   },
   "contact": {
-    "title": "Get In Touch",
-    "heading": "Let's build the future.",
-    "desc": "Open for collaborations, freelance projects, or just a chat about the next big thing in tech.",
+    "title": "Contact",
+    "heading": "Let's build the future together.",
+    "desc": "Available for partnerships, SaaS consulting, or just a technical chat.",
     "email": "Email",
     "messageSent": "Message Sent!",
     "sendAnother": "Send Another",
@@ -210,9 +230,13 @@
       "contact": "CONTACT"
     }
   },
-  "ecosystem": {
+  "blog": {
+    "title": "Technical Blog",
+    "desc": "Thoughts on software engineering, automation, and architecture."
+  },
+  "knowledge": {
     "title": "Tech Ecosystem",
-    "desc": "The centralized nervous system of tools, languages, and frameworks that I have mastered and actively use across my projects.",
+    "desc": "A curated exploration of technologies that form my technical arsenal and my Second Brain.",
     "search": "Search technologies...",
     "noResults": "No technologies found.",
     "tryAdjusting": "Try adjusting your search or filters.",
@@ -225,11 +249,15 @@
     "badgeAi": "AI",
     "badgeTool": "Tool"
   },
+  "topics": {
+    "title": "Study Topics",
+    "desc": "Knowledge domains I've been exploring deeply."
+  },
   "graph": {
     "title": "Interactive Knowledge Graph",
-    "desc": "This is my entire Second Brain network plotted out. You are seeing the actual .mdx nodes and their semantic relationships (topics, tags, services). Try zooming and dragging the nodes!",
+    "desc": "This is my entire Second Brain network plotted out. You are seeing the actual nodes and their relationships.",
     "knowledgeTitle": "Knowledge Graph",
-    "noConnections": "No connections mapped to %name% yet in the Second Brain."
+    "noConnections": "No connections mapped for %name% yet in the Second Brain."
   },
   "taxonomy": {
     "relatedProjects": "Projects using",
@@ -243,8 +271,19 @@
     "needSimilarResults": "🤝 Need similar results?",
     "specializedServices": "I offer specialized services to help you build solutions like this.",
     "backToPortfolio": "← Back to Portfolio",
-    "backToEcosystem": "← Back to Ecosystem",
+    "backToKnowledge": "← Back to Knowledge",
     "backToServices": "← Back to Services",
     "startingAt": "Starting At"
+  },
+  "ui": {
+    "View All": "View All",
+    "View All Projects": "View All Projects",
+    "exploreKnowledge": "Explore Tech",
+    "Interactive": "Interactive",
+    "Knowledge Graph": "Knowledge Graph",
+    "All Services": "All Services",
+    "All Projects": "All Projects",
+    "details": "details",
+    "Explore Service": "Explore Service"
   }
 }

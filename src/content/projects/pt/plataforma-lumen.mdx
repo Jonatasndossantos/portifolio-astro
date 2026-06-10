@@ -1,0 +1,37 @@
+---
+title: GovTech SaaS
+description: I architected Plataforma Lumen from the ground up, transitioning from a simple tool to a complex Multi-Tenant SaaS for public procurement management.
+heroImage: https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true
+relatedTopics:
+  - software-engineering
+  - artificial-intelligence
+tags:
+  - laravel
+  - openai
+  - redis
+  - alpine
+  - devops
+  - livewire
+  - performance
+relatedServices:
+  - cloud-architecture
+date: 2025-03-01
+relevance: 10
+role: Tech Lead & Architect
+company: LUMEN Consultoria
+---
+
+## O Ponto de Virada
+Meu projeto anterior resolvia geração de documentos para um único usuário, mas a LUMEN precisava de um ecossistema Enterprise: um SaaS Multi-Tenant para gerir prefeituras inteiras lidando com licitações massivas.
+
+## Engenharia & Alta Performance
+Desenvolver o núcleo da Plataforma Lumen me exigiu arquitetar algo que estivesse completamente fora dos padrões de 'framework padrão'. 
+**Otimização Extrema:** Implementei **Laravel Octane com FrankenPHP**. Quando você mantém o servidor Laravel residente na memória RAM do Linux ao invés de recarregá-lo a cada ciclo (stateless), nós zeramos o tempo de boot de requisições que processam arquivos legais gigabytes.
+
+## Geração Granular Guiada por IA
+A maioria dos geradores de hoje 'cospe' texto genérico de forma perigosa e suscetível à alucinação. Nós construímos diferente.
+A inteligência artificial nativa usa **OpenAI + JSON Schemas**, forçando o LLM a entregar blocos granulares perfeitamente parseáveis. Se ocorrer erro num parágrafo sobre a Lei 14.133, a Engine não perde o documento todo; ela gera de novo apenas a pequena entidade defeituosa.
+
+<div style="display: none;" aria-hidden="true">
+[[software-architecture]] [[laravel-octane]] [[b2g-saas]] [[openai-function-calling]]
+</div>

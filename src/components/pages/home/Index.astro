@@ -1,0 +1,58 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Hero from "@islands/Hero.astro";
+import About from "@components/sections/About.astro";
+import Timeline from "@components/sections/Timeline.astro";
+import Skills from "@components/sections/Skills.astro";
+import Projects from "@components/sections/Projects.astro";
+import Services from "@components/sections/Services.astro";
+import Contact from "@components/sections/Contact.astro";
+import Ecosystem from "@components/sections/Ecosystem.astro";
+import { Mode } from "../../../types";
+import { getTranslations, useTranslator, useTranslatedPath } from "@i18n";
+import type { CuratedProfile } from "../../../types";
+import { getCollection } from "astro:content";
+
+const { lang: locale } = Astro.props;
+const __ = await useTranslator(locale);
+const translatePath = useTranslatedPath(locale);
+const profile = (await getTranslations(locale, "profile")) as Record<
+    string,
+    unknown
+>;
+
+const bio = (profile.bio as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
+const role = (profile.role as Record<string, string>)?.[Mode.FULLSTACK] ?? "";
+
+const profileData: CuratedProfile = {
+    name: "Jônatas Nascimento dos Santos",
+    role: role,
+    bio: bio,
+    availableForHire: true,
+    socials: {
+        github: "https://github.com/jonatasndossantos",
+        linkedin: "https://linkedin.com/in/jonatasndossantos",
+        email: "jonatasndossantos@gmail.com",
+    },
+};
+---
+
+<Layout lang={locale}>
+    <main class="relative w-full overflow-hidden">
+        <Hero mode={Mode.FULLSTACK} lang={locale} />
+        <div class="relative z-10 bg-base-100">
+            <About profile={profileData} mode={Mode.FULLSTACK} lang={locale} />
+            <Skills mode={Mode.FULLSTACK} lang={locale} />
+
+            <Projects lang={locale} />
+
+            <Services lang={locale} />
+
+            <Timeline lang={locale} />
+            <Ecosystem lang={locale} />
+
+            <Contact profile={profileData} lang={locale} />
+            <slot />
+        </div>
+    </main>
+</Layout>

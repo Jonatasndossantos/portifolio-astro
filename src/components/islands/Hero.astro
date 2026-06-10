@@ -25,10 +25,17 @@ const __ = await useTranslator(lang);
     // --- CONSOLE CLEANUP ---
     // Filter out noisy THREE.js/Spline shader warnings (unroll optimizations)
     const originalWarn = console.warn;
-    const filterShaderWarning = (method: typeof originalWarn) => (...args: any[]) => {
-        if (args[0] && typeof args[0] === 'string' && args[0].includes('X3557')) return;
-        method.apply(console, args);
-    };
+    const filterShaderWarning =
+        (method: typeof originalWarn) =>
+        (...args: any[]) => {
+            if (
+                args[0] &&
+                typeof args[0] === "string" &&
+                args[0].includes("X3557")
+            )
+                return;
+            method.apply(console, args);
+        };
     console.warn = filterShaderWarning(originalWarn);
     // -----------------------
 
@@ -47,7 +54,10 @@ const __ = await useTranslator(lang);
                     try {
                         app.setBackgroundColor("transparent");
                     } catch (e) {
-                        console.warn("Spline Background Transparency Error:", e);
+                        console.warn(
+                            "Spline Background Transparency Error:",
+                            e,
+                        );
                     }
                 }
                 canvas.classList.remove("opacity-0");
@@ -61,8 +71,15 @@ const __ = await useTranslator(lang);
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         if (!isLoaded) {
-                            // Delay loading slightly so it doesn't block LCP
-                            setTimeout(initSpline, 500);
+                            // Delay drastically to prioritize LCP and main thread interactions
+                            if ("requestIdleCallback" in window) {
+                                (window as any).requestIdleCallback(
+                                    initSpline,
+                                    { timeout: 2000 },
+                                );
+                            } else {
+                                setTimeout(initSpline, 1500);
+                            }
                         } else if (app) {
                             try {
                                 if (typeof (app as any).play === "function")
@@ -87,45 +104,34 @@ const __ = await useTranslator(lang);
         );
 
         observer.observe(canvas);
-
     }
 </script>
 
 <section
     class="relative min-h-screen w-full flex flex-col justify-center px-6 lg:px-20 overflow-hidden pt-32 pb-20"
 >
-    <div class="absolute inset-0 z-0 hero-parallax">
+    <div class="absolute inset-0 hero-parallax">
         <Image
             id="spline-fallback"
             src={bgFallback}
             alt={__("Hero Background")}
-            class="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
             loading="eager"
             fetchpriority="high"
         />
         <canvas
             id="canvas3d"
-            class="absolute inset-0 w-full h-full border-0 z-10 transition-opacity duration-1000 opacity-0"
+            class="absolute inset-0 w-full h-full border-0 transition-opacity duration-1000 opacity-0"
         ></canvas>
-
-        <!-- Watermark Hider via Gradient -->
-        <div
-            class="absolute bottom-0 right-0 w-64 h-24 bg-linear-to-tl from-base-100 via-base-100/60 to-transparent z-10 pointer-events-none"
-        >
-        </div>
     </div>
 
     <div
-        class="absolute inset-0 bg-linear-to-t from-base-100 via-base-100/40 to-transparent z-0 pointer-events-none"
-    >
-    </div>
-    <div
-        class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"
+        class="absolute inset-0 bg-linear-to-t from-base-100 via-base-100/40 to-transparent pointer-events-none"
     >
     </div>
 
     <header
-        class="relative z-10 w-full max-w-4xl hero-parallax text-left flex flex-col justify-center"
+        class="z-10 relative w-full max-w-4xl hero-parallax text-left flex flex-col justify-center"
     >
         <div class="overflow-hidden">
             <h1
@@ -155,8 +161,6 @@ const __ = await useTranslator(lang);
                     class="text-rotate h-10 inline-block overflow-hidden align-bottom"
                 >
                     <span class="flex flex-col text-left">
-                        <span class="text-accent h-10">{profile.designers}</span
-                        >
                         <span class="text-secondary h-10"
                             >{profile.developers}</span
                         >
@@ -180,16 +184,18 @@ const __ = await useTranslator(lang);
     </header>
 
     <div
-        class="absolute bottom-10 right-10 hidden md:block animate-bounce z-10 pointer-events-none"
+        class="absolute bottom-10 right-10 hidden md:block animate-bounce pointer-events-none"
     >
         <div
-            class="text-xs font-mono opacity-50 rotate-90 origin-bottom-right tracking-widest"
+            class="text-xs z-10 font-mono opacity-50 rotate-90 origin-bottom-right tracking-widest"
         >
             {profile.scroll}
         </div>
     </div>
 
-
     <!-- Lower Transition Shadow Shadow -->
-    <div class="absolute bottom-0 left-0 w-full h-40 bg-linear-to-t from-base-100 to-transparent z-20 pointer-events-none"></div>
+    <div
+        class="absolute bottom-0 left-0 w-full h-96 bg-linear-to-t from-base-100 to-transparent pointer-events-none"
+    >
+    </div>
 </section>

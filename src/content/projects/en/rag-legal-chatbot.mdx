@@ -1,0 +1,32 @@
+---
+title: "AI Engineering: RAG Legal Chatbot"
+description: "Advanced assistant capable of 'reading' legal contexts and analyzing proprietary user files to democratize information access."
+heroImage: "https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=800"
+relatedTopics:
+  - "artificial-intelligence"
+  - "software-engineering"
+tags:
+  - "laravel"
+  - "react"
+  - "openai"
+  - "postgresql"
+relatedServices:
+  - "ai-engineering"
+date: 2024-11-01
+relevance: 8
+role: "AI Engineer"
+company: "LUMEN Consultoria"
+---
+
+## The Challenge
+Navigating complex public legislation (Law 14.133) is a huge barrier for citizens and state actors. My goal was to build an advanced MVP assistant capable of "reading" legal contexts and analyzing proprietary files to democratize access to absolute information.
+
+## RAG Engine & Real-Time UX
+The stack relies entirely on Laravel 12 API pushing streams down to a React 19 / Inertia frontend.
+- **RAG Native:** Migrated from simple pgvector queries to the OpenAI Assistants API. This leveraged native File Search to index decrees with extreme precision.
+- **Function Calling (Tools):** The bot doesn't just talk; it acts. I engineered custom PHP Tools allowing the LLM to query our PostgreSQL databases in real-time.
+- **Server-Sent Events (SSE):** Nobody likes spinning loaders. I implemented raw SSE using the bare hooks to yield an absolutely fluid scrolling and response experience, just like ChatGPT.
+
+<div style="display: none;" aria-hidden="true">
+[[vector-search]] [[rag-ai]] [[react-streaming]] [[server-sent-events]]
+</div>

@@ -1,143 +1,105 @@
 ---
-import { getTranslations, useTranslatedPath, useTranslator } from "@i18n";
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import Translate from "../Translate.astro";
+import { getCollection } from "astro:content";
+import { useTranslator, useTranslatedPath } from "@i18n";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import ProjectCard from "@components/ui/ProjectCard.astro";
 
 interface Props {
-    projects: {
-        id: string;
-        title: string;
-        imageUrl: string;
-        demoUrl?: string;
-        repoUrl?: string;
-        technologies: { id: string; name: string }[];
-        displayDescriptionTextKey: string;
-    }[];
+    mode?: string;
     lang: string;
 }
 
-const { projects, lang } = Astro.props;
-const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
-const translatePath = useTranslatedPath(lang);
+const { lang } = Astro.props;
 const __ = await useTranslator(lang);
+const translatePath = useTranslatedPath(lang);
+
+// Fetch dynamic projects from content collection
+// Fetch projects manually simulating fallback since getCollection gives all
+const allProjectsUnfiltered = await getCollection("projects");
+
+const uniqueProjectIds = [...new Set(allProjectsUnfiltered.map(p => 
+    p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "")
+))];
+
+const allProjects = [];
+for (const id of uniqueProjectIds) {
+    let entry = allProjectsUnfiltered.find(p => p.id.replace(/\.mdx?$/, "") === `${lang}/${id}`);
+    if (!entry) {
+        entry = allProjectsUnfiltered.find(p => p.id.replace(/\.mdx?$/, "").endsWith(`/${id}`));
+    }
+    if (entry) {
+        allProjects.push(entry);
+    }
+}
+
+// Pre-process projects for consistent card mapping
+let projectsData = allProjects.map((p) => {
+    const cleanId = p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "");
+    return {
+        id: cleanId,
+        title: p.data.title,
+        imageUrl: p.data.heroImage || "",
+        demoUrl: p.data.demoUrl,
+        repoUrl: p.data.repoUrl,
+        technologies: p.data.tags
+            ? p.data.tags.map((t: any) => ({
+                  id: (t.id || t).replace(/\.mdx?$/, ""),
+                  name:
+                      (t.id || t).split("/").pop()?.replace(/-/g, " ") ||
+                      "Tech",
+              }))
+            : [],
+        description: p.data.description || "",
+        date: p.data.date,
+        relevance: p.data.relevance || 0,
+        role: p.data.role,
+        company: p.data.company,
+    };
+});
+
+// Sort by Relevance (DESC), then by Date (DESC)
+projectsData.sort((a, b) => {
+    if (b.relevance !== a.relevance) {
+        return b.relevance - a.relevance;
+    }
+    const dateB = b.date ? new Date(b.date).getTime() : 0;
+    const dateA = a.date ? new Date(a.date).getTime() : 0;
+    return dateB - dateA;
+});
+
+// Take only top 6
+projectsData = projectsData.slice(0, 6);
 ---
 
-<section id="projects" class="py-32 px-6 lg:px-20 relative z-10">
+<section
+    id="projects"
+    class="py-32 px-6 lg:px-20 relative bg-base-100 overflow-hidden"
+>
     <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16">
-            <div>
-                <h2
-                    class="text-xs font-bold text-primary tracking-widest uppercase mb-2"
-                >
-                    // {t.projects.title}
-                </h2>
-                <h3 class="text-4xl md:text-6xl font-bold text-base-content">
-                    {t.projects.heading}
-                </h3>
-            </div>
-            <div
-                class="hidden md:block w-32 h-1 bg-base-content/10 rounded-full mt-6 md:mt-0"
-            >
-            </div>
-        </div>
+        <SectionHeader
+            label={__("Design & Dev")}
+            title={__("Featured")}
+            highlightedTitle={__("Projects")}
+            description={__("A selection of my most significant and complex work.")}
+            viewAllLink={translatePath("/projects")}
+            viewAllLabel={__("View All")}
+        />
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {
-                projects.map((project, index) => {
-                    const isFeatured = index === 0 || index === 3;
+                projectsData.map((project, index) => {
+                    const isFeatured =
+                        index === 0 || index === 3 || index === 4;
                     return (
-                        <div
-                            class:list={[
-                                "card image-full group overflow-hidden bg-base-100 shadow-xl",
-                                isFeatured ? "md:col-span-2" : "md:col-span-1",
-                                "h-[400px]",
-                            ]}
-                        >
-                            <figure>
-                                <Image
-                                    src={
-                                        project.imageUrl ||
-                                        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800"
-                                    }
-                                    alt={project.title}
-                                    inferSize={true}
-                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
-                                />
-                            </figure>
-
-                            <div class="card-body justify-end p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <div class="flex gap-2 mb-4 flex-wrap">
-                                    {project.technologies
-                                        .slice(0, 3)
-                                        .map((tech) => (
-                                            <a
-                                                href={translatePath(
-                                                    `/tags/${tech.id}`,
-                                                )}
-                                                class="badge badge-outline badge-sm uppercase text-[10px] tracking-wider border-base-content/20 bg-base-100/20 hover:bg-primary hover:text-primary-content transition-colors backdrop-blur-sm text-base-content relative z-20"
-                                            >
-                                                {tech.name}
-                                            </a>
-                                        ))}
-                                </div>
-
-                                <h3 class="card-title text-3xl font-bold text-white mb-2 shadow-sm relative z-20">
-                                    <a
-                                        href={translatePath(
-                                            `/projects/${project.id}`,
-                                        )}
-                                        class="hover:text-primary transition-colors cursor-pointer"
-                                    >
-                                        {project.title}
-                                    </a>
-                                </h3>
-                                <p class="text-white/80 text-sm line-clamp-2 mb-6 group-hover:text-white transition-colors grow-0 relative z-20">
-                                    <Translate
-                                        textKey={
-                                            project.displayDescriptionTextKey
-                                        }
-                                        lang={lang}
-                                    />
-                                </p>
-
-                                <div class="card-actions flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mt-auto relative z-20">
-                                    <a
-                                        href={translatePath(
-                                            `/projects/${project.id}`,
-                                        )}
-                                        class="btn btn-primary btn-sm rounded-full text-xs"
-                                        aria-label={`${__("Read Case Study for")} ${project.title}`}
-                                    >
-                                        {t.projects.caseStudy}
-                                    </a>
-                                    {project.demoUrl && (
-                                        <a
-                                            href={project.demoUrl}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            class="btn btn-outline btn-sm rounded-full text-xs border-white/20 text-white hover:bg-white/10"
-                                            aria-label={`${__("Demo of")} ${project.title}`}
-                                        >
-                                            <Icon name="lucide:external-link" class="size-4" />
-                                            {t.projects.viewProject}
-                                        </a>
-                                    )}
-                                    {project.repoUrl && (
-                                        <a
-                                            href={project.repoUrl}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            class="btn btn-ghost btn-sm rounded-full text-xs text-white hover:bg-base-content/20"
-                                            aria-label={`${__("Source Code of")} ${project.title}`}
-                                        >
-                                            <Icon name="lucide:github" class="size-4" />
-                                            {t.projects.code}
-                                        </a>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
+                        <ProjectCard
+                            project={project}
+                            lang={lang}
+                            isFeatured={isFeatured}
+                            isLcp={index === 0}
+                            caseStudyLabel={__("Read Case Study")}
+                            viewProjectLabel={__("Live Demo")}
+                            codeLabel={__("Source Code")}
+                        />
                     );
                 })
             }

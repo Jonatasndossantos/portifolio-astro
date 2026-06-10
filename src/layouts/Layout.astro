@@ -1,22 +1,30 @@
 ---
 import "../assets/global.css";
 import NavBar from "../components/layout/NavBar.astro";
+import MobileDrawer from "../components/layout/MobileDrawer.astro";
+import Footer from "../components/layout/Footer.astro";
 
 interface Props {
 	title?: string;
 	description?: string;
 	lang?: string;
 	canonicalUrl?: string;
+	image?: string;
 }
 
 const {
-	title = "Jônatas N. dos Santos",
-	description = "Portfólio Oficial — Especialista Full-Stack, IA e Arquitetura de Software",
-	lang = "pt",
+	title = "Jônatas N. dos Santos - Software Engineer",
+	description = "Official Portfolio — Full-Stack, AI, and Software Architecture Specialist",
+	lang = "en",
 	canonicalUrl = Astro.url.href,
+	image = "/og-image.png",
 } = Astro.props;
 
-const ogTitle = title === "Jônatas N. dos Santos" ? title : `${title} | Jônatas N. dos Santos`;
+const ogTitle =
+	title === "Jônatas N. dos Santos"
+		? title
+		: `${title} | Jônatas N. dos Santos`;
+const fullImageUrl = new URL(image, Astro.url).href;
 ---
 
 <!doctype html>
@@ -24,6 +32,7 @@ const ogTitle = title === "Jônatas N. dos Santos" ? title : `${title} | Jônata
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#000000" />
 
 		<!-- Primary SEO -->
 		<title>{ogTitle}</title>
@@ -38,11 +47,14 @@ const ogTitle = title === "Jônatas N. dos Santos" ? title : `${title} | Jônata
 		<meta property="og:title" content={ogTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:locale" content={lang} />
+		<meta property="og:image" content={fullImageUrl} />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalUrl} />
 		<meta name="twitter:title" content={ogTitle} />
 		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={fullImageUrl} />
 
 		<!-- Icons -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -63,28 +75,43 @@ const ogTitle = title === "Jônatas N. dos Santos" ? title : `${title} | Jônata
 			href="/apple-touch-icon.png"
 		/>
 		<link rel="manifest" href="/site.webmanifest" />
+
+		<!-- Theme Initialization -->
+		<script is:inline>
+			(function () {
+				const savedTheme = localStorage.getItem("theme");
+				if (savedTheme) {
+					document.documentElement.setAttribute(
+						"data-theme",
+						savedTheme,
+					);
+				} else {
+					// Default to a sensible theme if none saved
+					document.documentElement.setAttribute(
+						"data-theme",
+						"cupcake",
+					);
+				}
+			})();
+		</script>
 	</head>
 	<body>
-		<NavBar lang={lang} />
-		<slot />
+		<div class="drawer drawer-end">
+			<!-- Drawer toggle -> linked to the hamburger button in NavBar -->
+			<input id="mobile-menu" type="checkbox" class="drawer-toggle" />
 
-		<script>
-			import Lenis from "lenis";
+			<div class="drawer-content flex flex-col">
+				<NavBar lang={lang} />
+				<slot />
+			</div>
 
-			const lenis = new Lenis({
-				duration: 1.2,
-				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-				orientation: "vertical",
-				gestureOrientation: "vertical",
-				smoothWheel: true,
-			});
+			<!-- Component containing the .drawer-side structure -->
+			<MobileDrawer lang={lang} />
+		</div>
 
-			function raf(time: number) {
-				lenis.raf(time);
-				requestAnimationFrame(raf);
-			}
+		<!-- if not footer -->
+		<Footer lang={lang} />
 
-			requestAnimationFrame(raf);
-		</script>
+		<!-- global styles for HTML scroll-behavior removed to avoid conflicts with Lenis -->
 	</body>
 </html>

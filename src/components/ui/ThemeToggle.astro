@@ -1,12 +1,12 @@
 ---
 import { getTranslations, useTranslator } from "@i18n";
-
 export interface Props {
     locale?: string;
     class?: string;
+    dropdownPlacement?: string;
 }
 
-const { locale = "en", class: className } = Astro.props;
+const { locale = "en", class: className, dropdownPlacement = "dropdown-end sm:dropdown-bottom dropdown-top" } = Astro.props;
 const __ = await useTranslator(locale);
 const themeDict = (await getTranslations(locale, "theme")) as Record<
     string,
@@ -60,80 +60,135 @@ const themesList = themeKeys.map((key) => ({
 ---
 
 <div
-    title={__("Change Theme")}
     class:list={[
-        "dropdown dropdown-end sm:dropdown-bottom dropdown-top block",
+        "dropdown group",
+        dropdownPlacement,
         className,
     ]}
 >
-    <div
+    <!-- Accessible Trigger Button -->
+    <button
+        type="button"
         tabindex="0"
-        role="button"
-        class="btn group btn-sm gap-1.5 px-1.5 btn-ghost w-full justify-between sm:w-auto sm:justify-center"
+        class="btn btn-sm btn-ghost gap-2 px-3 rounded-box border border-base-content/5 hover:border-primary/30 transition-all hover:bg-base-content/5"
         aria-label={__("Change Theme")}
+        title={__("Change Theme")}
     >
-        <div class="flex items-center gap-3">
+        <div
+            class="grid grid-cols-2 gap-0.5 p-1 bg-base-content/5 rounded-box group-hover:bg-primary/20 transition-colors"
+        >
             <div
-                class="bg-base-100 group-hover:border-base-content/20 border-base-content/10 grid shrink-0 grid-cols-2 gap-0.5 rounded-box border p-1 transition-colors"
+                class="size-1.5 rounded-box bg-primary shadow-[0_0_4px_rgba(var(--p),0.5)]"
             >
-                <div class="bg-base-content size-1.5 rounded-full"></div>
-                <div class="bg-primary size-1.5 rounded-full"></div>
-                <div class="bg-secondary size-1.5 rounded-full"></div>
-                <div class="bg-accent size-1.5 rounded-full"></div>
             </div>
-            <span class="font-medium text-sm sm:hidden">{label}</span>
+            <div class="size-1.5 rounded-box bg-secondary"></div>
+            <div class="size-1.5 rounded-box bg-accent"></div>
+            <div class="size-1.5 rounded-box bg-neutral"></div>
         </div>
+        <span
+            class="text-[10px] font-bold uppercase tracking-widest opacity-60 hidden xl:inline-block"
+            >{label}</span
+        >
         <svg
-            width="12px"
-            height="12px"
-            class="mt-px hidden size-2 fill-current opacity-60 sm:inline-block"
+            width="10px"
+            height="10px"
+            class="fill-current opacity-40 transition-transform group-focus-within:rotate-180"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 2048 2048"
         >
             <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"
             ></path>
         </svg>
-    </div>
-    <ul
+    </button>
+
+    <div
         tabindex="0"
-        class="dropdown-content bg-base-200 text-base-content rounded-box mb-2 sm:top-px sm:mt-16 max-h-[50vh] sm:max-h-[calc(100vh-12rem)] w-[calc(100vw-8rem)] sm:w-56 overflow-y-auto border-(length:--border) border-white/5 shadow-2xl outline-(length:--border) outline-black/5 p-2 z-50"
+        class="dropdown-content mt-4 p-3 bg-base-100/90 backdrop-blur-sm border border-base-content/10 shadow-2xl rounded-box max-h-[60vh] overflow-y-auto scrollbar-hide z-[100] animate-in fade-in zoom-in-95 duration-200"
     >
-        <li class="menu-title px-2 py-1 text-xs font-medium opacity-70">
-            {label}
-        </li>
-        {
-            themesList.map((theme) => (
-                <li>
-                    <label class="btn btn-sm btn-block btn-ghost justify-start font-normal has-checked:bg-base-content/10">
-                        <input
-                            type="radio"
-                            name="theme-dropdown"
-                            class="theme-controller peer sr-only"
-                            value={theme.name}
-                        />
-                        <div
-                            data-theme={theme.name}
-                            class="bg-base-100 grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-0.5 shadow-sm"
+        <div class="px-2 pb-3 mb-2 border-b border-base-content/5">
+            <span
+                class="text-[10px] font-black uppercase tracking-[0.2em] opacity-30"
+                >{label}</span
+            >
+        </div>
+
+        <ul class="flex flex-col gap-1">
+            {
+                themesList.map((theme) => (
+                    <li>
+                        <button
+                            type="button"
+                            data-set-theme={theme.name}
+                            class="w-full flex items-center justify-between p-2 rounded-box text-sm font-medium hover:bg-primary/10 hover:text-primary transition-all group/item object-selected"
                         >
-                            <div class="bg-base-content size-1 rounded-full" />
-                            <div class="bg-primary size-1 rounded-full" />
-                            <div class="bg-secondary size-1 rounded-full" />
-                            <div class="bg-accent size-1 rounded-full" />
-                        </div>
-                        <span class="grow text-start">{theme.label}</span>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            class="invisible h-3 w-3 shrink-0 opacity-70 peer-checked:visible"
-                        >
-                            <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" />
-                        </svg>
-                    </label>
-                </li>
-            ))
-        }
-    </ul>
+                            <div
+                                data-theme={theme.name}
+                                class="rounded-box bg-base flex items-center pr-3 pl-2 gap-3"
+                            >
+                                <div class="grid grid-cols-2 gap-0.5 p-1 rounded-box border border-base-content/10 bg-base-100">
+                                    <div class="size-1.5 rounded-box bg-primary shadow-[0_0_4px_rgba(var(--p),0.5)]" />
+                                    <div class="size-1.5 rounded-box bg-secondary" />
+                                    <div class="size-1.5 rounded-box bg-accent" />
+                                    <div class="size-1.5 rounded-box bg-neutral" />
+                                </div>
+                                <span class="capitalize tracking-tight">
+                                    {theme.label}
+                                </span>
+                            </div>
+
+                            <div class="size-4 rounded-box border border-base-content/20 flex items-center justify-center p-0.5 opacity-0 group-hover/item:opacity-40">
+                                <div class="size-full rounded-box bg-primary opacity-0 group-hover/item:opacity-100 scale-0 group-hover/item:scale-100 transition-all" />
+                            </div>
+                        </button>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
 </div>
+
+<script>
+    function setupThemeToggle() {
+        const themeButtons = document.querySelectorAll("[data-set-theme]");
+        const currentTheme = localStorage.getItem("theme") || document.documentElement.getAttribute("data-theme") || "cupcake";
+
+        const activeClasses = ["bg-primary/10", "text-primary"];
+
+        // Reset all buttons first to be safe when layout re-renders
+        themeButtons.forEach((b) => b.classList.remove(...activeClasses));
+
+        themeButtons.forEach((btn) => {
+            if (btn.getAttribute("data-set-theme") === currentTheme) {
+                btn.classList.add(...activeClasses);
+            }
+
+            // Prevent double initialization if run multiple times
+            if (btn.hasAttribute("data-theme-listener")) return;
+            btn.setAttribute("data-theme-listener", "true");
+
+            btn.addEventListener("click", () => {
+                const theme = btn.getAttribute("data-set-theme");
+                if (theme) {
+                    document.documentElement.setAttribute("data-theme", theme);
+                    localStorage.setItem("theme", theme);
+
+                    themeButtons.forEach((b) => b.classList.remove(...activeClasses));
+                    
+                    // Sync up all other buttons pointing to this theme across the UI
+                    document.querySelectorAll(`[data-set-theme="${theme}"]`).forEach(b => {
+                        b.classList.add(...activeClasses);
+                    });
+
+                    // Optional: Close dropdown on select
+                    if (document.activeElement instanceof HTMLElement) {
+                        document.activeElement.blur();
+                    }
+                }
+            });
+        });
+    }
+
+    // Run on init and Astro view transitions
+    document.addEventListener("astro:page-load", setupThemeToggle);
+    setupThemeToggle();
+</script>

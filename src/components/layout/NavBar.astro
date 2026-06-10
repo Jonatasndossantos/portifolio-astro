@@ -5,231 +5,108 @@ import { useTranslator, useTranslatedPath } from "@i18n";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
-const { lang } = Astro.props;
-const translatePath = useTranslatedPath(lang);
-const __ = await useTranslator(lang);
+const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "Services", href: "/services" },
+    { label: "Blog", href: "/blog" },
+];
 
 const navName = "SANTOS";
 const navPrefix = ".DEV";
 
-const iconLinks: {
-    label: string;
-    href: string;
-    icon: string;
-}[] = [
+const iconLinks = [
     {
         label: "GitHub",
         href: "https://github.com/jonatasndossantos",
         icon: "simple-icons:github",
     },
 ];
+
+const { lang } = Astro.props;
+const translatePath = useTranslatedPath(lang);
+const __ = await useTranslator(lang);
+
+// Logic to determine active link
+const currentPath = Astro.url.pathname;
+const isHome =
+    currentPath === "/" ||
+    currentPath === `/${lang}/` ||
+    currentPath === `/${lang}`;
 ---
 
-<div class="drawer drawer-end fixed top-0 w-full z-50 pointer-events-none">
-    <input
-        id="nav-drawer"
-        type="checkbox"
-        class="drawer-toggle"
-        aria-label="Toggle Navigation"
-    />
-
-    <div class="drawer-content pointer-events-auto flex flex-col w-full">
-        <!-- Navbar -->
-        <div
-            class="navbar w-full bg-base-100/20 backdrop-blur-xl border-b border-base-content/10 text-base-content"
-        >
-            <div
-                class="mx-auto flex w-full max-w-7xl items-center px-4 sm:px-6 lg:px-8"
+<header
+    class="fixed top-6 left-0 right-0 z-20 flex justify-center px-4 pointer-events-none"
+>
+    <div
+        class="navbar w-full max-w-5xl h-16 bg-base-100/70 backdrop-blur-sm border border-base-content/10 px-6 rounded-[calc(var(--radius-box)*2)] shadow-xl pointer-events-auto transition-colors duration-500 ease-out hover:border-primary/20"
+    >
+        <!-- Brand / Logo -->
+        <div class="navbar-start w-auto lg:w-1/2 flex items-center gap-4">
+            <a
+                href={translatePath("/")}
+                class="flex items-center gap-3 group"
+                aria-label={`${navName} ${navPrefix}`}
             >
-                <div class="navbar-start">
-                    <a
-                        href={translatePath("/")}
-                        class="btn btn-ghost h-auto"
-                        aria-label={`${navName} ${navPrefix}`}
+                <div class="relative flex items-center justify-center size-9">
+                    <div
+                        class="absolute inset-0 bg-primary/20 rounded-box blur-lg group-hover:bg-primary/40 transition-colors"
                     >
-                        <div class="relative flex items-center justify-center">
-                            <Image
-                                src="/favicon.svg"
-                                alt="Logo"
-                                width={24}
-                                height={24}
-                                loading="eager"
-                                class="size-6 relative z-10 transition-transform hover:rotate-12"
-                                aria-hidden="true"
-                            />
-                            <div
-                                class="absolute inset-0 blur-md rounded-full bg-base-content/10"
-                            >
-                            </div>
-                        </div>
-                        <div class="flex flex-col text-left">
-                            <span
-                                class="mt-auto pt-1.5 font-bold text-base leading-tight tracking-wider text-base-content group-hover:text-primary transition-colors"
-                            >
-                                {navName}
-                                <span class="opacity-50">{navPrefix}</span>
-                            </span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="navbar-end gap-2 pr-2 w-full flex justify-end">
-                    <div class="hidden lg:flex items-center gap-2">
-                        <a
-                            href={translatePath("/ecosystem")}
-                            class="btn btn-ghost btn-sm btn-circle mr-2 hidden lg:flex"
-                            aria-label={__("Search")}
-                            title={__("Search")}
-                        >
-                            <Icon
-                                name="lucide:search"
-                                class="size-5"
-                                aria-hidden="true"
-                            />
-                        </a>
-                        {
-                            iconLinks.map((link) => (
-                                <a
-                                    href={link.href}
-                                    class="btn btn-ghost btn-sm btn-circle"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    title={__(link.label)}
-                                    aria-label={__(link.label)}
-                                >
-                                    <Icon name={link.icon} class="size-5" />
-                                    <span class="sr-only">
-                                        {__(link.label)}
-                                    </span>
-                                </a>
-                            ))
-                        }
-                        <div class="w-px h-6 bg-base-content/20 mx-2"></div>
-                        <ThemeToggle locale={lang} class="hidden lg:flex" />
-                        <div class="w-px h-6 bg-base-content/20 mx-2"></div>
-                        <LanguageToggle currentLocale={lang} />
                     </div>
-
-                    <!-- Hamburger Mobile (Now on the right) -->
-                    <div class="flex-none lg:hidden">
-                        <button
-                            type="button"
-                            onclick="document.getElementById('nav-drawer').click()"
-                            aria-label={__("Open Menu")}
-                            class="btn btn-square btn-ghost"
-                        >
-                            <Icon
-                                name="lucide:menu"
-                                class="size-6"
-                                aria-hidden="true"
-                            />
-                            <span class="sr-only">{__("Open Menu")}</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile Sidebar -->
-    <div class="drawer-side pointer-events-auto z-100">
-        <div
-            onclick="document.getElementById('nav-drawer').click()"
-            aria-hidden="true"
-            class="drawer-overlay"
-        >
-        </div>
-        <div
-            class="flex flex-col p-6 w-80 min-h-full bg-base-200 text-base-content shadow-2xl"
-        >
-            <div
-                class="flex items-center justify-between mb-8 pb-4 border-b border-base-content/10"
-            >
-                <span class="text-xl font-bold">{__("Preferences")}</span>
-                <button
-                    type="button"
-                    onclick="document.getElementById('nav-drawer').click()"
-                    aria-label={__("Close Menu")}
-                    class="btn btn-circle btn-ghost btn-sm"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                    <Image
+                        src="/favicon.svg"
+                        alt="Logo"
+                        width={30}
+                        height={30}
+                        loading="eager"
+                        class="size-7 relative z-10 transition-transform group-hover:rotate-12 group-hover:scale-110"
                         aria-hidden="true"
-                        ><path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12"></path></svg
+                    />
+                </div>
+                <div class="flex-col">
+                    <span
+                        class="font-bold text-sm tracking-widest text-base-content leading-none"
                     >
-                    <span class="sr-only">{__("Close Menu")}</span>
-                </button>
+                        {navName}<span class="text-primary">{navPrefix}</span>
+                    </span>
+                    <span
+                        class="hidden sm:flex text-[9px] font-medium opacity-40 uppercase tracking-[0.2em] -mt-0.5 whitespace-nowrap"
+                    >
+                        {__("Software Architect")}
+                    </span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Search & Actions -->
+        <div
+            class="navbar-end w-auto lg:w-1/2 flex items-center gap-2 lg:justify-end ml-auto"
+        >
+            <a
+                href={translatePath("/tags")}
+                class="btn btn-ghost btn-sm btn-circle text-base-content/60 hover:text-primary transition-colors hidden sm:flex"
+                aria-label={__("search")}
+                title={__("search")}
+            >
+                <Icon name="lucide:search" class="size-5" aria-hidden="true" />
+            </a>
+
+            <div
+                class="hidden md:flex items-center gap-2 border-l border-base-content/10 pl-2 ml-2"
+            >
+                <ThemeToggle locale={lang} />
+                <LanguageToggle currentLocale={lang} />
             </div>
 
-            <div class="flex flex-col gap-6">
-                <!-- Ecosystem Link Mobile -->
-                <a
-                    href={translatePath("/ecosystem")}
-                    title={__("Search")}
-                    aria-label={__("Search")}
-                    class="btn btn-primary w-full shadow-md flex items-center justify-center"
-                >
-                    <Icon name="lucide:search" class="size-6" />
-                </a>
-
-                <!-- Socials -->
-                <div class="flex flex-col gap-3 mt-2">
-                    <span
-                        class="text-sm font-medium opacity-60 uppercase tracking-widest px-1"
-                        >{__("Network")}</span
-                    >
-                    <div
-                        class="flex flex-col gap-2 bg-base-100 p-2 rounded-xl border border-base-content/5"
-                    >
-                        {
-                            iconLinks.map((link) => (
-                                <a
-                                    href={link.href}
-                                    class="btn btn-ghost w-full justify-between h-auto py-3 px-4"
-                                    target="_blank"
-                                    rel="noopener"
-                                    title={__(link.label)}
-                                    aria-label={__(link.label)}
-                                >
-                                    <div class="flex items-center gap-3">
-                                        <Icon name={link.icon} class="size-6" />
-                                        <span class="font-medium text-sm">
-                                            {__(link.label)}
-                                        </span>
-                                    </div>
-                                    <Icon
-                                        name="lucide:external-link"
-                                        class="size-4 opacity-50"
-                                    />
-                                </a>
-                            ))
-                        }
-                    </div>
-                </div>
-
-                <!-- Settings -->
-                <div class="flex flex-col gap-4 mt-4">
-                    <span
-                        class="text-sm font-medium opacity-60 uppercase tracking-widest px-1"
-                        >{__("Interface")}</span
-                    >
-                    <div
-                        class="flex flex-col gap-2 bg-base-100 p-2 rounded-xl border border-base-content/5"
-                    >
-                        <ThemeToggle locale={lang} class="w-full" />
-                        <div class="divider my-0 opacity-10"></div>
-                        <LanguageToggle currentLocale={lang} class="w-full" />
-                    </div>
-                </div>
-            </div>
+            <!-- Mobile Menu Trigger -->
+            <button
+                type="button"
+                onclick="document.getElementById('mobile-menu').click()"
+                aria-label={__("Open Menu")}
+                class="btn btn-square btn-ghost"
+            >
+                <Icon name="lucide:menu" class="size-5" aria-hidden="true" />
+            </button>
         </div>
     </div>
-</div>
+</header>

@@ -1,0 +1,67 @@
+---
+interface Props {
+    label?: string;
+    title: string;
+    highlightedTitle?: string;
+    description?: string;
+    viewAllLink?: string;
+    viewAllLabel?: string;
+}
+
+const { 
+    label, 
+    title, 
+    highlightedTitle, 
+    description, 
+    viewAllLink, 
+    viewAllLabel = "View All" 
+} = Astro.props;
+---
+
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+    <div class="max-w-2xl">
+        {label && (
+            <h2 class="text-[10px] md:text-xs font-bold text-primary tracking-[0.3em] uppercase mb-4 flex items-center gap-3">
+                <span class="opacity-30 select-none">//</span> 
+                <span class="relative">
+                    {label}
+                    <span class="absolute -bottom-1 left-0 w-1/2 h-px bg-primary/20"></span>
+                </span>
+            </h2>
+        )}
+        <h3 class="text-4xl md:text-6xl font-bold font-syncopate tracking-tighter leading-[0.9] mb-8">
+            <span set:html={title} />
+            {highlightedTitle && (
+                <span 
+                    class="text-primary block mt-4 md:mt-2"
+                    set:html={highlightedTitle}
+                />
+            )}
+        </h3>
+        {description && (
+            <p class="text-base md:text-lg opacity-60 border-l-2 border-primary/20 pl-6 text-balance max-w-xl leading-relaxed">
+                {description}
+            </p>
+        )}
+    </div>
+
+    {viewAllLink && (
+        <a 
+            href={viewAllLink} 
+            class="btn btn-outline btn-primary rounded-[calc(var(--radius-box)*2)] px-8 h-12 min-h-12 group w-fit transition-all hover:shadow-lg hover:shadow-primary/10"
+            aria-label={viewAllLabel}
+        >
+            <span class="text-[11px] font-black uppercase tracking-widest">{viewAllLabel}</span>
+            <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                class="w-4 h-4 transition-transform group-hover:translate-x-1" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+                aria-hidden="true"
+            >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+        </a>
+    )}
+</div>

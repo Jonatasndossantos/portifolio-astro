@@ -1,63 +1,119 @@
 ---
 import { getTranslations, useTranslatedPath, useTranslator } from "@i18n";
+import { Icon } from "astro-icon/components";
 
 interface Props {
     lang: string;
 }
 
 const { lang } = Astro.props;
-const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
 const translatePath = useTranslatedPath(lang);
 const __ = await useTranslator(lang);
 ---
 
-<footer
-    class="footer footer-center p-10 bg-base-200 text-base-content rounded mt-auto border-t border-base-content/10 relative overflow-hidden"
->
-    <div class="absolute inset-0 pointer-events-none flex justify-around">
+<footer class="bg-base-200 text-base-content relative overflow-hidden pt-16 md:pt-24 pb-12 mt-auto border-t border-base-content/10">
+    <!-- Animated background particles via GSAP -->
+    <div class="absolute inset-0 pointer-events-none flex justify-around opacity-40">
         {
-            Array.from({ length: 10 }).map(() => (
-                <div
-                    class="w-1 h-1 bg-primary rounded-full opacity-50 mt-20 animate-bounce"
-                    style={`animation-delay: ${Math.random() * 2}s; animation-duration: ${2 + Math.random() * 2}s;`}
-                />
+            Array.from({ length: 15 }).map(() => (
+                <div class="w-1 h-1 bg-primary rounded-full mt-20 footer-particle opacity-0" />
             ))
         }
     </div>
 
-    <aside
-        class="relative z-10 w-full flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto"
-    >
-        <div class="mb-4 md:mb-0 text-center md:text-left">
-            <h4 class="text-xl font-bold tracking-tight">JÔNATAS</h4>
-            <p class="text-xs text-base-content/60">
-                © {new Date().getFullYear()}
-                {t.footer.copyright}
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col">
+        <!-- Text/Links Top Section -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-16 md:mb-24 gap-8">
+            <nav class="flex gap-4 md:gap-8 text-xs font-mono text-base-content/70 flex-wrap justify-center uppercase tracking-widest">
+                <a href={translatePath("/")} class="hover:text-primary transition-colors">{__('Home')}</a>
+                <a href={translatePath("/projects")} class="hover:text-primary transition-colors">{__('Work')}</a>
+                <a href={translatePath("/services")} class="hover:text-primary transition-colors">{__('Services')}</a>
+                <a href={translatePath("/blog")} class="hover:text-primary transition-colors">{__('Blog')}</a>
+                <a
+                    href={translatePath("/tags")}
+                    class="hover:text-primary transition-colors"
+                    aria-label={__("Knowledge Ecosystem")}
+                    title={__("Knowledge Ecosystem")}
+                >
+                    <Icon name="lucide:brain" class="size-5" />
+                </a>
+                <a href={translatePath("/#contact")} class="hover:text-primary transition-colors">{__('Contact')}</a>
+            </nav>
+
+            <p class="text-[10px] md:text-xs text-base-content/50 font-mono text-center md:text-right uppercase tracking-wider">
+                © {new Date().getFullYear()} {__('All rights reserved.')}
             </p>
         </div>
 
-        <nav
-            class="flex gap-8 text-xs font-mono text-base-content/70 flex-wrap justify-center"
-        >
-            <a
-                href={translatePath("/")}
-                class="hover:text-primary transition-colors"
-                >{__('Home')}</a
-            >
-            <a
-                href={translatePath("/ecosystem")}
-                class="hover:text-primary font-bold uppercase tracking-wider text-primary transition-colors"
-                >{__('Ecosystem')}</a
-            >
-            <a href="#about" class="hover:text-primary transition-colors"
-                >{__('About us')}</a
-            >
-            <a href="#projects" class="hover:text-primary transition-colors"
-                >{__('Work')}</a
-            >
-            <a href="#contact" class="hover:text-primary transition-colors"
-                >{__('Contact')}</a
-            >
-        </nav>
-    </aside>
+        <!-- Big Impact Logo Section -->
+        <div id="footer-logo" class="flex flex-col items-center justify-center w-full group cursor-default text-center select-none pt-4">
+            <h2 class="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[110px] xl:text-[130px] leading-none font-black font-syncopate tracking-tighter uppercase transition-transform duration-500">
+                <span class="text-base-content group-hover:text-base-content/80 transition-colors duration-300">J</span><span class="text-primary">.</span><span class="text-base-content group-hover:text-base-content/80 transition-colors duration-300">SANTOS</span><span class="text-primary opacity-90 group-hover:opacity-100 transition-opacity duration-300">.DEV</span>
+            </h2>
+            <p class="text-xs md:text-sm text-base-content/40 uppercase tracking-[0.4em] md:tracking-[0.8em] mt-4 font-medium transition-colors duration-500 group-hover:text-base-content/60">
+                {__('Software Architect')}
+            </p>
+        </div>
+    </div>
 </footer>
+
+<script>
+    import gsap from "gsap";
+    import ScrollTrigger from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    function initFooterAnimations() {
+        // Particles continuous animation
+        const particles = document.querySelectorAll('.footer-particle');
+        if (particles.length > 0) {
+            particles.forEach((p) => {
+                gsap.set(p, { opacity: 0 }); // Initial state
+                gsap.to(p, {
+                    y: () => -50 - Math.random() * 80,
+                    opacity: () => 0.2 + Math.random() * 0.8,
+                    duration: () => 2 + Math.random() * 3,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: () => Math.random() * 2,
+                });
+            });
+        }
+
+        // Logo entrance animation
+        const logo = document.getElementById('footer-logo');
+        if (logo) {
+            gsap.from(logo, {
+                scrollTrigger: {
+                    trigger: logo,
+                    start: "top 95%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 60,
+                opacity: 0,
+                scale: 0.95,
+                duration: 1.2,
+                ease: "power3.out"
+            });
+        }
+    }
+
+    const deferFooterAnimations = () => {
+        if ('requestIdleCallback' in window) {
+            (window as any).requestIdleCallback(initFooterAnimations, { timeout: 1000 });
+        } else {
+            setTimeout(initFooterAnimations, 500);
+        }
+    };
+
+    // Run on initial load and Astro view transitions
+    document.addEventListener("astro:page-load", deferFooterAnimations);
+    
+    // Fallback for initial load if astro:page-load hasn't fired
+    if (document.readyState === 'complete') {
+        deferFooterAnimations();
+    } else {
+        window.addEventListener('load', deferFooterAnimations);
+    }
+</script>

@@ -13,3 +13,9 @@ O Astro.js se provou incrível por sua capacidade de entregar **Zero JavaScript*
 1. Não use pacotes muito pesados.
 2. Deixe o Vite cuidar dos assets estáticos.
 3. Se precisar de JS, use as ilhas de hidratação e só hidrate oque for `visible`.
+
+
+<!-- Obsidian Graph Connections (Hidden in Astro) -->
+<div style="display: none;" aria-hidden="true">
+[[["performance", "seo", "css"]]] [[["software-engineering"]]]
+</div>

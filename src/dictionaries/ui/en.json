@@ -33,5 +33,26 @@
     "Article": "Article",
     "Blog post:": "Blog post:",
     "Multilingual blog": "Multilingual blog",
-    "View All": "View All"
+    "View All": "View All",
+
+    "Timeline de Carreira": "Career Timeline",
+    "Minha História": "My Story",
+    "A evolução não é linear, é iterativa. E ela é forjada sob pressão.": "Evolution isn't linear, it's iterative. And it's forged under pressure.",
+    "Fev/2023 - Jun/2024": "Feb/2023 - Jun/2024",
+    "O Forjamento das Soft Skills": "Forging Soft Skills",
+    "Meu nome é Jônatas, moro em Extrema-MG, e tenho um histórico peculiar. Minha carreira começou fora da tecnologia, no McDonald's. Parece estranho mencionar isso numa entrevista técnica, mas foi lá que aprendi resiliência absoluta e execução sob extrema pressão – o que eu costumo chamar de meu 'treinamento SRE não-oficial'.": "My name is Jônatas, I live in Extrema-MG (Brazil), and I have a peculiar background. My career started outside of tech, at McDonald's. It might sound odd for a technical interview, but that's where I learned absolute resilience and execution under extreme pressure – what I usually call my 'unofficial SRE training'.",
+    "Abr/2024 - Jul/2025": "Apr/2024 - Jul/2025",
+    "O Mergulho Técnico": "The Technical Dive",
+    "Migrei pesado para o desenvolvimento através do meu técnico em Informática no SENAC, consolidando as bases da engenharia web. Escalei rapidamente como freelancer onde entregava aplicações End-to-End, desde Painéis Web a Apps consumindo Stripe e Supabase (como o ecossistema da Cafeteria Damore e JYNSGE News).": "I migrated heavily into development through my IT technician course at SENAC, consolidating the foundations of web engineering. I scaled rapidly as a freelancer delivering End-to-End apps, from Web Panels to Apps consuming Stripe and Supabase (like the Cafeteria Damore ecosystem and JYNSGE News).",
+    "Mar/2025 - Nov/2025": "Mar/2025 - Nov/2025",
+    "O Salto para Arquitetura e Liderança": "The Leap to Architecture and Leadership",
+    "O grande salto foi assumir como Tech Lead e Arquiteto na LUMEN, uma GovTech. Lá, não apenas escrevia código; arquitetei a Plataforma Lumen, um SaaS B2G Enterprise para licitações públicas. Enquanto a maioria usava fraweworks tradicionais, implantei Laravel Octane e Swoole para quebrar gargalos críticos de velocidade. Paralelamente, desenvolvi do zero um motor de inteligência artificial autônomo consumindo a API da OpenAI via JSON Schemas granulares, reduzindo semanas de trabalho burocrático para menos de 5 minutos.": "The big leap was stepping up as Tech Lead and Architect at LUMEN, a GovTech. There, I didn't just write code; I architected the Lumen Platform, a SaaS B2G Enterprise for public tenders. While most used traditional frameworks, I deployed Laravel Octane and Swoole to break critical speed bottlenecks. Simultaneously, I developed from scratch an autonomous AI engine consuming the OpenAI API via granular JSON Schemas, reducing weeks of bureaucratic work to under 5 minutes.",
+    "Atuação SRE Avançada": "Advanced SRE Operations",
+    "Resgate de Legados e Dívida Técnica": "Legacy Rescue and Technical Debt",
+    "Além da parte arquitetural, atuei na linha de frente resolvendo dívidas técnicas (Refactoring). Quando os sistemas legados caíam por Race Conditions ou gargalos transacionais, eu acessava as matrizes Linux via SSH e restaurava automações em n8n ou corrigia lógicas orientadas a RxJS no frontend. Meu foco é dominar ambientes corporativos críticos, porque é lá onde eu demonstro controle real.": "Beyond architecture, I operated on the frontlines resolving technical debt (Refactoring). When legacy systems crashed due to Race Conditions or transactional bottlenecks, I accessed Linux matrices via SSH and restored n8n automations or fixed RxJS-oriented logic in the frontend. My focus is mastering critical corporate environments, because that's where I demonstrate real control.",
+    "Maio/2025 - Presente": "May/2025 - Present",
+    "Engenharia Sólida e o Futuro": "Solid Engineering and the Future",
+    "Hoje, curso Bacharelado em Engenharia da Computação na UNIVESP para blindar minha base de baixo nível de forma imutável. Continuo focado em orquestrar ecossistemas modernos, utilizando como core PHP/Laravel, React e I.A. Meu grande objetivo é escalar projetos em nível global entregando extrema performance, código limpo e resiliência a falhas.": "Today, I'm pursuing a Bachelor's in Computer Engineering at UNIVESP to bulletproof my low-level foundation immutably. I remain focused on orchestrating modern ecosystems using PHP/Laravel, React, and AI as the core. My ultimate goal is to scale global-level projects delivering extreme performance, clean code, and fault resilience.",
+    
+    "Back to Portfolio": "Back to Portfolio"
 }

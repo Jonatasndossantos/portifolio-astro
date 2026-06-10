@@ -1,0 +1,90 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+// Dynamic translations
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import SearchFilters from "@components/ui/SearchFilters.astro";
+import ServiceCard from "@components/ui/ServiceCard.astro";
+import GraphIsland from "@components/GraphIsland.astro";
+
+import { useTranslator, useTranslatedPath } from "@i18n";
+
+const { lang: locale } = Astro.props;
+const __ = await useTranslator(locale);
+const translatePath = useTranslatedPath(locale);
+
+const allServices = await getCollection("services");
+
+const iconMap: Record<string, string> = {
+    "architecture-design": "lucide:globe",
+    "performance-tuning": "lucide:cpu",
+    "security-audit": "lucide:shield",
+    "automation-cicd": "lucide:terminal"
+};
+---
+
+<Layout
+    title={__("Services")}
+    description={__("Specialized consulting and architecture design for complex systems.")}
+    lang={locale}
+>
+    <main class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative">
+        <div class="max-w-7xl mx-auto">
+            <SectionHeader 
+                label={__("Expertise")}
+                title={__("My")}
+                highlightedTitle={__("Services")}
+                description={__("Specialized consulting and architecture design for complex systems.")}
+                viewAllLink={translatePath("/ecosystem")}
+                viewAllLabel={__("Explore Knowledge")}
+            />
+
+            <SearchFilters 
+                searchPlaceholder={__("Search services...")}
+                allLabel={__("All")}
+                filterByLabel={__("Filter by")}
+                gridId="services-grid"
+                cardClass="service-card-filter"
+            />
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+                {
+                    allServices.map((service) => {
+                        const cleanId = service.id.replace(/\.mdx?$/, "");
+                        const iconName = iconMap[cleanId] || "lucide:terminal";
+                        return (
+                            <div class="service-card-filter h-full" data-title={service.data.title}>
+                                <ServiceCard 
+                                    id={cleanId}
+                                    title={service.data.title}
+                                    description={service.data.description || ""}
+                                    icon={iconName}
+                                    lang={locale}
+                                />
+                            </div>
+                        );
+                    })
+                }
+            </div>
+
+            <div id="no-results" class="hidden text-center py-20 w-full bg-base-200/20 rounded-3xl border border-dashed border-base-content/10 mt-8">
+                <p class="text-2xl font-bold opacity-30">
+                    {__("No projects found.")}
+                </p>
+                <p class="text-sm opacity-50 mt-2">
+                    {__("Try adjusting your search or filters.")}
+                </p>
+            </div>
+
+            <!-- Knowledge Graph Section -->
+            <div class="mt-32">
+                 <SectionHeader 
+                    label={__("Interactive Knowledge Graph")}
+                    title={__("Interactive")}
+                    highlightedTitle={__("Ecosystem")}
+                 />
+                 <GraphIsland lang={locale} />
+            </div>
+        </div>
+    </main>
+</Layout>

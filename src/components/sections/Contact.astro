@@ -9,14 +9,13 @@ interface Props {
 }
 
 const { profile, lang } = Astro.props;
-const t = (await getTranslations(lang, "portfolio")) as Record<string, any>;
 const __ = await useTranslator(lang);
 ---
 
 <section id="contact" class="py-32 px-6 lg:px-20 relative z-10 overflow-hidden">
     <!-- Decorative Blob -->
     <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-[calc(var(--radius-box)*2)] pointer-events-none"
     >
     </div>
 
@@ -27,33 +26,33 @@ const __ = await useTranslator(lang);
                 <h2
                     class="text-xs font-bold text-primary tracking-widest uppercase mb-4"
                 >
-                    // {t.contact.title}
+                    // {__("Contact")}
                 </h2>
                 <h3
                     class="text-5xl md:text-6xl font-bold text-base-content mb-6"
                 >
-                    {t.contact.heading}
+                    {__("Let's Build the Future.")}
                 </h3>
                 <p class="text-base-content/70 text-lg mb-8">
-                    {t.contact.desc}
+                    {__("Let's discuss how we can work together to bring your ideas to life.")}
                 </p>
 
                 <div class="flex flex-col gap-4">
                     <a
                         href={`mailto:${profile.socials.email}`}
-                        class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 glass rounded-xl hover:bg-base-content/5 transition-all group border border-base-content/10 text-center sm:text-left"
+                        class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 glass rounded-box hover:bg-base-content/5 transition-all group border border-base-content/10 text-center sm:text-left"
                         aria-label="Email"
                     >
                         <div
-                            class="p-3 bg-base-100 rounded-full text-primary group-hover:scale-110 transition-transform"
+                            class="p-3 bg-base-100 rounded-[calc(var(--radius-box)*2)] text-primary group-hover:scale-110 transition-transform"
                         >
-                            <Icon name="lucide:mail" class="size-6" />
+                            <Icon name="lucide:mail" class="size-6" aria-hidden="true" />
                         </div>
                         <div>
                             <div
                                 class="text-xs text-base-content/50 uppercase tracking-wider"
                             >
-                                {t.contact.email}
+                                {__("Email")}
                             </div>
                             <div
                                 class="text-base-content font-mono font-medium"
@@ -66,13 +65,13 @@ const __ = await useTranslator(lang);
                         href={profile.socials.linkedin}
                         target="_blank"
                         rel="noreferrer"
-                        class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 glass rounded-xl hover:bg-base-content/5 transition-all group border border-base-content/10 text-center sm:text-left"
+                        class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 glass rounded-box hover:bg-base-content/5 transition-all group border border-base-content/10 text-center sm:text-left"
                         aria-label="LinkedIn"
                     >
                         <div
-                            class="p-3 bg-base-100 rounded-full text-primary group-hover:scale-110 transition-transform"
+                            class="p-3 bg-base-100 rounded-[calc(var(--radius-box)*2)] text-primary group-hover:scale-110 transition-transform"
                         >
-                            <Icon name="lucide:linkedin" class="size-6" />
+                            <Icon name="lucide:linkedin" class="size-6" aria-hidden="true" />
                         </div>
                         <div>
                             <div
@@ -91,13 +90,13 @@ const __ = await useTranslator(lang);
                         href={profile.socials.github}
                         target="_blank"
                         rel="noreferrer"
-                        class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 glass rounded-xl hover:bg-base-content/5 transition-all group border border-base-content/10 text-center sm:text-left"
+                        class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 glass rounded-box hover:bg-base-content/5 transition-all group border border-base-content/10 text-center sm:text-left"
                         aria-label="GitHub"
                     >
                         <div
-                            class="p-3 bg-base-100 rounded-full text-primary group-hover:scale-110 transition-transform"
+                            class="p-3 bg-base-100 rounded-[calc(var(--radius-box)*2)] text-primary group-hover:scale-110 transition-transform"
                         >
-                            <Icon name="simple-icons:github" class="size-6" />
+                            <Icon name="simple-icons:github" class="size-6" aria-hidden="true" />
                         </div>
                         <div>
                             <div
@@ -118,16 +117,16 @@ const __ = await useTranslator(lang);
             <!-- Contact Form Component (Native Vanilla JS) -->
             <form
                 id="contact-form"
-                class="glass p-8 rounded-3xl border border-base-content/10 space-y-6 relative overflow-hidden bg-base-200/50 shadow-2xl"
+                class="glass p-8 rounded-[calc(var(--radius-box)*2)] border border-base-content/10 space-y-6 relative overflow-hidden bg-base-200/50 shadow-2xl"
                 data-sending-text={__("SENDING...")}
             >
                 <div
                     id="form-success"
                     class="hidden absolute inset-0 bg-base-200/95 backdrop-blur-md z-20 flex-col items-center justify-center text-center p-6 sm:p-8 animate-fade-in"
                 >
-                    <Icon name="lucide:check-circle" class="size-16 text-success mb-4" />
+                    <Icon name="lucide:check-circle" class="size-16 text-success mb-4" aria-hidden="true" />
                     <h4 class="text-2xl font-bold text-base-content mb-2">
-                        {t.contact.messageSent}
+                        {__("Message Sent Successfully")}
                     </h4>
                     <p class="text-base-content/70">
                         {__("Thanks for reaching out! I'll get back to you soon.")}
@@ -135,9 +134,9 @@ const __ = await useTranslator(lang);
                     <button
                         type="button"
                         id="btn-reset-form"
-                        class="btn btn-outline btn-sm mt-6 rounded-full uppercase tracking-widest"
+                        class="btn btn-outline btn-sm mt-6 rounded-[calc(var(--radius-box)*2)] uppercase tracking-widest"
                     >
-                        {t.contact.sendAnother}
+                        {__("Send Another Message")}
                     </button>
                 </div>
 
@@ -145,7 +144,7 @@ const __ = await useTranslator(lang);
                     <label
                         for="name"
                         class="block text-xs uppercase font-bold text-base-content/60 mb-2"
-                        >{t.contact.nameLabel}</label
+                        >{__("Name")}</label
                     >
                     <input
                         required
@@ -160,7 +159,7 @@ const __ = await useTranslator(lang);
                     <label
                         for="email"
                         class="block text-xs uppercase font-bold text-base-content/60 mb-2"
-                        >{t.contact.emailLabel}</label
+                        >{__("Email Address")}</label
                     >
                     <input
                         required
@@ -175,22 +174,22 @@ const __ = await useTranslator(lang);
                     <label
                         for="message"
                         class="block text-xs uppercase font-bold text-base-content/60 mb-2"
-                        >{t.contact.messageLabel}</label
+                        >{__("Message")}</label
                     >
                     <textarea
                         required
                         name="message"
                         id="message"
                         class="textarea textarea-bordered w-full h-32 bg-base-100 focus:textarea-primary resize-none"
-                        placeholder="Tell me about your project..."></textarea>
+                        placeholder={__("Tell me about your project...")}></textarea>
                 </div>
 
                 <div
                     id="form-error"
                     class="hidden items-center gap-2 text-error text-sm bg-error/10 p-3 rounded-lg border border-error/20"
                 >
-                    <Icon name="lucide:alert-circle" class="size-5" />
-                    <span>{t.contact.somethingWrong}</span>
+                    <Icon name="lucide:alert-circle" class="size-5" aria-hidden="true" />
+                    <span>{__("Something went wrong. Please try again.")}</span>
                 </div>
 
                 <button
@@ -198,8 +197,8 @@ const __ = await useTranslator(lang);
                     type="submit"
                     class="btn btn-primary w-full tracking-widest uppercase group"
                 >
-                    <span id="submit-text">{t.contact.sendMessage}</span>
-                    <Icon name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" />
+                    <span id="submit-text">{__("Send Message")}</span>
+                    <Icon name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </button>
             </form>
         </div>

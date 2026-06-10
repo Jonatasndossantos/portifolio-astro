@@ -28,7 +28,7 @@
           "GCP"
         ],
         "description": {
-          "fullstack": "Complete automation system for public document generation (Law 14.133/2021) using AI (GPT-4) and Laravel.",
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
           "frontend": "Modern, responsive Web Interface built with React and Inertia.js, focussed on user experience for document management.",
           "backend": "Robust Laravel backend managing processing queues, Word template generation, and OpenAI API integration.",
           "devops": "Monitoring with Laravel Telescope and automated deployment on Google Cloud Platform.",
@@ -70,7 +70,7 @@
         ],
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
         "description": {
-          "fullstack": "Tech news portal combating disinformation with secure authentication (OAuth) and content moderation, built with Laravel and Tailwind.",
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
           "frontend": "Modern, responsive interface using Blade templates and Tailwind CSS, optimised for readability and content discovery.",
           "backend": "Robust MVC architecture connecting external RSS APIs and managing user roles/permissions via Laravel Breeze.",
           "devops": "Deployed on Azure App Service with automated testing pipelines using PEST framework.",
@@ -101,7 +101,7 @@
       },
       "espresso-d-amore": {
         "id": "11",
-        "title": "Espresso D' Amore",
+        "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
         "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
         "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
@@ -113,7 +113,7 @@
           "OpenAI"
         ],
         "description": {
-          "fullstack": "A dual-ecosystem consisting of a Laravel/Inertia ERP for management and an Expo/Supabase mobile app for orders and payments.",
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
           "frontend": "Built two distinct interfaces: a data-rich administration dashboard with React/Inertia and a fluid mobile ordering experience using Expo.",
           "backend": "Hybrid backend architecture utilising Laravel 12 for core business logic and Supabase for real-time client data and authentication.",
           "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
@@ -162,6 +162,42 @@
           "database": "Optimised WordPress database for fast queries and efficient execution of custom post types.",
           "ai": "Utilised AI-generated assets and content structuring for improved SEO and user engagement."
         }
+      },
+      "plataforma-lumen": {
+        "description": {
+          "fullstack": "High-performance Enterprise B2G SaaS powered by Laravel Octane, handling complex public procurement workflows with in-memory state and zero latency."
+        },
+        "title": "Lumen Platform"
+      },
+      "rag-legal-chatbot": {
+        "description": {
+          "fullstack": "Advanced virtual assistant driven by AI and native RAG, capable of querying complex legal contexts and analyzing proprietary files via real-time Vector Search."
+        },
+        "title": "RAG Legal Chatbot"
+      },
+      "doc-automation-saas": {
+        "description": {
+          "fullstack": "Automated pipeline that reduced public document generation from months to minutes using asynchronous background queues and heavy processing workflows."
+        },
+        "title": "Doc Automation SaaS"
+      },
+      "gov-lumen-rescue": {
+        "description": {
+          "fullstack": "Deep refactoring of a legacy government system, eliminating critical Race Conditions and stabilizing an obsolete state-machine architecture with RxJS."
+        },
+        "title": "GovTech Rescue"
+      },
+      "alura-plus": {
+        "description": {
+          "fullstack": "Semantic structuring implementation with advanced responsive layouts, applying modern CSS Grid and Flexbox techniques for true-to-design fidelity."
+        },
+        "title": "Alura Plus"
+      },
+      "adventure-text-game": {
+        "description": {
+          "fullstack": "Pure JS interactive narrative engine, mutating the DOM in real-time based on complex player decisions and branching story states dynamically."
+        },
+        "title": "Adventure Text Game"
       }
     }
   },

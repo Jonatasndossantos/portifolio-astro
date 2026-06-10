@@ -10,3 +10,9 @@ Este artigo não possui um arquivo equivalente na pasta `en/`.
 Se um usuário acessar a rota `/en/blog/teste-fallback`, ele verá este exato conteúdo em português, mas com um aviso no topo informando que não há tradução!
 
 Isso evita os temidos Erros 404.
+
+
+<!-- Obsidian Graph Connections (Hidden in Astro) -->
+<div style="display: none;" aria-hidden="true">
+[[["node"]]] [[["software-engineering"]]]
+</div>

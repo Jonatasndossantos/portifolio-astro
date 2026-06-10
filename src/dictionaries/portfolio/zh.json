@@ -1,98 +1,173 @@
 {
   "about": {
-    "title": "About Developer",
-    "heading": "Engineering digital experiences with <span class=\"text-primary\">precision & passion.</span>"
+    "label": "开发者",
+    "title": "设计与",
+    "highlightedTitle": "数字体验",
+    "bio": "弥合健壮逻辑与流畅设计之间的鸿沟，致力于提供从数据库到像素的完整数字解决方案。"
   },
   "skills": {
-    "title": "Technical Arsenal",
-    "desc": "Prioritized toolkit for %mode%. Items are dynamically reordered based on the active dimension.",
-    "core": "Core",
-    "power": "Power"
+    "label": "技术栈",
+    "title": "技术",
+    "highlightedTitle": "军火库",
+    "desc": "根据当前活跃维度动态重新排序的优先工具包。",
+    "core": "核心",
+    "power": "核心力"
   },
   "projects": {
-    "title": "Selected Works",
-    "heading": "Featured Projects",
-    "viewProject": "View Project",
-    "code": "Code",
-    "caseStudy": "案例研究"
+    "label": "作品集",
+    "title": "精选",
+    "highlightedTitle": "项目",
+    "viewProject": "查看项目",
+    "code": "代码",
+    "caseStudy": "案例研究",
+    "items": {
+      "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "description": {
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
+          "frontend": "使用React和Inertia.js构建的现代响应式Web界面。"
+        }
+      },
+      "vitanexus": {
+        "id": "8",
+        "title": "VitaNexus",
+        "slug": "vitanexus",
+        "description": {
+          "fullstack": "使用Laravel和Bootstrap构建的综合健康监测应用程序。"
+        }
+      },
+      "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "description": {
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
+        }
+      },
+      "zk-business-support": {
+        "id": "10",
+        "title": "ZK Business Support",
+        "slug": "zk-business-support",
+        "description": {
+          "fullstack": "具有高级缓存和本地SEO优化的定制WordPress解决方案。"
+        }
+      },
+      "espresso-d-amore": {
+        "id": "11",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "description": {
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
+        }
+      },
+      "la-pool-club": {
+        "id": "12",
+        "title": "LA Pool Club",
+        "slug": "la-pool-club",
+        "description": {
+          "fullstack": "专注于UI/UX改进、CSS样式和系统布局恢复的WordPress完整解决方案。"
+        }
+      },
+      "brighton-cakes": {
+        "id": "13",
+        "title": "Brighton Cakes",
+        "slug": "brighton-cakes",
+        "description": {
+          "fullstack": "具有定制主题、性能优化和个性化用户体验的自定义WordPress网站。"
+        }
+      },
+      "plataforma-lumen": {
+        "description": {
+          "fullstack": "High-performance Enterprise B2G SaaS powered by Laravel Octane, handling complex public procurement workflows with in-memory state and zero latency."
+        },
+        "title": "Lumen Platform"
+      },
+      "rag-legal-chatbot": {
+        "description": {
+          "fullstack": "Advanced virtual assistant driven by AI and native RAG, capable of querying complex legal contexts and analyzing proprietary files via real-time Vector Search."
+        },
+        "title": "RAG Legal Chatbot"
+      },
+      "doc-automation-saas": {
+        "description": {
+          "fullstack": "Automated pipeline that reduced public document generation from months to minutes using asynchronous background queues and heavy processing workflows."
+        },
+        "title": "Doc Automation SaaS"
+      },
+      "gov-lumen-rescue": {
+        "description": {
+          "fullstack": "Deep refactoring of a legacy government system, eliminating critical Race Conditions and stabilizing an obsolete state-machine architecture with RxJS."
+        },
+        "title": "GovTech Rescue"
+      },
+      "alura-plus": {
+        "description": {
+          "fullstack": "Semantic structuring implementation with advanced responsive layouts, applying modern CSS Grid and Flexbox techniques for true-to-design fidelity."
+        },
+        "title": "Alura Plus"
+      },
+      "adventure-text-game": {
+        "description": {
+          "fullstack": "Pure JS interactive narrative engine, mutating the DOM in real-time based on complex player decisions and branching story states dynamically."
+        },
+        "title": "Adventure Text Game"
+      }
+    }
   },
   "services": {
-    "title": "Core Services",
+    "label": "专业知识",
+    "title": "设计",
+    "highlightedTitle": "服务",
+    "desc": "现代技术系统的可扩展架构解决方案。",
     "items": [
       {
-        "title": "Architecture Design",
-        "desc": "Building scalable blueprints for complex systems."
+        "title": "架构设计",
+        "desc": "为复杂系统构建可扩展的蓝图。"
       },
       {
-        "title": "Performance Tuning",
-        "desc": "Optimizing render cycles and database queries."
-      },
-      {
-        "title": "Security Audits",
-        "desc": "Fortifying applications against modern threats."
-      },
-      {
-        "title": "Automation",
-        "desc": "CI/CD pipelines that deploy while you sleep."
+        "title": "性能调优",
+        "desc": "优化渲染周期和数据库查询。"
       }
     ]
   },
   "contact": {
-    "title": "Get In Touch",
-    "heading": "Let's build the future.",
-    "desc": "Open for collaborations, freelance projects, or just a chat about the next big thing in tech.",
-    "email": "Email",
-    "messageSent": "Message Sent!",
-    "sendAnother": "Send Another",
-    "nameLabel": "Name",
-    "emailLabel": "Email",
-    "messageLabel": "Message",
-    "sendMessage": "Send Message",
-    "sending": "Sending...",
-    "somethingWrong": "Something went wrong. Please try again later."
+    "title": "联系我们",
+    "heading": "让我们共创未来。"
   },
   "footer": {
-    "copyright": "Multiverse Portfolio",
+    "copyright": "Jônatas Nascimento dos Santos",
     "links": {
-      "home": "HOME",
-      "about": "ABOUT",
-      "work": "WORK",
-      "contact": "CONTACT"
+      "home": "首页",
+      "about": "关于",
+      "work": "作品",
+      "contact": "联系"
     }
   },
-  "ecosystem": {
-    "title": "技术生态系统",
-    "desc": "由我在项目中熟练掌握并积极使用的工具、语言和框架组成的中心化神经系统。",
-    "search": "搜索技术...",
-    "noResults": "未找到相关技术。",
-    "tryAdjusting": "尝试调整您的搜索或筛选条件。",
-    "badgeFramework": "框架",
-    "badgeLanguage": "语言",
-    "badgeCloud": "云服务",
-    "badgeData": "数据",
-    "badgeAi": "人工智能",
-    "badgeTool": "工具"
+  "blog": {
+    "title": "技术博客",
+    "desc": "关于软件工程和架构的思考。"
+  },
+  "knowledge": {
+    "title": "技术知识",
+    "desc": "探索技术。",
+    "search": "搜索...",
+    "all": "全部",
+    "filterBy": "过滤"
   },
   "graph": {
-    "title": "交互式知识图谱",
-    "desc": "这是我整个第二大脑网络的规划图。您看到的是实际的 .mdx 节点及其语义关系（主题、标签、服务）。尝试缩放和拖动节点！",
-    "knowledgeTitle": "知识图谱",
-    "noConnections": "第二大脑中尚未映射 %name% 的连接。"
+    "title": "知识图谱",
+    "desc": "第二脑网络。"
   },
   "taxonomy": {
-    "relatedProjects": "使用项目",
-    "relatedArticles": "相关文章",
-    "relatedServices": "相关服务",
-    "projectsUsingService": "使用此服务的项目",
-    "projectsMappedTo": "映射到此主题的项目",
-    "secondBrainNotes": "第二大脑笔记",
-    "contextDeepDives": "📚 背景与技术深潜",
-    "readMoreTech": "阅读有关此项目背后的技术决策：",
-    "needSimilarResults": "🤝 需要类似的结果吗？",
-    "specializedServices": "我提供专业服务，帮助您构建类似的解决方案。",
-    "backToPortfolio": "← 返回投资组合",
-    "backToEcosystem": "← 返回生态系统",
-    "backToServices": "← 返回服务",
-    "startingAt": "起价"
+    "backToPortfolio": "← 返回",
+    "startingAt": "从"
+  },
+  "ui": {
+    "View All": "查看全部",
+    "exploreKnowledge": "探索技术",
+    "Interactive": "交互式",
+    "Knowledge Graph": "知识图谱"
   }
 }

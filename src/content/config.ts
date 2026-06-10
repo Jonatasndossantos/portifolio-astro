@@ -6,6 +6,7 @@ const topics = defineCollection({
     schema: z.object({
         title: z.string(),
         description: z.string(),
+        category: z.string().optional(),
         icon: z.string().optional()
     })
 });
@@ -33,6 +34,11 @@ const projects = defineCollection({
     type: 'content',
     schema: z.object({
         title: z.string(),
+        description: z.string().optional(),
+        date: z.date().optional(),
+        relevance: z.number().min(1).max(10).optional(),
+        role: z.string().optional(),
+        company: z.string().optional(),
         repoUrl: z.string().url().optional(),
         demoUrl: z.string().url().optional(),
         heroImage: z.string().optional(),
@@ -51,6 +57,8 @@ const blog = defineCollection({
     type: 'content',
     schema: z.object({
         title: z.string(),
+        description: z.string().optional(),
+        heroImage: z.string().optional(),
         date: z.date(),
         draft: z.boolean().default(false),
 
@@ -68,6 +76,7 @@ const services = defineCollection({
     type: 'content',
     schema: z.object({
         title: z.string(),
+        description: z.string().optional(),
         icon: z.string().optional(),
         priceStartingAt: z.number().optional(),
 

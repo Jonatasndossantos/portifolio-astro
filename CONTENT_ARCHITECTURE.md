@@ -41,7 +41,7 @@ Because these are explicit Astro references, `getEntry()` or `getEntries()` guar
 
 ## 3. The Interactive Knowledge Graph (D3.js)
 
-The interactive Knowledge Graph visually maps the entire markdown ecosystem.
+The interactive Knowledge Graph visually maps the entire markdown knowledge base.
 
 ### A. The JSON API (`src/pages/graph.json.ts`)
 This Build-Time (SSG) endpoint iterates through every single item in the `src/content/` folder using `getCollection()`.

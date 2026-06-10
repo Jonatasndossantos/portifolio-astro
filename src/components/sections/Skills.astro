@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import { getTranslations, useTranslator, useTranslatedPath } from "@i18n";
 import TechCard from "@components/ui/TechCard.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
 
 interface Props {
     mode: string;
@@ -34,52 +35,26 @@ const skills = allTags
 const description = (t.skills.desc as string).replace("%mode%", mode);
 ---
 
-<section id="skills" class="py-20 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-            class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4"
-        >
-            <div>
-                <h2
-                    class="text-3xl font-bold text-base-content mb-2 font-syncopate tracking-tight"
-                >
-                    {t.skills.title}
-                </h2>
-                <p class="text-base-content/60 max-w-2xl text-balance">
-                    {description}
-                </p>
-            </div>
-
-            <a
-                href={translatePath("/ecosystem")}
-                class="btn btn-outline btn-primary rounded-field group w-fit"
-            >
-                {__("View All")}
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 transition-transform group-hover:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                </svg>
-            </a>
-        </div>
+<section id="skills" class="py-32 px-6 lg:px-20 relative z-10 bg-base-200/30">
+    <div class="max-w-7xl mx-auto">
+        <SectionHeader 
+            label={t.skills.title}
+            title={__("Technical")}
+            highlightedTitle={__("Arsenal")}
+            description={description}
+            viewAllLink={translatePath("/tags")}
+            viewAllLabel={__("View All")}
+        />
 
         <div
-            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
         >
             {
                 skills.map((skill) => (
                     <TechCard
                         id={skill.id}
-                        title={skill.title}
-                        description={skill.description}
+                        title={__ (skill.title)}
+                        description={__ (skill.description)}
                         icon={skill.icon}
                         category={skill.category}
                         lang={lang}

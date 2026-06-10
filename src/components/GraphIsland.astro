@@ -72,41 +72,75 @@ const __ = await useTranslator(lang);
         const width = container.clientWidth;
         const height = container.clientHeight;
 
+        // 🎨 CORES DOS NÓS (LEGENDA E GRUPOS)
+        // Mude o "fill" ou "stroke" para customizar o tema!
         const colorMap: Record<string, { fill: string; stroke: string }> = {
-            projects: { fill: "#0ea5e9", stroke: "#0369a1" }, // Blue
-            blog: { fill: "#ef4444", stroke: "#b91c1c" }, // Red
-            services: { fill: "#9ca3af", stroke: "#4b5563" }, // Clear / less distinct
-            topics: { fill: "#a855f7", stroke: "#7e22ce" }, // Purple
-            tags: { fill: "#f97316", stroke: "#c2410c" }, // Orange
-            unknown: { fill: "#64748b", stroke: "#334155" }, // Slate
+            projects: { fill: "#0ea5e9", stroke: "#0369a1" }, // Azul Claro
+            blog: { fill: "#ef4444", stroke: "#b91c1c" }, // Vermelho
+            services: { fill: "#9ca3af", stroke: "#4b5563" }, // Cinza Claro
+            topics: { fill: "#a855f7", stroke: "#7e22ce" }, // Roxo
+            tags: { fill: "#f97316", stroke: "#c2410c" }, // Laranja
+            unknown: { fill: "#64748b", stroke: "#334155" }, // Slate Escuro
         };
 
-        // Using similar physics configuration from second-brain-public
-        const repelForce = 0.5;
-        const linkDistance = 100;
+        // 🎛️ CUSTOMIZAÇÃO DA FÍSICA E SEPARAÇÃO DE GRUPOS
+        const repelForce = 0.8; // Força base de repulsão
+        const linkDistance = 50; // Tamanho das linhas comuns (satélites em volta do núcleo)
+        const gravity = 0.1; // Força do ímã de grupo
 
-        // Setup node radius math matching second-brain-public logic
+        // 🗺️ ZONAS MAGNÉTICAS (Atrai os componentes para cantos específicos)
+        const getZone = (group: string) => {
+            switch (group) {
+                case "projects": return { x: width * 0.25, y: height * 0.25 }; // Canto Superior Esquerdo
+                case "blog": return { x: width * 0.75, y: height * 0.25 };     // Canto Superior Direito
+                case "topics": return { x: width * 0.25, y: height * 0.75 };   // Canto Inferior Esquerdo
+                case "services": return { x: width * 0.75, y: height * 0.75 }; // Canto Inferior Direito
+                default: return { x: width * 0.5, y: height * 0.5 };           // Tags no Centro
+            }
+        };
+
+        // 🔴 TAMANHO DAS BOLINHAS (Nodes)
         const nodeRadius = (d: any) => {
             const weight = d.weight || 0;
-            // base + sqrt(weight)
-            return 6 + Math.sqrt(weight) * 2.5;
+            return 3 + Math.sqrt(weight) * 1.5;
         };
 
-        // Create simulation
+        // Create simulation (Motor Físico D3)
         const simulation = d3
             .forceSimulation(data.nodes)
-            .force("charge", d3.forceManyBody().strength(-200 * repelForce))
+            // 💨 Repulsão Variável: Grandes "Hubs" se repelem MUITO mais forte do que bolinhas pequenas
+            .force("charge", d3.forceManyBody().strength((d: any) => {
+                const weight = d.weight || 0;
+                return -150 * repelForce - (weight * 25 * repelForce);
+            }))
+            // 🔗 Ligações: Hubs empurram outros Hubs pra longe (linhas grandes). Folhas ficam perto (linhas curtas).
             .force(
                 "link",
                 d3
                     .forceLink(data.links)
                     .id((d: any) => d.id)
-                    .distance(linkDistance),
+                    .distance((l: any) => {
+                        // l.source e l.target num momento inicial já são convertidos em nós pelo d3, mas o TS pode chiar.
+                        // Usamos um fallback caso as instâncias não estiverem prontas.
+                        const w1 = typeof l.source === 'object' ? (l.source.weight || 0) : 0;
+                        const w2 = typeof l.target === 'object' ? (l.target.weight || 0) : 0;
+                        
+                        // Se um nó grande tenta abraçar outro nó grande, a linha estica violentamente 
+                        if (w1 > 4 && w2 > 4) {
+                            return linkDistance * 3 + (w1 + w2) * 5; 
+                        }
+                        return linkDistance;
+                    }),
             )
+            // 📍 Centro Dinâmico
             .force("center", d3.forceCenter(width / 2, height / 2))
+            // 🧲 Gravidade Zonal: Força as categorias a formarem "Clãs" em seus respectivos cantos 
+            .force("x", d3.forceX((d: any) => getZone(d.group).x).strength(gravity))
+            .force("y", d3.forceY((d: any) => getZone(d.group).y).strength(gravity))
+            // 🛡️ Colisão: Impede fisicamente que as bolinhas entrem umas nas outras
             .force(
                 "collide",
-                d3.forceCollide().radius((d: any) => nodeRadius(d) + 15),
+                d3.forceCollide().radius((d: any) => nodeRadius(d) + 12), // Margem levemente maior pra não embolar textos
             );
 
         const svg = d3
@@ -126,15 +160,15 @@ const __ = await useTranslator(lang);
 
         const svgGroup = svg;
 
-        // Draw Links
+        // 🕸️ ESTILO DAS LINHAS (ARESTAS)
         const link = svgGroup
             .append("g")
             .selectAll("line")
             .data(data.links)
             .join("line")
-            .attr("stroke", "#475569") // Explicit slate-600 hex color to ensure lines appear
-            .attr("stroke-width", 2)
-            .attr("stroke-opacity", 0.6);
+            .attr("stroke", "#334155") // Fainter slate for minimalist look (Cor em repouso)
+            .attr("stroke-width", 1)   // Espessura do traço
+            .attr("stroke-opacity", 0.4); // O quão transparentes as linhas serão
 
         // Draw Nodes
         const node = svgGroup
@@ -144,45 +178,85 @@ const __ = await useTranslator(lang);
             .join("g")
             .attr("class", "node-group")
             .style("cursor", (d: any) => (d.hasRoute ? "pointer" : "default"))
+            .style("transition", "opacity 0.2s ease")
             .on("click", (_event: any, d: any) => {
                 if (!d.hasRoute) return;
-                const lang = window.location.pathname.split("/")[1] || "en";
-                window.location.href = `/${lang}/${d.id}`;
+                
+                // Better locale detection
+                const pathParts = window.location.pathname.split("/").filter(Boolean);
+                const supportedLocales = ["pt", "fr", "es", "zh", "ja"]; 
+                const locale = supportedLocales.includes(pathParts[0]) ? pathParts[0] : "";
+                
+                window.location.href = locale ? `/${locale}/${d.id}` : `/${d.id}`;
             })
             .on("mouseover", function (_event: any, d: any) {
-                // Highlight Node
+                // Dim all nodes except connected
+                node.style("opacity", (n: any) => {
+                    const isConnected = data.links.some((l: any) => 
+                        (l.source.id === d.id && l.target.id === n.id) ||
+                        (l.target.id === d.id && l.source.id === n.id)
+                    );
+                    return isConnected || n.id === d.id ? 1 : 0.15;
+                });
+
+                // Highlight Node Circle
                 d3.select(this)
                     .select("circle")
                     .attr("stroke", "#fff")
-                    .attr("stroke-width", 3);
+                    .attr("stroke-width", 2);
+
+                // Highlight Labels
+                node.selectAll("text")
+                    .style("fill", (n: any) => {
+                        const isConnected = data.links.some((l: any) => 
+                            (l.source.id === d.id && l.target.id === n.id) ||
+                            (l.target.id === d.id && l.source.id === n.id)
+                        );
+                        return isConnected || n.id === d.id ? "#f8fafc" : "#64748b";
+                    })
+                    .style("font-weight", (n: any) => {
+                        const isConnected = data.links.some((l: any) => 
+                            (l.source.id === d.id && l.target.id === n.id) ||
+                            (l.target.id === d.id && l.source.id === n.id)
+                        );
+                        return isConnected || n.id === d.id ? "600" : "400";
+                    });
 
                 // Highlight connected edges
                 link.attr("stroke", (l: any) =>
                     l.source.id === d.id || l.target.id === d.id
                         ? "#94a3b8"
-                        : "#334155",
+                        : "#1e293b",
                 )
                     .attr("stroke-width", (l: any) =>
-                        l.source.id === d.id || l.target.id === d.id ? 3 : 2,
-                    )
+                        l.source.id === d.id || l.target.id === d.id ? 2 : 1,
+                )
                     .attr("stroke-opacity", (l: any) =>
-                        l.source.id === d.id || l.target.id === d.id ? 1 : 0.2,
+                        l.source.id === d.id || l.target.id === d.id ? 1 : 0.05,
                     );
             })
             .on("mouseout", function (_event: any, d: any) {
-                // Remove highlight from Node
+                // Remove highlight from Node Circle
                 d3.select(this)
                     .select("circle")
-                    .attr("stroke-width", 2)
+                    .attr("stroke-width", 1.5)
                     .attr(
                         "stroke",
                         colorMap[d.group]?.stroke || colorMap.unknown.stroke,
                     );
 
+                // Reset nodes
+                node.style("opacity", 1);
+
+                // Reset labels
+                node.selectAll("text")
+                    .style("fill", "#64748b")
+                    .style("font-weight", (n: any) => n.weight > 5 ? "500" : "400");
+
                 // Reset edges
-                link.attr("stroke", "#475569")
-                    .attr("stroke-width", 2)
-                    .attr("stroke-opacity", 0.6);
+                link.attr("stroke", "#334155")
+                    .attr("stroke-width", 1)
+                    .attr("stroke-opacity", 0.4);
             })
             .call(drag(simulation) as any);
 
@@ -198,33 +272,30 @@ const __ = await useTranslator(lang);
                 (d: any) =>
                     colorMap[d.group]?.stroke || colorMap.unknown.stroke,
             )
-            .attr("stroke-width", 2);
+            .attr("stroke-width", 1.5);
 
-        // Draw Icons if present
-        node.filter((d: any) => !!d.icon)
-            .append("image")
+        // 🖼️ ICONS (NEW!)
+        node.append("image")
             .attr("href", (d: any) => d.icon)
-            .attr("width", (d: any) => Math.max(12, nodeRadius(d) - 6))
-            .attr("height", (d: any) => Math.max(12, nodeRadius(d) - 6))
-            .attr("x", (d: any) => -Math.max(12, nodeRadius(d) - 6) / 2)
-            .attr("y", (d: any) => -Math.max(12, nodeRadius(d) - 6) / 2)
+            .attr("x", (d: any) => -nodeRadius(d) / 1.5)
+            .attr("y", (d: any) => -nodeRadius(d) / 1.5)
+            .attr("width", (d: any) => nodeRadius(d) * 1.33)
+            .attr("height", (d: any) => nodeRadius(d) * 1.33)
+            .attr("preserveAspectRatio", "xMidYMid slice")
             .style("pointer-events", "none");
 
-        // Draw node labels
-        const label = svgGroup
-            .append("g")
-            .selectAll("text")
-            .data(data.nodes)
-            .join("text")
+        // 🔤 ESTILO DOS TEXTOS (RÓTULOS)
+        node.append("text")
             .attr("text-anchor", "middle")
-            .attr("dy", (d: any) => nodeRadius(d) + 14)
+            .attr("dy", (d: any) => nodeRadius(d) + 12) // Espaçamento (Distância do raio de cima pra baixo)
             .attr("font-size", (d: any) =>
-                ["topics"].includes(d.group) ? "12px" : "10px",
+                d.weight > 5 ? "11px" : "9px", // Tamanho se for Bolinha Grande vs Pequena
             )
             .attr("font-weight", (d: any) =>
-                ["topics"].includes(d.group) ? "600" : "400",
+                d.weight > 5 ? "500" : "400",  // Negrito se a bolinha for principal
             )
-            .attr("fill", "#cbd5e1") // Explicit slate-300 color for high contrast
+            .style("fill", "#64748b") // Dimmed text by default (Cor em repouso)
+            .style("opacity", (d: any) => d.weight > 2 ? 0.9 : 0.4) // Esconde ou borra palavras secundárias
             .style("pointer-events", "none")
             .style("user-select", "none")
             .text((d: any) => d.label);
@@ -239,7 +310,6 @@ const __ = await useTranslator(lang);
                 .attr("y2", (d: any) => d.target.y);
 
             node.attr("transform", (d: any) => `translate(${d.x},${d.y})`);
-            label.attr("x", (d: any) => d.x).attr("y", (d: any) => d.y);
         });
 
         // Drag functions

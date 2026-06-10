@@ -108,3 +108,16 @@ const HeroComponent = ({ bio, role }: { bio: string; role: string }) => (
 | `zh` | 中文 |
 | `ja` | 日本語 |
 | `en-GB` | English (UK) |
+
+---
+
+## Padronização de Títulos (SectionHeader)
+
+Para manter a consistência visual em todas as seções, os dicionários em `portfolio/*.json` seguem o padrão do componente `SectionHeader.astro`:
+
+- **`label`**: (String) O rótulo em caixa alta prefixado por `//`. Use para contexto (ex: "Portfólio", "Arsenal", "Serviços").
+- **`title`**: (String) O texto principal do título em Syncopate.
+- **`highlightedTitle`**: (String) A parte do título que recebe cor primária automática.
+
+> [!IMPORTANT]
+> **NUNCA injete HTML ou classes CSS** (ex: `<span class="text-primary">`) diretamente nos valores do JSON. O componente `SectionHeader` já cuida de todo o estilo e destaque. Isso evita erros de renderização e quebras de acessibilidade em diferentes idiomas.

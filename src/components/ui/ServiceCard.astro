@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+import { useTranslatedPath, useTranslator } from "@i18n";
+
+interface Props {
+    id: string;
+    title: string;
+    description: string;
+    icon: string;
+    lang: string;
+}
+
+const { id, title, description, icon, lang } = Astro.props;
+const translatePath = useTranslatedPath(lang);
+const __ = await useTranslator(lang);
+
+// Handle icon name normalization (some come from dictionaries as short names)
+const iconName = icon.includes(":") ? icon : `lucide:${icon.toLowerCase()}`;
+---
+
+<a
+    href={translatePath(`/services/${id}`)}
+    class="flex flex-col h-full p-7 bg-base-100 border border-base-content/10 rounded-[calc(var(--radius-box)*2)] hover:shadow-[0_20px_80px_-20px_rgba(var(--p),0.25)] hover:border-primary/40 transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden"
+    aria-label={`${__("Explore Service")}: ${__(title)}`}
+>
+    <!-- Premium Glassmorphism Accents -->
+    <div
+        class="absolute -right-10 -top-10 w-40 h-40 bg-primary/5 rounded-[calc(var(--radius-box)*2)] blur-[80px] group-hover:bg-primary/20 transition-all duration-700"
+    >
+    </div>
+    <div
+        class="absolute -left-10 -bottom-10 w-32 h-32 bg-secondary/5 rounded-[calc(var(--radius-box)*2)] blur-[60px] group-hover:bg-secondary/15 transition-all duration-700"
+    >
+    </div>
+
+    <!-- Icon Container with Dynamic Animation -->
+    <div
+        class="relative w-15 h-15 bg-base-200/50 backdrop-blur-md rounded-[calc(var(--radius-box)*2)] flex items-center justify-center mb-5 group-hover:bg-primary group-hover:shadow-[0_0_30px_rgba(var(--p),0.4)] transition-all duration-500 transform group-hover:-rotate-12 group-hover:scale-110 border border-base-content/5 group-hover:border-primary"
+    >
+        <Icon
+            name={iconName}
+            class="w-10 h-10 text-primary group-hover:text-primary-content transition-all duration-500"
+            aria-hidden="true"
+        />
+
+        <!-- Subtle dot for techy feel -->
+        <span
+            class="absolute top-3 right-3 w-1.5 h-1.5 bg-primary rounded-[calc(var(--radius-box)*2)] opacity-0 group-hover:opacity-100 transition-opacity animate-pulse"
+        ></span>
+    </div>
+
+    <!-- Typography with Premium Tracking -->
+    <h4
+        class="relative text-2xl font-black text-base-content mb-4 font-syncopate tracking-tighter leading-none group-hover:text-primary transition-colors"
+    >
+        {__(title)}
+    </h4>
+
+    <p
+        class="relative text-base-content/50 text-base leading-relaxed grow group-hover:text-base-content/80 transition-colors font-medium"
+    >
+        {__(description)}
+    </p>
+    <!-- 
+    Call to Action with Reveal Animation
+    <div
+        class="relative flex items-center text-primary font-black text-[10px] uppercase tracking-[0.3em] opacity-40 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0 duration-500"
+    >
+        <span
+            class="mr-4 h-px w-8 bg-primary/30 group-hover:w-12 transition-all duration-500"
+        ></span>
+        {__("details")}
+    </div>
+
+    Decorative Corner Element
+    <div
+        class="absolute bottom-6 right-6 opacity-5 group-hover:opacity-20 transition-opacity"
+    >
+        <Icon name="lucide:arrow-up-right" class="size-16" />
+    </div> -->
+</a>

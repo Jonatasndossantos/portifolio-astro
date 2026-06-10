@@ -1,0 +1,145 @@
+---
+import { getCollection } from "astro:content";
+import { locales, defaultLocale } from "@i18n";
+
+// REST-style Components Map
+import home_index from "@components/pages/home/Index.astro";
+import blog_index from "@components/pages/blog/Index.astro";
+import blog_show from "@components/pages/blog/Show.astro";
+import projects_index from "@components/pages/projects/Index.astro";
+import projects_show from "@components/pages/projects/Show.astro";
+import services_index from "@components/pages/services/Index.astro";
+import services_show from "@components/pages/services/Show.astro";
+import tags_index from "@components/pages/tags/Index.astro";
+import tags_show from "@components/pages/tags/Show.astro";
+import topics_index from "@components/pages/topics/Index.astro";
+import topics_show from "@components/pages/topics/Show.astro";
+import about_index from "@components/pages/about/Index.astro";
+
+const PAGE_COMPONENTS: Record<string, any> = {
+    "home/index": home_index,
+    "about/index": about_index,
+    "blog/index": blog_index,
+    "blog/show": blog_show,
+    "projects/index": projects_index,
+    "projects/show": projects_show,
+    "services/index": services_index,
+    "services/show": services_show,
+    "tags/index": tags_index,
+    "tags/show": tags_show,
+    "topics/index": topics_index,
+    "topics/show": topics_show,
+};
+
+export async function getStaticPaths() {
+    const paths = [];
+
+    // 1. Fetch all primary collections
+    const collections = {
+        blog: await getCollection("blog"),
+        services: await getCollection("services"),
+        projects: await getCollection("projects"),
+        tags: await getCollection("tags"),
+        topics: await getCollection("topics"),
+    };
+
+    const blogSlugs = new Set([
+        ...collections.blog.map((p) =>
+            p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, ""),
+        ),
+    ]);
+    const projectSlugs = new Set([
+        ...collections.projects.map((p) =>
+            p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, ""),
+        ),
+    ]);
+
+    for (const locale of locales) {
+        const isDefault = locale === defaultLocale;
+        const prefix = isDefault ? "" : `${locale}/`;
+
+        // A. Index / List Pages
+        const indices = [
+            { name: "", component: "home/index" },
+            { name: "about", component: "about/index" },
+            { name: "blog", component: "blog/index" },
+            { name: "projects", component: "projects/index" },
+            { name: "services", component: "services/index" },
+            { name: "topics", component: "topics/index" },
+            { name: "tags", component: "tags/index" },
+            { name: "fullstack", component: "home/index" }, // Alias
+        ];
+
+        for (const idx of indices) {
+            if (isDefault && idx.name === "") continue; // src/pages/index.astro handles this
+            paths.push({
+                params: { slug: `${prefix}${idx.name}`.replace(/\/$/, "") },
+                props: { lang: locale, componentKey: idx.component },
+            });
+        }
+
+        // B. Detail Pages (Localized collections)
+        const localizedCollections = [
+            { key: "blog", items: collections.blog, slugs: blogSlugs },
+            { key: "projects", items: collections.projects, slugs: projectSlugs }
+        ];
+
+        for (const col of localizedCollections) {
+            for (const slug of col.slugs) {
+                let entry = col.items.find(
+                    (p) => p.id.replace(/\.mdx?$/, "") === `${locale}/${slug}`,
+                );
+                let isFallback = false;
+                
+                if (!entry) {
+                    entry = col.items.find((p) => p.id.replace(/\.mdx?$/, "") === `${defaultLocale}/${slug}`) ||
+                            col.items.find((p) => p.id.replace(/\.mdx?$/, "").endsWith(`/${slug}`));
+                    isFallback = true;
+                }
+
+                if (entry) {
+                    paths.push({
+                        params: { slug: `${prefix}${col.key}/${slug}` },
+                        props: {
+                            lang: locale,
+                            componentKey: `${col.key}/show`,
+                            [col.key === "projects" ? "project" : "post"]: entry,
+                            isFallback,
+                        },
+                    });
+                }
+            }
+        }
+
+        // C. Simple Detail Pages (Services, Tags, Topics)
+        const simpleDetails = [
+            { key: "services", items: collections.services },
+            { key: "tags", items: collections.tags },
+            { key: "topics", items: collections.topics },
+        ];
+
+        for (const detail of simpleDetails) {
+            for (const item of detail.items) {
+                if (!item) continue;
+                const cleanId = item.id.replace(/\.mdx?$/, "");
+                paths.push({
+                    params: { slug: `${prefix}${detail.key}/${cleanId}` },
+                    props: {
+                        lang: locale,
+                        componentKey: `${detail.key}/show`,
+                        [detail.key.slice(0, -1)]: item,
+                        cleanId,
+                    },
+                });
+            }
+        }
+    }
+
+    return paths;
+}
+
+const { componentKey, ...props } = Astro.props;
+const PageComponent = PAGE_COMPONENTS[componentKey];
+---
+
+{PageComponent && <PageComponent {...props} />}

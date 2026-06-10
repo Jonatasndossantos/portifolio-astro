@@ -1,0 +1,201 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { useTranslator } from "@i18n";
+
+interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+const __ = await useTranslator(lang);
+
+const journey = [
+    {
+        id: "forging",
+        date: __("Fev/2023 - Jun/2024"),
+        title: __("O Forjamento das Soft Skills"),
+        body: __("Meu nome é Jônatas, moro em Extrema-MG, e tenho um histórico peculiar. Minha carreira começou fora da tecnologia, no McDonald's. Parece estranho mencionar isso numa entrevista técnica, mas foi lá que aprendi resiliência absoluta e execução sob extrema pressão – o que eu costumo chamar de meu 'treinamento SRE não-oficial'.")
+    },
+    {
+        id: "base",
+        date: __("Abr/2024 - Jul/2025"),
+        title: __("O Mergulho Técnico"),
+        body: __("Migrei pesado para o desenvolvimento através do meu técnico em Informática no SENAC, consolidando as bases da engenharia web. Escalei rapidamente como freelancer onde entregava aplicações End-to-End, desde Painéis Web a Apps consumindo Stripe e Supabase (como o ecossistema da Cafeteria Damore e JYNSGE News).")
+    },
+    {
+        id: "leadership",
+        date: __("Mar/2025 - Nov/2025"),
+        title: __("O Salto para Arquitetura e Liderança"),
+        body: __("O grande salto foi assumir como Tech Lead e Arquiteto na LUMEN, uma GovTech. Lá, não apenas escrevia código; arquitetei a Plataforma Lumen, um SaaS B2G Enterprise para licitações públicas. Enquanto a maioria usava fraweworks tradicionais, implantei Laravel Octane e Swoole para quebrar gargalos críticos de velocidade. Paralelamente, desenvolvi do zero um motor de inteligência artificial autônomo consumindo a API da OpenAI via JSON Schemas granulares, reduzindo semanas de trabalho burocrático para menos de 5 minutos.")
+    },
+    {
+        id: "sre",
+        date: __("Atuação SRE Avançada"),
+        title: __("Resgate de Legados e Dívida Técnica"),
+        body: __("Além da parte arquitetural, atuei na linha de frente resolvendo dívidas técnicas (Refactoring). Quando os sistemas legados caíam por Race Conditions ou gargalos transacionais, eu acessava as matrizes Linux via SSH e restaurava automações em n8n ou corrigia lógicas orientadas a RxJS no frontend. Meu foco é dominar ambientes corporativos críticos, porque é lá onde eu demonstro controle real.")
+    },
+    {
+        id: "future",
+        date: __("Maio/2025 - Presente"),
+        title: __("Engenharia Sólida e o Futuro"),
+        body: __("Hoje, curso Bacharelado em Engenharia da Computação na UNIVESP para blindar minha base de baixo nível de forma imutável. Continuo focado em orquestrar ecossistemas modernos, utilizando como core PHP/Laravel, React e I.A. Meu grande objetivo é escalar projetos em nível global entregando extrema performance, código limpo e resiliência a falhas.")
+    }
+];
+---
+
+<Layout lang={lang}>
+    <main class="relative w-full overflow-hidden bg-base-100 min-h-screen pt-32 pb-24 px-6 lg:px-20">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start relative">
+            
+            <!-- Sticky Sidebar Timeline (Hidden on mobile) -->
+            <aside class="hidden lg:block lg:w-1/3 sticky top-32 max-h-[calc(100vh-8rem)]">
+                <nav aria-label={__("Timeline de Carreira")} class="pr-8">
+                    <h1 class="text-4xl xl:text-5xl font-bold font-syncopate mb-4 text-base-content leading-tight">
+                        {__("Minha História")}
+                    </h1>
+                    <p class="text-base-content/60 mb-12 text-lg">
+                        {__("A evolução não é linear, é iterativa. E ela é forjada sob pressão.")}
+                    </p>
+                    
+                    <ul class="timeline timeline-vertical timeline-compact">
+                        {journey.map((chapter, index) => (
+                            <li>
+                                {index !== 0 && <hr class="bg-base-content/10 transition-colors duration-500" id={`hr-${chapter.id}-top`} />}
+                                <div class="timeline-middle">
+                                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-base-content/20 transition-all duration-300 scale-90" id={`dot-${chapter.id}`}>
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="timeline-end mb-8 pt-1">
+                                    <a href={`#${chapter.id}`} class="block group pl-2 outline-none">
+                                        <time class="font-mono text-xs opacity-50 block group-hover:text-primary transition-colors mb-1" id={`time-${chapter.id}`}>{chapter.date}</time>
+                                        <span class="text-lg font-bold text-base-content/40 group-hover:text-base-content transition-all duration-300 block" id={`link-${chapter.id}`}>
+                                            {chapter.title}
+                                        </span>
+                                    </a>
+                                </div>
+                                {index !== journey.length - 1 && <hr class="bg-base-content/10 transition-colors duration-500" id={`hr-${chapter.id}-bottom`} />}
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content Formatted -->
+            <div class="w-full lg:w-2/3 md:max-w-3xl md:mx-auto">
+                <!-- Mobile Header Area (Since sidebar is hidden) -->
+                <div class="lg:hidden mb-16 relative">
+                    <h1 class="text-4xl md:text-5xl font-bold font-syncopate mb-4 text-base-content">
+                        {__("Minha História")}
+                    </h1>
+                    <p class="text-base-content/70 text-lg mb-8">
+                        {__("A evolução não é linear, é iterativa. E ela é forjada sob pressão.")}
+                    </p>
+                    <div class="w-full h-px bg-primary/20"></div>
+                </div>
+
+                <div class="space-y-32 pb-32">
+                    {journey.map((chapter) => (
+                        <section id={chapter.id} class="about-chapter scroll-mt-48 relative">
+                            <!-- Vertical line decorative for mobile -->
+                            <div class="absolute left-0 top-0 bottom-0 w-px bg-primary/20 lg:hidden"></div>
+                            
+                            <div class="pl-6 lg:pl-0 relative">
+                                <!-- Mobile Dot -->
+                                <div class="absolute -left-1.5 top-2 w-3 h-3 rounded-full bg-primary/80 lg:hidden shadow-[0_0_10px_rgba(var(--bg-primary),0.3)]"></div>
+                                
+                                <time class="font-mono text-sm tracking-widest text-primary mb-3 block lg:hidden uppercase">
+                                    {chapter.date}
+                                </time>
+                                <h2 class="text-3xl md:text-4xl font-bold font-syncopate mb-6 text-base-content">
+                                    {chapter.title}
+                                </h2>
+                                <p class="text-lg md:text-xl text-base-content/80 leading-relaxed font-light">
+                                    {chapter.body}
+                                </p>
+                            </div>
+                        </section>
+                    ))}
+                    
+                    <div class="w-full flex justify-center mt-20 pt-10 border-t border-base-content/10">
+                         <a href="/" class="btn btn-outline btn-primary font-syncopate uppercase tracking-wider">
+                             &larr; {__("Back to Portfolio")}
+                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<script>
+    // ScrollSpy Logic for Desktop Timeline
+    document.addEventListener("astro:page-load", () => {
+        const chapters = document.querySelectorAll(".about-chapter");
+        if (!chapters.length) return;
+
+        // Detect intersections near center of screen
+        const observerOptions = {
+            root: null,
+            rootMargin: "-20% 0px -50% 0px",
+            threshold: 0
+        };
+
+        const deactivateAll = () => {
+            document.querySelectorAll("[id^='link-']").forEach(el => {
+                el.classList.remove("text-base-content");
+                el.classList.add("text-base-content/40");
+            });
+            document.querySelectorAll("[id^='dot-']").forEach(el => {
+                el.classList.remove("text-primary", "scale-125");
+                el.classList.add("text-base-content/20", "scale-90");
+            });
+            document.querySelectorAll("[id^='time-']").forEach(el => {
+                el.classList.remove("text-primary", "opacity-100");
+                el.classList.add("opacity-50");
+            });
+            document.querySelectorAll("[id^='hr-']").forEach(el => {
+                el.classList.remove("bg-primary/50");
+                el.classList.add("bg-base-content/10");
+            });
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            // Because multiple sections might intersect during fast scrolls,
+            // we isolate the intersecting one
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    deactivateAll();
+                    const id = entry.target.getAttribute("id");
+
+                    // Active state highlights
+                    const activeLink = document.getElementById(`link-${id}`);
+                    const activeDot = document.getElementById(`dot-${id}`);
+                    const activeTime = document.getElementById(`time-${id}`);
+                    
+                    // Also paint the timeline line above the dot
+                    const activeHrTop = document.getElementById(`hr-${id}-top`);
+
+                    if (activeLink) {
+                        activeLink.classList.remove("text-base-content/40");
+                        activeLink.classList.add("text-base-content"); 
+                    }
+                    if (activeDot) {
+                        activeDot.classList.remove("text-base-content/20", "scale-90");
+                        activeDot.classList.add("text-primary", "scale-125");
+                    }
+                    if (activeTime) {
+                        activeTime.classList.remove("opacity-50");
+                        activeTime.classList.add("text-primary", "opacity-100");
+                    }
+                    if (activeHrTop) {
+                        activeHrTop.classList.remove("bg-base-content/10");
+                        activeHrTop.classList.add("bg-primary/50");
+                    }
+                }
+            });
+        }, observerOptions);
+
+        chapters.forEach(chapter => observer.observe(chapter));
+    });
+</script>

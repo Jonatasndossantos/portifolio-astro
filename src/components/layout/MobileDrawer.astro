@@ -1,0 +1,122 @@
+---
+import ThemeToggle from "../ui/ThemeToggle.astro";
+import LanguageToggle from "./LanguageToggle.astro";
+import { useTranslator, useTranslatedPath } from "@i18n";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    lang: string;
+}
+
+const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "Services", href: "/services" },
+    { label: "Blog", href: "/blog" },
+];
+
+const iconLinks = [
+    {
+        label: "GitHub",
+        href: "https://github.com/jonatasndossantos",
+        icon: "simple-icons:github",
+    },
+];
+
+const { lang } = Astro.props;
+const translatePath = useTranslatedPath(lang);
+const __ = await useTranslator(lang);
+---
+
+<div class="drawer-side z-50">
+    <button
+        type="button"
+        onclick="document.getElementById('mobile-menu').checked = false;"
+        class="drawer-overlay backdrop-blur-sm transition-all duration-300 w-full outline-none"
+        aria-label={__("Close Menu")}></button>
+
+    <div
+        class="menu bg-base-100 min-h-full w-80 p-6 flex flex-col gap-8 text-base-content shadow-2xl overflow-y-auto"
+    >
+        <!-- Close Button Area (Visual) -->
+        <div class="flex justify-end w-full">
+            <button
+                type="button"
+                onclick="document.getElementById('mobile-menu').click()"
+                class="btn btn-ghost btn-circle"
+                aria-label={__("Close Menu")}
+                data-drawer-toggle="mobile-menu"
+            >
+                <Icon name="lucide:x" class="size-6" aria-hidden="true" />
+            </button>
+        </div>
+
+        <!-- Links -->
+        <nav class="flex flex-col gap-4 w-full px-2">
+            {
+                navLinks.map((link) => (
+                    <a
+                        href={translatePath(link.href)}
+                        class="text-2xl font-black font-syncopate uppercase tracking-tighter hover:text-primary transition-colors py-2"
+                        aria-label={__(link.label)}
+                    >
+                        {__(link.label)}
+                    </a>
+                ))
+            }
+        </nav>
+
+        <div class="w-full h-px bg-base-content/10 my-2"></div>
+
+        <!-- Ecosystem & Settings Mobile -->
+        <div class="flex flex-col items-start gap-8 w-full px-2">
+            <a
+                href={translatePath("/tags")}
+                class="btn btn-primary rounded-xl w-full flex items-center justify-center gap-3 group"
+                aria-label={__("search")}
+            >
+                <Icon
+                    name="lucide:search"
+                    class="size-5 transition-transform group-hover:rotate-12"
+                    aria-hidden="true"
+                />
+                <span class="font-syncopate font-bold text-xs uppercase"
+                    >{__("search")}</span
+                >
+            </a>
+
+            <div class="flex items-center gap-6">
+                <ThemeToggle
+                    locale={lang}
+                    dropdownPlacement="dropdown-top z-[300]"
+                />
+                <LanguageToggle
+                    currentLocale={lang}
+                    dropdownPlacement="dropdown-top z-[100]"
+                />
+            </div>
+
+            <!-- Social Links in Menu -->
+            <div class="flex gap-4 mt-2 mb-6">
+                {
+                    iconLinks.map((link) => (
+                        <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            class="btn btn-circle btn-sm btn-ghost text-base-content/60 hover:text-primary hover:bg-primary/10 transition-colors"
+                            aria-label={`${__("Follow on")} ${link.label}`}
+                            title={link.label}
+                        >
+                            <Icon
+                                name={link.icon}
+                                class="size-5"
+                                aria-hidden="true"
+                            />
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</div>

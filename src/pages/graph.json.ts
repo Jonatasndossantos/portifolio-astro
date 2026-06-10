@@ -68,7 +68,7 @@ export async function GET({ request }: { request: Request }) {
     // 3. Map Projects (hasRoute = true)
     projects.forEach(p => {
         const pId = `projects/${cleanId(p.id)}`;
-        addNode(pId, "projects", p.data.title, undefined, true);
+        addNode(pId, "projects", p.data.title, resolveIconUrl({ ...p.data, id: p.id }), true);
 
         p.data.relatedTopics?.forEach((ref: any) => addLink(pId, `topics/${cleanId(ref.id || ref)}`));
         p.data.tags?.forEach((ref: any) => addLink(pId, `tags/${cleanId(ref.id || ref)}`));
@@ -79,7 +79,7 @@ export async function GET({ request }: { request: Request }) {
     // 4. Map Blog Posts (hasRoute = true)
     blogs.forEach(b => {
         const bId = `blog/${cleanId(b.id)}`;
-        addNode(bId, "blog", b.data.title, undefined, true);
+        addNode(bId, "blog", b.data.title, resolveIconUrl({ ...b.data, id: b.id }), true);
 
         b.data.relatedTopics?.forEach((ref: any) => addLink(bId, `topics/${cleanId(ref.id || ref)}`));
         b.data.tags?.forEach((ref: any) => addLink(bId, `tags/${cleanId(ref.id || ref)}`));
@@ -90,7 +90,7 @@ export async function GET({ request }: { request: Request }) {
     // 5. Map Services (hasRoute = true)
     services.forEach(s => {
         const sId = `services/${cleanId(s.id)}`;
-        addNode(sId, "services", s.data.title, undefined, true);
+        addNode(sId, "services", s.data.title, resolveIconUrl({ ...s.data, id: s.id }), true);
         s.data.relatedTopics?.forEach((ref: any) => addLink(sId, `topics/${cleanId(ref.id || ref)}`));
     });
 
