@@ -3,37 +3,42 @@
     "label": "The Developer",
     "title": "Engineering",
     "highlightedTitle": "Digital Experiences",
-    "intro1": "I am Jônatas Nascimento, 19 years old from Extrema - MG, fully focused on global operations and challenges.",
-    "intro2": "I don't just write code; I build resilient applications. I navigate naturally from root infrastructure (operating Linux/Docker environments via SSH) to Research & Development (R&D), creating advanced AI integrations with Function Calling and Chatbots. I work as a Mid-Level Full-Stack Developer, but the complexity of my deliverables and the architectures I lead reflect Senior-level expertise.",
+    "intro1": "I am Jônatas Nascimento (Jhon), Software Architect and Senior Full-Stack Engineer focused on solving business challenges through scalable technology and high-performance architectures in the global market.",
+    "intro2": "I have led highly critical GovTech and corporate SaaS initiatives. My deliverables include deploying asynchronous runtimes (Laravel Octane, Swoole, FrankenPHP) that maintain in-memory state for low-latency request handling, alongside AI R&D pipelines (OpenAI Assistants, RAG, database-connected Function Calling) secured via strict JSON Schema. I operate fluently on remote Linux servers via SSH, debugging transactional concurrency (race conditions) and building automated CI/CD pipelines.",
     "stackTitle": "My Core Stack",
-    "stackText": "The core of my engineering is <strong>PHP</strong> with the modern <strong>Laravel</strong> ecosystem. Although I master <strong>React</strong> on the front-end for interactive interfaces, I have a strong technical preference for using <strong>Blade</strong> or <strong>Livewire</strong>. An architectural decision to ensure absolute cohesion, extreme delivery speed, and optimized performance.",
+    "stackText": "My engineering revolves around the modern <strong>Laravel/PHP</strong> ecosystem utilizing high-performance stateful runtimes, coupled with reactive front-ends built on <strong>React 19</strong> and <strong>Inertia.js</strong>. My preference for <strong>Livewire</strong> and <strong>Blade</strong> is architectural, minimizing network overhead, retaining state cohesion, and maximizing critical render speeds.",
     "timelineTitle": "The Journey",
     "timelineSubtitle": "Great architectures aren't built overnight; they are forged under pressure. This is my background's evolution:",
     "timeline": [
       {
+        "date": "2020 - 2023",
+        "title": "IT Technician",
+        "desc": "Physical infrastructure services, local area networks setup, OS management, and private server administration."
+      },
+      {
         "date": "Feb 2023 - Jun 2024",
         "title": "The Forging (McDonald's)",
-        "desc": "Where I learned relentless execution under pressure, strict SLAs, and pure resilience. The unofficial SRE training."
+        "desc": "Operating under intense business pressure, managing concurrent workflows under strict delivery SLAs. This operational resilience serves as my SRE and fault-tolerance philosophical foundation."
       },
       {
         "date": "Apr 2024 - Jul 2025",
         "title": "The Base (SENAC)",
-        "desc": "Technical course focusing on web systems fundamentals and full-stack architecture."
+        "desc": "Academic background focusing on web systems fundamentals, database relational modeling, and monolithic software design patterns."
       },
       {
         "date": "Jun 2024 - Present",
         "title": "End-to-End Architect (Freelancer)",
-        "desc": "Architect and Engineer responsible for platforms like Cafeteria Damore and JYNSGE News, orchestrating infrastructure and complex integrations."
+        "desc": "Full technical ownership of design, implementation, and deployment of end-to-end platforms (Cafeteria Damore, JYNSGE News), integrating Stripe and Supabase under automated CI/CD."
       },
       {
         "date": "Mar 2025 - Nov 2025",
         "title": "Tech Lead & Architect (LUMEN Consultoria)",
-        "desc": "Built the Lumen Platform (B2G SaaS) from scratch. Implemented Laravel Octane, autonomous AI R&D, and resolved complex legacy Race Conditions."
+        "desc": "Lead architect for B2G SaaS Enterprise Platform Lumen. Upgraded legacy runtime to Laravel Octane + FrankenPHP, cutting response latency by 50%. Led AI R&D for structured document compilation and mitigated critical concurrency/race conditions on legacy systems."
       },
       {
         "date": "May 2025 - Present",
         "title": "The Anchor (UNIVESP)",
-        "desc": "Bachelor's Degree in Computer Engineering, diving into deep layers and low-level architectures."
+        "desc": "Bachelor's Degree in Computer Engineering, cementing deep knowledge in computer hardware, digital logic, and low-level system designs."
       }
     ]
   },

@@ -10,28 +10,28 @@
     "managers": "Gestores",
     "modes": {
         "fullstack": {
-            "bio": "Crio experiências digitais imersivas, unindo lógica robusta e design fluido em um multiverso de tecnologia.",
-            "role": "Engenheiro Full-Stack"
+            "bio": "Arquiteto de Software e Engenheiro Full-Stack Sênior especializado em runtimes assíncronos de alta performance (Laravel Octane, Swoole, FrankenPHP) e SPAs reativos com React 19 / Inertia.js.",
+            "role": "Arquiteto de Software & Engenheiro Full-Stack Sênior"
         },
         "frontend": {
-            "bio": "Esculpo interações de usuário com precisão, focando em movimento, acessibilidade e narrativas visuais envolventes.",
+            "bio": "Arquiteto Frontend Criativo com foco em interfaces de alta reatividade, arquitetura CSS limpa com Tailwind v4 e otimização de estado.",
             "role": "Arquiteto Criativo Frontend"
         },
         "backend": {
-            "bio": "Arquiteto a espinha dorsal invisível das aplicações, garantindo segurança, velocidade e escalabilidade massiva.",
-            "role": "Especialista em Arquitetura de Sistemas"
+            "bio": "Engenheiro de Sistemas Backend focado em arquiteturas resilientes, otimização de consultas complexas em bancos de dados relacionais e mitigação de race conditions.",
+            "role": "Arquiteto de Sistemas Backend"
         },
         "devops": {
-            "bio": "Construo as 'fábricas' de software, criando pipelines contínuos e infraestrutura resiliente e automatizada.",
-            "role": "Engenheiro de Infraestrutura e Automação"
+            "bio": "Arquiteto SRE e Infraestrutura. Orquestração de servidores Linux remotos via SSH, ambientes containerizados (Docker), pipelines automotizados e gestão de workers de fila.",
+            "role": "Engenheiro SRE & Infraestrutura"
         },
         "database": {
-            "bio": "Sou o guardião dos dados, otimizando estruturas para consultas complexas e garantindo integridade absoluta.",
-            "role": "Administrador e Arquiteto de Dados"
+            "bio": "Arquiteto de Banco de Dados especializado em modelagem, indexação e isolamento transacional para clusters distribuídos sob alta concorrência de escrita.",
+            "role": "Arquiteto e Administrador de Dados"
         },
         "ai": {
-            "bio": "Integro modelos inteligentes em aplicações práticas, ensinando máquinas a resolver problemas humanos complexos.",
-            "role": "Engenheiro de Soluções em IA"
+            "bio": "Engenheiro de IA integrando pipelines de RAG, OpenAI Assistants, Function Calling conectada a bancos relacionais e validação estrita via JSON Schema.",
+            "role": "Engenheiro de Soluções & R&D em IA"
         }
     }
 }

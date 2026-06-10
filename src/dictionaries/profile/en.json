@@ -10,28 +10,28 @@
     "managers": "Managers",
     "modes": {
         "fullstack": {
-            "bio": "I create immersive digital experiences, bridging the gap between robust logic and fluid design. I deliver complete solutions from database to pixel.",
-            "role": "Full-Stack Engineer"
+            "bio": "Software Architect and Full-Stack Engineer specializing in high-performance asynchronous runtimes (Laravel Octane, Swoole, FrankenPHP) and reactive React 19 / Inertia.js SPAs.",
+            "role": "Software Architect & Senior Full-Stack Engineer"
         },
         "frontend": {
-            "bio": "I sculpt user interactions with pixel-perfect precision, focusing on motion, accessibility, and visual storytelling that captures the imagination.",
+            "bio": "Creative Frontend Architect focusing on highly responsive user interfaces, clean CSS architecture with Tailwind v4, and state management optimization.",
             "role": "Creative Frontend Architect"
         },
         "backend": {
-            "bio": "I architect the invisible backbone of applications, ensuring security, speed, and massive scalability under heavy loads.",
-            "role": "System Architecture Specialist"
+            "bio": "Backend Systems Engineer specializing in robust microservices, complex relational database tuning, asynchronous queue processing, and race condition mitigation.",
+            "role": "Backend Systems Architect"
         },
         "devops": {
-            "bio": "I build the factories that build the software, creating seamless pipelines and resilient infrastructure that sleeps so you don't have to.",
-            "role": "Infrastructure & Automation Engineer"
+            "bio": "SRE & Infrastructure Architect. Managing remote Linux servers via SSH, containerized environments, secure automation pipelines, and background worker optimization.",
+            "role": "SRE & Infrastructure Engineer"
         },
         "database": {
-            "bio": "I am the guardian of data, optimizing structures for complex queries and ensuring absolute integrity across distributed systems.",
-            "role": "Database Administrator & Architect"
+            "bio": "Database Architect optimizing schemas, indexing, and transactional isolation for distributed database clusters under high write concurrency.",
+            "role": "Database Architect & Administrator"
         },
         "ai": {
-            "bio": "I integrate intelligent models into practical applications, teaching machines to solve human problems and automating the mundane.",
-            "role": "AI Solutions Engineer"
+            "bio": "AI Solutions Engineer integrating RAG pipelines, OpenAI Assistants, database-connected Function Calling, and strict JSON Schema validation to eliminate model hallucinations.",
+            "role": "AI Solutions & R&D Engineer"
         }
     }
 }

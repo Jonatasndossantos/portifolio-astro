@@ -3,42 +3,42 @@
     "label": "O Desenvolvedor",
     "title": "Engenharia de",
     "highlightedTitle": "Experiências Digitais",
-    "intro1": "Sou Jônatas Nascimento (Jhon), tenho 19 anos e moro em Extrema - MG, com foco 100% voltado para operações e desafios no mercado global.",
-    "intro2": "Não me limito a escrever código; eu construo aplicações resilientes. Transito com naturalidade desde a infraestrutura raiz (operando ambientes Linux/Docker via SSH) até a camada de Pesquisa e Desenvolvimento (R&D), criando integrações avançadas de Inteligência Artificial com Function Calling e Chatbots. Atuo como Desenvolvedor Full-Stack Pleno, mas a complexidade das minhas entregas e as arquiteturas que lidero refletem a experiência de um nível Sênior.",
+    "intro1": "Sou Jônatas Nascimento (Jhon), Arquiteto de Software e Engenheiro Full-Stack Sênior focado em resolver problemas de negócios por meio de tecnologia escalável e arquiteturas de alta performance no mercado internacional.",
+    "intro2": "Liderei projetos de GovTech e SaaS corporativos de alta criticidade. Minhas entregas compreendem a implantação de ambientes assíncronos (Laravel Octane, Swoole, FrankenPHP) que mantêm o estado em memória para processamento de baixa latência, além do desenvolvimento em R&D de pipelines avançados de IA (OpenAI Assistants, RAG, Function Calling direto a bancos SQL) com restrição estrita via JSON Schema. Opero com fluidez em servidores Linux remotos via SSH, corrigindo gargalos transacionais (race conditions) e desenhando fluxos complexos de CI/CD.",
     "stackTitle": "A Minha Stack Principal",
-    "stackText": "O núcleo da minha engenharia é <strong>PHP</strong> com o ecossistema moderno do <strong>Laravel</strong>. Embora eu domine <strong>React</strong> no front-end para interfaces interativas, tenho uma forte preferência técnica por utilizar <strong>Blade</strong> ou <strong>Livewire</strong>. Uma decisão arquitetural para garantir coesão absoluta, extrema velocidade de entrega e performance otimizada.",
+    "stackText": "Minha engenharia gravita em torno do ecossistema moderno do <strong>Laravel/PHP</strong> sob runtimes stateful de alto desempenho e interfaces reativas construídas com <strong>React 19</strong> e <strong>Inertia.js</strong>. Minha escolha por <strong>Livewire</strong> e <strong>Blade</strong> é estratégica, visando reduzir sobrecarga de rede, manter coesão de estado e maximizar a velocidade de renderização crítica.",
     "timelineTitle": "A Jornada",
     "timelineSubtitle": "Grandes arquiteturas não são construídas da noite para o dia; elas são forjadas sob pressão. Esta é a evolução do meu background:",
     "timeline": [
       {
         "date": "2020 - 2023",
-        "title": "Tecnico em Informática",
-        "desc": "Fazia serviços de manutenção de computadores e formatação de computadores."
+        "title": "Técnico em Informática",
+        "desc": "Serviços de infraestrutura física, montagem de redes de computadores, gerenciamento de sistemas operacionais e administração de servidores locais."
       },
       {
         "date": "Fev/2023 - Jun/2024",
         "title": "O Forjamento (McDonald's)",
-        "desc": "Onde aprendi execução implacável sob pressão, SLAs rigorosos, e resiliência pura. O treinamento não-oficial de SRE."
+        "desc": "Atuação sob extrema pressão operacional, gerenciamento ágil de fluxos concorrentes e conformidade com SLAs de entrega rígidos. Esta resiliência serve como minha base filosófica para SRE e tolerância a falhas em sistemas."
       },
       {
         "date": "Abr/2024 - Jul/2025",
         "title": "A Base (SENAC)",
-        "desc": "Curso Técnico com foco em fundamentos de web systems e arquitetura full-stack."
+        "desc": "Formação acadêmica com foco em fundamentos de desenvolvimento web, modelagem relacional de banco de dados e arquitetura monolítica clássica."
       },
       {
         "date": "Jun/2024 - Presente",
         "title": "Construindo End-to-End (Freelancer)",
-        "desc": "Arquiteto e Engenheiro responsável pela implantação de plataformas como Cafeteria Damore e JYNSGE News, orquestrando infraestrutura e integração complexa."
+        "desc": "Responsabilidade técnica integral pela concepção, codificação e deploy de plataformas completas (Cafeteria Damore, JYNSGE News), integrando Stripe e Supabase sob CI/CD automatizado."
       },
       {
         "date": "Mar/2025 - Nov/2025",
         "title": "Tech Lead & Arquiteto (LUMEN Consultoria)",
-        "desc": "Construí do zero a Plataforma Lumen (SaaS B2G). Tirei o framework do modelo tradicional com Laravel Octane, fiz R&D de IA autônoma e resolvi complexas Race Conditions no legados."
+        "desc": "Arquiteto líder do SaaS Enterprise B2G Plataforma Lumen. Migração de runtime convencional para Laravel Octane + FrankenPHP, reduzindo tempo de resposta em 50%. R&D de agentes autônomos de IA para geração documental estruturada e resolução de concorrência crônica (race conditions) em sistemas governamentais legados."
       },
       {
         "date": "Maio/2025 - Presente",
         "title": "O Lastro (UNIVESP)",
-        "desc": "Bacharelado em Engenharia da Computação, mergulhando nas camadas profundas e arquiteturas de baixo nível."
+        "desc": "Curso de Bacharelado em Engenharia da Computação para consolidação de conhecimentos de eletrônica digital, sistemas embarcados e engenharia de baixo nível."
       }
     ]
   },

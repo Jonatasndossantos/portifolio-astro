@@ -48,7 +48,11 @@ const relatedPostsRaw =
 const relatedPosts = relatedPostsRaw.filter(Boolean);
 ---
 
-<Layout title={`${project.data.title} | ${tPortfolio.projects.caseStudy}`} lang={locale}>
+<Layout
+    title={`${project.data.title} | ${tPortfolio.projects.caseStudy}`}
+    description={project.data.description || ""}
+    lang={locale}
+>
     <main
         class="w-full min-h-screen bg-base-100 text-base-content pt-32 pb-20 px-6 lg:px-20 relative z-10"
     >

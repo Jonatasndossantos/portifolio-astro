@@ -38,7 +38,7 @@ const translatePath = useTranslatedPath(locale);
 
 <Layout
     title={`${service.data.title} | Services`}
-    description={`Service details for ${service.data.title}`}
+    description={service.data.description || ""}
     lang={locale}
 >
     <main
