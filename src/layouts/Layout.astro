@@ -21,7 +21,7 @@ const {
 } = Astro.props;
 
 const ogTitle =
-	title === "Jônatas N. dos Santos"
+	title.includes("Jônatas")
 		? title
 		: `${title} | Jônatas N. dos Santos`;
 const fullImageUrl = new URL(image, Astro.url).href;

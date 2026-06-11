@@ -23,16 +23,16 @@ const __ = await useTranslator(lang);
         <div class="grid md:grid-cols-2 gap-16">
             <!-- Contact Info -->
             <div>
-                <h2
+                <div
                     class="text-xs font-bold text-primary tracking-widest uppercase mb-4"
                 >
                     // {__("Contact")}
-                </h2>
-                <h3
+                </div>
+                <h2
                     class="text-5xl md:text-6xl font-bold text-base-content mb-6"
                 >
                     {__("Let's Build the Future.")}
-                </h3>
+                </h2>
                 <p class="text-base-content/70 text-lg mb-8">
                     {__("Let's discuss how we can work together to bring your ideas to life.")}
                 </p>
@@ -151,6 +151,7 @@ const __ = await useTranslator(lang);
                         name="name"
                         id="name"
                         type="text"
+                        autocomplete="name"
                         class="input input-bordered w-full bg-base-100 focus:input-primary"
                         placeholder="John Doe"
                     />
@@ -166,6 +167,7 @@ const __ = await useTranslator(lang);
                         name="email"
                         id="email"
                         type="email"
+                        autocomplete="email"
                         class="input input-bordered w-full bg-base-100 focus:input-primary"
                         placeholder="john@example.com"
                     />
