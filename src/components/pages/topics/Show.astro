@@ -3,6 +3,8 @@ import { getCollection, render } from "astro:content";
 import { getTranslations, useTranslatedPath } from "@i18n";
 import Layout from "@layouts/Layout.astro";
 import GraphIsland from "@components/GraphIsland.astro";
+import TableOfContents from "@components/ui/TableOfContents.astro";
+import { extractHeadings } from "../../../utils/headings";
 
 const { lang: locale, topic, cleanId } = Astro.props;
 
@@ -32,6 +34,10 @@ const relatedServices = allServices.filter((s) =>
 const { Content } = await render(topic);
 const tPortfolio = (await getTranslations(locale, "portfolio")) as Record<string, any>;
 const translatePath = useTranslatedPath(locale);
+
+const headings = extractHeadings(topic.body);
+
+const hasRelated = relatedProjects.length > 0 || relatedBlogs.length > 0 || relatedServices.length > 0;
 ---
 
 <Layout
@@ -42,132 +48,233 @@ const translatePath = useTranslatedPath(locale);
     <main
         class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative overflow-hidden"
     >
-        <div class="max-w-4xl mx-auto relative z-10">
-            <a
-                href={translatePath("/tags")}
-                class="btn btn-ghost btn-sm mb-8 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
-            >
-                &larr; {tPortfolio.taxonomy.backToKnowledge}
-            </a>
-
-            <div class="flex items-center gap-6 mb-8">
-                {
-                    topic.data.icon ? (
-                        <img
-                            src={`https://cdn.simpleicons.org/${topic.data.icon}/ffffff`}
-                            alt={topic.data.title}
-                            class="w-16 h-16 object-contain"
-                        />
-                    ) : (
-                        <div class="w-16 h-16 rounded bg-base-200 flex items-center justify-center text-3xl font-bold">
-                            {topic.data.title.charAt(0)}
-                        </div>
-                    )
-                }
-                <div>
-                    <span
-                        class="badge badge-accent badge-outline uppercase tracking-wider text-xs mb-2"
-                    >
-                        Topic Domain
-                    </span>
-                    <h1 class="text-5xl font-bold font-syncopate">
-                        {topic.data.title}
-                    </h1>
-                </div>
-            </div>
-
-            <article
-                class="prose prose-lg prose-invert mb-16 max-w-none prose-p:text-base-content/70"
-            >
-                <Content />
-            </article>
-
-            <div class="mb-16">
-                <h2
-                    class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4"
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="mb-8 flex justify-start max-w-5xl mx-auto">
+                <a
+                    href={translatePath("/tags")}
+                    class="btn btn-outline btn-sm rounded-full gap-2 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
                 >
-                    {tPortfolio.graph.knowledgeTitle}
-                </h2>
-                <GraphIsland focusId={`topics/${cleanId}`} lang={locale} />
+                    &larr; {tPortfolio.taxonomy.backToKnowledge}
+                </a>
             </div>
 
-            {
-                relatedProjects.length > 0 && (
-                    <div class="mb-12">
-                        <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            {tPortfolio.taxonomy.projectsMappedTo} {topic.data.title}
+            <!-- Centered Layout Container -->
+            <div class="flex flex-col lg:flex-row justify-center items-start gap-12 max-w-6xl mx-auto">
+                
+                <!-- Main Content Area -->
+                <div class="w-full lg:max-w-3xl shrink-0">
+                    <div class="flex items-center gap-6 mb-8">
+                        {
+                            topic.data.icon ? (
+                                <img
+                                    src={`https://cdn.simpleicons.org/${topic.data.icon}/ffffff`}
+                                    alt={topic.data.title}
+                                    class="w-16 h-16 object-contain"
+                                />
+                            ) : (
+                                <div class="w-16 h-16 rounded bg-base-200 flex items-center justify-center text-3xl font-bold">
+                                    {topic.data.title.charAt(0)}
+                                </div>
+                            )
+                        }
+                        <div>
+                            <span
+                                class="badge badge-accent badge-outline uppercase tracking-wider text-xs mb-2"
+                            >
+                                Topic Domain
+                            </span>
+                            <h1 class="text-4xl md:text-5xl font-bold font-syncopate">
+                                {topic.data.title}
+                            </h1>
+                        </div>
+                    </div>
+
+                    <!-- Collapsible Table of Contents for Mobile -->
+                    {headings.length > 0 && (
+                        <div id="dynamic-mobile-toc" class="lg:hidden mb-8">
+                            <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-2xl">
+                                <summary class="collapse-title text-sm font-bold flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                                    {tPortfolio.taxonomy.tableOfContents || "Table of Contents"}
+                                </summary>
+                                <div class="collapse-content">
+                                    <ul class="menu bg-transparent p-0 gap-1 list-none">
+                                        {headings.map((h) => (
+                                            <li>
+                                                <a
+                                                    href={`#${h.slug}`}
+                                                    class={`py-2 px-3 text-sm hover:text-primary transition-colors block ${
+                                                        h.depth === 3 ? "pl-6 text-xs opacity-80" : "font-medium"
+                                                    }`}
+                                                >
+                                                    {h.text}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    )}
+
+                    <article
+                        class="prose prose-lg prose-invert mb-16 max-w-none prose-p:text-base-content/70"
+                    >
+                        <Content />
+                    </article>
+
+                    <!-- Knowledge Graph -->
+                    <div class="mb-16 graph-section">
+                        <h2
+                            class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4"
+                        >
+                            {tPortfolio.graph.knowledgeTitle}
                         </h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {relatedProjects.map((p) => (
-                                <a
-                                    href={translatePath(`/projects/${p.id.replace(/\.mdx?$/, "")}`)}
-                                    class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
-                                >
-                                    <div class="card-body p-6">
-                                        <h3 class="card-title text-lg">
-                                            {p.data.title}
-                                        </h3>
-                                        <p class="text-sm opacity-70">
-                                            View Case Study &rarr;
-                                        </p>
+                        <GraphIsland focusId={`topics/${cleanId}`} lang={locale} />
+                    </div>
+
+                    <!-- Mobile-Only Related Connections Area (Rendered at the bottom) -->
+                    {hasRelated && (
+                        <div class="lg:hidden mt-16 pt-8 border-t border-base-content/10 space-y-8 related-section">
+                            <h3 class="text-xl font-bold mb-4">{tPortfolio.taxonomy.contextDeepDives || "Connections"}</h3>
+
+                            {relatedProjects.length > 0 && (
+                                <div class="space-y-4">
+                                    <h4 class="text-sm font-bold opacity-60 uppercase tracking-widest">{tPortfolio.taxonomy.projectsMappedTo} {topic.data.title}</h4>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        {relatedProjects.map((p) => (
+                                            <a
+                                                href={translatePath(`/projects/${p.id.replace(/\.mdx?$/, "")}`)}
+                                                class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
+                                            >
+                                                <div class="card-body p-6">
+                                                    <h3 class="card-title text-lg">
+                                                        {p.data.title}
+                                                    </h3>
+                                                    <p class="text-sm opacity-70">
+                                                        View Case Study &rarr;
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        ))}
                                     </div>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                )
-            }
+                                </div>
+                            )}
 
-            {
-                relatedBlogs.length > 0 && (
-                    <div class="mb-12">
-                        <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            {tPortfolio.taxonomy.secondBrainNotes}
-                        </h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {relatedBlogs.map((b) => (
-                                <a
-                                    href={translatePath(`/blog/${b.id.replace(/\.mdx?$/, "")}`)}
-                                    class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
-                                >
-                                    <div class="card-body p-6">
-                                        <h3 class="card-title text-lg">
-                                            {b.data.title}
-                                        </h3>
+                            {relatedBlogs.length > 0 && (
+                                <div class="space-y-4">
+                                    <h4 class="text-sm font-bold opacity-60 uppercase tracking-widest">{tPortfolio.taxonomy.secondBrainNotes}</h4>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        {relatedBlogs.map((b) => (
+                                            <a
+                                                href={translatePath(`/blog/${b.id.replace(/\.mdx?$/, "")}`)}
+                                                class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
+                                            >
+                                                <div class="card-body p-6">
+                                                    <h3 class="card-title text-lg">
+                                                        {b.data.title}
+                                                    </h3>
+                                                </div>
+                                            </a>
+                                        ))}
                                     </div>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                )
-            }
+                                </div>
+                            )}
 
-            {
-                relatedServices.length > 0 && (
-                    <div class="mb-12">
-                        <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            {tPortfolio.taxonomy.relatedServices}
-                        </h2>
-                        <div class="flex flex-wrap gap-4">
-                            {relatedServices.map((s) => (
-                                <span class="badge badge-lg p-5 bg-base-200">
-                                    {s.data.title}
-                                </span>
-                            ))}
+                            {relatedServices.length > 0 && (
+                                <div class="space-y-4">
+                                    <h4 class="text-sm font-bold opacity-60 uppercase tracking-widest">{tPortfolio.taxonomy.relatedServices}</h4>
+                                    <div class="flex flex-wrap gap-4">
+                                        {relatedServices.map((s) => (
+                                            <span class="badge badge-lg p-5 bg-base-200">
+                                                {s.data.title}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                    </div>
-                )
-            }
+                    )}
 
-            {
-                relatedProjects.length === 0 &&
-                    relatedBlogs.length === 0 &&
-                    relatedServices.length === 0 && (
-                        <div class="text-center py-10 opacity-50 border border-dashed border-base-content/20 rounded-xl">
+                    {
+                        relatedProjects.length === 0 &&
+                            relatedBlogs.length === 0 &&
+                            relatedServices.length === 0 && (
+                                <div class="text-center py-10 opacity-50 border border-dashed border-base-content/20 rounded-xl lg:hidden">
+                                    {tPortfolio.graph.noConnections.replace("%name%", topic.data.title)}
+                                </div>
+                            )
+                    }
+                </div>
+
+                <!-- Desktop Sidebar Area -->
+                <aside class="hidden lg:block w-72 shrink-0 sticky top-32 space-y-6">
+                    {headings.length > 0 && <TableOfContents headings={headings} lang={locale} />}
+
+                    <!-- Collapsible Related Items on Desktop -->
+                    {hasRelated ? (
+                        <div class="space-y-4">
+                            {relatedProjects.length > 0 && (
+                                <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-base-content/60 p-4 min-h-0">
+                                        {tPortfolio.taxonomy.relatedProjects || "Projects"}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4">
+                                        <ul class="flex flex-col gap-2 list-none p-0 m-0">
+                                            {relatedProjects.map(p => (
+                                                <li>
+                                                    <a href={translatePath(`/projects/${p.id.replace(/\.mdx?$/, "")}`)} class="text-xs font-semibold hover:underline block text-balance">
+                                                        {p.data.title}
+                                                    </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </details>
+                            )}
+
+                            {relatedBlogs.length > 0 && (
+                                <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-base-content/60 p-4 min-h-0">
+                                        {tPortfolio.taxonomy.secondBrainNotes || "Articles"}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4">
+                                        <ul class="flex flex-col gap-2 list-none p-0 m-0">
+                                            {relatedBlogs.map(b => (
+                                                <li>
+                                                    <a href={translatePath(`/blog/${b.id.replace(/\.mdx?$/, "")}`)} class="text-xs font-semibold hover:underline block text-balance">
+                                                        {b.data.title}
+                                                    </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </details>
+                            )}
+
+                            {relatedServices.length > 0 && (
+                                <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-base-content/60 p-4 min-h-0">
+                                        {tPortfolio.taxonomy.relatedServices || "Services"}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4 flex flex-wrap gap-1.5">
+                                        {relatedServices.map(s => (
+                                            <span class="badge badge-xs bg-base-200 py-2 text-[9px]">
+                                                {s.data.title}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </details>
+                            )}
+                        </div>
+                    ) : (
+                        <div class="text-center py-6 opacity-30 border border-dashed border-base-content/20 rounded-xl text-xs px-4">
                             {tPortfolio.graph.noConnections.replace("%name%", topic.data.title)}
                         </div>
-                    )
-            }
+                    )}
+                </aside>
+
+            </div>
         </div>
     </main>
 </Layout>

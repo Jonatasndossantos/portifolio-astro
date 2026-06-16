@@ -4,6 +4,8 @@ import { getTranslations, useTranslatedPath } from "@i18n";
 import Layout from "@layouts/Layout.astro";
 import GraphIsland from "@components/GraphIsland.astro";
 import Services from "@components/sections/Services.astro";
+import TableOfContents from "@components/ui/TableOfContents.astro";
+import { extractHeadings } from "../../../utils/headings";
 
 const { lang: locale, service, cleanId } = Astro.props;
 
@@ -34,6 +36,10 @@ const tPortfolio = (await getTranslations(locale, "portfolio")) as Record<
     any
 >;
 const translatePath = useTranslatedPath(locale);
+
+const headings = extractHeadings(service.body);
+
+const hasRelated = relatedProjects.length > 0 || relatedBlogs.length > 0;
 ---
 
 <Layout
@@ -45,127 +51,197 @@ const translatePath = useTranslatedPath(locale);
         class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative overflow-hidden"
     >
         <div class="max-w-7xl mx-auto relative z-10">
-            <a
-                href={translatePath("/")}
-                class="btn btn-ghost btn-sm mb-8 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
-            >
-                {tPortfolio.taxonomy.backToPortfolio}
-            </a>
-
-            <div
-                class="flex flex-col md:flex-row md:items-center gap-6 mb-8 justify-between"
-            >
-                <div class="flex items-center gap-6">
-                    {
-                        service.data.icon ? (
-                            <div class="w-16 h-16 rounded bg-base-200 flex items-center justify-center text-3xl">
-                                {service.data.icon}
-                            </div>
-                        ) : (
-                            <div class="w-16 h-16 rounded bg-base-200 flex items-center justify-center text-base-content/60 shadow-inner">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
-                            </div>
-                        )
-                    }
-                    <div>
-                        <span
-                            class="badge badge-primary badge-outline uppercase tracking-wider text-xs mb-2"
-                        >
-                            {tPortfolio.services.title.replace(/s$/i, "")}
-                        </span>
-                        <h1
-                            class="text-4xl md:text-5xl font-bold font-syncopate"
-                        >
-                            {service.data.title}
-                        </h1>
-                    </div>
-                </div>
-                {
-                    service.data.priceStartingAt && (
-                        <div class="text-left md:text-right mt-4 md:mt-0 p-4 bg-base-200 rounded-xl border border-base-content/10">
-                            <div class="text-sm opacity-70 uppercase tracking-wider mb-1">
-                                {tPortfolio.taxonomy.startingAt}
-                            </div>
-                            <div class="text-3xl font-bold text-primary">
-                                ${service.data.priceStartingAt}
-                            </div>
-                        </div>
-                    )
-                }
-            </div>
-
-            <article
-                class="prose prose-lg prose-invert mb-16 max-w-none prose-p:text-base-content/70"
-            >
-                <Content />
-            </article>
-
-            <Services lang={locale} />
-
-            <div class="mb-16">
-                <h2
-                    class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4"
+            <div class="mb-8 flex justify-start max-w-5xl mx-auto">
+                <a
+                    href={translatePath("/")}
+                    class="btn btn-outline btn-sm rounded-full gap-2 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
                 >
-                    {tPortfolio.graph.knowledgeTitle}
-                </h2>
-                <GraphIsland focusId={`services/${cleanId}`} lang={locale} />
+                    &larr; {tPortfolio.taxonomy.backToPortfolio || "Back to Portfolio"}
+                </a>
             </div>
 
-            {
-                relatedProjects.length > 0 && (
-                    <div class="mb-12">
-                        <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            {tPortfolio.taxonomy.projectsUsingService}
-                        </h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {relatedProjects.map((p) => (
-                                <a
-                                    href={translatePath(
-                                        `/projects/${p.id.replace(/\.mdx?$/, "")}`,
-                                    )}
-                                    class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
-                                >
-                                    <div class="card-body p-6">
-                                        <h3 class="card-title text-lg">
-                                            {p.data.title}
-                                        </h3>
-                                        <p class="text-sm opacity-70 line-clamp-2">
-                                            {tPortfolio.projects.caseStudy}{" "}
-                                            &rarr;
-                                        </p>
+            <!-- Centered Layout Container -->
+            <div class="flex flex-col lg:flex-row justify-center items-start gap-12 max-w-6xl mx-auto">
+                
+                <!-- Main Content Area -->
+                <div class="w-full lg:max-w-3xl shrink-0">
+                    <header class="mb-12 border-b border-base-content/10 pb-8">
+                        <div class="flex items-center gap-6 mb-6">
+                            {
+                                service.data.icon ? (
+                                    <div class="w-16 h-16 rounded bg-base-200 flex items-center justify-center text-3xl shrink-0">
+                                        {service.data.icon}
                                     </div>
-                                </a>
-                            ))}
+                                ) : (
+                                    <div class="w-16 h-16 rounded bg-base-200 flex items-center justify-center text-base-content/60 shadow-inner shrink-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+                                    </div>
+                                )
+                            }
+                            <div>
+                                <span class="badge badge-primary badge-outline uppercase tracking-wider text-xs mb-2 block w-fit">
+                                    {tPortfolio.services.title ? tPortfolio.services.title.replace(/s$/i, "") : "Service"}
+                                </span>
+                                <h1 class="text-4xl md:text-5xl font-bold font-syncopate">
+                                    {service.data.title}
+                                </h1>
+                            </div>
                         </div>
-                    </div>
-                )
-            }
 
-            {
-                relatedBlogs.length > 0 && (
-                    <div class="mb-12">
-                        <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
-                            {tPortfolio.taxonomy.relatedArticles}
-                        </h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {relatedBlogs.map((b) => (
-                                <a
-                                    href={translatePath(
-                                        `/blog/${b.id.replace(/\.mdx?$/, "")}`,
-                                    )}
-                                    class="card bg-base-200/50 hover:bg-base-200 transition-colors border border-base-content/5"
-                                >
-                                    <div class="card-body p-6">
-                                        <h3 class="card-title text-lg">
-                                            {b.data.title}
-                                        </h3>
+                        {
+                            service.data.priceStartingAt && (
+                                <div class="w-fit mt-4 p-4 bg-base-200 rounded-xl border border-base-content/10">
+                                    <div class="text-sm opacity-70 uppercase tracking-wider mb-1">
+                                        {tPortfolio.taxonomy.startingAt || "Starting at"}
                                     </div>
-                                </a>
-                            ))}
+                                    <div class="text-3xl font-bold text-primary">
+                                        ${service.data.priceStartingAt}
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </header>
+
+                    <!-- Collapsible Table of Contents for Mobile -->
+                    {headings.length > 0 && (
+                        <div id="dynamic-mobile-toc" class="lg:hidden mb-8">
+                            <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-2xl">
+                                <summary class="collapse-title text-sm font-bold flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                                    {tPortfolio.taxonomy.tableOfContents || "Table of Contents"}
+                                </summary>
+                                <div class="collapse-content">
+                                    <ul class="menu bg-transparent p-0 gap-1 list-none">
+                                        {headings.map((h) => (
+                                            <li>
+                                                <a
+                                                    href={`#${h.slug}`}
+                                                    class={`py-2 px-3 text-sm hover:text-primary transition-colors block ${
+                                                        h.depth === 3 ? "pl-6 text-xs opacity-80" : "font-medium"
+                                                    }`}
+                                                >
+                                                    {h.text}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </details>
                         </div>
+                    )}
+
+                    <article class="prose prose-lg prose-invert mb-16 max-w-none prose-p:text-base-content/70">
+                        <Content />
+                    </article>
+
+                    <Services lang={locale} />
+
+                    <div class="mb-16 graph-section">
+                        <h2 class="text-2xl font-bold mb-6 border-b border-base-content/10 pb-4">
+                            {tPortfolio.graph.knowledgeTitle}
+                        </h2>
+                        <GraphIsland focusId={`services/${cleanId}`} lang={locale} />
                     </div>
-                )
-            }
+
+                    <!-- Mobile-Only Related Connections Area (Rendered at the bottom) -->
+                    {(relatedProjects.length > 0 || relatedBlogs.length > 0) && (
+                        <div class="lg:hidden mt-16 pt-8 border-t border-base-content/10 space-y-8 related-section">
+                            <h3 class="text-xl font-bold mb-4">{tPortfolio.taxonomy.contextDeepDives || "Connections"}</h3>
+
+                            {relatedProjects.length > 0 && (
+                                <div class="bg-base-200/50 p-6 rounded-2xl">
+                                    <h3 class="text-lg font-bold mb-4">
+                                        {tPortfolio.taxonomy.projectsUsingService || "Projects"}
+                                    </h3>
+                                    <ul class="space-y-3 list-none p-0">
+                                        {relatedProjects.map((p) => (
+                                            <li>
+                                                <a
+                                                    href={translatePath(`/projects/${p.id.replace(/\.mdx?$/, "")}`)}
+                                                    class="text-primary hover:text-primary/80 transition-colors flex items-center gap-2 font-medium"
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                                                    {p.data.title}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {relatedBlogs.length > 0 && (
+                                <div class="bg-base-200/50 p-6 rounded-2xl">
+                                    <h3 class="text-lg font-bold mb-4">
+                                        {tPortfolio.taxonomy.relatedArticles || "Articles"}
+                                    </h3>
+                                    <ul class="space-y-3 list-none p-0">
+                                        {relatedBlogs.map((b) => (
+                                            <li>
+                                                <a
+                                                    href={translatePath(`/blog/${b.id.replace(/\.mdx?$/, "")}`)}
+                                                    class="text-primary hover:text-primary/80 transition-colors flex items-center gap-2 font-medium"
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                                                    {b.data.title}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+
+                <!-- Desktop Sidebar Area -->
+                <aside class="hidden lg:block w-72 shrink-0 sticky top-32 space-y-6">
+                    {headings.length > 0 && <TableOfContents headings={headings} lang={locale} />}
+
+                    <!-- Collapsible Related Items on Desktop -->
+                    {(relatedProjects.length > 0 || relatedBlogs.length > 0) && (
+                        <div class="space-y-4">
+                            {relatedProjects.length > 0 && (
+                                <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-base-content/60 p-4 min-h-0">
+                                        {tPortfolio.taxonomy.projectsUsingService || "Projects"}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4">
+                                        <ul class="flex flex-col gap-2 list-none p-0 m-0">
+                                            {relatedProjects.map((p) => (
+                                                <li>
+                                                    <a href={translatePath(`/projects/${p.id.replace(/\.mdx?$/, "")}`)} class="text-xs font-semibold hover:underline block text-balance">
+                                                        {p.data.title}
+                                                    </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </details>
+                            )}
+
+                            {relatedBlogs.length > 0 && (
+                                <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-base-content/60 p-4 min-h-0">
+                                        {tPortfolio.taxonomy.relatedArticles || "Related Articles"}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4">
+                                        <ul class="flex flex-col gap-2 list-none p-0 m-0">
+                                            {relatedBlogs.map((b) => (
+                                                <li>
+                                                    <a href={translatePath(`/blog/${b.id.replace(/\.mdx?$/, "")}`)} class="text-xs font-semibold hover:underline block text-balance">
+                                                        {b.data.title}
+                                                    </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </details>
+                            )}
+                        </div>
+                    )}
+                </aside>
+
+            </div>
         </div>
     </main>
 </Layout>
