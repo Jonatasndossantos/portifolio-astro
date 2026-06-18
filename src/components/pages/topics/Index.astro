@@ -53,6 +53,7 @@ const categories = [...new Set(allTopics.map((topic) => topic.data.category || _
                             icon={topic.data.icon}
                             category={topic.data.category || __("All")}
                             lang={locale}
+                            basePath="/topics"
                         />
                     ))
                 }

@@ -11,9 +11,10 @@ interface Props {
     icon?: string;
     category: string;
     lang: string;
+    basePath?: string;
 }
 
-const { id, title, description, icon, category, lang } = Astro.props;
+const { id, title, description, icon, category, lang, basePath = "/tags" } = Astro.props;
 const translatePath = useTranslatedPath(lang);
 
 // Unified color mapping for categories
@@ -50,7 +51,7 @@ const descriptionHtml = marked.parseInline(finalDescription);
 ---
 
 <a
-    href={translatePath(`/tags/${id}`)}
+    href={translatePath(`${basePath}/${id}`)}
     class="knowledge-card relative p-5 rounded-box border bg-base-200/30 backdrop-blur-sm transition-all duration-300 group hover:border-primary/50 hover:bg-base-200/80 border-base-content/10 flex flex-col h-full"
     data-category={__(category)}
     data-title={__(title).toLowerCase()}

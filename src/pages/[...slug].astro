@@ -15,6 +15,7 @@ import tags_show from "@components/pages/tags/Show.astro";
 import topics_index from "@components/pages/topics/Index.astro";
 import topics_show from "@components/pages/topics/Show.astro";
 import about_index from "@components/pages/about/Index.astro";
+import search_index from "@components/pages/search/Index.astro";
 
 const PAGE_COMPONENTS: Record<string, any> = {
     "home/index": home_index,
@@ -29,6 +30,7 @@ const PAGE_COMPONENTS: Record<string, any> = {
     "tags/show": tags_show,
     "topics/index": topics_index,
     "topics/show": topics_show,
+    "search/index": search_index,
 };
 
 export async function getStaticPaths() {
@@ -67,6 +69,7 @@ export async function getStaticPaths() {
             { name: "services", component: "services/index" },
             { name: "topics", component: "topics/index" },
             { name: "tags", component: "tags/index" },
+            { name: "search", component: "search/index" },
             { name: "fullstack", component: "home/index" }, // Alias
         ];
 

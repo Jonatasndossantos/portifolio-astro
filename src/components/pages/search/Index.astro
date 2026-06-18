@@ -1,0 +1,429 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import { useTranslator, useTranslatedPath } from "@i18n";
+import { Icon } from "astro-icon/components";
+
+const { lang: locale } = Astro.props;
+const __ = await useTranslator(locale);
+const translatePath = useTranslatedPath(locale);
+
+// 1. Fetch all collections
+const tags = await getCollection("tags");
+const topics = await getCollection("topics");
+const projects = await getCollection("projects");
+const blog = await getCollection("blog");
+const services = await getCollection("services");
+
+// Default locale fallback
+const defaultLocale = "en";
+
+// 2. Localize multi-language collections
+const projectSlugs = [...new Set(projects.map(p => p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "")))];
+const localizedProjects = projectSlugs.map(slug => {
+    let entry = projects.find(p => p.id.replace(/\.mdx?$/, "") === `${locale}/${slug}`);
+    if (!entry) {
+        entry = projects.find(p => p.id.replace(/\.mdx?$/, "") === `${defaultLocale}/${slug}`) ||
+                projects.find(p => p.id.replace(/\.mdx?$/, "").endsWith(`/${slug}`));
+    }
+    return entry;
+}).filter(Boolean);
+
+const blogSlugs = [...new Set(blog.map(b => b.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "")))];
+const localizedBlog = blogSlugs.map(slug => {
+    let entry = blog.find(b => b.id.replace(/\.mdx?$/, "") === `${locale}/${slug}`);
+    if (!entry) {
+        entry = blog.find(b => b.id.replace(/\.mdx?$/, "") === `${defaultLocale}/${slug}`) ||
+                blog.find(b => b.id.replace(/\.mdx?$/, "").endsWith(`/${slug}`));
+    }
+    return entry;
+}).filter(Boolean);
+
+// 3. Compile localized search index items
+const searchItems = [
+    ...localizedProjects.map(p => {
+        const cleanId = p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "");
+        return {
+            title: __(p.data.title),
+            description: p.data.description ? __(p.data.description) : "",
+            type: "project",
+            url: translatePath(`/projects/${cleanId}`),
+            tags: p.data.tags?.map(t => {
+                const tId = (t.id || t).replace(/\.mdx?$/, "");
+                const tagObj = tags.find(tag => tag.id.replace(/\.mdx?$/, "") === tId);
+                return tagObj ? __(tagObj.data.title) : tId.split('/').pop() || "";
+            }) || [],
+            topics: p.data.relatedTopics?.map(t => {
+                const tId = (t.id || t).replace(/\.mdx?$/, "");
+                const topicObj = topics.find(top => top.id.replace(/\.mdx?$/, "") === tId);
+                return topicObj ? __(topicObj.data.title) : tId.split('/').pop() || "";
+            }) || []
+        };
+    }),
+    ...localizedBlog.map(b => {
+        const cleanId = b.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "");
+        return {
+            title: __(b.data.title),
+            description: b.data.description ? __(b.data.description) : "",
+            type: "blog",
+            url: translatePath(`/blog/${cleanId}`),
+            tags: b.data.tags?.map(t => {
+                const tId = (t.id || t).replace(/\.mdx?$/, "");
+                const tagObj = tags.find(tag => tag.id.replace(/\.mdx?$/, "") === tId);
+                return tagObj ? __(tagObj.data.title) : tId.split('/').pop() || "";
+            }) || [],
+            topics: b.data.relatedTopics?.map(t => {
+                const tId = (t.id || t).replace(/\.mdx?$/, "");
+                const topicObj = topics.find(top => top.id.replace(/\.mdx?$/, "") === tId);
+                return topicObj ? __(topicObj.data.title) : tId.split('/').pop() || "";
+            }) || []
+        };
+    }),
+    ...services.map(s => {
+        const cleanId = s.id.replace(/\.mdx?$/, "");
+        return {
+            title: __(s.data.title),
+            description: s.data.description ? __(s.data.description) : "",
+            type: "service",
+            url: translatePath(`/services/${cleanId}`),
+            topics: s.data.relatedTopics?.map(t => {
+                const tId = (t.id || t).replace(/\.mdx?$/, "");
+                const topicObj = topics.find(top => top.id.replace(/\.mdx?$/, "") === tId);
+                return topicObj ? __(topicObj.data.title) : tId.split('/').pop() || "";
+            }) || []
+        };
+    }),
+    ...tags.map(t => {
+        const cleanId = t.id.replace(/\.mdx?$/, "");
+        return {
+            title: __(t.data.title),
+            description: t.data.description ? __(t.data.description) : "",
+            type: "tag",
+            url: translatePath(`/tags/${cleanId}`),
+            category: t.data.category ? __(t.data.category) : ""
+        };
+    }),
+    ...topics.map(t => {
+        const cleanId = t.id.replace(/\.mdx?$/, "");
+        return {
+            title: __(t.data.title),
+            description: t.data.description ? __(t.data.description) : "",
+            type: "topic",
+            url: translatePath(`/topics/${cleanId}`),
+            category: t.data.category ? __(t.data.category) : ""
+        };
+    })
+];
+---
+
+<Layout
+    title={__("Search")}
+    description={__("Search across the entire portfolio: projects, articles, services, and technologies.")}
+    lang={locale}
+>
+    <main class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative overflow-hidden">
+        <!-- Background decorative effects -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-black font-syncopate uppercase tracking-tight text-base-content mb-4">
+                    {__("Search")}
+                </h1>
+                <p class="text-base-content/50 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+                    {__("Search across the entire portfolio: projects, articles, services, and technologies.")}
+                </p>
+            </div>
+
+            <!-- Search input bar -->
+            <div class="relative w-full max-w-2xl mx-auto mb-8 group">
+                <div class="absolute inset-0 bg-primary/10 rounded-2xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative flex items-center bg-base-200/50 backdrop-blur-md border border-base-content/10 hover:border-primary/45 focus-within:border-primary/60 rounded-2xl transition-all duration-300">
+                    <Icon name="lucide:search" class="size-6 text-base-content/40 ml-4 group-focus-within:text-primary transition-colors" />
+                    <input
+                        type="text"
+                        id="global-search-input"
+                        placeholder={__("Search...")}
+                        class="w-full bg-transparent border-none outline-none py-4 px-3 text-base-content text-lg placeholder-base-content/30"
+                        autocomplete="off"
+                        autofocus
+                    />
+                    <button
+                        type="button"
+                        id="search-clear-btn"
+                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden"
+                        aria-label={__("Clear")}
+                    >
+                        <Icon name="lucide:x" class="size-5" />
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters/Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="search-tabs">
+                <button
+                    type="button"
+                    data-filter="all"
+                    class="btn btn-sm btn-outline rounded-full font-mono text-xs px-4 border-base-content/10 bg-base-200/30 active-tab btn-primary"
+                >
+                    {__("All")}
+                </button>
+                <button
+                    type="button"
+                    data-filter="project"
+                    class="btn btn-sm btn-outline rounded-full font-mono text-xs px-4 border-base-content/10 bg-base-200/30"
+                >
+                    {__("Projects")}
+                </button>
+                <button
+                    type="button"
+                    data-filter="blog"
+                    class="btn btn-sm btn-outline rounded-full font-mono text-xs px-4 border-base-content/10 bg-base-200/30"
+                >
+                    {__("Blog")}
+                </button>
+                <button
+                    type="button"
+                    data-filter="service"
+                    class="btn btn-sm btn-outline rounded-full font-mono text-xs px-4 border-base-content/10 bg-base-200/30"
+                >
+                    {__("Services")}
+                </button>
+                <button
+                    type="button"
+                    data-filter="tech"
+                    class="btn btn-sm btn-outline rounded-full font-mono text-xs px-4 border-base-content/10 bg-base-200/30"
+                >
+                    {__("Technologies")}
+                </button>
+            </div>
+
+            <!-- Search Results Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="search-results-grid">
+                <!-- Javascript will inject search cards here -->
+            </div>
+
+            <!-- No results banner -->
+            <div id="no-results-banner" class="hidden text-center py-20 w-full bg-base-200/20 rounded-3xl border border-dashed border-base-content/10 mt-6">
+                <Icon name="lucide:inbox" class="size-12 mx-auto text-base-content/25 mb-4" />
+                <p class="text-2xl font-bold opacity-30">
+                    {__("No results found.")}
+                </p>
+                <p class="text-sm opacity-50 mt-2">
+                    {__("Try adjusting your search or filters.")}
+                </p>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<script is:inline define:vars={{ searchItems, locale }}>
+    // Retrieve DOM elements
+    const searchInput = document.getElementById("global-search-input");
+    const clearBtn = document.getElementById("search-clear-btn");
+    const resultsGrid = document.getElementById("search-results-grid");
+    const noResultsBanner = document.getElementById("no-results-banner");
+    const tabsContainer = document.getElementById("search-tabs");
+    const tabs = tabsContainer.querySelectorAll("button");
+
+    let currentFilter = "all";
+    let currentQuery = "";
+
+    // Group style configurations
+    const TYPE_LABELS = {
+        project: locale === "pt" ? "Projeto" : "Project",
+        blog: locale === "pt" ? "Artigo" : "Article",
+        service: locale === "pt" ? "Serviço" : "Service",
+        tag: locale === "pt" ? "Tecnologia" : "Technology",
+        topic: locale === "pt" ? "Tópico" : "Topic"
+    };
+
+    const BADGE_STYLES = {
+        project: "badge-primary text-primary-content",
+        blog: "badge-secondary text-secondary-content",
+        service: "badge-accent text-accent-content",
+        tag: "badge-info text-info-content",
+        topic: "badge-success text-success-content"
+    };
+
+    // Initialize from URL query parameters
+    function initSearchFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get("q");
+        if (query) {
+            searchInput.value = query;
+            currentQuery = query.toLowerCase();
+            clearBtn.classList.remove("hidden");
+        }
+        renderResults();
+        if (searchInput) {
+            searchInput.focus();
+        }
+    }
+
+    // Filter list logic
+    function filterItem(item) {
+        // A. Type Filter
+        if (currentFilter !== "all") {
+            if (currentFilter === "tech") {
+                if (item.type !== "tag" && item.type !== "topic") return false;
+            } else {
+                if (item.type !== currentFilter) return false;
+            }
+        }
+
+        // B. Query matching
+        if (!currentQuery) return true;
+
+        const titleMatch = item.title.toLowerCase().includes(currentQuery);
+        const descMatch = item.description.toLowerCase().includes(currentQuery);
+        const tagsMatch = item.tags && item.tags.some(t => t.toLowerCase().includes(currentQuery));
+        const topicsMatch = item.topics && item.topics.some(t => t.toLowerCase().includes(currentQuery));
+        const catMatch = item.category && item.category.toLowerCase().includes(currentQuery);
+
+        return titleMatch || descMatch || tagsMatch || topicsMatch || catMatch;
+    }
+
+    // Escape HTML helper for highlighting safely
+    function escapeHtml(str) {
+        return str
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    // Highlighting matching strings
+    function highlightText(text, query) {
+        if (!query || !text) return escapeHtml(text);
+        const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        const regex = new RegExp(`(${escapedQuery})`, "gi");
+        return escapeHtml(text).replace(regex, `<mark class="bg-primary/20 text-primary font-bold px-0.5 rounded">$1</mark>`);
+    }
+
+    // Render search cards
+    function renderResults() {
+        const filtered = searchItems.filter(filterItem);
+
+        if (filtered.length === 0) {
+            resultsGrid.innerHTML = "";
+            noResultsBanner.classList.remove("hidden");
+            return;
+        }
+
+        noResultsBanner.classList.add("hidden");
+
+        resultsGrid.innerHTML = filtered.map(item => {
+            const label = TYPE_LABELS[item.type] || item.type;
+            const badgeClass = BADGE_STYLES[item.type] || "badge-neutral";
+            
+            // Build sub-elements tags/topics
+            let metadataHtml = "";
+            const cleanQuery = currentQuery.trim();
+
+            if ((item.type === "project" || item.type === "blog") && (item.tags || item.topics)) {
+                const elements = [...(item.tags || []), ...(item.topics || [])];
+                if (elements.length > 0) {
+                    metadataHtml = `
+                        <div class="flex flex-wrap gap-1 mt-4">
+                            ${elements.map(el => `
+                                <span class="badge badge-xs badge-outline opacity-60">
+                                    ${highlightText(el, cleanQuery)}
+                                </span>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+            } else if (item.category) {
+                metadataHtml = `
+                    <div class="mt-4">
+                        <span class="badge badge-xs badge-outline opacity-60 uppercase tracking-widest text-[9px]">
+                            ${highlightText(item.category, cleanQuery)}
+                        </span>
+                    </div>
+                `;
+            }
+
+            return `
+                <a 
+                    href="${item.url}"
+                    class="search-card flex flex-col p-6 rounded-2xl bg-base-200/30 backdrop-blur-sm border border-base-content/10 hover:border-primary/40 hover:bg-base-200/70 transition-all duration-300 group cursor-pointer"
+                >
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="badge badge-sm font-semibold tracking-wider uppercase text-[10px] ${badgeClass}">
+                            ${label}
+                        </span>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-base-content group-hover:text-primary transition-colors mb-2">
+                        ${highlightText(item.title, cleanQuery)}
+                    </h3>
+
+                    <p class="text-xs text-base-content/60 leading-relaxed line-clamp-2">
+                        ${highlightText(item.description, cleanQuery)}
+                    </p>
+
+                    ${metadataHtml}
+                </a>
+            `;
+        }).join("");
+    }
+
+    // Input search typing listener
+    searchInput?.addEventListener("input", (e) => {
+        const value = e.target.value;
+        currentQuery = value.toLowerCase();
+
+        if (value.trim()) {
+            clearBtn.classList.remove("hidden");
+        } else {
+            clearBtn.classList.add("hidden");
+        }
+
+        // Sync query parameter in URL address bar
+        const url = new URL(window.location);
+        if (value.trim()) {
+            url.searchParams.set("q", value);
+        } else {
+            url.searchParams.delete("q");
+        }
+        window.history.replaceState({}, "", url);
+
+        renderResults();
+    });
+
+    // Clear search listener
+    clearBtn?.addEventListener("click", () => {
+        searchInput.value = "";
+        currentQuery = "";
+        clearBtn.classList.add("hidden");
+
+        const url = new URL(window.location);
+        url.searchParams.delete("q");
+        window.history.replaceState({}, "", url);
+
+        renderResults();
+        searchInput.focus();
+    });
+
+    // Tabs filtering click listener
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            // Remove active classes
+            tabs.forEach(t => {
+                t.classList.remove("btn-primary", "active-tab");
+            });
+
+            // Set clicked active
+            tab.classList.add("btn-primary", "active-tab");
+
+            currentFilter = tab.getAttribute("data-filter") || "all";
+            renderResults();
+        });
+    });
+
+    // Run on init
+    initSearchFromUrl();
+</script>
