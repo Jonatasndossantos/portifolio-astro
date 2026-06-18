@@ -48,9 +48,9 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: Build with Astro
+        # Remove '--site' override to force using the HTTPS site config in astro.config.mjs
         run: |
           npx --no-install astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
 
