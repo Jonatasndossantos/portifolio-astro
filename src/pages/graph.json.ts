@@ -1,134 +1,192 @@
 import { getCollection } from "astro:content";
 import { getSafeIcon, getIconUrl } from "../utils/icon-helper";
 
-export async function GET({ request }: { request: Request }) {
-    // 1. Fetch all collections
-    const projects = await getCollection("projects");
-    const blogs = await getCollection("blog");
-    const services = await getCollection("services");
-    const topics = await getCollection("topics");
-    const tags = await getCollection("tags");
+export interface Node {
+    id: string;
+    group: string;
+    label: string;
+    icon?: string;
+    hasRoute: boolean;
+    weight?: number;
+}
 
-    interface Node {
-        id: string;
-        group: string;
-        label: string;
+export interface Link {
+    source: string;
+    target: string;
+}
+
+interface GraphCollectionItem {
+    id: string;
+    data: {
+        title: string;
         icon?: string;
-        hasRoute: boolean;
-        weight?: number;
+        category?: string;
+        relatedTopics?: any[];
+        tags?: any[];
+        relatedServices?: any[];
+        relatedPosts?: any[];
+        relatedProject?: { id: string };
+        ctaService?: { id: string };
+    };
+}
+
+/**
+ * Standardizes dynamic resource paths by stripping extension and localization prefix.
+ */
+export function cleanGraphId(id: string): string {
+    const clean = id.replace(/\.mdx?$/, "");
+    const parts = clean.split('/');
+    if (parts.length > 1 && ['en', 'pt', 'es', 'fr', 'zh', 'ja', 'en-GB'].includes(parts[0])) {
+        return parts.slice(1).join('/');
     }
+    return clean;
+}
 
-    interface Link {
-        source: string;
-        target: string;
+/**
+ * Resolves absolute icon URL.
+ */
+export function resolveIconUrl(data: { icon?: string; id?: string; title?: string; category?: string }): string | undefined {
+    const resolved = getSafeIcon({
+        icon: data.icon,
+        id: data.id || "",
+        title: data.title || "",
+        category: data.category || "tool"
+    });
+    return getIconUrl(resolved);
+}
+
+/**
+ * Adds a node if it does not already exist.
+ */
+export function addNode(nodes: Node[], id: string, group: string, label: string, iconUrl?: string, hasRoute = false): void {
+    if (!nodes.some(n => n.id === id)) {
+        nodes.push({ id, group, label, icon: iconUrl, hasRoute });
     }
+}
 
-    const nodes: Node[] = [];
-    const links: Link[] = [];
+/**
+ * Adds a link if it does not already exist.
+ */
+export function addLink(links: Link[], source: string, target: string): void {
+    if (!links.some(l => l.source === source && l.target === target)) {
+        links.push({ source, target });
+    }
+}
 
-    // 1. Helpers
-    const addNode = (id: string, group: string, label: string, iconUrl?: string, hasRoute = false) => {
-        if (!nodes.find((n: any) => n.id === id)) {
-            nodes.push({ id, group, label, icon: iconUrl, hasRoute });
-        }
-    };
+/**
+ * Maps taxonomy collections (topics & tags) to graph nodes.
+ */
+export function mapTaxonomyNodes(nodes: Node[], topics: GraphCollectionItem[], tags: GraphCollectionItem[]): void {
+    topics.forEach(t => {
+        const url = resolveIconUrl({ ...t.data, id: t.id });
+        addNode(nodes, `topics/${cleanGraphId(t.id)}`, "topics", t.data.title, url, true);
+    });
+    tags.forEach(t => {
+        const url = resolveIconUrl({ ...t.data, id: t.id });
+        addNode(nodes, `tags/${cleanGraphId(t.id)}`, "tags", t.data.title, url, true);
+    });
+}
 
-    const addLink = (source: string, target: string) => {
-        if (!links.find((l: any) => l.source === source && l.target === target)) {
-            links.push({ source, target });
-        }
-    };
-
-    // Helper: Strip extension and language prefix (e.g. pt/my-post.md -> my-post)
-    const cleanId = (id: string) => {
-        let clean = id.replace(/\.mdx?$/, "");
-        const parts = clean.split('/');
-        // If it's inside a locale folder, strip the locale
-        if (parts.length > 1 && ['en', 'pt', 'es', 'fr', 'zh', 'ja', 'en-GB'].includes(parts[0])) {
-            return parts.slice(1).join('/');
-        }
-        return clean;
-    };
-
-    // Helper: Resolve Icon URL using robust utility
-    const resolveIconUrl = (data: any) => {
-        const resolved = getSafeIcon({
-            icon: data.icon,
-            id: data.id || "",
-            title: data.title || "",
-            category: data.category || "tool"
-        });
-        return getIconUrl(resolved);
-    };
-
-    // 2. Map Taxonomy Nodes (Pages are now built, hasRoute = true)
-    topics.forEach(t => addNode(`topics/${cleanId(t.id)}`, "topics", t.data.title, resolveIconUrl({ ...t.data, id: t.id }), true));
-    tags.forEach(t => addNode(`tags/${cleanId(t.id)}`, "tags", t.data.title, resolveIconUrl({ ...t.data, id: t.id }), true));
-
-    // 3. Map Projects (hasRoute = true)
+/**
+ * Maps project collections and their connections.
+ */
+export function mapProjectNodes(nodes: Node[], links: Link[], projects: GraphCollectionItem[]): void {
     projects.forEach(p => {
-        const pId = `projects/${cleanId(p.id)}`;
-        addNode(pId, "projects", p.data.title, resolveIconUrl({ ...p.data, id: p.id }), true);
+        const pId = `projects/${cleanGraphId(p.id)}`;
+        addNode(nodes, pId, "projects", p.data.title, resolveIconUrl({ ...p.data, id: p.id }), true);
 
-        p.data.relatedTopics?.forEach((ref: any) => addLink(pId, `topics/${cleanId(ref.id || ref)}`));
-        p.data.tags?.forEach((ref: any) => addLink(pId, `tags/${cleanId(ref.id || ref)}`));
-        p.data.relatedServices?.forEach((ref: any) => addLink(pId, `services/${cleanId(ref.id || ref)}`));
-        p.data.relatedPosts?.forEach((ref: any) => addLink(pId, `blog/${cleanId(ref.id || ref)}`));
+        p.data.relatedTopics?.forEach((ref) => addLink(links, pId, `topics/${cleanGraphId(ref.id || ref)}`));
+        p.data.tags?.forEach((ref) => addLink(links, pId, `tags/${cleanGraphId(ref.id || ref)}`));
+        p.data.relatedServices?.forEach((ref) => addLink(links, pId, `services/${cleanGraphId(ref.id || ref)}`));
+        p.data.relatedPosts?.forEach((ref) => addLink(links, pId, `blog/${cleanGraphId(ref.id || ref)}`));
     });
+}
 
-    // 4. Map Blog Posts (hasRoute = true)
+/**
+ * Maps blog collection and its connections.
+ */
+export function mapBlogNodes(nodes: Node[], links: Link[], blogs: GraphCollectionItem[]): void {
     blogs.forEach(b => {
-        const bId = `blog/${cleanId(b.id)}`;
-        addNode(bId, "blog", b.data.title, resolveIconUrl({ ...b.data, id: b.id }), true);
+        const bId = `blog/${cleanGraphId(b.id)}`;
+        addNode(nodes, bId, "blog", b.data.title, resolveIconUrl({ ...b.data, id: b.id }), true);
 
-        b.data.relatedTopics?.forEach((ref: any) => addLink(bId, `topics/${cleanId(ref.id || ref)}`));
-        b.data.tags?.forEach((ref: any) => addLink(bId, `tags/${cleanId(ref.id || ref)}`));
-        if (b.data.relatedProject) addLink(bId, `projects/${cleanId(b.data.relatedProject.id)}`);
-        if (b.data.ctaService) addLink(bId, `services/${cleanId(b.data.ctaService.id)}`);
+        b.data.relatedTopics?.forEach((ref) => addLink(links, bId, `topics/${cleanGraphId(ref.id || ref)}`));
+        b.data.tags?.forEach((ref) => addLink(links, bId, `tags/${cleanGraphId(ref.id || ref)}`));
+        if (b.data.relatedProject) {
+            addLink(links, bId, `projects/${cleanGraphId(b.data.relatedProject.id)}`);
+        }
+        if (b.data.ctaService) {
+            addLink(links, bId, `services/${cleanGraphId(b.data.ctaService.id)}`);
+        }
     });
+}
 
-    // 5. Map Services (hasRoute = true)
+/**
+ * Maps service collections and their connections.
+ */
+export function mapServiceNodes(nodes: Node[], links: Link[], services: GraphCollectionItem[]): void {
     services.forEach(s => {
-        const sId = `services/${cleanId(s.id)}`;
-        addNode(sId, "services", s.data.title, resolveIconUrl({ ...s.data, id: s.id }), true);
-        s.data.relatedTopics?.forEach((ref: any) => addLink(sId, `topics/${cleanId(ref.id || ref)}`));
+        const sId = `services/${cleanGraphId(s.id)}`;
+        addNode(nodes, sId, "services", s.data.title, resolveIconUrl({ ...s.data, id: s.id }), true);
+        s.data.relatedTopics?.forEach((ref) => addLink(links, sId, `topics/${cleanGraphId(ref.id || ref)}`));
     });
+}
 
-    // Calculate Weights (number of edges pointing to/from)
+/**
+ * Calculates connection weights for each node.
+ */
+export function calculateWeights(nodes: Node[], links: Link[]): void {
     nodes.forEach(n => {
         n.weight = links.filter(l => l.source === n.id || l.target === n.id).length;
     });
+}
 
-    // Ensure all targets inside links exist as nodes (fallback for dead links, avoiding D3/Cytoscape crashes)
+/**
+ * Ensures fallback nodes exist for targets of broken or untracked links.
+ */
+export function ensureDeadLinksExist(nodes: Node[], links: Link[]): void {
     links.forEach(l => {
-        if (!nodes.find(n => n.id === l.target)) {
-            addNode(l.target, "unknown", l.target.split('/').pop() || l.target);
+        if (!nodes.some(n => n.id === l.target)) {
+            const fallbackLabel = l.target.split('/').pop() || l.target;
+            addNode(nodes, l.target, "unknown", fallbackLabel);
         }
     });
+}
 
-    const url = new URL(request.url);
-    const focusId = url.searchParams.get("focus");
+/**
+ * Filters graph data around a specific focal node ID.
+ */
+export function filterFocalGraph(nodes: Node[], links: Link[], focusId: string): { nodes: Node[], links: Link[] } {
+    const finalLinks = links.filter(l => l.source === focusId || l.target === focusId);
+    const connectedNodeIds = new Set([focusId]);
+    finalLinks.forEach(l => {
+        connectedNodeIds.add(l.source);
+        connectedNodeIds.add(l.target);
+    });
+    const finalNodes = nodes.filter(n => connectedNodeIds.has(n.id));
+    return { nodes: finalNodes, links: finalLinks };
+}
 
-    let finalNodes = nodes;
-    let finalLinks = links;
-
-    if (focusId) {
-        // Find all links connected to the focal node
-        finalLinks = links.filter(l => l.source === focusId || l.target === focusId);
-
-        const connectedNodeIds = new Set([focusId]);
-        finalLinks.forEach(l => {
-            connectedNodeIds.add(l.source);
-            connectedNodeIds.add(l.target);
-        });
-
-        finalNodes = nodes.filter(n => connectedNodeIds.has(n.id));
-    }
-
-    return new Response(JSON.stringify({ nodes: finalNodes, links: finalLinks }), {
+/**
+ * Endpoint handler to serve graph visualization layout nodes and edges.
+ */
+export async function GET({ request }: { request: Request }) {
+    const [projects, blogs, services, topics, tags] = await Promise.all([
+        getCollection("projects"), getCollection("blog"), getCollection("services"),
+        getCollection("topics"), getCollection("tags")
+    ]);
+    const nodes: Node[] = [];
+    const links: Link[] = [];
+    mapTaxonomyNodes(nodes, topics, tags);
+    mapProjectNodes(nodes, links, projects);
+    mapBlogNodes(nodes, links, blogs);
+    mapServiceNodes(nodes, links, services);
+    calculateWeights(nodes, links);
+    ensureDeadLinksExist(nodes, links);
+    const focusId = new URL(request.url).searchParams.get("focus");
+    const result = focusId ? filterFocalGraph(nodes, links, focusId) : { nodes, links };
+    return new Response(JSON.stringify(result), {
         status: 200,
-        headers: {
-            "Content-Type": "application/json"
-        }
+        headers: { "Content-Type": "application/json" }
     });
 }

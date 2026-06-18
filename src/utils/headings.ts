@@ -9,70 +9,106 @@ export interface ExtractedHeading {
     slug: string;
 }
 
-export function extractHeadings(body?: string): ExtractedHeading[] {
-    if (!body) return [];
+interface RawHeading {
+    index: number;
+    depth: number;
+    text: string;
+}
 
-    // Strip comments first
-    const cleanBody = body
+/**
+ * Strips MDX and HTML comments from a string content body.
+ *
+ * @param body - The raw content string
+ * @example
+ * const clean = stripComments("{/* comment *\/}\n## Title <!-- HTML comment -->");
+ */
+export function stripComments(body: string): string {
+    return body
         .replace(/\{\/\*[\s\S]*?\*\/\}/g, "") // remove MDX comments
         .replace(/<!--[\s\S]*?-->/g, "");     // remove HTML comments
+}
 
-    const headings: { index: number; depth: number; text: string }[] = [];
-
-    // Match Markdown headings (## and ###) at the start of a line
+/**
+ * Extracts raw markdown headings (## and ###) from a clean body string.
+ *
+ * @param cleanBody - The content body with comments stripped
+ */
+function parseMarkdownHeadings(cleanBody: string): RawHeading[] {
+    const headings: RawHeading[] = [];
     const mdRegex = /^\s*(#{2,3})\s+(.*?)(?:\s+#*)?$/gm;
     let match;
     while ((match = mdRegex.exec(cleanBody)) !== null) {
-        const depth = match[1].length;
-        const rawText = match[2];
-        const text = rawText
+        const text = match[2]
             .replace(/<[^>]*>/g, "") // strip JSX/HTML tags
             .replace(/\s+/g, " ")
             .trim();
         if (text) {
-            headings.push({
-                index: match.index,
-                depth,
-                text,
-            });
+            headings.push({ index: match.index, depth: match[1].length, text });
         }
     }
+    return headings;
+}
 
-    // Match HTML/JSX headings (<h2 ...> and <h3 ...>)
+/**
+ * Extracts raw HTML/JSX headings (h2 and h3) from a clean body string.
+ *
+ * @param cleanBody - The content body with comments stripped
+ */
+function parseHtmlHeadings(cleanBody: string): RawHeading[] {
+    const headings: RawHeading[] = [];
     const htmlRegex = /<h([23])(?:\s+[^>]*)*>([\s\S]*?)<\/h\1>/gi;
+    let match;
     while ((match = htmlRegex.exec(cleanBody)) !== null) {
-        const depth = parseInt(match[1], 10);
-        const rawText = match[2];
-        const text = rawText
+        const text = match[2]
             .replace(/<[^>]*>/g, "") // strip JSX/HTML tags
             .replace(/\s+/g, " ")
             .trim();
         if (text) {
-            headings.push({
-                index: match.index,
-                depth,
-                text,
-            });
+            headings.push({ index: match.index, depth: parseInt(match[1], 10), text });
         }
     }
+    return headings;
+}
 
-    // Sort headings by their position in the file to maintain document order
+/**
+ * Standard slugification for header text.
+ *
+ * @param text - The header text
+ * @example
+ * const slug = slugify("My Heading text!");
+ */
+export function slugify(text: string): string {
+    return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") // remove accents
+        .replace(/[^\w\s-]/g, "")        // remove special characters
+        .replace(/\s+/g, "-")            // replace spaces with hyphens
+        .replace(/-+/g, "-")             // remove consecutive hyphens
+        .trim();
+}
+
+/**
+ * Primary function to extract H2 and H3 headings from body text.
+ *
+ * @param body - The raw content body
+ * @example
+ * const headings = extractHeadings("## Hello World");
+ */
+export function extractHeadings(body?: string): ExtractedHeading[] {
+    if (!body) return [];
+
+    const cleanBodyText = stripComments(body);
+    const headings = [
+        ...parseMarkdownHeadings(cleanBodyText),
+        ...parseHtmlHeadings(cleanBodyText),
+    ];
+
     headings.sort((a, b) => a.index - b.index);
 
-    // Slugify and return
-    return headings.map((h, idx) => {
-        const slug = h.text
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "") // remove accents
-            .replace(/[^\w\s-]/g, "")        // remove special characters
-            .replace(/\s+/g, "-")            // replace spaces with hyphens
-            .replace(/-+/g, "-")             // remove consecutive hyphens
-            .trim();
-        return {
-            depth: h.depth,
-            text: h.text,
-            slug: slug || `heading-${idx}`,
-        };
-    });
+    return headings.map((h, idx) => ({
+        depth: h.depth,
+        text: h.text,
+        slug: slugify(h.text) || `heading-${idx}`,
+    }));
 }
