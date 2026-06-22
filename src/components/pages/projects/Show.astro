@@ -2,11 +2,14 @@
 import Layout from "@layouts/Layout.astro";
 import { getEntry, render } from "astro:content";
 import { getTranslations, useTranslatedPath } from "@i18n";
+import TableOfContents from "@components/ui/TableOfContents.astro";
+import { extractHeadings } from "../../../utils/headings";
 
 const { project, lang: locale } = Astro.props;
 const tPortfolio = (await getTranslations(locale, "portfolio")) as Record<string, any>;
 const translatePath = useTranslatedPath(locale);
 const { Content } = await render(project);
+const headings = extractHeadings(project.body);
 
 // Manually resolve relationships using Astro Content Collections getEntry
 const resolveReference = async (
@@ -48,141 +51,234 @@ const relatedPostsRaw =
 const relatedPosts = relatedPostsRaw.filter(Boolean);
 ---
 
-<Layout title={`${project.data.title} | ${tPortfolio.projects.caseStudy}`} lang={locale}>
+<Layout
+    title={`${project.data.title} | ${tPortfolio.projects.caseStudy}`}
+    description={project.data.description || ""}
+    lang={locale}
+>
     <main
         class="w-full min-h-screen bg-base-100 text-base-content pt-32 pb-20 px-6 lg:px-20 relative z-10"
     >
-        <div class="max-w-4xl mx-auto">
-            <header class="mb-12 text-center md:text-left">
-                <div class="flex flex-wrap items-center gap-3 justify-center md:justify-start mb-4">
-                    <span class="badge badge-primary badge-sm uppercase font-bold tracking-wider">{tPortfolio.projects.caseStudy || "Case Study"}</span>
-                    {project.data.date && <span class="badge badge-neutral badge-sm opacity-80">{new Date(project.data.date).getFullYear()}</span>}
-                </div>
-                
-                <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-base-content to-base-content/50 mb-6 leading-tight">
-                    {project.data.title}
-                </h1>
-                
-                <div class="flex flex-wrap items-center gap-6 text-sm font-medium opacity-80 justify-center md:justify-start">
-                    {project.data.role && (
-                        <div class="flex items-center gap-2">
-                            <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
-                            {project.data.role}
-                        </div>
-                    )}
-                    {project.data.company && (
-                        <div class="flex items-center gap-2">
-                            <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
-                            {project.data.company}
-                        </div>
-                    )}
-                </div>
-                
-                {project.data.tags && project.data.tags.length > 0 && (
-                    <div class="flex flex-wrap gap-2 mt-6 justify-center md:justify-start">
-                        {project.data.tags.map((tag: string) => (
-                            <span class="badge badge-outline border-base-content/20 text-xs text-base-content/70">{tag}</span>
-                        ))}
-                    </div>
-                )}
-            </header>
-
-            {
-                project.data.heroImage && (
-                    <div class="w-full h-72 md:h-[500px] rounded-3xl overflow-hidden mb-16 shadow-2xl relative">
-                        <img
-                            src={project.data.heroImage}
-                            alt={project.data.title}
-                            class="absolute inset-0 w-full h-full object-cover"
-                        />
-                    </div>
-                )
-            }
-
-            <article class="prose prose-lg prose-invert max-w-none">
-                <Content />
-            </article>
-
-            <hr class="my-16 border-base-content/10" />
-
-            <!-- The Second Brain Funnel -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 not-prose">
-                {
-                    relatedPosts.length > 0 && (
-                        <div class="bg-base-200/50 p-6 rounded-2xl">
-                            <h3 class="text-xl font-bold mb-4">
-                                {tPortfolio.taxonomy.contextDeepDives}
-                            </h3>
-                            <p class="text-sm opacity-80 mb-4">
-                                {tPortfolio.taxonomy.readMoreTech}
-                            </p>
-                            <ul class="space-y-3">
-                                {relatedPosts.map((post) => (
-                                    <li>
-                                        <a
-                                            href={`/${locale}/blog/${post.slug}`}
-                                            class="text-primary hover:text-primary/80 transition-colors flex items-center gap-2 font-medium"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                class="lucide lucide-file-text"
-                                            >
-                                                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-                                                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                                                <path d="M10 9H8" />
-                                                <path d="M16 13H8" />
-                                                <path d="M16 17H8" />
-                                            </svg>
-                                            {post.data.title}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )
-                }
-
-                {
-                    relatedServices.length > 0 && (
-                        <div class="bg-primary/5 p-6 rounded-2xl border border-primary/20">
-                            <h3 class="text-xl font-bold mb-4 text-primary">
-                                {tPortfolio.taxonomy.needSimilarResults}
-                            </h3>
-                            <p class="mb-5 opacity-80 text-sm">
-                                {tPortfolio.taxonomy.specializedServices}
-                            </p>
-                            <div class="flex flex-col gap-3">
-                                {relatedServices.map((service) => (
-                                    <a
-                                        href={`/${locale}/services/${service.slug}`}
-                                        class="btn btn-primary btn-outline flex justify-between items-center group"
-                                    >
-                                        <span>{service.data.title}</span>
-                                        <span class="group-hover:translate-x-1 transition-transform">
-                                            →
-                                        </span>
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-                    )
-                }
-            </div>
-
-            <div class="mt-16 text-center not-prose">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-8 flex justify-start max-w-5xl mx-auto">
                 <a
                     href={translatePath("/")}
-                    class="btn btn-ghost rounded-full px-8"
-                    >{tPortfolio.taxonomy.backToPortfolio}</a
+                    class="btn btn-outline btn-sm rounded-full gap-2 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
                 >
+                    &larr; {tPortfolio.taxonomy.backToPortfolio || "Back to Portfolio"}
+                </a>
+            </div>
+
+            <!-- Centered Layout Container -->
+            <div class="flex flex-col lg:flex-row justify-center items-start gap-12 max-w-6xl mx-auto">
+                
+                <!-- Main Content Area -->
+                <div class="w-full lg:max-w-3xl shrink-0">
+                    <header class="mb-12 text-center md:text-left">
+                        <div class="flex flex-wrap items-center gap-3 justify-center md:justify-start mb-4">
+                            <span class="badge badge-primary badge-sm uppercase font-bold tracking-wider">{tPortfolio.projects.caseStudy || "Case Study"}</span>
+                            {project.data.date && <span class="badge badge-neutral badge-sm opacity-80">{new Date(project.data.date).getFullYear()}</span>}
+                        </div>
+                        
+                        <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-base-content to-base-content/50 mb-6 leading-tight">
+                            {project.data.title}
+                        </h1>
+                        
+                        <div class="flex flex-wrap items-center gap-6 text-sm font-medium opacity-80 justify-center md:justify-start">
+                            {project.data.role && (
+                                <div class="flex items-center gap-2">
+                                    <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+                                    {project.data.role}
+                                </div>
+                            )}
+                            {project.data.company && (
+                                <div class="flex items-center gap-2">
+                                    <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+                                    {project.data.company}
+                                </div>
+                            )}
+                        </div>
+                        
+                        {project.data.tags && project.data.tags.length > 0 && (
+                            <div class="flex flex-wrap gap-2 mt-6 justify-center md:justify-start">
+                                {project.data.tags.map((tag: string) => (
+                                    <span class="badge badge-outline border-base-content/20 text-xs text-base-content/70">{tag}</span>
+                                ))}
+                            </div>
+                        )}
+                    </header>
+
+                    {
+                        project.data.heroImage && (
+                            <div class="w-full h-72 md:h-[500px] rounded-3xl overflow-hidden mb-16 shadow-2xl relative">
+                                <img
+                                    src={project.data.heroImage}
+                                    alt={project.data.title}
+                                    class="absolute inset-0 w-full h-full object-cover"
+                                />
+                            </div>
+                        )
+                    }
+
+                    <!-- Collapsible Table of Contents for Mobile -->
+                    {headings.length > 0 && (
+                        <div id="dynamic-mobile-toc" class="lg:hidden mb-8">
+                            <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-2xl">
+                                <summary class="collapse-title text-sm font-bold flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                                    {tPortfolio.taxonomy.tableOfContents || "Table of Contents"}
+                                </summary>
+                                <div class="collapse-content">
+                                    <ul class="menu bg-transparent p-0 gap-1 list-none">
+                                        {headings.map((h) => (
+                                            <li>
+                                                <a
+                                                    href={`#${h.slug}`}
+                                                    class={`py-2 px-3 text-sm hover:text-primary transition-colors block ${
+                                                        h.depth === 3 ? "pl-6 text-xs opacity-80" : "font-medium"
+                                                    }`}
+                                                >
+                                                    {h.text}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    )}
+
+                    <article class="prose prose-lg prose-invert max-w-none">
+                        <Content />
+                    </article>
+
+                    <hr class="my-16 border-base-content/10" />
+
+                    <!-- Mobile-Only Related Connections Area (Rendered at the bottom) -->
+                    {(relatedServices.length > 0 || relatedPosts.length > 0) && (
+                        <div class="lg:hidden mt-16 pt-8 border-t border-base-content/10 space-y-8 related-section">
+                            <h3 class="text-xl font-bold mb-4">{tPortfolio.taxonomy.contextDeepDives || "Connections"}</h3>
+
+                            {relatedPosts.length > 0 && (
+                                <div class="bg-base-200/50 p-6 rounded-2xl">
+                                    <h3 class="text-lg font-bold mb-4">
+                                        {tPortfolio.taxonomy.contextDeepDives}
+                                    </h3>
+                                    <p class="text-sm opacity-80 mb-4">
+                                        {tPortfolio.taxonomy.readMoreTech}
+                                    </p>
+                                    <ul class="space-y-3">
+                                        {relatedPosts.map((post) => (
+                                            <li>
+                                                <a
+                                                    href={`/${locale}/blog/${post.slug}`}
+                                                    class="text-primary hover:text-primary/80 transition-colors flex items-center gap-2 font-medium"
+                                                >
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="16"
+                                                        height="16"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-file-text"
+                                                    >
+                                                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                                                        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                                                        <path d="M10 9H8" />
+                                                        <path d="M16 13H8" />
+                                                        <path d="M16 17H8" />
+                                                    </svg>
+                                                    {post.data.title}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {relatedServices.length > 0 && (
+                                <div class="bg-primary/5 p-6 rounded-2xl border border-primary/20">
+                                    <h3 class="text-lg font-bold mb-4 text-primary">
+                                        {tPortfolio.taxonomy.needSimilarResults}
+                                    </h3>
+                                    <p class="mb-5 opacity-80 text-sm">
+                                        {tPortfolio.taxonomy.specializedServices}
+                                    </p>
+                                    <div class="flex flex-col gap-3">
+                                        {relatedServices.map((service) => (
+                                            <a
+                                                href={`/${locale}/services/${service.slug}`}
+                                                class="btn btn-primary btn-outline flex justify-between items-center group"
+                                            >
+                                                <span>{service.data.title}</span>
+                                                <span class="group-hover:translate-x-1 transition-transform">
+                                                    →
+                                                </span>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )}
+
+                    <div class="mt-16 text-center not-prose">
+                        <a
+                            href={translatePath("/")}
+                            class="btn btn-outline rounded-full px-8"
+                            >{tPortfolio.taxonomy.backToPortfolio}</a
+                        >
+                    </div>
+                </div>
+
+                <!-- Desktop Sidebar Area -->
+                <aside class="hidden lg:block w-72 shrink-0 sticky top-32 space-y-6">
+                    {headings.length > 0 && <TableOfContents headings={headings} lang={locale} />}
+
+                    <!-- Collapsible Related Items on Desktop -->
+                    {(relatedServices.length > 0 || relatedPosts.length > 0) && (
+                        <div class="space-y-4">
+                            {relatedPosts.length > 0 && (
+                                <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-base-content/60 p-4 min-h-0">
+                                        {tPortfolio.taxonomy.contextDeepDives || "Related Articles"}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4">
+                                        <ul class="flex flex-col gap-2 list-none p-0 m-0">
+                                            {relatedPosts.map(post => (
+                                                <li>
+                                                    <a href={`/${locale}/blog/${post.slug}`} class="text-xs font-semibold hover:underline block text-balance">
+                                                        {post.data.title}
+                                                    </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </details>
+                            )}
+
+                            {relatedServices.length > 0 && (
+                                <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-base-content/60 p-4 min-h-0">
+                                        {tPortfolio.taxonomy.relatedServices || "Related Services"}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4 flex flex-col gap-2">
+                                        {relatedServices.map(service => (
+                                            <a href={`/${locale}/services/${service.slug}`} class="text-xs font-semibold hover:underline block text-balance">
+                                                {service.data.title}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </details>
+                            )}
+                        </div>
+                    )}
+                </aside>
+
             </div>
         </div>
     </main>

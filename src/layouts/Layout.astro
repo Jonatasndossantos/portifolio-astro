@@ -21,14 +21,14 @@ const {
 } = Astro.props;
 
 const ogTitle =
-	title === "Jônatas N. dos Santos"
+	title.includes("Jônatas")
 		? title
 		: `${title} | Jônatas N. dos Santos`;
 const fullImageUrl = new URL(image, Astro.url).href;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="scroll-smooth scroll-pt-[110px]">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,6 +37,7 @@ const fullImageUrl = new URL(image, Astro.url).href;
 		<!-- Primary SEO -->
 		<title>{ogTitle}</title>
 		<meta name="description" content={description} />
+		<meta name="keywords" content="Jônatas Nascimento dos Santos, Jhon, Software Engineer, Software Architect, Arquiteto de Software, Laravel Developer, PHP Sênior, AI Engineer, FrankenPHP, Laravel Octane, Swoole, React 19, Inertia.js, DevOps, SRE Linux, RAG, Function Calling, UNIVESP, Extrema MG" />
 		<meta name="robots" content="index, follow" />
 		<meta name="author" content="Jônatas Nascimento dos Santos" />
 		<link rel="canonical" href={canonicalUrl} />
@@ -94,6 +95,45 @@ const fullImageUrl = new URL(image, Astro.url).href;
 				}
 			})();
 		</script>
+
+		<!-- Structured Data (JSON-LD) for Person Schema -->
+		<script type="application/ld+json" is:inline set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "ProfilePage",
+			"mainEntity": {
+				"@type": "Person",
+				"name": "Jônatas Nascimento dos Santos",
+				"alternateName": "Jhon",
+				"jobTitle": "Software Architect & Senior Full-Stack Engineer",
+				"description": description,
+				"image": fullImageUrl,
+				"url": canonicalUrl,
+				"sameAs": [
+					"https://github.com/jonatasndossantos",
+					"https://linkedin.com/in/jonatasndossantos"
+				],
+				"knowsAbout": [
+					"Software Architecture",
+					"PHP",
+					"Laravel",
+					"Laravel Octane",
+					"Swoole",
+					"FrankenPHP",
+					"React",
+					"TypeScript",
+					"Docker",
+					"Linux System Administration",
+					"SRE",
+					"Artificial Intelligence",
+					"RAG",
+					"Function Calling"
+				],
+				"alumniOf": {
+					"@type": "EducationalOrganization",
+					"name": "UNIVESP - Universidade Virtual do Estado de São Paulo"
+				}
+			}
+		})} />
 	</head>
 	<body>
 		<div class="drawer drawer-end">

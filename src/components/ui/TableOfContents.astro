@@ -1,0 +1,132 @@
+---
+import { useTranslator } from "@i18n";
+
+interface Heading {
+    depth: number;
+    text: string;
+    slug: string;
+}
+
+interface Props {
+    lang: string;
+    headings: Heading[];
+}
+
+const { lang, headings = [] } = Astro.props;
+const __ = await useTranslator(lang);
+---
+
+{headings.length > 0 && (
+    <div id="dynamic-toc" class="toc-container py-2">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-base-content/40 mb-4 px-3">
+            {__("Table of Contents")}
+        </h3>
+        <nav class="border-l border-base-content/10">
+            <ul class="flex flex-col gap-2 list-none m-0 p-0">
+                {headings.map((h) => (
+                    <li>
+                        <a
+                            href={`#${h.slug}`}
+                            class={`toc-link block text-sm py-1.5 px-4 -ml-[1px] border-l-2 border-transparent text-base-content/60 opacity-60 hover:opacity-100 hover:border-base-content/20 hover:text-base-content transition-all duration-200 ${
+                                h.depth === 3 ? "pl-8 text-xs font-medium" : "font-medium"
+                            }`}
+                        >
+                            {h.text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    </div>
+)}
+
+<script>
+    function setupScrollSpy() {
+        const article = document.querySelector("article");
+        if (!article) return;
+
+        // Find all headings that are inside the article
+        const allHeadings = Array.from(article.querySelectorAll("h2, h3"));
+        const headings = allHeadings.filter((h) => {
+            const isInsideRelated =
+                h.closest(".card") ||
+                h.closest(".related-section") ||
+                h.closest("#no-results") ||
+                h.closest(".graph-section");
+            return !isInsideRelated;
+        });
+
+        if (headings.length === 0) return;
+
+        // Ensure every heading has a matching ID (especially raw HTML/JSX headings)
+        headings.forEach((heading, index) => {
+            if (!heading.id) {
+                const text = heading.textContent || "";
+                const slug = text
+                    .toLowerCase()
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "") // remove accents
+                    .replace(/[^\w\s-]/g, "")        // remove special characters
+                    .replace(/\s+/g, "-")            // replace spaces with hyphens
+                    .replace(/-+/g, "-")             // remove consecutive hyphens
+                    .trim();
+                heading.id = slug || `heading-${index}`;
+            }
+        });
+
+        const links = document.querySelectorAll(".toc-link");
+        if (links.length === 0) return;
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "-100px 0px -75% 0px",
+            threshold: 0,
+        };
+
+        let activeHeading: Element | null = null;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    activeHeading = entry.target;
+                    updateActiveLink();
+                }
+            });
+        }, observerOptions);
+
+        headings.forEach((heading) => observer.observe(heading));
+
+        // Initial scroll and top check
+        window.addEventListener("scroll", () => {
+            if (window.scrollY < 100 && headings.length > 0) {
+                activeHeading = headings[0];
+                updateActiveLink();
+            }
+        });
+
+        function updateActiveLink() {
+            if (!activeHeading) return;
+            const activeId = activeHeading.id;
+
+            links.forEach((link) => {
+                const href = link.getAttribute("href");
+                if (href === `#${activeId}`) {
+                    link.classList.add("text-primary", "border-primary", "opacity-100", "font-semibold");
+                    link.classList.remove("text-base-content/60", "border-transparent", "opacity-60");
+                } else {
+                    link.classList.remove("text-primary", "border-primary", "opacity-100", "font-semibold");
+                    link.classList.add("text-base-content/60", "border-transparent", "opacity-60");
+                }
+            });
+        }
+
+        // Highlight first item initially
+        if (headings.length > 0) {
+            activeHeading = headings[0];
+            updateActiveLink();
+        }
+    }
+
+    document.addEventListener("astro:page-load", setupScrollSpy);
+    setupScrollSpy();
+</script>

@@ -1,7 +1,9 @@
 ---
-import { render } from "astro:content";
+import { getEntry, render } from "astro:content";
 import { useTranslator, useTranslatedPath } from "@i18n";
 import Layout from "@layouts/Layout.astro";
+import TableOfContents from "@components/ui/TableOfContents.astro";
+import { extractHeadings } from "../../../utils/headings";
 
 const { post, isFallback, lang: locale } = Astro.props;
 
@@ -12,6 +14,16 @@ if (!post) {
 const { Content } = await render(post);
 const __ = await useTranslator(locale);
 const translatePath = useTranslatedPath(locale);
+
+const headings = extractHeadings(post.body);
+
+// Resolve references
+const relatedProject = post.data.relatedProject ? await getEntry(post.data.relatedProject) : null;
+const ctaService = post.data.ctaService ? await getEntry(post.data.ctaService) : null;
+const relatedTopics = post.data.relatedTopics ? await Promise.all(post.data.relatedTopics.map(t => getEntry(t))) : [];
+const tags = post.data.tags ? await Promise.all(post.data.tags.map(t => getEntry(t))) : [];
+
+const hasRelated = relatedProject || ctaService || relatedTopics.length > 0 || tags.length > 0;
 ---
 
 <Layout
@@ -20,42 +32,197 @@ const translatePath = useTranslatedPath(locale);
     lang={locale}
 >
     <main class="w-full min-h-screen bg-base-100 pt-32 pb-20 px-6 lg:px-20 relative">
-        <div class="max-w-3xl mx-auto z-10 relative">
-            <a
-                href={translatePath("/blog")}
-                class="btn btn-ghost btn-sm mb-8 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
-            >
-                &larr; {__("Back to Blog")}
-            </a>
+        <div class="max-w-7xl mx-auto z-10 relative">
+            <div class="mb-8 flex justify-start max-w-5xl mx-auto">
+                <a
+                    href={translatePath("/blog")}
+                    class="btn btn-outline btn-sm rounded-full gap-2 opacity-70 hover:opacity-100 uppercase tracking-widest text-xs"
+                >
+                    &larr; {__("Back to Blog")}
+                </a>
+            </div>
 
             {isFallback && (
-                <div role="alert" class="alert alert-warning mb-8 bg-warning/20 border-warning text-warning-content rounded-xl">
+                <div role="alert" class="alert alert-warning mb-8 bg-warning/20 border-warning text-warning-content rounded-xl max-w-5xl mx-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                     <span>{__("Untranslated Warning")}</span>
                 </div>
             )}
 
-            <header class="mb-12 border-b border-base-content/10 pb-8">
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="badge badge-primary badge-outline uppercase tracking-wider text-xs">
-                        {__("Article")}
-                    </span>
-                    <time class="text-sm opacity-60 font-mono">
-                        {new Date(post.data.date).toLocaleDateString(locale, {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        })}
-                    </time>
-                </div>
-                <h1 class="text-4xl md:text-5xl font-bold font-syncopate leading-tight">
-                    {post.data.title}
-                </h1>
-            </header>
+            <!-- Centered Layout Container -->
+            <div class="flex flex-col lg:flex-row justify-center items-start gap-12 max-w-6xl mx-auto">
+                
+                <!-- Main Content Area -->
+                <div class="w-full lg:max-w-3xl shrink-0">
+                    <header class="mb-12 border-b border-base-content/10 pb-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="badge badge-primary badge-outline uppercase tracking-wider text-xs">
+                                {__("Article")}
+                            </span>
+                            <time class="text-sm opacity-60 font-mono">
+                                {new Date(post.data.date).toLocaleDateString(locale, {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                })}
+                            </time>
+                        </div>
+                        <h1 class="text-4xl md:text-5xl font-bold font-syncopate leading-tight">
+                            {post.data.title}
+                        </h1>
+                    </header>
 
-            <article class="prose prose-lg prose-invert max-w-none prose-p:text-base-content/80 prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary-focus">
-                <Content />
-            </article>
+                    <!-- Collapsible Table of Contents for Mobile -->
+                    {headings.length > 0 && (
+                        <div id="dynamic-mobile-toc" class="lg:hidden mb-8">
+                            <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-2xl">
+                                <summary class="collapse-title text-sm font-bold flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                                    {__("Table of Contents")}
+                                </summary>
+                                <div class="collapse-content">
+                                    <ul class="menu bg-transparent p-0 gap-1 list-none">
+                                        {headings.map((h) => (
+                                            <li>
+                                                <a
+                                                    href={`#${h.slug}`}
+                                                    class={`py-2 px-3 text-sm hover:text-primary transition-colors block ${
+                                                        h.depth === 3 ? "pl-6 text-xs opacity-80" : "font-medium"
+                                                    }`}
+                                                >
+                                                    {h.text}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    )}
+
+                    <article class="prose prose-lg prose-invert max-w-none prose-p:text-base-content/80 prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary-focus">
+                        <Content />
+                    </article>
+
+                    <!-- Mobile-Only Related Section (at the bottom) -->
+                    {hasRelated && (
+                        <div class="lg:hidden mt-16 pt-8 border-t border-base-content/10 space-y-8 related-section">
+                            <h3 class="text-xl font-bold mb-4">{__("Connections")}</h3>
+                            
+                            {ctaService && (
+                                <div class="card bg-primary/5 border border-primary/20 p-6 rounded-2xl">
+                                    <h4 class="text-sm uppercase font-bold text-primary mb-2">{__("Related Service")}</h4>
+                                    <a href={translatePath(`/services/${ctaService.id.replace(/\.mdx?$/, "")}`)} class="text-lg font-bold hover:underline">
+                                        {ctaService.data.title}
+                                    </a>
+                                </div>
+                            )}
+
+                            {relatedProject && (
+                                <div class="card bg-base-200 p-6 rounded-2xl">
+                                    <h4 class="text-sm uppercase font-bold opacity-60 mb-2">{__("Related Project")}</h4>
+                                    <a href={translatePath(`/projects/${relatedProject.id.replace(/\.mdx?$/, "")}`)} class="text-lg font-bold hover:underline">
+                                        {relatedProject.data.title}
+                                    </a>
+                                </div>
+                            )}
+
+                            {relatedTopics.length > 0 && (
+                                <div>
+                                    <h4 class="text-sm font-bold opacity-60 mb-3">{__("Topics")}</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        {relatedTopics.map(topic => (
+                                            <a href={translatePath(`/topics/${topic.id.replace(/\.mdx?$/, "")}`)} class="badge badge-outline p-3 hover:badge-primary">
+                                                {topic.data.title}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {tags.length > 0 && (
+                                <div>
+                                    <h4 class="text-sm font-bold opacity-60 mb-3">{__("Tags")}</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        {tags.map(tag => (
+                                            <a href={translatePath(`/tags/${tag.id.replace(/\.mdx?$/, "")}`)} class="badge badge-ghost p-3 hover:badge-secondary">
+                                                {tag.data.title}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+
+                <!-- Desktop Sidebar Area -->
+                <aside class="hidden lg:block w-72 shrink-0 sticky top-32 space-y-6">
+                    {headings.length > 0 && <TableOfContents headings={headings} lang={locale} />}
+
+                    <!-- Collapsible Related items on Desktop -->
+                    {hasRelated && (
+                        <div class="space-y-4">
+                            {ctaService && (
+                                <details class="collapse collapse-arrow bg-primary/5 border border-primary/20 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-primary p-4 min-h-0">
+                                        {__("Related Service")}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4">
+                                        <a href={translatePath(`/services/${ctaService.id.replace(/\.mdx?$/, "")}`)} class="text-sm font-semibold hover:underline block text-balance">
+                                            {ctaService.data.title}
+                                        </a>
+                                    </div>
+                                </details>
+                            )}
+
+                            {relatedProject && (
+                                <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-base-content/60 p-4 min-h-0">
+                                        {__("Related Project")}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4">
+                                        <a href={translatePath(`/projects/${relatedProject.id.replace(/\.mdx?$/, "")}`)} class="text-sm font-semibold hover:underline block text-balance">
+                                            {relatedProject.data.title}
+                                        </a>
+                                    </div>
+                                </details>
+                            )}
+
+                            {relatedTopics.length > 0 && (
+                                <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-base-content/60 p-4 min-h-0">
+                                        {__("Topics")}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4 flex flex-wrap gap-2">
+                                        {relatedTopics.map(topic => (
+                                            <a href={translatePath(`/topics/${topic.id.replace(/\.mdx?$/, "")}`)} class="badge badge-sm badge-outline hover:badge-primary text-[10px]">
+                                                {topic.data.title}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </details>
+                            )}
+
+                            {tags.length > 0 && (
+                                <details class="collapse collapse-arrow bg-base-200/50 border border-base-content/10 rounded-xl" open>
+                                    <summary class="collapse-title text-xs font-bold uppercase tracking-widest text-base-content/60 p-4 min-h-0">
+                                        {__("Tags")}
+                                    </summary>
+                                    <div class="collapse-content px-4 pb-4 flex flex-wrap gap-1.5">
+                                        {tags.map(tag => (
+                                            <a href={translatePath(`/tags/${tag.id.replace(/\.mdx?$/, "")}`)} class="badge badge-xs badge-ghost hover:badge-secondary text-[9px] py-2">
+                                                {tag.data.title}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </details>
+                            )}
+                        </div>
+                    )}
+                </aside>
+
+            </div>
         </div>
     </main>
 </Layout>

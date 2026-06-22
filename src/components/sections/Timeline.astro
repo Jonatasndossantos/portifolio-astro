@@ -40,7 +40,7 @@ const timeline = t.about?.timeline || [];
                 </div>
                 
                 <div class="mt-12 text-center">
-                    <h3 class="text-3xl font-bold font-syncopate mb-2">{t.about?.timelineTitle || __("My Journey")}</h3>
+                    <h2 class="text-3xl font-bold font-syncopate mb-2">{t.about?.timelineTitle || __("My Journey")}</h2>
                     <p class="text-base-content/60 max-w-sm text-balance">{t.about?.timelineSubtitle || __("A brief history of my career.")}</p>
                 </div>
             </div>
@@ -61,7 +61,7 @@ const timeline = t.about?.timeline || [];
                                 <div class={`mb-12 pt-2 ${isEven ? 'timeline-start md:text-right md:pr-8' : 'timeline-end md:pl-8'} group`}>
                                     <div class="w-full md:max-w-md">
                                         <time class="font-mono text-sm text-primary mb-2 block">{item.date}</time>
-                                        <h4 class="text-xl md:text-2xl font-black mb-3 text-base-content group-hover:text-primary transition-colors">{item.title}</h4>
+                                        <h3 class="text-xl md:text-2xl font-black mb-3 text-base-content group-hover:text-primary transition-colors">{item.title}</h3>
                                         <p class="text-base-content/70 text-base leading-relaxed" set:html={item.desc}></p>
                                     </div>
                                 </div>
