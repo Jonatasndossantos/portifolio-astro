@@ -16,7 +16,7 @@ const {
 	title = "Jônatas N. dos Santos - Software Engineer",
 	description = "Official Portfolio — Full-Stack, AI, and Software Architecture Specialist",
 	lang = "en",
-	canonicalUrl = Astro.url.href,
+	canonicalUrl: customCanonicalUrl,
 	image = "/og-image.png",
 } = Astro.props;
 
@@ -24,7 +24,9 @@ const ogTitle =
 	title.includes("Jônatas")
 		? title
 		: `${title} | Jônatas N. dos Santos`;
-const fullImageUrl = new URL(image, Astro.url).href;
+
+const siteOrigin = "https://jonatasndossantos.com";
+const fullImageUrl = new URL(image, siteOrigin).href;
 
 const pathname = Astro.url.pathname;
 const cleanPathname = (path: string) => {
@@ -38,7 +40,7 @@ const cleanPathname = (path: string) => {
 };
 
 const base = cleanPathname(pathname);
-const siteOrigin = Astro.site ? Astro.site.origin : "https://jonatasndossantos.com";
+const canonicalUrl = (customCanonicalUrl || `${siteOrigin}${pathname}`).replace("http://", "https://");
 ---
 
 <!doctype html>
