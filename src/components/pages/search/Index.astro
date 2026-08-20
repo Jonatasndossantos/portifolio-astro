@@ -140,11 +140,12 @@ const searchItems = [
             <div class="relative w-full max-w-2xl mx-auto mb-8 group">
                 <div class="absolute inset-0 bg-primary/10 rounded-2xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div class="relative flex items-center bg-base-200/50 backdrop-blur-md border border-base-content/10 hover:border-primary/45 focus-within:border-primary/60 rounded-2xl transition-all duration-300">
-                    <Icon name="lucide:search" class="size-6 text-base-content/40 ml-4 group-focus-within:text-primary transition-colors" />
+                    <Icon name="lucide:search" class="size-6 text-base-content/40 ml-4 group-focus-within:text-primary transition-colors" aria-hidden="true" />
                     <input
                         type="text"
                         id="global-search-input"
                         placeholder={__("Search...")}
+                        aria-label={__("Search...")}
                         class="w-full bg-transparent border-none outline-none py-4 px-3 text-base-content text-lg placeholder-base-content/30"
                         autocomplete="off"
                         autofocus
@@ -205,8 +206,8 @@ const searchItems = [
             </div>
 
             <!-- No results banner -->
-            <div id="no-results-banner" class="hidden text-center py-20 w-full bg-base-200/20 rounded-3xl border border-dashed border-base-content/10 mt-6">
-                <Icon name="lucide:inbox" class="size-12 mx-auto text-base-content/25 mb-4" />
+            <div id="no-results-banner" aria-live="polite" class="hidden text-center py-20 w-full bg-base-200/20 rounded-3xl border border-dashed border-base-content/10 mt-6">
+                <Icon name="lucide:inbox" class="size-12 mx-auto text-base-content/25 mb-4" aria-hidden="true" />
                 <p class="text-2xl font-bold opacity-30">
                     {__("No results found.")}
                 </p>
