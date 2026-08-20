@@ -233,7 +233,7 @@ const __ = await useTranslator(lang);
             errorAlert!.classList.add("hidden");
 
             const formData = new FormData(form);
-            const FORMSPREE_ID = "mrbnjqlz";
+            const FORMSPREE_ID = import.meta.env.PUBLIC_FORMSPREE_ID;
 
             try {
                 const response = await fetch(
