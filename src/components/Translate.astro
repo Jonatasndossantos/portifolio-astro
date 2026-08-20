@@ -37,6 +37,16 @@ function getNestedValue(obj: any, path: string): string {
     }, obj) as string;
 }
 
+function escapeHtml(str: string): string {
+    if (!str) return str;
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 let translatedText = getNestedValue(dict, textKey);
 
 // Try fallback if not found in primary dictionary
@@ -48,13 +58,13 @@ if (!translatedText && fallbackDict) {
 if (translatedText && typeof translatedText === "string") {
     Object.keys(vars).forEach((vKey) => {
         const regex = new RegExp(`{{${vKey}}}`, "g");
-        translatedText = translatedText.replace(regex, String(vars[vKey]));
+        translatedText = translatedText.replace(regex, escapeHtml(String(vars[vKey])));
     });
 }
 
 // Final fallback to exactly the key string if truly missing everywhere
 if (typeof translatedText !== "string") {
-    translatedText = `[MISSING: ${textKey}]`;
+    translatedText = `[MISSING: ${escapeHtml(textKey)}]`;
 }
 ---
 
