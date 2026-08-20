@@ -26,10 +26,32 @@ vi.mock("node:fs", () => {
 
 describe("icon-helper utility", () => {
     describe("getFallbackIcon", () => {
-        it("should return the correct fallback icon depending on category", () => {
+        it("should return the correct fallback icon for all supported categories", () => {
             expect(getFallbackIcon("language")).toBe("lucide:cpu");
+            expect(getFallbackIcon("framework")).toBe("lucide:globe");
+            expect(getFallbackIcon("tool")).toBe("lucide:terminal");
+            expect(getFallbackIcon("cloud")).toBe("lucide:cloud");
+            expect(getFallbackIcon("data")).toBe("lucide:database");
             expect(getFallbackIcon("ai")).toBe("lucide:bot");
+        });
+
+        it("should be case-insensitive", () => {
+            expect(getFallbackIcon("LANGUAGE")).toBe("lucide:cpu");
+            expect(getFallbackIcon("FrameWork")).toBe("lucide:globe");
+            expect(getFallbackIcon("TOOL")).toBe("lucide:terminal");
+            expect(getFallbackIcon("Cloud")).toBe("lucide:cloud");
+            expect(getFallbackIcon("dAtA")).toBe("lucide:database");
+            expect(getFallbackIcon("AI")).toBe("lucide:bot");
+        });
+
+        it("should fallback to lucide:cpu for unknown categories", () => {
             expect(getFallbackIcon("unknown")).toBe("lucide:cpu");
+            expect(getFallbackIcon("")).toBe("lucide:cpu");
+        });
+
+        it("should fallback gracefully for null or undefined", () => {
+            expect(getFallbackIcon(undefined as any)).toBe("lucide:cpu");
+            expect(getFallbackIcon(null as any)).toBe("lucide:cpu");
         });
     });
 
