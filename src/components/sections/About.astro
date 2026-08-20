@@ -1,6 +1,7 @@
 ---
 import { getTranslations, useTranslator } from "@i18n";
 import { Image } from "astro:assets";
+import sanitizeHtml from "sanitize-html";
 import type { CuratedProfile } from "../../types";
 import SectionHeader from "@components/ui/SectionHeader.astro";
 
@@ -58,7 +59,7 @@ const timeline = t.about.timeline || [];
                     <div class="bg-base-200/50 p-6 md:p-8 rounded-box border border-base-content/5 mt-4 relative overflow-hidden group">
                         <div class="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
                         <h3 class="text-xl font-bold font-syncopate mb-4 relative z-10">{t.about.stackTitle}</h3>
-                        <p class="relative z-10 text-base-content/70" set:html={t.about.stackText}></p>
+                        <p class="relative z-10 text-base-content/70" set:html={sanitizeHtml(t.about.stackText)}></p>
                     </div>
                 </div>
             </div>
