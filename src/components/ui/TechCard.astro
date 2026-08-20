@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import { useTranslatedPath, useTranslator } from "@i18n";
 import { getSafeIcon } from "../../utils/icon-helper";
 import { marked } from "marked";
+import DOMPurify from "isomorphic-dompurify";
 
 interface Props {
     id: string;
@@ -47,7 +48,7 @@ const finalDescription = isGenericDescription
     : __(description);
 
 // Parse markdown for the description (to support links, bold, etc.)
-const descriptionHtml = marked.parseInline(finalDescription);
+const descriptionHtml = DOMPurify.sanitize(marked.parseInline(finalDescription) as string);
 ---
 
 <a
