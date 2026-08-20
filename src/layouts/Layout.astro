@@ -16,7 +16,7 @@ const {
 	title = "Jônatas N. dos Santos - Software Engineer",
 	description = "Official Portfolio — Full-Stack, AI, and Software Architecture Specialist",
 	lang = "en",
-	canonicalUrl = Astro.url.href,
+	canonicalUrl: customCanonicalUrl,
 	image = "/og-image.png",
 } = Astro.props;
 
@@ -24,7 +24,23 @@ const ogTitle =
 	title.includes("Jônatas")
 		? title
 		: `${title} | Jônatas N. dos Santos`;
-const fullImageUrl = new URL(image, Astro.url).href;
+
+const siteOrigin = "https://jonatasndossantos.com";
+const fullImageUrl = new URL(image, siteOrigin).href;
+
+const pathname = Astro.url.pathname;
+const cleanPathname = (path: string) => {
+	let cleaned = path.replace(/^\/|\/$/g, "");
+	const parts = cleaned.split("/");
+	const supportedLocales = ["pt", "fr", "es", "zh", "ja"];
+	if (parts.length > 0 && supportedLocales.includes(parts[0])) {
+		return "/" + parts.slice(1).join("/");
+	}
+	return "/" + cleaned;
+};
+
+const base = cleanPathname(pathname);
+const canonicalUrl = (customCanonicalUrl || `${siteOrigin}${pathname}`).replace("http://", "https://");
 ---
 
 <!doctype html>
@@ -41,6 +57,15 @@ const fullImageUrl = new URL(image, Astro.url).href;
 		<meta name="robots" content="index, follow" />
 		<meta name="author" content="Jônatas Nascimento dos Santos" />
 		<link rel="canonical" href={canonicalUrl} />
+
+		<!-- Alternate Languages (hreflang) -->
+		<link rel="alternate" hreflang="x-default" href={`${siteOrigin}${base === "/" ? "" : base}`} />
+		<link rel="alternate" hreflang="en" href={`${siteOrigin}${base === "/" ? "" : base}`} />
+		<link rel="alternate" hreflang="pt" href={`${siteOrigin}/pt${base === "/" ? "" : base}`} />
+		<link rel="alternate" hreflang="fr" href={`${siteOrigin}/fr${base === "/" ? "" : base}`} />
+		<link rel="alternate" hreflang="es" href={`${siteOrigin}/es${base === "/" ? "" : base}`} />
+		<link rel="alternate" hreflang="zh" href={`${siteOrigin}/zh${base === "/" ? "" : base}`} />
+		<link rel="alternate" hreflang="ja" href={`${siteOrigin}/ja${base === "/" ? "" : base}`} />
 
 		<!-- Open Graph -->
 		<meta property="og:type" content="website" />

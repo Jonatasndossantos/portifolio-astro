@@ -13,6 +13,7 @@ const COMMON_ALIASES: Record<string, string> = {
     "c++": "cplusplus",
     "nodejs": "nodedotjs",
     "node.js": "nodedotjs",
+    "node": "nodedotjs",
     "next.js": "nextdotjs",
     "nextjs": "nextdotjs",
     "vue.js": "vuedotjs",
@@ -44,32 +45,38 @@ const COMMON_ALIASES: Record<string, string> = {
 const iconSetsCache: Record<string, Set<string>> = {};
 
 /**
+ * Resolves path to the icons.json file in node_modules
+ */
+function findIconSetPath(packageName: string): string {
+    const pathsToTry = [
+        path.join(process.cwd(), 'node_modules', `@iconify-json`, packageName, 'icons.json'),
+        path.join(process.cwd(), '..', '..', 'node_modules', `@iconify-json`, packageName, 'icons.json'),
+    ];
+    return pathsToTry.find(p => fs.existsSync(p)) || '';
+}
+
+/**
+ * Reads and parses the keys from icons.json
+ */
+function readIconSetKeys(filePath: string): Set<string> {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const data = JSON.parse(content);
+    return new Set(Object.keys(data.icons || {}));
+}
+
+/**
  * Lazily loads icon keys from an @iconify-json package
  */
-function getIconSet(packageName: string): Set<string> | null {
-    if (iconSetsCache[packageName]) return iconSetsCache[packageName];
+export function getIconSet(packageName: string): Set<string> | null {
+    if (iconSetsCache[packageName]) {
+        return iconSetsCache[packageName];
+    }
 
     try {
-        // Resolve path to the icons.json file in node_modules
-        // We look for the package in common locations
-        const pathsToTry = [
-            path.join(process.cwd(), 'node_modules', `@iconify-json`, packageName, 'icons.json'),
-            path.join(process.cwd(), '..', '..', 'node_modules', `@iconify-json`, packageName, 'icons.json'),
-        ];
-
-        let filePath = '';
-        for (const p of pathsToTry) {
-            if (fs.existsSync(p)) {
-                filePath = p;
-                break;
-            }
-        }
-
+        const filePath = findIconSetPath(packageName);
         if (!filePath) return null;
-
-        const content = fs.readFileSync(filePath, 'utf8');
-        const data = JSON.parse(content);
-        const keys = new Set(Object.keys(data.icons || {}));
+        
+        const keys = readIconSetKeys(filePath);
         iconSetsCache[packageName] = keys;
         return keys;
     } catch (e) {
@@ -81,7 +88,7 @@ function getIconSet(packageName: string): Set<string> | null {
 /**
  * Maps a category to a default Lucide icon fallback
  */
-export const getFallbackIcon = (category: string) => {
+export const getFallbackIcon = (category: string): string => {
     switch (category?.toLowerCase()) {
         case "language":
             return "lucide:cpu";
@@ -108,42 +115,41 @@ interface IconProps {
 }
 
 /**
+ * Normalizes user-facing icon name using common aliases
+ */
+export function normalizeIconName(icon?: string, id?: string, title?: string): string {
+    const raw = (icon || id || title || "").toLowerCase();
+    const clean = raw.replace(/\s+/g, "").replace(/\.js$/, "").replace(/\.ts$/, "");
+    return COMMON_ALIASES[clean] || clean;
+}
+
+/**
+ * Searches the loaded icon libraries for a normalized icon name
+ */
+function searchIconLibraries(normalizedName: string): string | null {
+    const libraries = ["simple-icons", "logos", "lucide"];
+    for (const lib of libraries) {
+        const iconSet = getIconSet(lib);
+        if (iconSet?.has(normalizedName)) {
+            return `${lib}:${normalizedName}`;
+        }
+    }
+    return null;
+}
+
+/**
  * Returns a safe icon name with the appropriate library prefix.
  * Tries simple-icons first, then logos, then lucide.
  */
 export const getSafeIcon = ({ icon, id, title, category }: IconProps): string => {
-    // 1. If an explicit prefix is provided, trust it
     if (icon && icon.includes(":")) {
         return icon;
     }
 
-    // 2. Determine base name to search for (icon field -> id -> title)
-    let rawName = (icon || id || title || "").toLowerCase();
-    rawName = rawName.replace(/\s+/g, "").replace(/\.js$/, "").replace(/\.ts$/, "");
-
-    // 3. Apply known aliases
-    const normalizedName = COMMON_ALIASES[rawName] || rawName;
-
-    // 4. Try Simple Icons
-    const simpleIcons = getIconSet('simple-icons');
-    if (simpleIcons?.has(normalizedName)) {
-        return `simple-icons:${normalizedName}`;
-    }
-
-    // 5. Try Logos
-    const logos = getIconSet('logos');
-    if (logos?.has(normalizedName)) {
-        return `logos:${normalizedName}`;
-    }
-
-    // 6. Try Lucide (as a last resort for specific tech names)
-    const lucide = getIconSet('lucide');
-    if (lucide?.has(normalizedName)) {
-        return `lucide:${normalizedName}`;
-    }
-
-    // 7. Ultimate Fallback
-    return getFallbackIcon(category);
+    const normalized = normalizeIconName(icon, id, title);
+    const resolved = searchIconLibraries(normalized);
+    
+    return resolved || getFallbackIcon(category);
 };
 
 /**
@@ -154,8 +160,5 @@ export const getIconUrl = (resolvedIcon: string): string | undefined => {
     if (!resolvedIcon) return undefined;
 
     const [set, name] = resolvedIcon.split(':');
-
-    // Use Iconify API for all sets as it's more reliable for colorized SVGs
-    // simpleicons.org CDN sometimes 404s on colorized requests (e.g. openai)
     return `https://api.iconify.design/${set}/${name}.svg?color=white`;
 };
