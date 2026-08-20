@@ -2,6 +2,7 @@
 import { getTranslations, useTranslator } from "@i18n";
 import { Image } from "astro:assets";
 import SectionHeader from "@components/ui/SectionHeader.astro";
+import sanitizeHtml from "sanitize-html";
 
 interface Props {
     lang: string;
@@ -62,7 +63,7 @@ const timeline = t.about?.timeline || [];
                                     <div class="w-full md:max-w-md">
                                         <time class="font-mono text-sm text-primary mb-2 block">{item.date}</time>
                                         <h3 class="text-xl md:text-2xl font-black mb-3 text-base-content group-hover:text-primary transition-colors">{item.title}</h3>
-                                        <p class="text-base-content/70 text-base leading-relaxed" set:html={item.desc}></p>
+                                        <p class="text-base-content/70 text-base leading-relaxed" set:html={sanitizeHtml(item.desc)}></p>
                                     </div>
                                 </div>
                                 {index !== timeline.length - 1 && <hr class="bg-primary/20" />}
