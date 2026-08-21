@@ -21,11 +21,24 @@ const uniqueProjectIds = [...new Set(allProjectsUnfiltered.map(p =>
     p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "")
 ))];
 
+const exactMap = new Map();
+const fallbackMap = new Map();
+
+for (const p of allProjectsUnfiltered) {
+    const strippedId = p.id.replace(/\.mdx?$/, "");
+    exactMap.set(strippedId, p);
+
+    const fallbackId = p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "");
+    if (!fallbackMap.has(fallbackId)) {
+        fallbackMap.set(fallbackId, p);
+    }
+}
+
 const allProjects = [];
 for (const id of uniqueProjectIds) {
-    let entry = allProjectsUnfiltered.find(p => p.id.replace(/\.mdx?$/, "") === `${lang}/${id}`);
+    let entry = exactMap.get(`${lang}/${id}`);
     if (!entry) {
-        entry = allProjectsUnfiltered.find(p => p.id.replace(/\.mdx?$/, "").endsWith(`/${id}`));
+        entry = fallbackMap.get(id);
     }
     if (entry) {
         allProjects.push(entry);
