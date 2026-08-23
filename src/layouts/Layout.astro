@@ -3,6 +3,7 @@ import "../assets/global.css";
 import NavBar from "../components/layout/NavBar.astro";
 import MobileDrawer from "../components/layout/MobileDrawer.astro";
 import Footer from "../components/layout/Footer.astro";
+import { useTranslator } from "@i18n";
 
 interface Props {
 	title?: string;
@@ -41,6 +42,7 @@ const cleanPathname = (path: string) => {
 
 const base = cleanPathname(pathname);
 const canonicalUrl = (customCanonicalUrl || `${siteOrigin}${pathname}`).replace("http://", "https://");
+const __ = await useTranslator(lang);
 ---
 
 <!doctype html>
@@ -161,13 +163,21 @@ const canonicalUrl = (customCanonicalUrl || `${siteOrigin}${pathname}`).replace(
 		})} />
 	</head>
 	<body>
+		<a
+			href="#main-content"
+			class="absolute left-[-9999px] top-auto z-50 h-1 w-1 overflow-hidden focus:left-4 focus:top-4 focus:h-auto focus:w-auto focus:p-4 focus:bg-base-100 focus:text-primary focus:border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-box shadow-xl transition-all"
+		>
+			{__("Skip to content")}
+		</a>
 		<div class="drawer drawer-end">
 			<!-- Drawer toggle -> linked to the hamburger button in NavBar -->
 			<input id="mobile-menu" type="checkbox" class="drawer-toggle" />
 
 			<div class="drawer-content flex flex-col">
 				<NavBar lang={lang} />
-				<slot />
+				<main id="main-content" class="flex-1 w-full">
+					<slot />
+				</main>
 			</div>
 
 			<!-- Component containing the .drawer-side structure -->
