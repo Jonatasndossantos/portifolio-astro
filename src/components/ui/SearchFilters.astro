@@ -58,6 +58,7 @@ const {
     {categories.length > 0 && (
         <div class="flex gap-2 flex-wrap justify-end">
             <button
+                type="button"
                 class="btn btn-sm px-6 rounded-xl btn-active filter-btn border-none shadow-sm"
                 data-category="all"
                 aria-label={allLabel}
@@ -67,6 +68,7 @@ const {
             {
                 categories.map((cat) => (
                     <button
+                        type="button"
                         class="btn btn-sm px-5 rounded-xl filter-btn border-none bg-base-100/50 hover:bg-base-100 shadow-sm uppercase text-[10px] font-bold tracking-widest transition-all"
                         data-category={cat}
                         aria-label={`${filterByLabel} ${cat}`}
