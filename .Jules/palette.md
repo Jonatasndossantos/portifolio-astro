@@ -1,0 +1,3 @@
+## 2025-02-25 - Async Form Feedback Optimization
+**Learning:** While text changes (e.g. "SENDING...") provide some feedback during async actions, coupling text with a recognizable loading spinner significantly reduces user anxiety during form submission delays by providing a clear, continuous visual cue that work is happening in the background.
+**Action:** Always include a loading spinner component inside async action buttons (like form submissions) that activates while the button is in its `disabled` state during inflight requests, rather than relying solely on text-copy changes.
