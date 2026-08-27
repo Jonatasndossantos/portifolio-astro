@@ -198,9 +198,13 @@ const __ = await useTranslator(lang);
                     id="submit-button"
                     type="submit"
                     class="btn btn-primary w-full tracking-widest uppercase group"
+                    aria-live="polite"
                 >
+                    <span id="submit-spinner" class="loading loading-spinner loading-sm hidden" aria-hidden="true"></span>
                     <span id="submit-text">{__("Send Message")}</span>
-                    <Icon name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    <span id="submit-icon" class="flex items-center justify-center">
+                        <Icon name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </span>
                 </button>
             </form>
         </div>
@@ -218,6 +222,8 @@ const __ = await useTranslator(lang);
             "submit-button",
         ) as HTMLButtonElement;
         const submitText = document.getElementById("submit-text");
+        const submitSpinner = document.getElementById("submit-spinner");
+        const submitIcon = document.getElementById("submit-icon");
         const resetBtn = document.getElementById("btn-reset-form");
 
         if (!form) return;
@@ -230,6 +236,8 @@ const __ = await useTranslator(lang);
             const originalText = submitText!.innerText;
             const sendingText = form.getAttribute("data-sending-text") || "SENDING...";
             submitText!.innerText = sendingText;
+            submitSpinner?.classList.remove("hidden");
+            submitIcon?.classList.add("hidden");
             errorAlert!.classList.add("hidden");
 
             const formData = new FormData(form);
@@ -259,6 +267,8 @@ const __ = await useTranslator(lang);
             } finally {
                 submitBtn.disabled = false;
                 submitText!.innerText = originalText;
+                submitSpinner?.classList.add("hidden");
+                submitIcon?.classList.remove("hidden");
             }
         });
 
