@@ -1,0 +1,3 @@
+## 2025-02-23 - Async Button Feedback UX
+**Learning:** For async submission buttons (like Contact forms), simply replacing the button text isn't enough. Screen readers need `aria-live="polite"` to announce the state change, and visually, using a DaisyUI `loading-spinner` while hiding the default icon provides much clearer feedback that an action is in flight without layout shift.
+**Action:** Always combine explicit state text changes, visual loading spinners, hiding default icons during flight, and `aria-live="polite"` on async submission buttons for optimal accessibility and UX.
