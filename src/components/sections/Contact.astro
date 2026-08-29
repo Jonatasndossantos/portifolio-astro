@@ -1,5 +1,5 @@
 ---
-import { getTranslations, useTranslator } from "@i18n";
+import { useTranslator } from "@i18n";
 import { Icon } from "astro-icon/components";
 import type { CuratedProfile } from "../../types";
 
@@ -198,9 +198,11 @@ const __ = await useTranslator(lang);
                     id="submit-button"
                     type="submit"
                     class="btn btn-primary w-full tracking-widest uppercase group"
+                    aria-live="polite"
                 >
+                    <span id="submit-spinner" class="loading loading-spinner hidden" aria-hidden="true"></span>
                     <span id="submit-text">{__("Send Message")}</span>
-                    <Icon name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    <Icon id="submit-icon" name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </button>
             </form>
         </div>
@@ -230,6 +232,13 @@ const __ = await useTranslator(lang);
             const originalText = submitText!.innerText;
             const sendingText = form.getAttribute("data-sending-text") || "SENDING...";
             submitText!.innerText = sendingText;
+
+            const submitIcon = document.getElementById("submit-icon");
+            const submitSpinner = document.getElementById("submit-spinner");
+
+            if (submitIcon) submitIcon.classList.add("hidden");
+            if (submitSpinner) submitSpinner.classList.remove("hidden");
+
             errorAlert!.classList.add("hidden");
 
             const formData = new FormData(form);
@@ -259,6 +268,12 @@ const __ = await useTranslator(lang);
             } finally {
                 submitBtn.disabled = false;
                 submitText!.innerText = originalText;
+
+                const submitIcon = document.getElementById("submit-icon");
+                const submitSpinner = document.getElementById("submit-spinner");
+
+                if (submitIcon) submitIcon.classList.remove("hidden");
+                if (submitSpinner) submitSpinner.classList.add("hidden");
             }
         });
 
