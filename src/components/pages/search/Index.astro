@@ -145,14 +145,17 @@ const searchItems = [
                         type="text"
                         id="global-search-input"
                         placeholder={__("Search...")}
-                        class="w-full bg-transparent border-none outline-none py-4 px-3 text-base-content text-lg placeholder-base-content/30"
+                        class="w-full bg-transparent border-none outline-none py-4 px-3 pr-16 text-base-content text-lg placeholder-base-content/30"
                         autocomplete="off"
                         autofocus
                     />
+                    <div class="absolute right-12 flex items-center justify-center opacity-40 group-focus-within:opacity-0 transition-opacity pointer-events-none">
+                        <kbd class="kbd kbd-sm bg-base-200 border-base-content/10 text-[10px] font-mono shadow-none">/</kbd>
+                    </div>
                     <button
                         type="button"
                         id="search-clear-btn"
-                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden"
+                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden absolute right-2"
                         aria-label={__("Clear")}
                     >
                         <Icon name="lucide:x" class="size-5" />
@@ -423,6 +426,26 @@ const searchItems = [
             renderResults();
         });
     });
+
+    // Keyboard shortcut setup
+    const handleKeydown = (e) => {
+        const input = document.getElementById("global-search-input");
+        if (e.key === "/" && input && document.activeElement !== input) {
+            // Ignore if already typing in an input
+            const activeEl = document.activeElement;
+            if (activeEl && (activeEl.tagName === "INPUT" || activeEl.tagName === "TEXTAREA" || activeEl.isContentEditable)) {
+                return;
+            }
+            e.preventDefault();
+            input.focus();
+        }
+    };
+
+    if (window.__searchPageKeydownHandler) {
+        document.removeEventListener("keydown", window.__searchPageKeydownHandler);
+    }
+    window.__searchPageKeydownHandler = handleKeydown;
+    document.addEventListener("keydown", handleKeydown);
 
     // Run on init
     initSearchFromUrl();
