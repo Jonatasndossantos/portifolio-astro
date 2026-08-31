@@ -46,11 +46,11 @@ const {
             type="text"
             id="search-input"
             placeholder={searchPlaceholder}
-            class="input input-lg input-bordered w-full pl-14 pr-6 bg-base-100/50 focus:bg-base-100 border-base-content/10 focus:border-primary transition-all rounded-2xl text-base shadow-sm font-medium"
+            class="input input-lg input-bordered w-full pl-14 pr-12 bg-base-100/50 focus:bg-base-100 border-base-content/10 focus:border-primary transition-all rounded-2xl text-base shadow-sm font-medium"
             aria-label={searchPlaceholder}
         />
-        <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter">
-            Search
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center opacity-40 group-focus-within:opacity-0 transition-opacity pointer-events-none">
+            <kbd class="kbd kbd-sm bg-base-200 border-base-content/10 text-[10px] font-mono shadow-none">/</kbd>
         </div>
     </div>
 
@@ -152,6 +152,40 @@ const {
                 applyFilters();
             });
         });
+
+        // Setup keyboard shortcut
+        const handleKeydown = (e: KeyboardEvent) => {
+            const input = document.getElementById("search-input");
+            if (e.key === "/" && input && document.activeElement !== input) {
+                // Ignore if we're already focusing an input, textarea or contenteditable
+                const activeEl = document.activeElement;
+                if (
+                    activeEl &&
+                    (activeEl.tagName === "INPUT" ||
+                        activeEl.tagName === "TEXTAREA" ||
+                        (activeEl as HTMLElement).isContentEditable)
+                ) {
+                    return;
+                }
+                e.preventDefault();
+                input.focus();
+            }
+        };
+
+        // Remove old listener if it exists to avoid duplicates on view transitions
+        if (window.__searchFiltersKeydownHandler) {
+            document.removeEventListener("keydown", window.__searchFiltersKeydownHandler);
+        }
+        window.__searchFiltersKeydownHandler = handleKeydown;
+        document.addEventListener("keydown", handleKeydown);
+    }
+
+    // Declare global type for handler
+    declare global {
+        interface Window {
+            __searchFiltersKeydownHandler?: (e: KeyboardEvent) => void;
+            __searchPageKeydownHandler?: (e: KeyboardEvent) => void;
+        }
     }
 
     document.addEventListener("astro:page-load", setupFilters);

@@ -1,0 +1,3 @@
+## 2024-03-24 - Discoverability of Keyboard Shortcuts
+**Learning:** Adding a visible `<kbd>` element hinting at a keyboard shortcut (like `/` for search) inside the input placeholder area significantly improves discoverability for power users. It provides clear affordance without cluttering the UI.
+**Action:** When implementing global actions that have keyboard shortcuts, incorporate a subtle visual hint (like a small `<kbd>` tag) directly within or adjacent to the interactive element. Ensure the `keydown` listener properly checks `document.activeElement` to avoid intercepting inputs when the user is already typing in another field.
