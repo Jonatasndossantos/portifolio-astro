@@ -4,58 +4,58 @@
     "content": {
         "bio": {
             "fullstack": {
-                "en": "Software Architect and Full-Stack Engineer specializing in high-performance asynchronous runtimes (Laravel Octane, Swoole, FrankenPHP) and reactive React 19 / Inertia.js SPAs.",
-                "pt": "Arquiteto de Software e Engenheiro Full-Stack Sênior especializado em runtimes assíncronos de alta performance (Laravel Octane, Swoole, FrankenPHP) e SPAs reativos com React 19 / Inertia.js.",
+                "en": "Senior Software Architect & Full-Stack Engineer orchestrating End-to-End Enterprise architectures. Specializing in high-performance asynchronous runtimes (Laravel Octane, Swoole, FrankenPHP) and bridging robust backends with highly reactive React 19 / Inertia.js SPAs for global scale applications.",
+                "pt": "Arquiteto de Software & Engenheiro Full-Stack orquestrando arquiteturas Enterprise End-to-End. Especializado em runtimes assíncronos de alta performance (Laravel Octane, Swoole, FrankenPHP) e na integração de backends robustos com SPAs altamente reativos em React 19 / Inertia.js para aplicações em escala global.",
                 "fr": "Je crée des expériences numériques immersives, comblant le fossé entre une logique robuste et un design fluide. Je fournis des solutions complètes de la base de données au pixel.",
                 "es": "Creo experiencias digitales inmersivas, uniendo la lógica robusta y el diseño fluido. Entrego soluciones completas desde la base de datos hasta el píxel.",
                 "zh": "我创造身临其境的数字体验，弥合了强大的逻辑与流畅的设计之间的差距。 我提供从数据库到像素 of 完整解决方案。",
                 "ja": "堅牢なロジックと流動的なデザインのギャップを埋める、没入型のデジタル体験を作成します。 データベースからピクセルまで、完全なソリューションを提供します。",
-                "en-GB": "Software Architect and Full-Stack Engineer specializing in high-performance asynchronous runtimes (Laravel Octane, Swoole, FrankenPHP) and reactive React 19 / Inertia.js SPAs."
+                "en-GB": "Senior Software Architect & Full-Stack Engineer orchestrating End-to-End Enterprise architectures. Specializing in high-performance asynchronous runtimes (Laravel Octane, Swoole, FrankenPHP) and bridging robust backends with highly reactive React 19 / Inertia.js SPAs for global scale applications."
             },
             "frontend": {
-                "en": "Creative Frontend Architect focusing on highly responsive user interfaces, clean CSS architecture with Tailwind v4, and state management optimization.",
-                "pt": "Arquiteto Frontend Criativo com foco em interfaces de alta reatividade, arquitetura CSS limpa com Tailwind v4 e otimização de estado.",
+                "en": "Creative Frontend Architect engineering highly responsive, accessible user interfaces. Expert in React 19, custom Hooks, and clean CSS architecture utilizing Tailwind v4 and DaisyUI v5 to deliver optimized state management and seamless user experiences without overengineering.",
+                "pt": "Arquiteto Frontend Criativo projetando interfaces de usuário altamente responsivas e acessíveis. Especialista em React 19, Hooks customizados e arquitetura CSS limpa utilizando Tailwind v4 e DaisyUI v5 para entregar otimização de estado e experiências de usuário fluidas, sem overengineering.",
                 "fr": "Je sculpte les interactions utilisateur avec une précision au pixel près, en me concentrant sur le mouvement, l'accessibilité et la narration visuelle qui captive l'imagination.",
-                "es": "Esculpo interações de usuário com precisão de píxeles, centrándome en el movimiento, la accesibilidad y la narración visual que captura la imaginación.",
+                "es": "Esculpo interações de usuario con precisión de píxeles, centrándome en el movimiento, la accesibilidad y la narración visual que captura la imaginación.",
                 "zh": "我以像素级的精度雕琢用户交互，专注于动作、可访问性和捕捉想象力的视觉叙事。",
                 "ja": "ピクセル単位の精度でユーザーインタラクションを形成し、想像力をかきたてる動き、アクセシビリティ、視覚的なストーリーテリングに焦点を当てています。",
-                "en-GB": "Creative Frontend Architect focusing on highly responsive user interfaces, clean CSS architecture with Tailwind v4, and state management optimization."
+                "en-GB": "Creative Frontend Architect engineering highly responsive, accessible user interfaces. Expert in React 19, custom Hooks, and clean CSS architecture utilizing Tailwind v4 and DaisyUI v5 to deliver optimized state management and seamless user experiences without overengineering."
             },
             "backend": {
-                "en": "Backend Systems Engineer specializing in robust microservices, complex relational database tuning, asynchronous queue processing, and race condition mitigation.",
-                "pt": "Engenheiro de Sistemas Backend focado em arquiteturas resilientes, otimização de consultas complexas em bancos de dados relacionais e mitigação de race conditions.",
+                "en": "Backend Systems Architect engineering resilient SaaS platforms and B2G solutions. Specialized in the modern Laravel ecosystem (11/12), complex relational database tuning, asynchronous background queues, and mitigating critical race conditions and deadlocks in legacy applications.",
+                "pt": "Arquiteto de Sistemas Backend projetando plataformas SaaS e soluções B2G resilientes. Especializado no ecossistema moderno do Laravel (11/12), otimização de bancos de dados relacionais complexos, processamento de filas assíncronas em background e mitigação de race conditions e deadlocks críticos em aplicações legadas.",
                 "fr": "J'architecture l'épine dorsale invisible des applications, garantissant sécurité, vitesse et évolutivité massive sous de lourdes charges.",
                 "es": "Arquitecto la columna vertebral invisible de las aplicaciones, garantizando seguridad, velocidad y escalabilidad masiva bajo cargas pesadas.",
                 "zh": "我构建应用程序的隐形骨干，确重负载下的安全性、速度和大规模可扩展性。",
                 "ja": "アプリケーションの目に見えないバックボーンを設計し、高負荷下でのセキュリティ、速度、そして大規模なスケーラビリティを保証します。",
-                "en-GB": "Backend Systems Engineer specializing in robust microservices, complex relational database tuning, asynchronous queue processing, and race condition mitigation."
+                "en-GB": "Backend Systems Architect engineering resilient SaaS platforms and B2G solutions. Specialized in the modern Laravel ecosystem (11/12), complex relational database tuning, asynchronous background queues, and mitigating critical race conditions and deadlocks in legacy applications."
             },
             "devops": {
-                "en": "SRE & Infrastructure Architect. Managing remote Linux servers via SSH, containerized environments, secure automation pipelines, and background worker optimization.",
-                "pt": "Arquiteto SRE e Infraestrutura. Orquestração de servidores Linux remotos via SSH, ambientes containerizados (Docker), pipelines automotizados e gestão de workers de fila.",
+                "en": "SRE & Infrastructure Architect operating at the root level. Proven expertise in remote Linux server administration via SSH, Nginx reverse proxying, containerized environments (Docker), and enforcing strict CI/CD pipelines via GitHub Actions to safeguard production environments.",
+                "pt": "Arquiteto SRE e Infraestrutura operando em nível root. Expertise comprovada na administração de servidores Linux remotos via SSH, reverse proxy com Nginx, ambientes containerizados (Docker) e implementação de pipelines CI/CD rigorosos via GitHub Actions para blindar ambientes de produção.",
                 "fr": "Je construis les usines qui construisent le logiciel, créant des pipelines transparents et une infrastructure résiliente qui dort pour que vous n'ayez pas à le faire.",
                 "es": "Construyo las fábricas que construyen el software, creando tuberías continuas e infraestructura resistente que duerme para que tú no tengas que hacerlo.",
                 "zh": "我建立构建软件的工厂，创建无缝的管道和弹性基础设施，让它休息，这样你就不必休息了。",
                 "ja": "ソフトウェアを構築する工場を構築し、シームレスなパイプラインと、あなたが眠らなくても済むような回復力のあるインフラストラクチャを作成します。",
-                "en-GB": "SRE & Infrastructure Architect. Managing remote Linux servers via SSH, containerized environments, secure automation pipelines, and background worker optimization."
+                "en-GB": "SRE & Infrastructure Architect operating at the root level. Proven expertise in remote Linux server administration via SSH, Nginx reverse proxying, containerized environments (Docker), and enforcing strict CI/CD pipelines via GitHub Actions to safeguard production environments."
             },
             "database": {
-                "en": "Database Architect optimizing schemas, indexing, and transactional isolation for distributed database clusters under high write concurrency.",
-                "pt": "Arquiteto de Banco de Dados especializado em modelagem, indexação e isolamento transacional para clusters distribuídos sob alta concorrência de escrita.",
+                "en": "Database Administrator & Architect optimizing MySQL and PostgreSQL environments. Focused on advanced schema design, strategic indexing, and mitigating N+1 problems through optimized queries and transactional isolation to support heavy multi-tenant architectures.",
+                "pt": "Administrador e Arquiteto de Banco de Dados otimizando ambientes MySQL e PostgreSQL. Focado em modelagem avançada, indexação estratégica e mitigação de problemas N+1 através de queries otimizadas e isolamento transacional para suportar arquiteturas multi-tenant pesadas.",
                 "fr": "Je suis le gardien des données, optimisant les structures pour les requêtes complexes et garantissant une intégrité absolue sur les systèmes distribués.",
                 "es": "Soy el guardián de los datos, optimizando estructuras para consultas complejas y garantizando una integridad absoluta en sistemas distribuídos.",
                 "zh": "我是数据的守护者，优化结构以进行复杂查询，并确保分布式系统中的绝对完整性。",
                 "ja": "私はデータの守護者であり、複雑なクエリのために構造を最適化し、分散システム全体で絶対的な整合性を保証します。",
-                "en-GB": "Database Architect optimizing schemas, indexing, and transactional isolation for distributed database clusters under high write concurrency."
+                "en-GB": "Database Administrator & Architect optimizing MySQL and PostgreSQL environments. Focused on advanced schema design, strategic indexing, and mitigating N+1 problems through optimized queries and transactional isolation to support heavy multi-tenant architectures."
             },
             "ai": {
-                "en": "AI Solutions Engineer integrating RAG pipelines, OpenAI Assistants, database-connected Function Calling, and strict JSON Schema validation to eliminate model hallucinations.",
-                "pt": "Engenheiro de IA integrando pipelines de RAG, OpenAI Assistants, Function Calling conectada a bancos relacionais e validação estrita via JSON Schema.",
+                "en": "AI Solutions Engineer pioneering R&D for autonomous workflows. Expert in integrating robust RAG pipelines, OpenAI Assistant API, and database-connected Function Calling with Strict JSON Schemas to actively eliminate model hallucinations in critical enterprise applications.",
+                "pt": "Engenheiro de Soluções em IA liderando P&D para fluxos de trabalho autônomos. Especialista na integração de pipelines RAG robustos, OpenAI Assistant API e Function Calling conectados a banco de dados com Strict JSON Schemas para eliminar ativamente alucinações de modelos em aplicações corporativas críticas.",
                 "fr": "J'intègre des modèles intelligents dans des applications pratiques, apprenant aux machines à résoudre des problèmes humains et à automatiser les tâches banales.",
                 "es": "Integro modelos inteligentes en aplicaciones prácticas, enseñando a las máquinas a resolver problemas humanos y automatizando lo mundano.",
                 "zh": "我将智能模型集成到实际应用程序中，教机器解决人类问题并自动化日常事务。",
                 "ja": "インテリジェントなモデルを実用的なアプリケーションに統合し、機械に人間の問題を解決させ、日常業務を自動化することを教えています。",
-                "en-GB": "AI Solutions Engineer integrating RAG pipelines, OpenAI Assistants, database-connected Function Calling, and strict JSON Schema validation to eliminate model hallucinations."
+                "en-GB": "AI Solutions Engineer pioneering R&D for autonomous workflows. Expert in integrating robust RAG pipelines, OpenAI Assistant API, and database-connected Function Calling with Strict JSON Schemas to actively eliminate model hallucinations in critical enterprise applications."
             }
         },
         "role": {
@@ -81,7 +81,7 @@
                 "en": "Backend Systems Architect",
                 "pt": "Arquiteto de Sistemas Backend",
                 "fr": "Spécialiste en Architecture Système",
-                "es": "Especialista em Arquitetura de Sistemas",
+                "es": "Especialista en Arquitectura de Sistemas",
                 "zh": "系统架构专家",
                 "ja": "システムアーキテクチャスペシャリスト",
                 "en-GB": "Backend Systems Architect"
@@ -93,7 +93,7 @@
                 "es": "Ingeniero de Infraestructura y Automatización",
                 "zh": "基础设施与自动化工程师",
                 "ja": "インフラストラクチャ＆オートメーションエンジニア",
-                "en-GB": "Infrastructure & Automation Engineer"
+                "en-GB": "SRE & Infrastructure Engineer"
             },
             "database": {
                 "en": "Database Administrator & Architect",
