@@ -62,7 +62,7 @@
         "id": "1",
         "title": "Lumen Platform",
         "slug": "plataforma-lumen",
-        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "imageUrl": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800",
         "technologies": [
           "Laravel 12",
           "Octane",
@@ -169,22 +169,62 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800",
+        "technologies": [
+          "React.js",
+          "Laravel",
+          "OpenAI",
+          "GCP"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas, orchestrating the dynamic and hallucination-free generation of highly complex structured government contracts.",
+          "backend": "Robust Laravel architecture integrating asynchronous queues for parallel processing and stabilized communication with the OpenAI API.",
+          "frontend": "Reactive interface built with React and Inertia.js, delivering an immersive, responsive experience without unnecessary page reloads.",
+          "devops": "Automated deployment pipeline on Google Cloud Platform (GCP), with end-to-end observability using Laravel Telescope for telemetry.",
+          "database": "Secure, relational data modeling ensuring strict integrity and retention of the generated institutional document history.",
+          "ai": "Surgical integration with the GPT-4 model utilizing Function Calling, forcing the LLM to adhere to data contracts to mitigate hallucinations and compliance risks."
+        }
       },
       "espresso-d-amore": {
+        "id": "11",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800",
+        "technologies": [
+          "Laravel 12",
+          "Expo",
+          "Supabase"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "End-to-End platform for digital storefront and management, combining hyper-responsive UX and a robust operational engine to scale local delivery operations.",
+          "backend": "Hybrid architecture leveraging Laravel 12 for consolidated business rules and Supabase for real-time data synchronization in the app.",
+          "frontend": "Cross-platform ecosystem featuring an administrative Dashboard in React/Inertia.js and an immersive mobile app developed with React Native/Expo.",
+          "devops": "Modern CI/CD pipelines for automated build and distribution of both the corporate web application and the Expo-generated mobile APK.",
+          "database": "Hybrid persistence strategy: MySQL as the single source of truth for the management ERP and Supabase handling real-time client state.",
+          "ai": "Implementation of predictive intelligence via OpenAI to anticipate stock shortages and optimize order recommendations for frequent users."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?q=80&w=800",
+        "technologies": [
+          "Laravel",
+          "Tailwind",
+          "Azure"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Highly optimized full-stack news portal, architected with flexible design to deliver content via Server-Side Rendering (SSR) and maximize SEO performance.",
+          "backend": "Scalable MVC architecture in PHP consuming multiple external RSS feeds in real-time and handling high concurrency volumes.",
+          "frontend": "Polished, semantic visuals built with Blade templates and Tailwind CSS, focusing on instantaneous load times and top-tier Lighthouse metrics.",
+          "devops": "Resilient deployment on Azure App Service cloud infrastructure, supported by automated pipelines executing rigorous tests on every commit.",
+          "database": "High-performance relational schema in MySQL to manage the hierarchy of tens of thousands of articles and user profile preferences.",
+          "ai": "Algorithmic curation engine that analyzes reading patterns and integrates conceptual fact-checking pipelines against mass disinformation."
+        }
       }
     }
   },
