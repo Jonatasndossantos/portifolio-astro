@@ -49,8 +49,8 @@ const {
             class="input input-lg input-bordered w-full pl-14 pr-6 bg-base-100/50 focus:bg-base-100 border-base-content/10 focus:border-primary transition-all rounded-2xl text-base shadow-sm font-medium"
             aria-label={searchPlaceholder}
         />
-        <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter">
-            Search
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter group-focus-within:opacity-0">
+            <span class="flex items-center gap-1"><kbd class="kbd kbd-xs bg-base-100 font-sans border-base-content/20">/</kbd></span>
         </div>
     </div>
 
@@ -132,6 +132,13 @@ const {
                 noResults.classList.toggle("hidden", visibleCount > 0);
             }
         };
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "/" && document.activeElement && document.activeElement !== searchInput && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
 
         searchInput.addEventListener("input", (e) => {
             currentSearch = (e.target as HTMLInputElement).value.toLowerCase();
