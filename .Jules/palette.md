@@ -1,0 +1,1 @@
+## 2024-05-24 - [Keyboard Shortcuts]\n**Learning:** Implementing visual keyboard shortcut hints `<kbd>/</kbd>` in search inputs significantly improves discoverability and navigation efficiency for power users.\n**Action:** Add similar visual hints and wiring for global commands to optimize the UX.
