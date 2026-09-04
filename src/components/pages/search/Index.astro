@@ -149,14 +149,17 @@ const searchItems = [
                         autocomplete="off"
                         autofocus
                     />
-                    <button
-                        type="button"
-                        id="search-clear-btn"
-                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden"
-                        aria-label={__("Clear")}
-                    >
-                        <Icon name="lucide:x" class="size-5" />
-                    </button>
+                    <div class="flex items-center gap-2 pr-3">
+                        <kbd class="kbd kbd-sm opacity-50 hidden md:inline-flex shadow-sm bg-base-200 border-base-content/10">/</kbd>
+                        <button
+                            type="button"
+                            id="search-clear-btn"
+                            class="btn btn-ghost btn-sm btn-circle hidden"
+                            aria-label={__("Clear")}
+                        >
+                            <Icon name="lucide:x" class="size-5" />
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -423,6 +426,26 @@ const searchItems = [
             renderResults();
         });
     });
+
+    // Keyboard shortcut to focus search input
+    const handleKeydown = (e) => {
+        if (
+            e.key === "/" &&
+            document.activeElement !== searchInput &&
+            document.activeElement?.tagName !== "INPUT" &&
+            document.activeElement?.tagName !== "TEXTAREA"
+        ) {
+            e.preventDefault();
+            searchInput?.focus();
+        }
+    };
+
+    document.addEventListener("keydown", handleKeydown);
+
+    // Clean up on component unmount
+    document.addEventListener("astro:before-swap", () => {
+         document.removeEventListener("keydown", handleKeydown);
+    }, { once: true });
 
     // Run on init
     initSearchFromUrl();
