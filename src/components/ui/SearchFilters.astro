@@ -49,8 +49,8 @@ const {
             class="input input-lg input-bordered w-full pl-14 pr-6 bg-base-100/50 focus:bg-base-100 border-base-content/10 focus:border-primary transition-all rounded-2xl text-base shadow-sm font-medium"
             aria-label={searchPlaceholder}
         />
-        <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter">
-            Search
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter hidden sm:block">
+            <kbd class="kbd kbd-sm opacity-50 bg-transparent border-none text-base-content/80">/</kbd>
         </div>
     </div>
 
@@ -154,6 +154,27 @@ const {
         });
     }
 
-    document.addEventListener("astro:page-load", setupFilters);
+    function handleGlobalSearchShortcut(e: KeyboardEvent) {
+        if (e.key === '/') {
+            const activeTag = document.activeElement?.tagName;
+            if (activeTag === 'INPUT' || activeTag === 'TEXTAREA') {
+                return; // Do not hijack normal typing
+            }
+            e.preventDefault();
+            const searchInput = document.getElementById("search-input") as HTMLInputElement;
+            if (searchInput) {
+                searchInput.focus();
+            }
+        }
+    }
+
+    document.removeEventListener("keydown", handleGlobalSearchShortcut);
+    document.addEventListener("keydown", handleGlobalSearchShortcut);
+
+    document.addEventListener("astro:page-load", () => {
+        setupFilters();
+        document.removeEventListener("keydown", handleGlobalSearchShortcut);
+        document.addEventListener("keydown", handleGlobalSearchShortcut);
+    });
     setupFilters();
 </script>

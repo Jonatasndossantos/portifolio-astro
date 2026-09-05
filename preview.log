@@ -1,0 +1,11 @@
+
+> jonatas-portfolio@0.1.0 preview /app
+> astro preview
+
+
+ astro  v5.18.2 ready in 9 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+ ELIFECYCLE  Command failed with exit code 143.

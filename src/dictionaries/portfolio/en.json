@@ -62,7 +62,7 @@
         "id": "1",
         "title": "Lumen Platform",
         "slug": "plataforma-lumen",
-        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "imageUrl": "https://raw.githubusercontent.com/Jonatasndossantos/Jonatasndossantos/main/src/lumen.png",
         "technologies": [
           "Laravel 12",
           "Octane",
