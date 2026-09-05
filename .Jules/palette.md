@@ -1,0 +1,3 @@
+## 2024-05-14 - Keyboard Shortcuts in Astro View Transitions
+**Learning:** When implementing global keyboard shortcuts (like `/` for search) in an Astro project with View Transitions enabled, event listeners defined inside an inline component `<script>` will stack on multiple page navigations if not cleaned up properly, leading to multiple shortcut triggers. It's also important to ensure `document.activeElement` check doesn't block focus if a shortcut acts as a focus trigger but should not hijack standard input typing.
+**Action:** Always extract the shortcut handler to a named function outside the main setup loop and pair `document.addEventListener` with `document.removeEventListener` on `astro:page-load` correctly to prevent multiple attachments.
