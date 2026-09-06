@@ -1,0 +1,3 @@
+## 2024-05-18 - Added keyboard shortcut hints to search inputs
+**Learning:** Adding a visible shortcut hint (`<kbd>/</kbd>`) and a global `keydown` listener makes search much faster for power users. It's important to not hijack normal text entry by checking if `document.activeElement?.tagName` is an INPUT or TEXTAREA. Also, managing event listeners globally outside of Astro's setup functions prevents duplicate listeners on page navigation.
+**Action:** When implementing global or prominent search bars in this design system, always include a visual shortcut hint and bind it to a focus event, taking care to manage event listeners correctly and not conflict with text input.
