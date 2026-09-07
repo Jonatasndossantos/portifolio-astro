@@ -198,9 +198,11 @@ const __ = await useTranslator(lang);
                     id="submit-button"
                     type="submit"
                     class="btn btn-primary w-full tracking-widest uppercase group"
+                    aria-live="polite"
                 >
+                    <span id="submit-spinner" class="loading loading-spinner loading-sm hidden"></span>
                     <span id="submit-text">{__("Send Message")}</span>
-                    <Icon name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    <Icon id="submit-icon" name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </button>
             </form>
         </div>
@@ -218,6 +220,8 @@ const __ = await useTranslator(lang);
             "submit-button",
         ) as HTMLButtonElement;
         const submitText = document.getElementById("submit-text");
+        const submitIcon = document.getElementById("submit-icon");
+        const submitSpinner = document.getElementById("submit-spinner");
         const resetBtn = document.getElementById("btn-reset-form");
 
         if (!form) return;
@@ -227,6 +231,8 @@ const __ = await useTranslator(lang);
 
             // Disable button during flight
             submitBtn.disabled = true;
+            if (submitIcon) submitIcon.classList.add("hidden");
+            if (submitSpinner) submitSpinner.classList.remove("hidden");
             const originalText = submitText!.innerText;
             const sendingText = form.getAttribute("data-sending-text") || "SENDING...";
             submitText!.innerText = sendingText;
@@ -258,6 +264,8 @@ const __ = await useTranslator(lang);
                 errorAlert!.classList.add("flex");
             } finally {
                 submitBtn.disabled = false;
+                if (submitSpinner) submitSpinner.classList.add("hidden");
+                if (submitIcon) submitIcon.classList.remove("hidden");
                 submitText!.innerText = originalText;
             }
         });
