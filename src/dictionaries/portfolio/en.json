@@ -169,22 +169,61 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800",
+        "technologies": [
+          "OpenAI API",
+          "PHP",
+          "JSON Schema",
+          "RAG"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallucination-free structured government contracts dynamically.",
+          "backend": "Robust PHP logic implementation for API call orchestration and strict validation of complex structured data.",
+          "frontend": "Reactive integration for rendering AI processing states and interactive Markdown blocks.",
+          "ai": "Advanced Prompt Engineering and Function Calling ensuring 100% adherence to strict JSON Schemas, eliminating critical LLM hallucinations.",
+          "devops": "OpenAI token consumption monitoring and latency optimization for large language model requests."
+        }
       },
       "espresso-d-amore": {
+        "id": "8",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800",
+        "technologies": [
+          "React",
+          "Node.js",
+          "Stripe",
+          "Supabase"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
+          "backend": "Serverless architecture connected to Supabase, guaranteeing transactional integrity for orders and real-time synchronization.",
+          "frontend": "Hydrated SPA interface built with React, designed with mobile-first principles and fluid animations to maximize sales conversion.",
+          "ai": "Automated generation of local SEO-optimized product descriptions using lightweight language model pipelines.",
+          "devops": "Continuous deployment automated via GitHub Actions connecting the repository directly to serverless hosting providers."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=800",
+        "technologies": [
+          "Astro",
+          "Tailwind CSS",
+          "Markdown/MDX",
+          "SEO"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
+          "backend": "Static Content Management System (Markdown/MDX) coupled with build-time image optimization pipelines.",
+          "frontend": "Extreme performance achieving 100/100 on Lighthouse, built with Astro to ship zero unnecessary JavaScript to the client.",
+          "ai": "Automated tag classification and news summarization through batch AI processing.",
+          "devops": "Cutting-edge static infrastructure deployed across global Edge Networks (CDNs) ensuring near-zero Time to First Byte (TTFB)."
+        }
       }
     }
   },

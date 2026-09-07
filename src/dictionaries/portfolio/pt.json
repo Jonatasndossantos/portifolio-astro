@@ -169,22 +169,61 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800",
+        "technologies": [
+          "OpenAI API",
+          "PHP",
+          "JSON Schema",
+          "RAG"
+        ],
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade.",
+          "backend": "Implementação de lógica robusta em PHP para orquestração de chamadas de API e validação estrita de dados estruturados.",
+          "frontend": "Integração reativa para exibição do status de processamento da IA e renderização de blocos Markdown editáveis.",
+          "ai": "Engenharia de Prompt avançada e Function Calling garantindo outputs de LLMs 100% aderentes a esquemas JSON, mitigando alucinações críticas.",
+          "devops": "Monitoramento de consumo de tokens da OpenAI e otimização de latência em requisições de modelos linguísticos."
+        }
       },
       "espresso-d-amore": {
+        "id": "8",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800",
+        "technologies": [
+          "React",
+          "Node.js",
+          "Stripe",
+          "Supabase"
+        ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local.",
+          "backend": "Arquitetura serverless conectada ao Supabase, garantindo integridade transacional de pedidos e sincronização em tempo real.",
+          "frontend": "Interface SPA hidratada com React, desenhada com princípios mobile-first e animações fluidas para maximizar a conversão de vendas.",
+          "ai": "Geração automatizada de descrições de produtos otimizadas para SEO local usando pipelines de modelos de linguagem leves.",
+          "devops": "Deploy contínuo automatizado via GitHub Actions conectando repositório diretamente a provedores de hospedagem serverless."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=800",
+        "technologies": [
+          "Astro",
+          "Tailwind CSS",
+          "Markdown/MDX",
+          "SEO"
+        ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido.",
+          "backend": "Sistema de gestão de conteúdo (CMS) estático (Markdown/MDX) acoplado a pipelines de otimização de imagens build-time.",
+          "frontend": "Performance extrema alcançando 100/100 no Lighthouse, construído com Astro para enviar zero JavaScript desnecessário ao cliente.",
+          "ai": "Classificação automática de tags e sumários de notícias através de processamento em batch via IA.",
+          "devops": "Infraestrutura estática de ponta implantada em Edge Networks (CDNs) mundiais garantindo TFB (Time to First Byte) quase nulo."
+        }
       }
     }
   },
