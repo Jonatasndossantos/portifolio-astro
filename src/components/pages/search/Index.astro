@@ -149,6 +149,9 @@ const searchItems = [
                         autocomplete="off"
                         autofocus
                     />
+                    <div class="absolute right-14 pointer-events-none opacity-40 group-focus-within:opacity-0 transition-opacity hidden sm:flex items-center">
+                        <kbd class="kbd kbd-sm bg-base-200/50 border-none opacity-80 text-[10px] min-h-0 h-6 px-2">/</kbd>
+                    </div>
                     <button
                         type="button"
                         id="search-clear-btn"
@@ -407,6 +410,24 @@ const searchItems = [
         renderResults();
         searchInput.focus();
     });
+
+    // Keyboard shortcut listener
+    const handleKeyDown = (e) => {
+        if (e.key === '/' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            searchInput?.focus();
+        }
+    };
+
+    const oldListener = searchInput?.getAttribute('data-keydown-listener');
+    if (searchInput && !oldListener) {
+        document.addEventListener('keydown', handleKeyDown);
+        searchInput.setAttribute('data-keydown-listener', 'true');
+
+        document.addEventListener('astro:before-swap', () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        }, { once: true });
+    }
 
     // Tabs filtering click listener
     tabs.forEach(tab => {
