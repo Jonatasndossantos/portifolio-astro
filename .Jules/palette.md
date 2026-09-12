@@ -1,0 +1,3 @@
+## 2024-05-18 - Keyboard shortcut implementation for search
+**Learning:** Adding a keyboard shortcut (`/`) for search inputs greatly enhances usability for power users. However, it's critical to check `document.activeElement?.tagName` to ensure the active element isn't an `INPUT` or `TEXTAREA`. Failing to do so will hijack the user's normal text entry when typing the `/` character in other forms on the page. In Astro with `astro:page-load`, remember to clean up `keydown` event listeners to prevent duplicate triggers across view transitions.
+**Action:** When implementing global keyboard shortcuts, always check the currently active element to prevent intercepting normal user input in forms, and ensure proper event listener cleanup during client-side navigation.

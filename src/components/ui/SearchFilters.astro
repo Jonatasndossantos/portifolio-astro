@@ -49,8 +49,8 @@ const {
             class="input input-lg input-bordered w-full pl-14 pr-6 bg-base-100/50 focus:bg-base-100 border-base-content/10 focus:border-primary transition-all rounded-2xl text-base shadow-sm font-medium"
             aria-label={searchPlaceholder}
         />
-        <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter">
-            Search
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
+            <kbd class="kbd kbd-sm font-mono opacity-50 hidden sm:inline-flex">/</kbd>
         </div>
     </div>
 
@@ -152,6 +152,25 @@ const {
                 applyFilters();
             });
         });
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "/") {
+                const activeTag = document.activeElement?.tagName;
+                if (activeTag !== "INPUT" && activeTag !== "TEXTAREA") {
+                    e.preventDefault();
+                    searchInput.focus();
+                }
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+
+        // Cleanup function for astro:page-load transitions
+        const cleanup = () => {
+            document.removeEventListener("keydown", handleKeyDown);
+            document.removeEventListener("astro:before-swap", cleanup);
+        };
+        document.addEventListener("astro:before-swap", cleanup);
     }
 
     document.addEventListener("astro:page-load", setupFilters);
