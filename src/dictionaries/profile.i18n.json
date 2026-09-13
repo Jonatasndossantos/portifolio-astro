@@ -124,8 +124,8 @@
             "en-GB": "Hi, I am Jônatas"
         },
         "role_fallback": {
-            "en": "Web Developer.",
-            "pt": "Desenvolvedor Web.",
+            "en": "Software Architect & SRE Engineer",
+            "pt": "Arquiteto de Software & Engenheiro SRE",
             "fr": "Développeur Web.",
             "es": "Desarrollador Web.",
             "zh": "Web 开发人员.",
@@ -133,8 +133,8 @@
             "en-GB": "Web Developer."
         },
         "exploreWork": {
-            "en": "Explore Work",
-            "pt": "Explorar Trabalho",
+            "en": "Explore End-to-End Architectures",
+            "pt": "Explorar Arquiteturas End-to-End",
             "fr": "Explorer le travail",
             "es": "Explorar Trabajo",
             "zh": "探索工作",
@@ -142,8 +142,8 @@
             "en-GB": "Explore Work"
         },
         "universeActive": {
-            "en": "Universe Active",
-            "pt": "Universo Ativo",
+            "en": "High-Performance Runtime Active",
+            "pt": "Ambiente de Runtime de Alta Performance Ativo",
             "fr": "Univers Actif",
             "es": "Universo Activo",
             "zh": "宇宙活跃",
@@ -151,8 +151,8 @@
             "en-GB": "Universe Active"
         },
         "providingSolutionsFor": {
-            "en": "Providing Solutions for",
-            "pt": "Criando Soluções para",
+            "en": "Architecting resilient solutions for",
+            "pt": "Arquitetando soluções resilientes para",
             "fr": "Fournissant des Solutions pour",
             "es": "Creando Soluciones para",
             "zh": "为以下对象提供解决方案",
@@ -160,8 +160,8 @@
             "en-GB": "Providing Solutions for"
         },
         "designers": {
-            "en": "Designers",
-            "pt": "Designers",
+            "en": "UI/UX Engineers",
+            "pt": "Engenheiros de UI/UX",
             "fr": "Designers",
             "es": "Diseñadores",
             "zh": "设计师",
@@ -169,8 +169,8 @@
             "en-GB": "Designers"
         },
         "developers": {
-            "en": "Developers",
-            "pt": "Desenvolvedores",
+            "en": "Product Engineering Teams",
+            "pt": "Times de Engenharia de Produto",
             "fr": "Développeurs",
             "es": "Desarrolladores",
             "zh": "开发者",
@@ -178,8 +178,8 @@
             "en-GB": "Developers"
         },
         "managers": {
-            "en": "Managers",
-            "pt": "Gestores",
+            "en": "CTOs & Tech Leads",
+            "pt": "CTOs e Tech Leads",
             "fr": "Managers",
             "es": "Gerentes",
             "zh": "管理者",
@@ -187,8 +187,8 @@
             "en-GB": "Managers"
         },
         "scroll": {
-            "en": "SCROLL TO NAVIGATE",
-            "pt": "ROLE PARA NAVEGAR",
+            "en": "SCROLL TO INITIALIZE RUNTIME",
+            "pt": "ROLE PARA INICIALIZAR O RUNTIME",
             "fr": "DÉFILEZ POUR NAVIGUER",
             "es": "DESPLÁCESE PARA NAVEGAR",
             "zh": "滚动导航",

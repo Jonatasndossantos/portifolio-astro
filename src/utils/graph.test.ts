@@ -30,8 +30,8 @@ import {
     mapTaxonomyNodes,
     calculateWeights,
     filterFocalGraph,
-    Node,
-    Link
+    type Node,
+    type Link
 } from "../pages/graph.json";
 
 describe("graph endpoint utilities", () => {
