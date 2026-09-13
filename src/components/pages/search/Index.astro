@@ -149,6 +149,9 @@ const searchItems = [
                         autocomplete="off"
                         autofocus
                     />
+                    <div class="absolute right-14 top-1/2 -translate-y-1/2 pointer-events-none opacity-50 hidden sm:flex">
+                        <kbd class="kbd kbd-sm font-sans bg-base-200/50 border-base-content/10 shadow-none text-xs">/</kbd>
+                    </div>
                     <button
                         type="button"
                         id="search-clear-btn"
@@ -406,6 +409,14 @@ const searchItems = [
 
         renderResults();
         searchInput.focus();
+    });
+
+    // Keyboard shortcut to focus search
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+            e.preventDefault();
+            searchInput?.focus();
+        }
     });
 
     // Tabs filtering click listener

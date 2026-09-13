@@ -1,0 +1,3 @@
+## 2024-05-18 - Keyboard Shortcut for Search
+**Learning:** Adding a keyboard shortcut for global search requires ensuring the keydown listener doesn't trigger when users are typing in other input fields or textareas. View Transitions might also require careful cleanup or placement of such global listeners to avoid stale elements or duplicate firings.
+**Action:** When adding global keydown listeners, always check `document.activeElement?.tagName` to avoid hijacking normal text entry. In Astro SPAs, query the target element dynamically within the event listener rather than saving it outside to prevent referencing a stale node.
