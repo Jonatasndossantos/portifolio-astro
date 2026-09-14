@@ -157,6 +157,9 @@ const searchItems = [
                     >
                         <Icon name="lucide:x" class="size-5" />
                     </button>
+                    <div class="absolute right-12 top-1/2 -translate-y-1/2 flex items-center gap-1.5 pointer-events-none transition-opacity opacity-40 group-focus-within:opacity-0 hidden sm:flex">
+                        <kbd class="kbd kbd-sm text-[10px] min-h-0 h-5 bg-base-300 font-sans">/</kbd>
+                    </div>
                 </div>
             </div>
 
@@ -221,6 +224,18 @@ const searchItems = [
 <script is:inline define:vars={{ searchItems, locale }}>
     // Retrieve DOM elements
     const searchInput = document.getElementById("global-search-input");
+
+    // Add keyboard shortcut (/) to focus the search input
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "/") {
+            const target = document.activeElement;
+            const isInput = target?.tagName === "INPUT" || target?.tagName === "TEXTAREA";
+            if (!isInput || target === searchInput) {
+                e.preventDefault();
+                searchInput?.focus();
+            }
+        }
+    });
     const clearBtn = document.getElementById("search-clear-btn");
     const resultsGrid = document.getElementById("search-results-grid");
     const noResultsBanner = document.getElementById("no-results-banner");
