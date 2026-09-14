@@ -169,22 +169,61 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1633265486064-086b219458ce?q=80&w=800",
+        "technologies": [
+          "Laravel Octane",
+          "OpenAI Assistants",
+          "JSON Schema",
+          "RAG"
+        ],
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade.",
+          "backend": "Orquestração de RAG nativo e engenharia de prompts engessados com JSON Mode para garantir a exatidão técnica dos documentos.",
+          "frontend": "Implementação de fragmentação documental, onde o usuário regenera apenas blocos específicos sem precisar recriar o contrato inteiro.",
+          "ai": "Integração profunda de Function Calling com bancos de dados relacionais via assistentes especializados e OpenAI API.",
+          "devops": "Execução assíncrona do motor de IA em Queues dedicadas via Redis, mitigando latência em requisições web síncronas."
+        }
       },
       "espresso-d-amore": {
+        "id": "8",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800",
+        "technologies": [
+          "Next.js",
+          "Stripe",
+          "Supabase",
+          "Tailwind CSS"
+        ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local.",
+          "backend": "Implementação de infraestrutura BaaS com Supabase para autenticação e persistência de dados ágil.",
+          "frontend": "Design de interface imersivo utilizando Tailwind CSS v4, otimizado para dispositivos móveis e alta retenção.",
+          "ai": "Processamento de imagens de produtos e geração de descrições automatizadas integradas ao fluxo de publicação.",
+          "devops": "Pipeline de CI/CD via GitHub Actions e deploy serverless garantindo alta disponibilidade sem custos fixos de infraestrutura."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL"
+        ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido.",
+          "backend": "Arquitetura RESTful construída para suportar altos picos de tráfego, com cache estratégico para entrega otimizada de conteúdo.",
+          "frontend": "Implementação de SSR para maximizar o SEO técnico e garantir métricas de Core Web Vitals impecáveis.",
+          "ai": "Mecanismo de categorização automática de notícias e extração de metadados focados em aprimoramento contínuo de SEO.",
+          "devops": "Orquestração de ambientes de desenvolvimento e produção com Docker e proxy reverso para distribuição de carga."
+        }
       }
     }
   },

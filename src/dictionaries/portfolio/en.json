@@ -169,22 +169,61 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1633265486064-086b219458ce?q=80&w=800",
+        "technologies": [
+          "Laravel Octane",
+          "OpenAI Assistants",
+          "JSON Schema",
+          "RAG"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallucination-free structured government contracts dynamically.",
+          "backend": "Orchestration of native RAG and rigid prompt engineering leveraging JSON Mode to ensure absolute technical accuracy of legal documents.",
+          "frontend": "Implementation of document fragmentation, allowing users to regenerate specific granular blocks without recreating the entire contract.",
+          "ai": "Deep integration of Function Calling with relational databases via specialized assistants and the OpenAI API.",
+          "devops": "Asynchronous execution of the AI engine on dedicated Redis Queues, mitigating latency in synchronous web requests."
+        }
       },
       "espresso-d-amore": {
+        "id": "8",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800",
+        "technologies": [
+          "Next.js",
+          "Stripe",
+          "Supabase",
+          "Tailwind CSS"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
+          "backend": "BaaS infrastructure implementation utilizing Supabase for rapid authentication and data persistence.",
+          "frontend": "Immersive interface design using Tailwind CSS v4, fully optimized for mobile devices and high user retention.",
+          "ai": "Automated processing of product images and description generation seamlessly integrated into the publishing workflow.",
+          "devops": "CI/CD pipeline via GitHub Actions and serverless deployment ensuring high availability with zero fixed infrastructure costs."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
+          "backend": "RESTful architecture engineered to withstand high traffic spikes, employing strategic caching for optimized content delivery.",
+          "frontend": "SSR implementation to maximize technical SEO and guarantee flawless Core Web Vitals metrics.",
+          "ai": "Automated news categorization engine and metadata extraction focused on continuous SEO enhancement.",
+          "devops": "Orchestration of development and production environments using Docker and reverse proxying for effective load distribution."
+        }
       }
     }
   },
