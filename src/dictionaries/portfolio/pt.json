@@ -170,21 +170,60 @@
       },
       "gov-docs-ai": {
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
+          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade.",
+          "backend": "Integração direta com o banco de dados via Function Calling, permitindo que a IA construa blocos contratuais precisos em tempo real.",
+          "frontend": "Interface reativa para revisão e ajuste granular de seções contratuais (Markdown estruturado).",
+          "ai": "Desenho de pipeline RAG focado em mitigação total de alucinações via restrições rígidas com JSON Schemas nativos da Assistant API.",
+          "devops": "Pipeline seguro rodando via workers do Laravel para lidar com o processamento intensivo do LLM e long timeouts da API."
         },
-        "title": "Public Docs AI"
+        "title": "Public Docs AI",
+        "id": "7",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800",
+        "technologies": [
+          "OpenAI Assistants",
+          "JSON Schema",
+          "Laravel",
+          "RAG"
+        ]
       },
       "espresso-d-amore": {
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
+          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local.",
+          "backend": "Gerenciamento de pagamentos seguro e sincronização de dados transacionais via Stripe e Supabase em tempo real.",
+          "frontend": "Interface de e-commerce otimizada com Tailwind CSS, garantindo máxima conversão e navegação responsiva em dispositivos móveis.",
+          "ai": "Recomendação baseada em histórico local simulada para aumentar up-sells na finalização de pedidos.",
+          "devops": "Hospedagem automatizada via Vercel com pipelines de CI/CD para iterar rapidamente sobre novas features."
         },
-        "title": "Cafeteria Damore"
+        "title": "Cafeteria Damore",
+        "id": "8",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800",
+        "technologies": [
+          "React",
+          "Supabase",
+          "Stripe",
+          "Tailwind CSS"
+        ]
       },
       "jynsge-news": {
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
+          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido.",
+          "backend": "Sistema de cache dinâmico e integração com CMS Headless garantindo escalabilidade em picos de acessos a matérias exclusivas.",
+          "frontend": "Experiência de leitura imersiva com tipografia fluída e lazy loading estrito para imagens de alta resolução (Next.js Image).",
+          "ai": "Categorização automática de artigos via NLP para geração de feeds temáticos e curadoria inteligente.",
+          "devops": "Infraestrutura escalável baseada em Edge Computing para distribuir o portal globalmente com baixíssima latência."
         },
-        "title": "JYNSGE News"
+        "title": "JYNSGE News",
+        "id": "9",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=800",
+        "technologies": [
+          "Next.js",
+          "SSR",
+          "SEO",
+          "Vercel"
+        ]
       }
     }
   },
