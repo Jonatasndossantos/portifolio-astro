@@ -145,10 +145,15 @@ const searchItems = [
                         type="text"
                         id="global-search-input"
                         placeholder={__("Search...")}
-                        class="w-full bg-transparent border-none outline-none py-4 px-3 text-base-content text-lg placeholder-base-content/30"
+                        class="w-full bg-transparent border-none outline-none py-4 px-3 pr-24 text-base-content text-lg placeholder-base-content/30"
                         autocomplete="off"
                         autofocus
                     />
+
+                    <div class="absolute right-14 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter flex items-center gap-1">
+                        <kbd class="kbd kbd-xs bg-base-100 text-base-content font-sans">/</kbd>
+                    </div>
+
                     <button
                         type="button"
                         id="search-clear-btn"
@@ -426,4 +431,19 @@ const searchItems = [
 
     // Run on init
     initSearchFromUrl();
+
+    // Ensure we only attach the listener once across Astro view transitions
+    if (!window.hasAttachedGlobalSearchShortcut) {
+        window.hasAttachedGlobalSearchShortcut = true;
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+                const searchInput = document.getElementById("global-search-input");
+                if (searchInput) {
+                    e.preventDefault();
+                    searchInput.focus();
+                }
+            }
+        });
+    }
 </script>
