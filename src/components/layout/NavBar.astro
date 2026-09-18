@@ -84,11 +84,12 @@ const isHome =
         >
             <a
                 href={translatePath("/search")}
-                class="btn btn-ghost btn-sm btn-circle text-base-content/60 hover:text-primary transition-colors hidden sm:flex"
+                class="btn btn-ghost btn-sm text-base-content/60 hover:text-primary transition-colors hidden sm:flex items-center gap-1.5"
                 aria-label={__("search")}
                 title={__("search")}
             >
                 <Icon name="lucide:search" class="size-5" aria-hidden="true" />
+                <kbd class="hidden md:flex kbd kbd-xs opacity-50 bg-transparent border-base-content/20 font-sans">/</kbd>
             </a>
 
             <div

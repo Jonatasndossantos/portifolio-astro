@@ -149,10 +149,11 @@ const searchItems = [
                         autocomplete="off"
                         autofocus
                     />
+                    <kbd class="kbd kbd-sm opacity-50 absolute right-16 group-focus-within:hidden pointer-events-none transition-opacity duration-300">/</kbd>
                     <button
                         type="button"
                         id="search-clear-btn"
-                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden"
+                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden z-10"
                         aria-label={__("Clear")}
                     >
                         <Icon name="lucide:x" class="size-5" />
@@ -422,6 +423,14 @@ const searchItems = [
             currentFilter = tab.getAttribute("data-filter") || "all";
             renderResults();
         });
+    });
+
+    // Keyboard shortcut to focus search
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+            e.preventDefault();
+            searchInput?.focus();
+        }
     });
 
     // Run on init

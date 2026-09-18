@@ -1,0 +1,3 @@
+## 2025-02-12 - Keyboard Shortcuts for Global Search
+**Learning:** Users often navigate away from the search input on a dedicated search page to read results, and requiring them to mouse back to the input to refine their query interrupts flow. A simple keyboard shortcut (`/`) combined with a clear visual `<kbd>` hint significantly improves keyboard accessibility and power-user experience.
+**Action:** Always pair global search inputs with a `/` focus shortcut. Ensure a visible `<kbd>` hint is displayed inside the input (hidden when focused), and verify the event listener checks `document.activeElement.tagName` to prevent hijacking normal text entry in other fields.
