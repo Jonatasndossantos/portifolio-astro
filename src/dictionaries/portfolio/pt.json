@@ -169,22 +169,63 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "React.js",
+          "Laravel",
+          "OpenAI",
+          "GCP"
+        ],
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Motor autônomo de inteligência artificial baseado em JSON Schemas rígidos para gerar contratos governamentais altamente complexos dinamicamente e sem alucinações.",
+          "frontend": "Interface Web moderna e altamente responsiva construída com React e Inertia.js para um gerenciamento de estado invisível ao cliente.",
+          "backend": "Arquitetura robusta em Laravel gerenciando filas de processamento complexas e integração avançada com as APIs OpenAI Assistant.",
+          "devops": "Monitoramento completo da aplicação através do Laravel Telescope e pipelines de deploy automatizados via GCP.",
+          "database": "Arquitetura de dados segura e de alta disponibilidade para gerenciar dados institucionais sensíveis e documentos legais gerados.",
+          "ai": "Integração avançada com GPT-4 via Function Calling para geração contextual de documentos legais sem alucinações técnicas."
+        }
       },
       "espresso-d-amore": {
+        "id": "11",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "technologies": [
+          "Laravel 12",
+          "Inertia.js",
+          "Expo",
+          "Supabase",
+          "OpenAI"
+        ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "Plataforma End-to-End de vitrine digital focada em UX responsiva, integração fluida de catálogo de produtos e ferramentas operacionais robustas para expansão de negócios locais.",
+          "frontend": "Interface móvel e acessível projetada com Bootstrap 5 para um fluxo de pedidos intuitivo e exibição de cardápio digital.",
+          "backend": "Arquitetura MVC segura em Laravel gerenciando inventário, lógica de preços dinâmicos e orquestração de entregas locais.",
+          "devops": "Estratégia de deploy leve usando SQLite, otimizada para operações de leitura com baixa latência em ambientes de pequenos negócios.",
+          "database": "Esquema SQLite eficiente projetado para armazenamento escalável de catálogos de produtos localizados e histórico de clientes."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "technologies": [
+          "Laravel",
+          "Tailwind",
+          "MySQL",
+          "Azure"
+        ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Portal de notícias full-stack altamente otimizado com arquitetura MVC flexível para entregar conteúdo no formato Server-Side Rendering rápido com máximo impacto de SEO.",
+          "frontend": "Interface semântica moderna utilizando templates Blade e Tailwind CSS, priorizando Core Web Vitals e renderização inicial rápida.",
+          "backend": "Backend MVC robusto orquestrando múltiplas APIs RSS externas, normalizando dados não estruturados para uma apresentação padronizada.",
+          "devops": "Deploy via Azure App Service com pipelines de testes automatizados garantindo entrega de conteúdo com zero-downtime.",
+          "database": "Esquema relacional em MySQL meticulosamente indexado para lidar com queries de leitura de alta concorrência em perfis de usuários e notícias."
+        }
       }
     }
   },

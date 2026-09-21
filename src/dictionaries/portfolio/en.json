@@ -169,22 +169,63 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "React.js",
+          "Laravel",
+          "OpenAI",
+          "GCP"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallucination-free structured government contracts dynamically.",
+          "frontend": "Modern, highly responsive Web Interface engineered with React and Inertia.js for seamless client-side state management.",
+          "backend": "Robust Laravel architecture managing complex processing queues and advanced integration with OpenAI Assistant APIs.",
+          "devops": "Comprehensive application monitoring leveraging Laravel Telescope and automated deployment pipelines on GCP.",
+          "database": "Secure, highly available data architecture for managing sensitive institutional data and generated legal documents.",
+          "ai": "Advanced Function Calling integration with GPT-4 for contextual generation of complex legal documents without hallucinations."
+        }
       },
       "espresso-d-amore": {
+        "id": "11",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "technologies": [
+          "Laravel 12",
+          "Inertia.js",
+          "Expo",
+          "Supabase",
+          "OpenAI"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "End-to-end digital storefront platform focused on highly responsive UX, seamless product catalog integration, and robust operational tooling for local business expansion.",
+          "frontend": "Accessible, mobile-first responsive interface designed with Bootstrap 5 for intuitive order flow and digital menu display.",
+          "backend": "Secure MVC Laravel architecture managing inventory, dynamic pricing logic, and local delivery orchestration.",
+          "devops": "Lightweight deployment strategy using SQLite, optimized for low-latency read operations in small business environments.",
+          "database": "Efficient SQLite schema designed for scalable storage of localized product catalogs and customer history."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "technologies": [
+          "Laravel",
+          "Tailwind",
+          "MySQL",
+          "Azure"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible MVC architecture to rapidly deliver Server-Side Rendered content globally with maximum SEO impact.",
+          "frontend": "Modern semantic interface utilizing Blade templates and Tailwind CSS, prioritizing core web vitals and fast initial paint times.",
+          "backend": "Robust MVC backend connecting multiple external RSS APIs, normalizing unstructured data for unified presentation.",
+          "devops": "Deployed on Azure App Service with automated testing pipelines ensuring zero-downtime content delivery.",
+          "database": "Relational MySQL schema meticulously indexed to handle high-concurrency read queries for news articles and user profiles."
+        }
       }
     }
   },
