@@ -1,5 +1,5 @@
 ---
-import { getTranslations, useTranslator } from "@i18n";
+import { useTranslator } from "@i18n";
 import { Icon } from "astro-icon/components";
 import type { CuratedProfile } from "../../types";
 
@@ -198,9 +198,13 @@ const __ = await useTranslator(lang);
                     id="submit-button"
                     type="submit"
                     class="btn btn-primary w-full tracking-widest uppercase group"
+                    aria-live="polite"
                 >
                     <span id="submit-text">{__("Send Message")}</span>
-                    <Icon name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    <span id="submit-spinner" class="loading loading-spinner loading-sm hidden" aria-hidden="true"></span>
+                    <span id="submit-icon" class="inline-flex">
+                        <Icon name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </span>
                 </button>
             </form>
         </div>
@@ -210,14 +214,19 @@ const __ = await useTranslator(lang);
 <script>
     // Handles form submission via Vanilla JS to avoid React Hydration.
     // Encapsulate inside an event listener to support Astro View Transitions if enabled.
-    document.addEventListener("astro:page-load", () => {
+    function setupContactForm() {
         const form = document.getElementById("contact-form") as HTMLFormElement;
+        if (!form || form.hasAttribute("data-form-listener")) return;
+        form.setAttribute("data-form-listener", "true");
+
         const successOverlay = document.getElementById("form-success");
         const errorAlert = document.getElementById("form-error");
         const submitBtn = document.getElementById(
             "submit-button",
         ) as HTMLButtonElement;
         const submitText = document.getElementById("submit-text");
+        const submitSpinner = document.getElementById("submit-spinner");
+        const submitIcon = document.getElementById("submit-icon");
         const resetBtn = document.getElementById("btn-reset-form");
 
         if (!form) return;
@@ -227,6 +236,10 @@ const __ = await useTranslator(lang);
 
             // Disable button during flight
             submitBtn.disabled = true;
+            submitBtn.setAttribute("aria-busy", "true");
+            submitIcon?.classList.remove("inline-flex");
+            submitIcon?.classList.add("hidden");
+            submitSpinner?.classList.remove("hidden");
             const originalText = submitText!.innerText;
             const sendingText = form.getAttribute("data-sending-text") || "SENDING...";
             submitText!.innerText = sendingText;
@@ -258,6 +271,10 @@ const __ = await useTranslator(lang);
                 errorAlert!.classList.add("flex");
             } finally {
                 submitBtn.disabled = false;
+                submitBtn.removeAttribute("aria-busy");
+                submitSpinner?.classList.add("hidden");
+                submitIcon?.classList.remove("hidden");
+                submitIcon?.classList.add("inline-flex");
                 submitText!.innerText = originalText;
             }
         });
@@ -267,5 +284,7 @@ const __ = await useTranslator(lang);
             successOverlay!.classList.add("hidden");
             successOverlay!.classList.remove("flex");
         });
-    });
+    }
+
+    document.addEventListener("astro:page-load", setupContactForm);
 </script>
