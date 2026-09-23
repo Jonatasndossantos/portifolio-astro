@@ -169,22 +169,68 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "Laravel 12",
+          "OpenAI Assistants",
+          "RAG",
+          "JSON Schema"
+        ],
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração dinâmica de contratos governamentais estruturados, mitigando alucinações de LLMs.",
+          "frontend": "Interface responsiva desenvolvida com React e Inertia.js, focada na gestão intuitiva e ágil de processos documentais complexos.",
+          "backend": "Backend robusto em Laravel orquestrando filas de processamento assíncrono e comunicação contínua com a OpenAI Assistant API.",
+          "devops": "Implementação de pipelines de CI/CD automatizados para garantir deploys sem downtime e alta disponibilidade de serviços públicos.",
+          "database": "Isolamento de dados multi-tenant seguro e integração em tempo real de queries SQL com o modelo de IA através de Function Calling.",
+          "ai": "Arquitetura RAG avançada aplicando JSON Schemas estritos para restringir o escopo do LLM e gerar documentos legais estruturados e confiáveis."
+        }
       },
       "espresso-d-amore": {
+        "id": "11",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
+        "technologies": [
+          "Laravel 12",
+          "Inertia.js",
+          "React",
+          "Supabase",
+          "Stripe"
+        ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "Plataforma SaaS End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local.",
+          "frontend": "Dashboard administrativo reativo construído com React e Inertia.js, priorizando a ausência de APIs expostas e transições fluídas.",
+          "backend": "Arquitetura híbrida utilizando Laravel 12 para lógica de negócios crítica em conjunto com soluções ágeis para gerenciamento de dados em tempo real.",
+          "devops": "Pipeline de build moderno orquestrado via Vite, garantindo otimização rigorosa de assets e tempos de carregamento instantâneos no front-end.",
+          "database": "Estratégia de banco de dados híbrida lidando com a complexidade do mapeamento relacional (ERP) e performance máxima em queries para o usuário final.",
+          "ai": "Integração de lógicas preditivas para otimizar o fluxo operacional de estoque e decisões baseadas em métricas da plataforma."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
+        "technologies": [
+          "Laravel",
+          "Blade",
+          "Tailwind v4",
+          "MySQL",
+          "CI/CD"
+        ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com arquitetura flexível para entregar conteúdo via Server-Side Rendering rápido e em escala global.",
+          "frontend": "Interface polida com Blade templates e Tailwind CSS v4, mantendo fidelidade de layout e estrutura semântica otimizada para Core Web Vitals.",
+          "backend": "Arquitetura MVC escalável projetada para servir conteúdo sem latência, implementando cache agressivo e gestão rígida de permissões (ACL).",
+          "devops": "Implementação de pipelines de Continuous Integration para deploy automatizado em servidores Linux, eliminando atualizações disruptivas.",
+          "database": "Modelagem de dados otimizada em MySQL com mitigação focada em queries N+1 para garantir renderização veloz de feeds de notícias categorizados.",
+          "ai": "Estruturação algorítmica para curadoria de conteúdo baseada em métricas e estabilização sob tráfego concorrente intenso."
+        }
       }
     }
   },

@@ -23,22 +23,22 @@
     "items": {
       "gov-docs-ai": {
         "id": "7",
-        "title": "IA de Docs Publics",
+        "title": "Public Docs AI",
         "slug": "gov-docs-ai",
         "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
         "technologies": [
-          "React.js",
-          "Laravel",
-          "OpenAI",
-          "GCP"
+          "Laravel 12",
+          "OpenAI Assistants",
+          "RAG",
+          "JSON Schema"
         ],
         "description": {
-          "fullstack": "Moteur d'IA autonome forçant une ingénierie stricte via JSON Schemas, éradiquant les hallucinations textuelles dans la génération contractuelle légale.",
-          "frontend": "Interface Web moderne et responsive construite avec React et Inertia.js.",
-          "backend": "Backend Laravel robuste gérant les files d'attente et l'intégration OpenAI.",
-          "devops": "Surveillance avec Laravel Telescope et déploiement automatisé sur GCP.",
-          "database": "Gestion sécurisée des données institutionnelles et des documents générés.",
-          "ai": "Intégration avancée avec GPT-4 pour la génération contextuelle de documents légaux."
+          "fullstack": "Moteur d'IA autonome basé sur des JSON Schemas stricts pour générer dynamiquement des contrats gouvernementaux structurés, atténuant les hallucinations.",
+          "frontend": "Interface web réactive développée avec React et Inertia.js, axée sur la gestion de processus documentaires complexes.",
+          "backend": "Backend Laravel robuste gérant des files d'attente asynchrones et une intégration continue avec l'API OpenAI Assistant.",
+          "devops": "Pipelines CI/CD automatisés assurant des déploiements sans temps d'arrêt pour une haute disponibilité.",
+          "database": "Gestion sécurisée des données multi-tenant avec interrogation SQL en temps réel via Function Calling.",
+          "ai": "Architecture RAG avancée utilisant des JSON Schemas stricts pour restreindre le LLM et générer des documents fiables."
         }
       },
       "vitanexus": {
@@ -61,21 +61,24 @@
       },
       "jynsge-news": {
         "id": "9",
-        "title": "Nouvelles JYNSGE",
+        "title": "JYNSGE News",
         "slug": "jynsge-news",
         "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
         "technologies": [
           "Laravel",
-          "Tailwind",
-          "Azure"
+          "Blade",
+          "Tailwind v4",
+          "MySQL",
+          "CI/CD"
         ],
         "description": {
-          "fullstack": "Portail d'informations Full-Stack hyper performant, offrant une compatibilité Server-Side Rendering pour le meilleur référencement en temps réel garanti.",
-          "frontend": "Interface moderne utilisant des modèles Blade et Tailwind CSS.",
-          "backend": "Architecture MVC robuste connectant des APIs RSS externes.",
-          "devops": "Déployé sur Azure App Service avec des pipelines de tests automatisés.",
-          "database": "Schéma MySQL relationnel pour gérer les actualités et profils utilisateurs.",
-          "ai": "Curation algorithmique du flux et intégration potentielle pour la vérification des faits."
+          "fullstack": "Portail d'actualités full-stack optimisé, conçu pour une diffusion rapide de contenu Server-Side Rendering.",
+          "frontend": "Interface moderne avec Blade templates et Tailwind CSS v4, assurant fidélité visuelle et structure sémantique.",
+          "backend": "Architecture MVC robuste garantissant zéro latence, mise en cache agressive et gestion des rôles (ACL).",
+          "devops": "Déploiements automatisés CI/CD sur des serveurs Linux sans temps d'arrêt.",
+          "database": "Schéma MySQL optimisé pour atténuer les problèmes de requêtes N+1 et afficher rapidement les actualités.",
+          "ai": "Curation algorithmique des flux et stabilisation du trafic sous haute charge."
         }
       },
       "zk-business-support": {
@@ -98,21 +101,24 @@
       },
       "espresso-d-amore": {
         "id": "11",
-        "title": "Cafétéria Damore",
+        "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
-        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
         "technologies": [
           "Laravel 12",
-          "Expo",
-          "Supabase"
+          "Inertia.js",
+          "React",
+          "Supabase",
+          "Stripe"
         ],
         "description": {
-          "fullstack": "Vitrine numérique End-to-End dotée d'une ergonomie hautement responsive pour gérer et propulser efficacement la livraison opérationnelle locale.",
-          "frontend": "Dashboard administratif avec React/Inertia et expérience mobile Expo.",
-          "backend": "Backend hybride avec Laravel 12 et Supabase pour les données en temps réel.",
-          "devops": "Pipelines de build modernes pour les web apps et APK mobiles.",
-          "database": "Stratégie de base de données scindée : MySQL pour l'ERP et Supabase pour les clients.",
-          "ai": "Intégration OpenAI pour prédire les ruptures de stock et générer des commandes."
+          "fullstack": "Plateforme SaaS End-to-End pour vitrine numérique, axée sur une UX réactive et des outils opérationnels robustes pour le commerce local.",
+          "frontend": "Tableau de bord réactif construit avec React et Inertia.js, privilégiant des transitions fluides sans API exposées.",
+          "backend": "Architecture hybride Laravel 12 pour la logique métier et la gestion des données en temps réel.",
+          "devops": "Pipelines de build modernes via Vite garantissant l'optimisation des ressources et des chargements ultra-rapides.",
+          "database": "Stratégie de base de données hybride pour cartographie relationnelle (ERP) complexe et requêtes ultra-rapides.",
+          "ai": "Intégration d'outils prédictifs pour optimiser les stocks et la gestion automatisée des fournisseurs."
         }
       },
       "la-pool-club": {

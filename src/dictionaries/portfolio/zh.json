@@ -25,9 +25,20 @@
         "id": "7",
         "title": "Public Docs AI",
         "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "Laravel 12",
+          "OpenAI Assistants",
+          "RAG",
+          "JSON Schema"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
-          "frontend": "使用React和Inertia.js构建的现代响应式Web界面。"
+          "fullstack": "基于严格JSON模式的自主AI引擎，动态生成结构化的政府合同，缓解LLM幻觉。",
+          "frontend": "基于React和Inertia.js构建的响应式界面，优化了复杂的文档流程管理体验。",
+          "backend": "强大的Laravel后端，负责管理异步处理队列并与OpenAI Assistant API无缝集成。",
+          "devops": "自动化的CI/CD流水线，确保零停机时间部署和高可用性服务。",
+          "database": "安全的多租户数据隔离，通过Function Calling与AI模型进行实时SQL查询集成。",
+          "ai": "先进的RAG架构，应用严格的JSON模式限制LLM范围，生成可靠的法律文档。"
         }
       },
       "vitanexus": {
@@ -42,8 +53,22 @@
         "id": "9",
         "title": "JYNSGE News",
         "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
+        "technologies": [
+          "Laravel",
+          "Blade",
+          "Tailwind v4",
+          "MySQL",
+          "CI/CD"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
+          "fullstack": "高度优化的全栈新闻门户网站，采用灵活架构，通过服务器端渲染（SSR）在全球范围内快速交付内容。",
+          "frontend": "使用Blade模板和Tailwind CSS v4的现代界面，确保布局保真度和语义结构。",
+          "backend": "强大的MVC架构，确保零延迟内容分发、积极的缓存以及严格的权限管理（ACL）。",
+          "devops": "在Linux服务器上建立自动化CI/CD管道，实现无缝部署。",
+          "database": "优化的MySQL架构，专门设计用于缓解N+1查询问题，并快速呈现分类新闻提要。",
+          "ai": "实施算法以进行内容筛选和高并发流量下的系统稳定。"
         }
       },
       "zk-business-support": {
@@ -58,8 +83,22 @@
         "id": "11",
         "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
+        "technologies": [
+          "Laravel 12",
+          "Inertia.js",
+          "React",
+          "Supabase",
+          "Stripe"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
+          "fullstack": "端到端的SaaS数字店面平台，专注于响应式UX和强大的运营工具，用于扩展本地业务。",
+          "frontend": "由React和Inertia.js构建的反应式管理仪表板，优先考虑流畅的过渡且无暴露API。",
+          "backend": "混合后端架构，使用Laravel 12处理关键业务逻辑，同时进行实时数据集成。",
+          "devops": "通过Vite策划现代构建流程，确保资产优化和前端闪电般的加载速度。",
+          "database": "混合数据库策略，兼顾处理复杂的ERP关系映射和极速客户端查询。",
+          "ai": "集成预测逻辑，优化库存操作流和自动化供应商管理。"
         }
       },
       "la-pool-club": {

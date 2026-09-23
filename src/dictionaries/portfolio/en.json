@@ -169,22 +169,68 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "Laravel 12",
+          "OpenAI Assistants",
+          "RAG",
+          "JSON Schema"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallucination-free structured government contracts dynamically.",
+          "frontend": "Modern, responsive Web Interface built with React and Inertia.js, optimizing user experience for complex document management and generation.",
+          "backend": "Robust Laravel backend managing processing queues, asynchronous generation of Word templates, and seamless integration with the OpenAI Assistant API.",
+          "devops": "Monitoring and scaling via Laravel Telescope and automated CI/CD deployment pipelines to ensure 100% uptime for public service processes.",
+          "database": "Secure management of institutional data with strict access control, versioning, and real-time database querying via Function Calling.",
+          "ai": "Advanced RAG integration leveraging strict JSON Schemas and Function Calling to eliminate hallucinations and constrain the LLM contextually."
+        }
       },
       "espresso-d-amore": {
+        "id": "11",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
+        "technologies": [
+          "Laravel 12",
+          "Inertia.js",
+          "React",
+          "Supabase",
+          "Stripe"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business scale-up.",
+          "frontend": "Engineered a data-rich administration dashboard with React and Inertia.js, prioritizing performance and fluid user interactions without exposed APIs.",
+          "backend": "Hybrid backend architecture utilizing Laravel 12 for robust core business logic and state management alongside real-time client data integration.",
+          "devops": "Architected modern Vite-based build pipelines ensuring optimized assets, fast load times, and seamless production deployments.",
+          "database": "Integrated a split-stack database strategy ensuring complex relationship mapping for ERP operations and high-speed queries for clients.",
+          "ai": "Leveraged structural integrations for predictive inventory metrics, optimizing business flows and automated supplier management."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
+        "technologies": [
+          "Laravel",
+          "Blade",
+          "Tailwind v4",
+          "MySQL",
+          "CI/CD"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
+          "frontend": "Developed a modern, responsive interface using Blade templates and Tailwind CSS v4, strictly prioritizing layout fidelity and semantic structuring.",
+          "backend": "Engineered a robust MVC architecture ensuring zero-latency content delivery, efficient caching, and comprehensive role-based access control.",
+          "devops": "Established automated CI/CD deployment pipelines on Linux environments focusing on zero-downtime updates and process isolation.",
+          "database": "Optimized MySQL relational schema designed specifically to mitigate N+1 query problems and rapidly render complex categorized news feeds.",
+          "ai": "Implemented foundational algorithms geared towards content verification and scalable feed curation under high traffic loads."
+        }
       }
     }
   },

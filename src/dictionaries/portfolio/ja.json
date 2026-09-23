@@ -25,9 +25,20 @@
         "id": "7",
         "title": "Public Docs AI",
         "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "Laravel 12",
+          "OpenAI Assistants",
+          "RAG",
+          "JSON Schema"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
-          "frontend": "ReactとInertia.jsを使用したモダンでレスポンシブなインターフェース。"
+          "fullstack": "厳格なJSONスキーマに基づく自律型AIエンジン。LLMのハルシネーションを軽減し、複雑な構造の政府契約を動的に生成します。",
+          "frontend": "ReactとInertia.jsで構築されたレスポンシブなインターフェース。複雑なドキュメントプロセス管理に最適化されています。",
+          "backend": "Laravelバックエンド。非同期キュー処理とOpenAI Assistant APIとの継続的な連携を管理します。",
+          "devops": "ゼロダウンタイムデプロイを保証する自動化されたCI/CDパイプラインにより高可用性を実現。",
+          "database": "Function Callingを用いたリアルタイムなSQLクエリと、セキュアなマルチテナントデータ管理。",
+          "ai": "厳格なJSONスキーマを適用した高度なRAGアーキテクチャ。LLMを制限し、信頼性の高いドキュメントを生成します。"
         }
       },
       "vitanexus": {
@@ -42,8 +53,22 @@
         "id": "9",
         "title": "JYNSGE News",
         "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
+        "technologies": [
+          "Laravel",
+          "Blade",
+          "Tailwind v4",
+          "MySQL",
+          "CI/CD"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
+          "fullstack": "高速なServer-Side Rendering（SSR）でコンテンツを配信する、柔軟なアーキテクチャを備えた最適化されたフルスタックニュースポータル。",
+          "frontend": "BladeテンプレートとTailwind CSS v4を使用したモダンなインターフェース。レイアウトの忠実性とセマンティック構造を保証します。",
+          "backend": "遅延のないコンテンツ配信、効率的なキャッシュ、厳格なアクセス権限（ACL）管理を保証するMVCアーキテクチャ。",
+          "devops": "Linux環境におけるCI/CDパイプラインの導入により、ダウンタイムのない自動デプロイを実現。",
+          "database": "N+1クエリ問題を軽減し、カテゴリ別ニュースフィードを迅速にレンダリングするよう最適化されたMySQLスキーマ。",
+          "ai": "高トラフィック時のコンテンツキュレーションと安定化のためのアルゴリズム実装。"
         }
       },
       "zk-business-support": {
@@ -58,8 +83,22 @@
         "id": "11",
         "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
+        "technologies": [
+          "Laravel 12",
+          "Inertia.js",
+          "React",
+          "Supabase",
+          "Stripe"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
+          "fullstack": "地域ビジネスの拡大に向けた、レスポンシブなUXと堅牢な運用ツールに焦点を当てたエンドツーエンドのデジタル店舗プラットフォーム。",
+          "frontend": "ReactとInertia.jsを使用したリアクティブなダッシュボード。APIを露出させず、スムーズな遷移を優先します。",
+          "backend": "コアビジネスロジックにLaravel 12を使用し、リアルタイムデータ管理を組み合わせたハイブリッドアーキテクチャ。",
+          "devops": "Viteを活用した最新のビルドパイプライン。アセットの最適化と高速なロード時間を保証します。",
+          "database": "複雑なリレーショナルマッピング（ERP）と超高速クエリの両方を処理するハイブリッドデータベース戦略。",
+          "ai": "在庫フローを最適化し、自動化されたサプライヤー管理のための予測ロジック統合。"
         }
       },
       "la-pool-club": {
