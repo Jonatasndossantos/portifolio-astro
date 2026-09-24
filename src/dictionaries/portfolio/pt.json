@@ -170,21 +170,56 @@
       },
       "gov-docs-ai": {
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
+          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade.",
+          "backend": "Motor de IA estruturado sobre Laravel, orquestrando requisições complexas via OpenAI Assistants API.",
+          "frontend": "Interface reativa para fragmentação de documentos em blocos Markdown editáveis.",
+          "ai": "Uso de RAG nativo e JSON Schema estrito para forçar saídas precisas e eliminar alucinações de LLM.",
+          "devops": "Workflows automatizados para processamento de filas e contingência contra falhas na API."
         },
-        "title": "Public Docs AI"
+        "title": "Public Docs AI",
+        "id": "7",
+        "slug": "gov-docs-ai",
+        "imageUrl": "",
+        "technologies": [
+          "Laravel",
+          "OpenAI",
+          "JSON Schema",
+          "RAG"
+        ]
       },
       "espresso-d-amore": {
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
+          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local.",
+          "backend": "Arquitetura end-to-end com Supabase para gerenciamento rápido de estado e pagamentos.",
+          "frontend": "UX fluida e responsiva para catálogo digital focada na conversão de delivery local.",
+          "ai": "N/A - Foco puramente operacional e transacional.",
+          "devops": "Automação completa via CI/CD garantindo entregas consistentes sem downtime no PDV."
         },
-        "title": "Cafeteria Damore"
+        "title": "Cafeteria Damore",
+        "id": "8",
+        "slug": "espresso-d-amore",
+        "imageUrl": "",
+        "technologies": [
+          "Supabase",
+          "Stripe"
+        ]
       },
       "jynsge-news": {
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
+          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido.",
+          "backend": "Distribuição robusta otimizada para Server-Side Rendering e baixa latência de leitura.",
+          "frontend": "Renderização veloz de artigos garantindo alta performance de rede.",
+          "ai": "N/A - Foco em performance massiva e SEO.",
+          "devops": "Deploy orquestrado garantindo alta disponibilidade frente a picos de tráfego de leitura."
         },
-        "title": "JYNSGE News"
+        "title": "JYNSGE News",
+        "id": "9",
+        "slug": "jynsge-news",
+        "imageUrl": "",
+        "technologies": [
+          "Supabase",
+          "Stripe"
+        ]
       }
     }
   },

@@ -27,8 +27,18 @@
         "slug": "gov-docs-ai",
         "description": {
           "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
-          "frontend": "使用React和Inertia.js构建的现代响应式Web界面。"
-        }
+          "frontend": "用于将文档碎片化为可编辑Markdown块的反应式界面。",
+          "backend": "基于Laravel的AI引擎，通过OpenAI Assistants API编排复杂的请求。",
+          "ai": "本机RAG和严格的JSON模式，以强制执行精确的输出并消除LLM幻觉。",
+          "devops": "用于队列处理和防止API故障的自动化工作流程。"
+        },
+        "imageUrl": "",
+        "technologies": [
+          "Laravel",
+          "OpenAI",
+          "JSON Schema",
+          "RAG"
+        ]
       },
       "vitanexus": {
         "id": "8",
@@ -43,8 +53,17 @@
         "title": "JYNSGE News",
         "slug": "jynsge-news",
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
-        }
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
+          "backend": "针对服务器端渲染和低读取延迟优化的稳健分发。",
+          "frontend": "快速的文章渲染确保高网络性能。",
+          "ai": "N/A - 专注于海量性能和SEO。",
+          "devops": "编排的部署确保在读取流量激增时的高可用性。"
+        },
+        "imageUrl": "",
+        "technologies": [
+          "Supabase",
+          "Stripe"
+        ]
       },
       "zk-business-support": {
         "id": "10",
@@ -55,12 +74,21 @@
         }
       },
       "espresso-d-amore": {
-        "id": "11",
+        "id": "8",
         "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
-        }
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
+          "backend": "使用Supabase的端到端架构，用于快速状态管理和支付。",
+          "frontend": "针对本地交付转化的数字目录流畅且响应迅速的UX。",
+          "ai": "N/A - 纯粹的运营和交易重点。",
+          "devops": "通过CI/CD实现全面自动化，确保在POS上零停机时间的一致交付。"
+        },
+        "imageUrl": "",
+        "technologies": [
+          "Supabase",
+          "Stripe"
+        ]
       },
       "la-pool-club": {
         "id": "12",

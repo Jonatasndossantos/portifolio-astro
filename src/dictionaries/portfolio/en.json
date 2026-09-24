@@ -170,21 +170,56 @@
       },
       "gov-docs-ai": {
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
+          "backend": "AI engine built on Laravel, orchestrating complex requests via OpenAI Assistants API.",
+          "frontend": "Reactive interface for document fragmentation into editable Markdown blocks.",
+          "ai": "Native RAG and strict JSON Schema to enforce precise outputs and eliminate LLM hallucinations.",
+          "devops": "Automated workflows for queue processing and contingency against API failures."
         },
-        "title": "Public Docs AI"
+        "title": "Public Docs AI",
+        "id": "7",
+        "slug": "gov-docs-ai",
+        "imageUrl": "",
+        "technologies": [
+          "Laravel",
+          "OpenAI",
+          "JSON Schema",
+          "RAG"
+        ]
       },
       "espresso-d-amore": {
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
+          "backend": "End-to-end architecture with Supabase for fast state management and payments.",
+          "frontend": "Fluid and responsive UX for digital catalog focused on local delivery conversion.",
+          "ai": "N/A - Purely operational and transactional focus.",
+          "devops": "Complete CI/CD automation ensuring consistent deliveries with zero downtime on POS."
         },
-        "title": "Cafeteria Damore"
+        "title": "Cafeteria Damore",
+        "id": "8",
+        "slug": "espresso-d-amore",
+        "imageUrl": "",
+        "technologies": [
+          "Supabase",
+          "Stripe"
+        ]
       },
       "jynsge-news": {
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
+          "backend": "Robust distribution optimized for Server-Side Rendering and low read latency.",
+          "frontend": "Fast article rendering ensuring high network performance.",
+          "ai": "N/A - Focus on massive performance and SEO.",
+          "devops": "Orchestrated deployment ensuring high availability against read traffic spikes."
         },
-        "title": "JYNSGE News"
+        "title": "JYNSGE News",
+        "id": "9",
+        "slug": "jynsge-news",
+        "imageUrl": "",
+        "technologies": [
+          "Supabase",
+          "Stripe"
+        ]
       }
     }
   },

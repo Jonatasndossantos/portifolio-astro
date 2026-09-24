@@ -20,20 +20,20 @@
         "id": "7",
         "title": "Public Docs AI",
         "slug": "gov-docs-ai",
-        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "imageUrl": "",
         "technologies": [
-          "React.js",
           "Laravel",
           "OpenAI",
-          "GCP"
+          "JSON Schema",
+          "RAG"
         ],
         "description": {
           "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
-          "frontend": "Modern, responsive Web Interface built with React and Inertia.js, focussed on user experience for document management.",
-          "backend": "Robust Laravel backend managing processing queues, Word template generation, and OpenAI API integration.",
-          "devops": "Monitoring with Laravel Telescope and automated deployment on Google Cloud Platform.",
+          "frontend": "Reactive interface for document fragmentation into editable Markdown blocks.",
+          "backend": "AI engine built on Laravel, orchestrating complex requests via OpenAI Assistants API.",
+          "devops": "Automated workflows for queue processing and contingency against API failures.",
           "database": "Secure management of institutional data and generated documents, with access control and versioning.",
-          "ai": "Advanced integration with GPT-4 for contextual generation of 5 types of legal and technical documents."
+          "ai": "Native RAG and strict JSON Schema to enforce precise outputs and eliminate LLM hallucinations."
         }
       },
       "vitanexus": {
@@ -61,21 +61,19 @@
         "id": "9",
         "title": "JYNSGE News",
         "slug": "jynsge-news",
-        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "imageUrl": "",
         "technologies": [
-          "Laravel",
-          "Tailwind",
-          "MySQL",
-          "Azure"
+          "Supabase",
+          "Stripe"
         ],
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
         "description": {
           "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
-          "frontend": "Modern, responsive interface using Blade templates and Tailwind CSS, optimised for readability and content discovery.",
-          "backend": "Robust MVC architecture connecting external RSS APIs and managing user roles/permissions via Laravel Breeze.",
-          "devops": "Deployed on Azure App Service with automated testing pipelines using PEST framework.",
+          "frontend": "Fast article rendering ensuring high network performance.",
+          "backend": "Robust distribution optimized for Server-Side Rendering and low read latency.",
+          "devops": "Orchestrated deployment ensuring high availability against read traffic spikes.",
           "database": "Relational MySQL schema designed to efficiently handle categorised news, comments, and user profiles.",
-          "ai": "Algorithmic feed curation and potential integration for automated fact-checking and content verification."
+          "ai": "N/A - Focus on massive performance and SEO."
         }
       },
       "zk-business-support": {
@@ -100,25 +98,22 @@
         }
       },
       "espresso-d-amore": {
-        "id": "11",
+        "id": "8",
         "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
-        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "imageUrl": "",
         "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
         "technologies": [
-          "Laravel 12",
-          "Inertia.js",
-          "Expo",
           "Supabase",
-          "OpenAI"
+          "Stripe"
         ],
         "description": {
           "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
-          "frontend": "Built two distinct interfaces: a data-rich administration dashboard with React/Inertia and a fluid mobile ordering experience using Expo.",
-          "backend": "Hybrid backend architecture utilising Laravel 12 for core business logic and Supabase for real-time client data and authentication.",
-          "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
+          "frontend": "Fluid and responsive UX for digital catalog focused on local delivery conversion.",
+          "backend": "End-to-end architecture with Supabase for fast state management and payments.",
+          "devops": "Complete CI/CD automation ensuring consistent deliveries with zero downtime on POS.",
           "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
-          "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
+          "ai": "N/A - Purely operational and transactional focus."
         }
       },
       "la-pool-club": {

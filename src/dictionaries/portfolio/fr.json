@@ -25,20 +25,20 @@
         "id": "7",
         "title": "IA de Docs Publics",
         "slug": "gov-docs-ai",
-        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "imageUrl": "",
         "technologies": [
-          "React.js",
           "Laravel",
           "OpenAI",
-          "GCP"
+          "JSON Schema",
+          "RAG"
         ],
         "description": {
           "fullstack": "Moteur d'IA autonome forçant une ingénierie stricte via JSON Schemas, éradiquant les hallucinations textuelles dans la génération contractuelle légale.",
-          "frontend": "Interface Web moderne et responsive construite avec React et Inertia.js.",
-          "backend": "Backend Laravel robuste gérant les files d'attente et l'intégration OpenAI.",
-          "devops": "Surveillance avec Laravel Telescope et déploiement automatisé sur GCP.",
+          "frontend": "Interface réactive pour la fragmentation de documents en blocs Markdown éditables.",
+          "backend": "Moteur d'IA construit sur Laravel, orchestrant des requêtes complexes via l'API OpenAI Assistants.",
+          "devops": "Flux de travail automatisés pour le traitement des files d'attente et contingence contre les pannes.",
           "database": "Gestion sécurisée des données institutionnelles et des documents générés.",
-          "ai": "Intégration avancée avec GPT-4 pour la génération contextuelle de documents légaux."
+          "ai": "RAG natif et JSON Schema strict pour imposer des sorties précises et éliminer les hallucinations des LLM."
         }
       },
       "vitanexus": {
@@ -63,19 +63,18 @@
         "id": "9",
         "title": "Nouvelles JYNSGE",
         "slug": "jynsge-news",
-        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "imageUrl": "",
         "technologies": [
-          "Laravel",
-          "Tailwind",
-          "Azure"
+          "Supabase",
+          "Stripe"
         ],
         "description": {
           "fullstack": "Portail d'informations Full-Stack hyper performant, offrant une compatibilité Server-Side Rendering pour le meilleur référencement en temps réel garanti.",
-          "frontend": "Interface moderne utilisant des modèles Blade et Tailwind CSS.",
-          "backend": "Architecture MVC robuste connectant des APIs RSS externes.",
-          "devops": "Déployé sur Azure App Service avec des pipelines de tests automatisés.",
+          "frontend": "Rendu rapide des articles garantissant de hautes performances réseau.",
+          "backend": "Distribution robuste optimisée pour le rendu côté serveur et une faible latence de lecture.",
+          "devops": "Déploiement orchestré garantissant une haute disponibilité face aux pics de trafic de lecture.",
           "database": "Schéma MySQL relationnel pour gérer les actualités et profils utilisateurs.",
-          "ai": "Curation algorithmique du flux et intégration potentielle pour la vérification des faits."
+          "ai": "N/A - Focus sur des performances massives et le SEO."
         }
       },
       "zk-business-support": {
@@ -97,22 +96,21 @@
         }
       },
       "espresso-d-amore": {
-        "id": "11",
+        "id": "8",
         "title": "Cafétéria Damore",
         "slug": "espresso-d-amore",
-        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800",
+        "imageUrl": "",
         "technologies": [
-          "Laravel 12",
-          "Expo",
-          "Supabase"
+          "Supabase",
+          "Stripe"
         ],
         "description": {
           "fullstack": "Vitrine numérique End-to-End dotée d'une ergonomie hautement responsive pour gérer et propulser efficacement la livraison opérationnelle locale.",
-          "frontend": "Dashboard administratif avec React/Inertia et expérience mobile Expo.",
-          "backend": "Backend hybride avec Laravel 12 et Supabase pour les données en temps réel.",
-          "devops": "Pipelines de build modernes pour les web apps et APK mobiles.",
+          "frontend": "UX fluide et réactive pour le catalogue numérique axée sur la conversion des livraisons locales.",
+          "backend": "Architecture de bout en bout avec Supabase pour une gestion rapide de l'état et des paiements.",
+          "devops": "Automatisation complète via CI/CD garantissant des livraisons constantes sans temps d'arrêt.",
           "database": "Stratégie de base de données scindée : MySQL pour l'ERP et Supabase pour les clients.",
-          "ai": "Intégration OpenAI pour prédire les ruptures de stock et générer des commandes."
+          "ai": "N/A - Concentré purement sur l'opérationnel et le transactionnel."
         }
       },
       "la-pool-club": {

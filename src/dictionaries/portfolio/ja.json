@@ -27,8 +27,18 @@
         "slug": "gov-docs-ai",
         "description": {
           "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
-          "frontend": "ReactとInertia.jsを使用したモダンでレスポンシブなインターフェース。"
-        }
+          "frontend": "ドキュメントを編集可能なMarkdownブロックに分割するためのリアクティブなインターフェース。",
+          "backend": "OpenAI Assistants APIを介して複雑なリクエストをオーケストレーションするLaravelベースのAIエンジン。",
+          "ai": "ネイティブRAGと厳格なJSONスキーマを使用して、正確な出力を強制し、LLMの幻覚を排除します。",
+          "devops": "キュー処理とAPI障害に対するフェイルオーバーのための自動化されたワークフロー。"
+        },
+        "imageUrl": "",
+        "technologies": [
+          "Laravel",
+          "OpenAI",
+          "JSON Schema",
+          "RAG"
+        ]
       },
       "vitanexus": {
         "id": "8",
@@ -43,8 +53,17 @@
         "title": "JYNSGE News",
         "slug": "jynsge-news",
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
-        }
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
+          "backend": "サーバーサイドレンダリングと低読み取り遅延のために最適化された堅牢な配信。",
+          "frontend": "高いネットワークパフォーマンスを保証する高速な記事レンダリング。",
+          "ai": "N/A - 大規模なパフォーマンスとSEOに焦点を当てています。",
+          "devops": "読み取りトラフィックのスパイクに対して高可用性を保証するオーケストレーションされたデプロイ。"
+        },
+        "imageUrl": "",
+        "technologies": [
+          "Supabase",
+          "Stripe"
+        ]
       },
       "zk-business-support": {
         "id": "10",
@@ -55,12 +74,21 @@
         }
       },
       "espresso-d-amore": {
-        "id": "11",
+        "id": "8",
         "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
-        }
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
+          "backend": "迅速な状態管理と支払い処理のためのSupabaseを使用したエンドツーエンドのアーキテクチャ。",
+          "frontend": "ローカルデリバリーのコンバージョンに焦点を当てた、デジタルカタログ向けの流動的でレスポンシブなUX。",
+          "ai": "N/A - 純粋に運用およびトランザクションに焦点を当てています。",
+          "devops": "POSでのダウンタイムなしで一貫した配信を保証するCI/CDによる完全な自動化。"
+        },
+        "imageUrl": "",
+        "technologies": [
+          "Supabase",
+          "Stripe"
+        ]
       },
       "la-pool-club": {
         "id": "12",
