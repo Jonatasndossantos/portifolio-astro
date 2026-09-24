@@ -157,6 +157,9 @@ const searchItems = [
                     >
                         <Icon name="lucide:x" class="size-5" />
                     </button>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter hidden md:flex items-center gap-1.5" id="search-shortcut-hint">
+                        <kbd class="kbd kbd-sm bg-base-100">/</kbd>
+                    </div>
                 </div>
             </div>
 
@@ -422,6 +425,30 @@ const searchItems = [
             currentFilter = tab.getAttribute("data-filter") || "all";
             renderResults();
         });
+    });
+
+    const handleGlobalSearchKeyDown = (e) => {
+        if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+            e.preventDefault();
+            searchInput.focus();
+        }
+    };
+
+    // Cleanup old listener
+    if (window._searchPageKeydownHandler) {
+        document.removeEventListener("keydown", window._searchPageKeydownHandler);
+    }
+    window._searchPageKeydownHandler = handleGlobalSearchKeyDown;
+    document.addEventListener("keydown", handleGlobalSearchKeyDown);
+
+    searchInput?.addEventListener("focus", () => {
+        document.getElementById("search-shortcut-hint")?.classList.add("hidden");
+    });
+
+    searchInput?.addEventListener("blur", () => {
+        if (!searchInput.value) {
+            document.getElementById("search-shortcut-hint")?.classList.remove("hidden");
+        }
     });
 
     // Run on init

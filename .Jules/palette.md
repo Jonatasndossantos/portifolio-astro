@@ -1,0 +1,1 @@
+## 2024-05-15 - Adding Keyboard Shortcut for Global Search\n**Learning:** Users can benefit from a keyboard shortcut to quickly focus the search bar. This is a common and expected interaction pattern.\n**Action:** Add a visible <kbd>/</kbd> hint to the search bar and a global keydown listener to focus the input when '/' is pressed.
