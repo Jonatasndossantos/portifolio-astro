@@ -170,21 +170,61 @@
       },
       "gov-docs-ai": {
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
+          "backend": "Asynchronous architecture powered by FastAPI and Python, optimizing complex data flows with job queues and high-performance endpoints for LLM orchestration.",
+          "frontend": "Reactive, data-focused administrative dashboard ensuring seamless human review and operational agility for AI-generated government contracts.",
+          "ai": "Strict RAG implementation and context validation via JSON Schema to eradicate hallucinations, ensuring absolute legal compliance in generated documents.",
+          "devops": "Docker-orchestrated deployments with fault-tolerant CI/CD pipelines, incorporating comprehensive telemetry monitoring and API Rate Limiting."
         },
-        "title": "Public Docs AI"
+        "title": "Public Docs AI",
+        "id": "7",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1450101499163-c8848c66cb85?q=80&w=800",
+        "technologies": [
+          "OpenAI",
+          "JSON Schema",
+          "Python",
+          "FastAPI"
+        ]
       },
       "espresso-d-amore": {
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
+          "backend": "Serverless infrastructure (Supabase/PostgreSQL) configured for high scalability and availability, efficiently handling unpredictable transactional spikes in delivery workflows.",
+          "frontend": "Frontend architecture built on Next.js and Tailwind, implementing advanced, responsive UX with an absolute focus on conversion and friction reduction (Mobile-First).",
+          "ai": "Predictive algorithmic system for personalized product recommendation, driving up LTV (Lifetime Value) and average order value at checkout.",
+          "devops": "Fully automated CI/CD pipelines via Vercel with ephemeral environments (Preview Deployments) and robust End-to-End (E2E) testing routines."
         },
-        "title": "Cafeteria Damore"
+        "title": "Cafeteria Damore",
+        "id": "8",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=800",
+        "technologies": [
+          "React",
+          "Next.js",
+          "Tailwind",
+          "Stripe",
+          "Supabase"
+        ]
       },
       "jynsge-news": {
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
+          "backend": "Headless CMS integration coupled with Edge Computing architecture, ensuring global Content Delivery (CDN) with minimal latency for read-heavy loads.",
+          "frontend": "Implementation of Islands Architecture using Astro, achieving aggressive partial hydration and flawless Core Web Vitals (ultra-fast LCP and TTI).",
+          "ai": "Orchestration of advanced NLP (Natural Language Processing) models for automated editorial clustering and real-time community moderation.",
+          "devops": "Advanced Edge Caching strategies and aggressive CDN Caching Invalidation rules, bulletproofing the infrastructure against sudden viral traffic surges."
         },
-        "title": "JYNSGE News"
+        "title": "JYNSGE News",
+        "id": "9",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+        "technologies": [
+          "Astro",
+          "React",
+          "Tailwind",
+          "CMS"
+        ]
       }
     }
   },

@@ -170,21 +170,61 @@
       },
       "gov-docs-ai": {
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
+          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade.",
+          "backend": "Arquitetura assíncrona baseada em FastAPI e Python, otimizando fluxos de dados complexos com filas de processamento e endpoints de alto desempenho para orquestração de LLMs.",
+          "frontend": "Interface administrativa reativa focada em dados e usabilidade operacional, garantindo revisão humana ágil de contratos governamentais gerados por IA.",
+          "ai": "Implementação rigorosa de RAG e validação de contexto via JSON Schema para erradicar alucinações, garantindo conformidade jurídica absoluta nos documentos gerados.",
+          "devops": "Deploy orquestrado via Docker com pipelines CI/CD de alta tolerância a falhas, incluindo monitoramento de telemetria e limits de requisição (Rate Limiting)."
         },
-        "title": "Public Docs AI"
+        "title": "Public Docs AI",
+        "id": "7",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1450101499163-c8848c66cb85?q=80&w=800",
+        "technologies": [
+          "OpenAI",
+          "JSON Schema",
+          "Python",
+          "FastAPI"
+        ]
       },
       "espresso-d-amore": {
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
+          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local.",
+          "backend": "Infraestrutura Serverless (Supabase/PostgreSQL) configurada para alta escalabilidade e disponibilidade, lidando eficientemente com picos transacionais imprevisíveis no fluxo de delivery.",
+          "frontend": "Arquitetura Frontend baseada em Next.js e Tailwind, implementando UX avançada e responsiva com foco absoluto em conversão e redução de atrito (Mobile-First).",
+          "ai": "Sistema algorítmico preditivo para recomendação personalizada de produtos, otimizando o LTV (Lifetime Value) e o ticket médio de consumo no checkout.",
+          "devops": "Esteiras de CI/CD totalmente automatizadas na Vercel com ambientes efêmeros (Preview Deployments) e rotinas robustas de testes End-to-End (E2E)."
         },
-        "title": "Cafeteria Damore"
+        "title": "Cafeteria Damore",
+        "id": "8",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=800",
+        "technologies": [
+          "React",
+          "Next.js",
+          "Tailwind",
+          "Stripe",
+          "Supabase"
+        ]
       },
       "jynsge-news": {
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
+          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido.",
+          "backend": "Integração Headless CMS com arquitetura de Edge Computing, garantindo entrega de conteúdo (CDN) com latência global mínima para cargas intensivas de leitura.",
+          "frontend": "Implementação do padrão Islands Architecture com Astro, resultando em hidratação parcial agressiva e métricas Web Vitals perfeitas (LCP e TTI ultrarrápidos).",
+          "ai": "Orquestração de modelos avançados de NLP (Processamento de Linguagem Natural) para clusterização automatizada de editoriais e moderação de engajamento em tempo real.",
+          "devops": "Estratégias avançadas de Caching na Borda (Edge Caching) e CDN Caching Invalidation rules, blindando a infraestrutura contra tráfegos virais repentinos."
         },
-        "title": "JYNSGE News"
+        "title": "JYNSGE News",
+        "id": "9",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+        "technologies": [
+          "Astro",
+          "React",
+          "Tailwind",
+          "CMS"
+        ]
       }
     }
   },
