@@ -149,6 +149,7 @@ const searchItems = [
                         autocomplete="off"
                         autofocus
                     />
+                    <kbd class="kbd kbd-sm mr-3 opacity-50 hidden sm:inline-flex">/</kbd>
                     <button
                         type="button"
                         id="search-clear-btn"
@@ -422,6 +423,14 @@ const searchItems = [
             currentFilter = tab.getAttribute("data-filter") || "all";
             renderResults();
         });
+    });
+
+    // Global shortcut to focus search input
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+            e.preventDefault();
+            searchInput?.focus();
+        }
     });
 
     // Run on init
