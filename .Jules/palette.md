@@ -1,0 +1,3 @@
+## 2026-09-27 - Visual Keyboard Shortcuts and Focus Safety
+**Learning:** Implementing a global keyboard shortcut (like `/` for search) without visual hints leaves users unaware of the feature. Additionally, naive keydown event listeners can severely damage accessibility by hijacking expected inputs in standard forms (e.g. typing a path with `/`).
+**Action:** Always pair global shortcuts with explicit visual hints (e.g. `<kbd>`) securely padded inside the input to avoid text overlap. Ensure JS event listeners verify that `document.activeElement.tagName` is not `INPUT`, `TEXTAREA`, or `SELECT` before preventing defaults and shifting focus, and ensure the listener is cleaned up across View Transitions.

@@ -46,11 +46,14 @@ const {
             type="text"
             id="search-input"
             placeholder={searchPlaceholder}
-            class="input input-lg input-bordered w-full pl-14 pr-6 bg-base-100/50 focus:bg-base-100 border-base-content/10 focus:border-primary transition-all rounded-2xl text-base shadow-sm font-medium"
+            class="input input-lg input-bordered w-full pl-14 pr-[70px] bg-base-100/50 focus:bg-base-100 border-base-content/10 focus:border-primary transition-all rounded-2xl text-base shadow-sm font-medium"
             aria-label={searchPlaceholder}
         />
-        <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter">
-            Search
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+            <kbd class="kbd kbd-sm opacity-50 hidden sm:inline-flex">/</kbd>
+            <div class="px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity uppercase tracking-tighter hidden md:block">
+                Search
+            </div>
         </div>
     </div>
 
@@ -152,6 +155,24 @@ const {
                 applyFilters();
             });
         });
+
+        const handleGlobalSlash = (e: KeyboardEvent) => {
+            if (e.key === '/') {
+                const activeEl = document.activeElement;
+                if (activeEl && ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeEl.tagName)) {
+                    return;
+                }
+                e.preventDefault();
+                searchInput.focus();
+            }
+        };
+
+        document.addEventListener('keydown', handleGlobalSlash);
+
+        // Cleanup on navigate
+        document.addEventListener('astro:before-preparation', () => {
+            document.removeEventListener('keydown', handleGlobalSlash);
+        }, { once: true });
     }
 
     document.addEventListener("astro:page-load", setupFilters);

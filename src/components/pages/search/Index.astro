@@ -139,24 +139,27 @@ const searchItems = [
             <!-- Search input bar -->
             <div class="relative w-full max-w-2xl mx-auto mb-8 group">
                 <div class="absolute inset-0 bg-primary/10 rounded-2xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="relative flex items-center bg-base-200/50 backdrop-blur-md border border-base-content/10 hover:border-primary/45 focus-within:border-primary/60 rounded-2xl transition-all duration-300">
-                    <Icon name="lucide:search" class="size-6 text-base-content/40 ml-4 group-focus-within:text-primary transition-colors" />
+                <div class="relative flex items-center bg-base-200/50 backdrop-blur-md border border-base-content/10 hover:border-primary/45 focus-within:border-primary/60 rounded-2xl transition-all duration-300 pr-3">
+                    <Icon name="lucide:search" class="size-6 text-base-content/40 ml-4 group-focus-within:text-primary transition-colors shrink-0" />
                     <input
                         type="text"
                         id="global-search-input"
                         placeholder={__("Search...")}
-                        class="w-full bg-transparent border-none outline-none py-4 px-3 text-base-content text-lg placeholder-base-content/30"
+                        class="w-full bg-transparent border-none outline-none py-4 px-3 pr-20 text-base-content text-lg placeholder-base-content/30"
                         autocomplete="off"
                         autofocus
                     />
-                    <button
-                        type="button"
-                        id="search-clear-btn"
-                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden"
-                        aria-label={__("Clear")}
-                    >
-                        <Icon name="lucide:x" class="size-5" />
-                    </button>
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                        <button
+                            type="button"
+                            id="search-clear-btn"
+                            class="btn btn-ghost btn-sm btn-circle hidden"
+                            aria-label={__("Clear")}
+                        >
+                            <Icon name="lucide:x" class="size-5" />
+                        </button>
+                        <kbd class="kbd kbd-sm opacity-50 hidden sm:inline-flex pointer-events-none">/</kbd>
+                    </div>
                 </div>
             </div>
 
@@ -423,6 +426,27 @@ const searchItems = [
             renderResults();
         });
     });
+
+    // Global keyboard shortcut
+    const handleGlobalSlash = (e) => {
+        if (e.key === '/') {
+            const activeEl = document.activeElement;
+            if (activeEl && ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeEl.tagName) && activeEl !== searchInput) {
+                return; // Let user type '/' in other inputs
+            }
+            if (activeEl !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        }
+    };
+
+    document.addEventListener('keydown', handleGlobalSlash);
+
+    // Cleanup for view transitions
+    document.addEventListener('astro:before-preparation', () => {
+        document.removeEventListener('keydown', handleGlobalSlash);
+    }, { once: true });
 
     // Run on init
     initSearchFromUrl();
