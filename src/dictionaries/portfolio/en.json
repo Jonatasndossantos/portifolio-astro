@@ -169,22 +169,62 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800",
+        "technologies": [
+          "OpenAI",
+          "RAG",
+          "JSON Schema",
+          "PHP",
+          "Python"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "High-precision autonomous AI engine that consumes real-time SQL databases to generate massive, hallucination-free government contracts via strict JSON Schema constraints.",
+          "backend": "Implementation of event-driven architecture connecting OpenAI API to local relational databases, enabling asynchronous Function Calling during document generation.",
+          "frontend": "Development of iterative interfaces allowing users to regenerate specific text blocks instead of entire documents, heavily optimizing token consumption.",
+          "ai": "Engineering advanced RAG pipelines replacing generic LLM usage with Assistants configured with proprietary tools and rigorous output validation.",
+          "devops": "Creation of secure CI/CD pipelines for rapid deployment of AI engine updates across isolated (Single-Tenant) environments."
+        }
       },
       "espresso-d-amore": {
+        "id": "8",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800",
+        "technologies": [
+          "React 19",
+          "Supabase",
+          "Stripe",
+          "Tailwind CSS"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "End-to-End architecture for a local e-commerce, integrating Stripe payments and Supabase serverless backend to ensure responsive UX and ultra-low operational latency.",
+          "backend": "Secure integration of Stripe webhooks with Supabase Edge Functions to manage real-time inventory and payment reconciliation.",
+          "frontend": "Hyper-responsive interface built with React 19 and Tailwind CSS, aggressively optimized for mobile sales conversion and instant page loads.",
+          "ai": "Initial architectural planning for future integration of personalized product recommendations based on user order history.",
+          "devops": "Automated deployment and global distribution of static assets (CDN) configured for maximum availability."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "PostgreSQL",
+          "Redis"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "High-performance news platform heavily focused on Server-Side Rendering (SSR), optimized for aggressive SEO, flawless Web Core Vitals, and lightning-fast global content delivery.",
+          "backend": "Implementation of distributed caching layers with Redis to offload heavy PostgreSQL queries during organic traffic spikes.",
+          "frontend": "Hybrid rendering (Static + SSR) in Next.js to deliver First Contentful Paint (FCP) almost instantly to readers on 3G connections.",
+          "ai": "Background implementation of Natural Language Processing (NLP) pipelines for automated article categorization.",
+          "devops": "Proactive monitoring and SRE strategies focused on zero-downtime stability under high volumes of concurrent read requests."
+        }
       }
     }
   },

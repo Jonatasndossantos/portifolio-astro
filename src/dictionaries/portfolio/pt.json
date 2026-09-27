@@ -169,22 +169,62 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800",
+        "technologies": [
+          "OpenAI",
+          "RAG",
+          "JSON Schema",
+          "PHP",
+          "Python"
+        ],
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Motor de inteligência artificial autônomo e de alta precisão que consome bancos de dados SQL em tempo real, gerando contratos governamentais massivos sem alucinações através da restrição estrita via JSON Schemas.",
+          "backend": "Implementação de arquitetura baseada em eventos conectando a API da OpenAI a bancos relacionais locais, permitindo Function Calling assíncrono durante a geração de documentos.",
+          "frontend": "Desenvolvimento de interfaces iterativas onde o usuário pode regenerar blocos específicos de texto em vez de documentos inteiros, otimizando o consumo de tokens.",
+          "ai": "Desenho de pipelines RAG avançados substituindo o uso de LLMs genéricos por Assistants configurados com ferramentas proprietárias e validação rigorosa de saídas.",
+          "devops": "Criação de esteiras CI/CD seguras para implantação rápida das atualizações do motor de IA em ambientes isolados (Single-Tenant)."
+        }
       },
       "espresso-d-amore": {
+        "id": "8",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800",
+        "technologies": [
+          "React 19",
+          "Supabase",
+          "Stripe",
+          "Tailwind CSS"
+        ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "Arquitetura End-to-End para e-commerce local, integrando pagamentos via Stripe e backend serverless no Supabase, garantindo UX responsiva e baixa latência operacional.",
+          "backend": "Integração segura de webhooks do Stripe com funções serverless no Supabase para gerenciar inventário em tempo real e conciliação de pagamentos.",
+          "frontend": "Interface hiper-responsiva construída com React 19 e Tailwind CSS, otimizada para conversão de vendas mobile e tempos de carregamento instantâneos.",
+          "ai": "Planejamento inicial para integração futura de recomendações personalizadas de produtos com base no histórico de pedidos do usuário.",
+          "devops": "Deploy automatizado e distribuição global de assets estáticos (CDN) configurados para máxima disponibilidade."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "PostgreSQL",
+          "Redis"
+        ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Plataforma de notícias focada em Server-Side Rendering (SSR), otimizada para SEO agressivo, Web Core Vitals impecáveis e distribuição global de conteúdo de baixo tempo de carregamento.",
+          "backend": "Implementação de camadas de cache distribuído com Redis para aliviar consultas pesadas no PostgreSQL durante picos de tráfego orgânico.",
+          "frontend": "Renderização híbrida (Static + SSR) no Next.js para entregar a primeira tinta (FCP) quase que instantaneamente a leitores em conexões 3G.",
+          "ai": "Categorização automática de artigos publicados baseada em processamento de linguagem natural (NLP) em background.",
+          "devops": "Monitoramento proativo e estratégias SRE focadas em estabilidade sob altos volumes simultâneos de requisições de leitura."
+        }
       }
     }
   },
