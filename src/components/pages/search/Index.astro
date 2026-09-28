@@ -145,14 +145,17 @@ const searchItems = [
                         type="text"
                         id="global-search-input"
                         placeholder={__("Search...")}
-                        class="w-full bg-transparent border-none outline-none py-4 px-3 text-base-content text-lg placeholder-base-content/30"
+                        class="w-full bg-transparent border-none outline-none py-4 px-3 pr-[70px] text-base-content text-lg placeholder-base-content/30"
                         autocomplete="off"
                         autofocus
                     />
+                    <div class="absolute right-14 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 pointer-events-none uppercase tracking-tighter flex items-center gap-1">
+                        <kbd class="font-sans border border-base-content/20 rounded px-1 min-w-[16px] text-center bg-base-100 shadow-sm">/</kbd>
+                    </div>
                     <button
                         type="button"
                         id="search-clear-btn"
-                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden"
+                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden absolute right-0"
                         aria-label={__("Clear")}
                     >
                         <Icon name="lucide:x" class="size-5" />
@@ -423,6 +426,19 @@ const searchItems = [
             renderResults();
         });
     });
+
+    function handleGlobalSearchSlash(e) {
+        if (e.key === "/" && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA' && document.activeElement?.tagName !== 'SELECT') {
+            const globalSearchInput = document.getElementById("global-search-input");
+            if (globalSearchInput) {
+                e.preventDefault();
+                globalSearchInput.focus();
+            }
+        }
+    }
+
+    document.removeEventListener("keydown", handleGlobalSearchSlash);
+    document.addEventListener("keydown", handleGlobalSearchSlash);
 
     // Run on init
     initSearchFromUrl();

@@ -46,11 +46,11 @@ const {
             type="text"
             id="search-input"
             placeholder={searchPlaceholder}
-            class="input input-lg input-bordered w-full pl-14 pr-6 bg-base-100/50 focus:bg-base-100 border-base-content/10 focus:border-primary transition-all rounded-2xl text-base shadow-sm font-medium"
+            class="input input-lg input-bordered w-full pl-14 pr-[70px] bg-base-100/50 focus:bg-base-100 border-base-content/10 focus:border-primary transition-all rounded-2xl text-base shadow-sm font-medium"
             aria-label={searchPlaceholder}
         />
-        <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter">
-            Search
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-base-200 rounded-lg text-[10px] font-bold opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none uppercase tracking-tighter flex items-center gap-1">
+            Search <kbd class="font-sans border border-base-content/20 rounded px-1 min-w-[16px] text-center bg-base-100 shadow-sm">/</kbd>
         </div>
     </div>
 
@@ -154,6 +154,24 @@ const {
         });
     }
 
-    document.addEventListener("astro:page-load", setupFilters);
+    function handleGlobalSlash(e: KeyboardEvent) {
+        if (e.key === "/" && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA' && document.activeElement?.tagName !== 'SELECT') {
+            const searchInput = document.getElementById("search-input") as HTMLInputElement;
+            if (searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        }
+    }
+
+    document.addEventListener("astro:page-load", () => {
+        setupFilters();
+        // Ensure we don't attach multiple listeners on view transitions
+        document.removeEventListener("keydown", handleGlobalSlash);
+        document.addEventListener("keydown", handleGlobalSlash);
+    });
+
     setupFilters();
+    document.removeEventListener("keydown", handleGlobalSlash);
+    document.addEventListener("keydown", handleGlobalSlash);
 </script>

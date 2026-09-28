@@ -1,0 +1,4 @@
+
+## 2024-05-27 - [Add Search Keyboard Shortcut]
+**Learning:** Adding absolute positioned floating elements (like keyboard hints `<kbd>`) over input fields requires careful padding adjustments on the input field itself (e.g., `pr-[70px]`) to ensure user typed text does not go under the floating element. Additionally, global keyboard shortcuts (like `/` to focus search) need to carefully check `document.activeElement?.tagName` to avoid stealing focus when the user is already typing in a legitimate input.
+**Action:** When adding global key listeners or floating hints over inputs, always test typing long strings to verify padding, and check `activeElement` before hijacking standard typing keys. Ensure listener cleanup on `astro:page-load` inside View Transitions to prevent double event triggering.
