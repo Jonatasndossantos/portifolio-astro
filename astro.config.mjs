@@ -23,7 +23,7 @@ export default defineConfig({
     }
   },
   image: {
-    domains: ["github.com", "images.unsplash.com"],
+    domains: ["github.com", "images.unsplash.com", "raw.githubusercontent.com"],
   },
   markdown: {
     remarkPlugins: [

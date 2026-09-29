@@ -20,7 +20,7 @@
         "id": "7",
         "title": "Public Docs AI",
         "slug": "gov-docs-ai",
-        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "imageUrl": "https://raw.githubusercontent.com/Jonatasndossantos/Jonatasndossantos/main/src/lumen.png",
         "technologies": [
           "React.js",
           "Laravel",
