@@ -169,22 +169,62 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "React.js",
+          "Laravel",
+          "OpenAI",
+          "GCP"
+        ],
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade.",
+          "frontend": "Interface reativa e responsiva construída com React 19 e Inertia.js, focada em alta performance de renderização.",
+          "backend": "Arquitetura assíncrona em Laravel gerenciando filas e integração direta via Function Calling com OpenAI.",
+          "devops": "Monitoramento em tempo real com Laravel Telescope e implantação automatizada (CI/CD) em infraestrutura GCP.",
+          "database": "Modelagem relacional para isolamento seguro de dados governamentais e histórico de documentos gerados.",
+          "ai": "Implementação de OpenAI Assistants API com restrição de output estrita via Structured Outputs (JSON Schema) eliminando alucinações técnicas."
+        }
       },
       "espresso-d-amore": {
+        "id": "11",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800",
+        "technologies": [
+          "Laravel 12",
+          "Expo",
+          "Supabase"
+        ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "Plataforma End-to-End combinando e-commerce e sistema de gestão (ERP), projetada com UX focada em conversão e controle logístico operacional.",
+          "frontend": "Dashboard administrativo reativo com React/Inertia e aplicativo móvel corporativo nativo construído com Expo (React Native).",
+          "backend": "Arquitetura híbrida utilizando Laravel 12 para core logic de negócios e Supabase para sincronização stateful em tempo real.",
+          "devops": "Esteira CI/CD configurada para build automatizado de artefatos Web e geração de builds móveis (APK/AAB).",
+          "database": "Design de arquitetura de dados particionada: MySQL otimizado para o ERP e PostgreSQL (Supabase) para client-facing apps.",
+          "ai": "R&D integrando capacidades preditivas (OpenAI) para forecast de estoque e automatização de reposição logística."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "technologies": [
+          "Laravel",
+          "Tailwind",
+          "Azure"
+        ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido.",
+          "frontend": "Interface de ultra-baixa latência implementada via Blade templates (SSR) e Tailwind CSS v4 para styling utility-first.",
+          "backend": "Design arquitetural MVC robusto responsável pela agregação e sanitização em tempo real de feeds RSS externos.",
+          "devops": "Deploy estruturado em instâncias Azure App Service acoplado a pipelines de integração contínua rigorosos.",
+          "database": "Modelagem relacional avançada no MySQL 8 garantindo consultas de alta performance para conteúdo indexado.",
+          "ai": "Implementação de curadoria algorítmica para recomendação de conteúdo inteligente baseada em engine semântica."
+        }
       }
     }
   },

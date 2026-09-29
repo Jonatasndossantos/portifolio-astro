@@ -169,22 +169,62 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
+        "technologies": [
+          "React.js",
+          "Laravel",
+          "OpenAI",
+          "GCP"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallucination-free structured government contracts dynamically.",
+          "frontend": "Reactive, high-performance UI built with React 19 and Inertia.js, optimizing critical rendering paths.",
+          "backend": "Asynchronous Laravel backend managing deep queue processing and direct LLM integrations via Function Calling.",
+          "devops": "Real-time telemetry via Laravel Telescope and fully automated CI/CD deployment pipelines on GCP.",
+          "database": "Strict relational data modeling ensuring data isolation and secure storage for generated institutional documents.",
+          "ai": "Advanced integration with OpenAI Assistants API leveraging Structured Outputs to generate deterministic, hallucination-free legal contracts."
+        }
       },
       "espresso-d-amore": {
+        "id": "11",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800",
+        "technologies": [
+          "Laravel 12",
+          "Expo",
+          "Supabase"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
+          "frontend": "Reactive administrative dashboard powered by React/Inertia, alongside a native cross-platform mobile app built with Expo.",
+          "backend": "Hybrid core architecture utilizing Laravel 12 for business logic routing and Supabase for real-time state synchronization.",
+          "devops": "Automated build pipelines (CI/CD) provisioning both web app artifacts and mobile platform binaries (APK).",
+          "database": "Split-architecture database strategy: structured MySQL for internal ERP and PostgreSQL (Supabase) for client-facing latency.",
+          "ai": "Experimental R&D integrating OpenAI to forecast inventory shortages and auto-generate supply replenishment orders."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "technologies": [
+          "Laravel",
+          "Tailwind",
+          "Azure"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
+          "frontend": "Ultra-low latency interface built on SSR Blade templates utilizing Tailwind CSS utility-first principles.",
+          "backend": "Robust MVC backend architectural design orchestrating external RSS feed aggregation and real-time sanitization.",
+          "devops": "Provisioned on scalable Azure App Service instances backed by strict automated integration pipelines.",
+          "database": "Advanced relational modeling utilizing MySQL for high-performance query execution on indexed content.",
+          "ai": "Algorithmic content curation engine leveraging semantic search patterns for intelligent feed recommendations."
+        }
       }
     }
   },
