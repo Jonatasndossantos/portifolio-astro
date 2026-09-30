@@ -1,0 +1,35 @@
+
+> jonatas-portfolio@0.1.0 dev /app
+> astro dev
+
+08:16:14 [types] Generated 1ms
+08:16:15 [content] Syncing content
+08:16:15 [content] Synced content
+08:16:15 [vite] Re-optimizing dependencies because vite config has changed
+
+ astro  v5.18.2 ready in 1690 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+08:16:15 watching for file changes...
+
+ update  ▶ New version of Astro available: 7.3.5
+  Run pnpm dlx @astrojs/upgrade to update
+
+/*! 🌼 daisyUI 5.7.47 */
+08:16:59 [WARN] [astro-icon] Failed to load icons from "src/icons": ENOENT: no such file or directory, scandir 'src/icons/'
+08:17:15 [200] /projects 402ms
+08:17:16 [200] /_image 251ms
+08:17:16 [200] /_image 262ms
+08:17:16 [200] /_image 273ms
+08:17:16 [500] /_image 282ms
+08:17:16 [200] /_image 458ms
+08:17:16 [200] /_image 306ms
+08:17:16 [200] /_image 315ms
+08:17:16 [500] /_image 112ms
+08:17:16 [200] /_image 394ms
+08:17:16 [200] /_image 414ms
+08:17:16 [200] /_image 188ms
+08:17:17 [200] /graph.json 70ms
+08:17:17 [500] /_image 1461ms
