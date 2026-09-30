@@ -5,7 +5,7 @@ export const showDefaultLang = false;
 
 export function getLangFromUrl(url: URL) {
     const [, lang] = url.pathname.split('/');
-    if (locales.includes(lang as any)) return lang;
+    if (locales.includes(lang as (typeof locales)[number])) return lang;
     return defaultLocale;
 }
 
