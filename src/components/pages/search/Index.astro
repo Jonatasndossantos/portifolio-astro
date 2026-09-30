@@ -40,6 +40,9 @@ const localizedBlog = blogSlugs.map(slug => {
 }).filter(Boolean);
 
 // 3. Compile localized search index items
+const tagMap = new Map(tags.map(tag => [tag.id.replace(/\.mdx?$/, ""), tag]));
+const topicMap = new Map(topics.map(top => [top.id.replace(/\.mdx?$/, ""), top]));
+
 const searchItems = [
     ...localizedProjects.map(p => {
         const cleanId = p.id.split("/").slice(1).join("/").replace(/\.mdx?$/, "");
@@ -50,12 +53,12 @@ const searchItems = [
             url: translatePath(`/projects/${cleanId}`),
             tags: p.data.tags?.map(t => {
                 const tId = (t.id || t).replace(/\.mdx?$/, "");
-                const tagObj = tags.find(tag => tag.id.replace(/\.mdx?$/, "") === tId);
+                const tagObj = tagMap.get(tId);
                 return tagObj ? __(tagObj.data.title) : tId.split('/').pop() || "";
             }) || [],
             topics: p.data.relatedTopics?.map(t => {
                 const tId = (t.id || t).replace(/\.mdx?$/, "");
-                const topicObj = topics.find(top => top.id.replace(/\.mdx?$/, "") === tId);
+                const topicObj = topicMap.get(tId);
                 return topicObj ? __(topicObj.data.title) : tId.split('/').pop() || "";
             }) || []
         };
@@ -69,12 +72,12 @@ const searchItems = [
             url: translatePath(`/blog/${cleanId}`),
             tags: b.data.tags?.map(t => {
                 const tId = (t.id || t).replace(/\.mdx?$/, "");
-                const tagObj = tags.find(tag => tag.id.replace(/\.mdx?$/, "") === tId);
+                const tagObj = tagMap.get(tId);
                 return tagObj ? __(tagObj.data.title) : tId.split('/').pop() || "";
             }) || [],
             topics: b.data.relatedTopics?.map(t => {
                 const tId = (t.id || t).replace(/\.mdx?$/, "");
-                const topicObj = topics.find(top => top.id.replace(/\.mdx?$/, "") === tId);
+                const topicObj = topicMap.get(tId);
                 return topicObj ? __(topicObj.data.title) : tId.split('/').pop() || "";
             }) || []
         };
@@ -88,7 +91,7 @@ const searchItems = [
             url: translatePath(`/services/${cleanId}`),
             topics: s.data.relatedTopics?.map(t => {
                 const tId = (t.id || t).replace(/\.mdx?$/, "");
-                const topicObj = topics.find(top => top.id.replace(/\.mdx?$/, "") === tId);
+                const topicObj = topicMap.get(tId);
                 return topicObj ? __(topicObj.data.title) : tId.split('/').pop() || "";
             }) || []
         };
