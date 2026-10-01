@@ -71,11 +71,12 @@
         ],
         "title": "Plataforma Lumen",
         "description": {
-          "fullstack": "SaaS Enterprise B2G de alta performance com Laravel Octane, processando fluxos complexos de licitações públicas com estado em memória e zero latência.",
-          "backend": "Arquitetura de alta performance com Laravel Octane e FrankenPHP, reduzindo o tempo de boot em requisições pesadas.",
-          "frontend": "Componentes dinâmicos com Alpine.js e blocos de conteúdo gerados por IA via JSON Schemas granulares.",
-          "ai": "Geração de blocos de conteúdo legal dinâmicos, permitindo regeneração parcial sem perda de dados.",
-          "devops": "Pipeline CI/CD configurado com workers específicos para tarefas pesadas de IA, evitando timeouts via polling no UI."
+          "fullstack": "SaaS Enterprise B2G de altíssima performance, processando pipelines críticos de licitações públicas em memória via Laravel Octane para mitigar latência estrutural.",
+          "frontend": "Ecossistema frontend reativo orquestrado com Alpine.js, gerenciando blocos de conteúdo complexos injetados dinamicamente via JSON Schemas granulares.",
+          "backend": "Backend orquestrado com Laravel Octane e FrankenPHP, projetado para manter estado persistente em memória e reduzir drasticamente o cold boot em requisições intensivas.",
+          "devops": "Pipeline CI/CD sofisticado com deploy contínuo (CD) em instâncias Linux configuradas com Nginx, otimizando workers isolados para não bloquear threads de front-end.",
+          "database": "Modelagem relacional de banco de dados robusta, isolando fluxos complexos para preservar a segurança de dados SaaS (Multi-Tenancy).",
+          "ai": "Orquestração de Inteligência Artificial para gerar fragmentos contratuais editáveis, suportando regeneração isolada de blocos textuais sem perda de integridade dos dados."
         }
       },
       "rag-legal-chatbot": {
@@ -90,11 +91,12 @@
         ],
         "title": "RAG Legal Chatbot",
         "description": {
-          "fullstack": "Assistente virtual avançado impulsionado por IA e RAG nativo, capaz de interagir em tempo real com contextos legais complexos e analisar arquivos proprietários via Vector Search.",
-          "backend": "Implementação de RAG nativo via OpenAI Assistants API para indexação precisa de decretos e documentos.",
-          "frontend": "Interface real-time com React 19 e Server-Sent Events (SSE) para eliminação de estados de carregamento.",
-          "ai": "Uso extensivo de Function Calling (Tools) permitindo que o LLM consulte o banco de dados SQL em tempo real.",
-          "devops": "Sistema de token-gating que monitora consumo e bloqueia requisições automaticamente quando as cotas excedem."
+          "fullstack": "Sistema RAG de precisão absoluta (Retrieval-Augmented Generation) integrado via OpenAI Assistant API, focado na extração e correlação autônoma de jurisprudências e licitações.",
+          "frontend": "Interface Web interativa construída com React 19, implementando Server-Sent Events (SSE) para renderização progressiva (Streaming) da inteligência artificial.",
+          "backend": "Implementação da arquitetura RAG e OpenAI Assistants API, estruturando a indexação de vetores de conhecimento sobre vasta biblioteca de decretos e leis.",
+          "devops": "Middleware de governança que implementa um robusto Token-Gating, garantindo rate-limits rigorosos e blindando os orçamentos computacionais das requisições LLM indiscriminadas.",
+          "database": "Busca semântica avançada utilizando base vetorial para análise precisa e ultrarrápida do contexto das leis e decretos corporativos.",
+          "ai": "Uso avançado de Function Calling (Tools) da OpenAI, garantindo conectividade em tempo real para o LLM realizar inferências no banco de dados corporativo SQL (MySQL)."
         }
       },
       "doc-automation-saas": {
@@ -109,11 +111,12 @@
         ],
         "title": "Doc Automation SaaS",
         "description": {
-          "fullstack": "Pipeline automatizado que transformou a geração de documentos licitatórios de meses para minutos usando processamento assíncrono e workflows pesados.",
-          "backend": "Backend robusto em Laravel 11 gerenciando filas (Queues & Jobs) para processamento assíncrono.",
-          "frontend": "Dashboard administrativo e histórico de arquivos construído com React e Inertia.js.",
-          "ai": "Integração via JSON Schemas com OpenAI para garantir outputs estruturados sem alucinações técnicas.",
-          "devops": "Configuração completa de servidor Linux (Nginx) e implantação de pipelines automatizados via GitHub Actions."
+          "fullstack": "Pipeline End-to-End automatizado que reduziu drasticamente a complexidade burocrática e o tempo de geração de ETPs e DFDs de semanas para poucos minutos.",
+          "frontend": "Dashboard administrativo Single Page Application (SPA) hiper-responsivo arquitetado em React e Inertia.js.",
+          "backend": "Motor transacional robusto em Laravel 11 acoplado a um sistema avançado de filas (Queues & Jobs) para processamento resiliente de workflows pesados em background.",
+          "devops": "Provisionamento de servidor Linux (Ubuntu/Nginx) do zero, implementando rotinas seguras (SSH/UFW) e integrando deploy contínuo (CI/CD) via GitHub Actions.",
+          "database": "Esquema relacional projetado para escalabilidade de escrita massiva, utilizando índices balanceados para resiliência na geração contínua de relatórios técnicos.",
+          "ai": "Integração via JSON Schemas rigorosos com OpenAI Assistant API (RAG e Function Calling) para garantir outputs governamentais estruturados sem alucinações técnicas."
         }
       },
       "gov-lumen-rescue": {
@@ -128,11 +131,12 @@
         ],
         "title": "GovTech Rescue",
         "description": {
-          "fullstack": "Refatoração profunda de um sistema legado governamental, eliminando Race Conditions críticas e estabilizando a arquitetura obsoleta com padrões reativos.",
-          "backend": "Resolução de complexas Race Conditions usando padrões reativos RxJS no módulo de chat.",
-          "frontend": "Refatoração de arquivos monolíticos e correção de bugs de responsividade em monitores governamentais antigos.",
-          "ai": "Auditoria técnica quantificada que demonstrou a insustentabilidade financeira do stack atual para os stakeholders.",
-          "devops": "Desenho de arquitetura de transição para ambiente Single-Tenant Docker com 2FA e logs de auditoria legais."
+          "fullstack": "Refatoração profunda de um sistema legado governamental, eliminando Race Conditions críticas e estabilizando a arquitetura obsoleta com padrões reativos avançados.",
+          "frontend": "Refatoração profunda de componentes monolíticos React e Angular, garantindo estado imutável e correção de layouts em monitores legados governamentais.",
+          "backend": "Auditoria técnica profunda (Refactoring) mitigando complexas Race Conditions e deadlocks lógicos via padrões de Observables (RxJS) e fluxos reativos puros.",
+          "devops": "Desenho arquitetural de migração infraestrutural para um ambiente Single-Tenant robusto usando Docker, com implantação de 2FA e obrigatoriedade legal de Logs de Auditoria.",
+          "database": "Auditoria e limpeza estratégica de base de dados fragmentada, reconstruindo transações ACID e protegendo os dados da aplicação contra anomalias concorrentes (Race Conditions).",
+          "ai": "Auditoria de arquitetura sistêmica apoiada por métricas (ROI/TCO), fornecendo embasamento executivo para descontinuar o framework legado sem impacto negocial."
         }
       },
       "alura-plus": {
@@ -146,9 +150,12 @@
         ],
         "title": "Alura Plus",
         "description": {
-          "fullstack": "Implementação focada em estruturação semântica e layouts responsivos avançados, aplicando técnicas modernas de CSS Grid e Flexbox com alta fidelidade.",
-          "frontend": "Implementação prática de Flexbox, Grid e boas práticas de estruturação HTML5.",
-          "ai": "Deploy automatizado integrado ao GitHub para visualização pública instantânea."
+          "fullstack": "Aplicação end-to-end com foco exclusivo em engenharia visual de alta precisão.",
+          "frontend": "Implementação avançada de layouts responsivos com CSS Grid e Flexbox, priorizando acessibilidade (A11y) e semântica HTML5 para máxima fidelidade ao design.",
+          "backend": "Backend configurado para fornecimento rápido de assets estáticos otimizados.",
+          "devops": "Continuous Deployment orquestrado com GitHub Actions para publicações instantâneas em infraestrutura serverless.",
+          "database": "Gestão de estado estático sem dependência de banco de dados ativo, focado em performance absoluta de carregamento.",
+          "ai": "Pipeline isolado livre de integrações LLM ativas no ambiente de produção."
         }
       },
       "adventure-text-game": {
@@ -162,14 +169,17 @@
         ],
         "title": "Adventure Text Game",
         "description": {
-          "fullstack": "Motor de narrativa interativa em JS puro, manipulando o DOM em tempo real baseado nas decisões do jogador e ramificando o fluxo da história dinamicamente.",
+          "fullstack": "Motor de narrativa interativa em Vanilla JS, orquestrando manipulações complexas de DOM em tempo real e gerenciamento de estado complexo baseado em decisões mutáveis.",
+          "frontend": "Interface minimalista e imersiva construída sem frameworks, focada em transições de estado ultra-rápidas e otimização de repaint/reflow.",
           "backend": "Lógica de estados em JS puro que gerencia as escolhas do usuário e ramificações da história.",
-          "frontend": "Interface minimalista e imersiva com mudanças dinâmicas de cenário via DOM manipulation.",
+          "devops": "Hospedagem estática Serverless focada em tempo de disponibilidade (Uptime) de 99.9% e otimização agresiva de cache de assets na edge.",
+          "database": "Gestão de estado imutável puramente em memória, com persistência local estratégica, dispensando infraestrutura pesada de SGBDs relacionais para maximizar velocidade.",
           "ai": "História ramificada permitindo múltiplas experiências baseadas no perfil de decisão do jogador."
         }
       },
       "gov-docs-ai": {
         "id": "7",
+        "title": "Public Docs AI",
         "slug": "gov-docs-ai",
         "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
         "technologies": [
@@ -178,18 +188,18 @@
           "OpenAI",
           "GCP"
         ],
-        "title": "Public Docs AI",
         "description": {
-          "fullstack": "Motor autônomo de inteligência artificial governamental que impõe Strict JSON Schemas. Capaz de gerar contratos complexos sem alucinações, transformando processos burocráticos de meses em minutos via processamento assíncrono.",
-          "frontend": "Interface web responsiva com React 19 e Inertia.js, garantindo navegação de alta velocidade e gerenciamento contínuo de documentos.",
-          "backend": "Backend robusto em Laravel gerenciando filas, geração de templates via ferramentas estruturadas e integração profunda com OpenAI Assistant API.",
-          "devops": "Monitoramento com Laravel Telescope e pipelines CI/CD automatizados implantados em GCP para disponibilidade contínua.",
-          "database": "Armazenamento em banco de dados relacional e busca vetorial (Vector DB) assegurando integridade e controle de acesso para dados institucionais restritos.",
-          "ai": "Uso avançado de RAG (Retrieval-Augmented Generation) e Function Calling, integrando GPT-4 de forma autônoma aos bancos SQL."
+          "fullstack": "Motor autônomo de inteligência artificial fundamentado em JSON Schemas estritos para gerar estruturas jurídicas governamentais dinamicamente.",
+          "frontend": "Interface web imersiva e reativa construída com React 19 e Inertia.js, priorizando renderização imediata, otimização de estado global e acessibilidade (A11y).",
+          "backend": "Backend escalável arquitetado em Laravel 12.0, orquestrando filas robustas de processamento assíncrono para geração complexa de documentos corporativos .docx sem bloquear a thread principal.",
+          "devops": "Pipeline de infraestrutura orquestrado para alta disponibilidade, com observabilidade via Laravel Telescope e Continuous Deployment em Google Cloud Platform.",
+          "database": "Arquitetura relacional sofisticada para versionamento granular de documentos, garantindo trilha de auditoria íntegra e gestão avançada de Multi-Tenancy.",
+          "ai": "Orquestração sofisticada da OpenAI Assistant API, baseada em Function Calling e RAG (Retrieval-Augmented Generation), para gerar contratos públicos precisos, eliminando alucinações e otimizando o gasto de tokens da LLM."
         }
       },
       "espresso-d-amore": {
         "id": "11",
+        "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
         "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
         "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
@@ -200,18 +210,19 @@
           "Supabase",
           "OpenAI"
         ],
-        "title": "Cafeteria Damore",
         "description": {
-          "fullstack": "Plataforma End-to-End para gestão B2C de delivery, conectando dashboard em React/Inertia com experiências mobile nativas em Expo.",
-          "frontend": "Dashboard administrativo construído com React 19 e Inertia.js, enquanto o front móvel utiliza Expo para consumo fluido via API.",
-          "backend": "Backend híbrido centralizado em Laravel 12 mantendo a lógica core, usando Supabase para gerenciar dados em tempo real.",
-          "devops": "Pipelines avançados orquestrando builds Web Vite e CI de geração automatizada de APKs via GitHub Actions.",
-          "database": "Estratégia Split-Stack: PostgreSQL via Supabase para queries instantâneas de clientes, e MySQL tradicional para as complexas relações do ERP.",
-          "ai": "Integração arquitetada com OpenAI para prever gargalos de estoque e sugerir automações de reabastecimento logístico via API Function Calling."
-        }
+          "fullstack": "Plataforma Web End-to-End focada em UX responsiva, integração fluída de cardápio e controle operacional robusto para expansão de delivery local.",
+          "frontend": "Construção de duas interfaces distintas: um dashboard de administração rico em dados com React/Inertia e uma experiência de pedido mobile fluida usando Expo.",
+          "backend": "Arquitetura híbrida de backend utilizando Laravel 12 para lógica de negócios central e Supabase para dados de clientes e autenticação em tempo real.",
+          "devops": "Gerenciamento de pipelines de build modernos para web apps baseados em Vite e geração de APK mobile, garantindo atualizações sem atrito em todas as plataformas.",
+          "database": "Implementação de estratégia de banco de dados split-stack: MySQL para relacionamentos ERP complexos e PostgreSQL (Supabase) para consultas de alta velocidade dos clientes.",
+          "ai": "Integração via OpenAI para automatizar a gestão de estoque, prevendo escassez e gerando pedidos de compra de fornecedores automaticamente."
+        },
+        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
       },
       "jynsge-news": {
         "id": "9",
+        "title": "JYNSGE News",
         "slug": "jynsge-news",
         "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
         "technologies": [
@@ -220,100 +231,15 @@
           "MySQL",
           "Azure"
         ],
-        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
-        "title": "JYNSGE News",
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com arquitetura flexível para entregar Server-Side Rendering (SSR) rápido e indexação global SEO.",
-          "frontend": "Interface moderna usando templates Blade e Tailwind CSS, focada em UX minimalista, alta legibilidade e tempos de carregamento instantâneos.",
-          "backend": "Arquitetura MVC escalável em Laravel conectando múltiplas APIs RSS e gerenciando controle granular de permissões e perfis de usuário.",
-          "devops": "Implantação resiliente em Azure App Service com pipelines rigorosos de testes utilizando o framework PEST.",
-          "database": "Esquema relacional em MySQL otimizado para lidar com categorizações profundas de notícias, sistema de comentários e alta concorrência de leitura.",
-          "ai": "Curadoria de feeds impulsionada por algoritmos e base de arquitetura pronta para verificação de fatos automatizada."
-        }
-      },
-      "vitanexus": {
-        "id": "8",
-        "slug": "vitanexus",
-        "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
-        "technologies": [
-          "Laravel 10",
-          "PHP 8",
-          "SQLite",
-          "Bootstrap 5"
-        ],
-        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
-        "title": "VitaNexus",
-        "description": {
-          "fullstack": "Aplicação abrangente de telemetria de saúde construída com Laravel, rastreando métricas vitais e processando cálculos de algoritmos complexos sob demanda.",
-          "frontend": "Interface responsiva e acessível em Bootstrap 5, otimizada para ingestão rápida de dados biométricos em qualquer dispositivo.",
-          "backend": "Arquitetura segura em Laravel orquestrando autenticação via Laravel Breeze e lógica complexa de processamento de saúde.",
-          "devops": "Estratégia de implantação leve com SQLite e workflows otimizados visando simplicidade operacional.",
-          "database": "Modelagem eficiente de banco de dados visando privacidade desde a concepção (Privacy-by-Design) para armazenar histórico e hábitos do usuário.",
-          "ai": "Algoritmos inteligentes baseados em regras para calcular necessidades calóricas e metas de hidratação sob perfis estruturados."
-        }
-      },
-      "zk-business-support": {
-        "id": "10",
-        "slug": "zk-business-support",
-        "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
-        "demoUrl": "https://o8u.64c.myftpupload.com/",
-        "technologies": [
-          "WordPress",
-          "Custom CSS",
-          "PHP",
-          "SEO"
-        ],
-        "title": "ZK Business Support",
-        "description": {
-          "fullstack": "Solução personalizada de alto desempenho focada em Business Support corporativo, otimizando o cache e alavancando estratégias avançadas de SEO local.",
-          "frontend": "Desenvolvimento de identidade visual única baseada em CSS moderno customizado, assegurando uma marca profissional de alta fidelidade e design responsivo.",
-          "backend": "Arquitetura CMS otimizada garantindo gerenciamento veloz de portfólio de serviços e estabilidade em tempo de renderização.",
-          "devops": "Implementação agressiva de camadas de cache, resultando em pontuações de topo no PageSpeed Insights para melhor experiência do usuário.",
-          "database": "Consultas de banco de dados fortemente indexadas e otimizadas para garantir latência mínima ao renderizar dados dinâmicos de negócios.",
-          "ai": "Aplicações de ferramentas orientadas por IA para análise competitiva de palavras-chave e estruturação semântica de tráfego."
-        }
-      },
-      "la-pool-club": {
-        "id": "12",
-        "slug": "la-pool-club",
-        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
-        "demoUrl": "https://lapoolclub.co.uk/",
-        "technologies": [
-          "WordPress",
-          "UI/UX Design",
-          "CSS",
-          "Performance"
-        ],
-        "title": "LA Pool Club",
-        "description": {
-          "fullstack": "Solução completa de clube premium com ênfase em usabilidade e performance, refatorando camadas de layout para uma experiência fluida de reserva.",
-          "frontend": "Interface remodelada com estilizações CSS granulares, assegurando um fluxo de conversão responsivo e imersivo para associados.",
-          "backend": "Recuperação profunda da estabilidade do core, otimizando arquiteturas legadas e assegurando renderizações rápidas para fluxos operacionais.",
-          "devops": "Ajustes cirúrgicos de infraestrutura e estabilização de layouts, minimizando gargalos no tempo de carregamento de assets pesados.",
-          "database": "Arquitetura de dados reestruturada aplicando técnicas rigorosas de restauração de banco de dados para garantir a continuidade operacional.",
-          "ai": "Uso de ferramentas de inteligência em design system para alinhar o mapeamento da jornada do usuário visando aumento direto em conversões."
-        }
-      },
-      "brighton-cakes": {
-        "id": "13",
-        "slug": "brighton-cakes",
-        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
-        "demoUrl": "https://brightoncakes.co.uk",
-        "technologies": [
-          "WordPress",
-          "PHP",
-          "CSS",
-          "SEO"
-        ],
-        "title": "Brighton Cakes",
-        "description": {
-          "fullstack": "Projeto personalizado destacando forte otimização de performance e SEO semântico, com design criado sob medida para um mercado premium.",
-          "frontend": "Front-end de alta fidelidade visual (Pixel-Perfect), desenvolvido com CSS responsivo avançado focado na apresentação otimizada de assets.",
-          "backend": "Camada administrativa configurada para segurança estrita de gerenciamento de conteúdo e velocidades de leitura ininterruptas.",
-          "devops": "Estratégias avançadas de CDN e camadas de cache implementadas para garantir a entrega rápida e confiável de mídias pesadas na Edge.",
-          "database": "Esquema otimizado para consultas complexas instantâneas, focado na entrega rápida de dados não estruturados de catálogos.",
-          "ai": "Utilizou IA para gerar e estruturar ativos de conteúdo, alinhando metadados de páginas visando métricas globais de engajamento."
-        }
+          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo via Server-Side Rendering (SSR) de forma global.",
+          "frontend": "Interface moderna e responsiva utilizando templates Blade e Tailwind CSS, otimizada para leitura e descoberta de conteúdo.",
+          "backend": "Arquitetura MVC robusta conectando APIs RSS externas e gerenciando papéis/permissões de usuários via Laravel Breeze.",
+          "devops": "Deploy contínuo no Azure App Service com pipelines de testes automatizados utilizando o framework PEST.",
+          "database": "Modelagem relacional em MySQL otimizada para consultas pesadas em notícias categorizadas, comentários e perfis de usuários.",
+          "ai": "Curadoria algorítmica de feeds com potencial integração de LLMs para checagem de fatos e verificação de conteúdo automatizada."
+        },
+        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
       }
     }
   },
