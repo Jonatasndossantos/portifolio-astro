@@ -169,16 +169,8 @@
         }
       },
       "gov-docs-ai": {
-        "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade.",
-          "frontend": "Interface web moderna e responsiva construída com React e Inertia.js, focada na experiência do usuário para gestão de documentos.",
-          "backend": "Backend robusto em Laravel gerenciando filas de processamento, geração de templates Word e integração com a API da OpenAI.",
-          "devops": "Monitoramento com Laravel Telescope e deploy automatizado no Google Cloud Platform.",
-          "database": "Gestão segura de dados institucionais e documentos gerados, com controle de acesso e versionamento.",
-          "ai": "Integração avançada com GPT-4 para geração contextual de 5 tipos de documentos legais e técnicos."
-        },
-        "title": "Public Docs AI",
         "id": "7",
+        "title": "Public Docs AI",
         "slug": "gov-docs-ai",
         "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
         "technologies": [
@@ -186,50 +178,53 @@
           "Laravel",
           "OpenAI",
           "GCP"
-        ]
+        ],
+        "description": {
+          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade.",
+          "frontend": "Interface reativa e responsiva construída com React 19 e Inertia.js, focada em alta performance de renderização.",
+          "backend": "Arquitetura assíncrona em Laravel gerenciando filas e integração direta via Function Calling com OpenAI.",
+          "devops": "Monitoramento em tempo real com Laravel Telescope e implantação automatizada (CI/CD) em infraestrutura GCP.",
+          "database": "Modelagem relacional para isolamento seguro de dados governamentais e histórico de documentos gerados.",
+          "ai": "Implementação de OpenAI Assistants API com restrição de output estrita via Structured Outputs (JSON Schema) eliminando alucinações técnicas."
+        }
       },
       "espresso-d-amore": {
-        "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local.",
-          "frontend": "Construção de duas interfaces distintas: um dashboard de administração rico em dados com React/Inertia e uma experiência de pedido mobile fluida usando Expo.",
-          "backend": "Arquitetura híbrida de backend utilizando Laravel 12 para lógica de negócios central e Supabase para dados de clientes e autenticação em tempo real.",
-          "devops": "Gerenciamento de pipelines de build modernos para web apps baseados em Vite e geração de APK mobile, garantindo atualizações sem atrito em todas as plataformas.",
-          "database": "Implementação de estratégia de banco de dados split-stack: MySQL para relacionamentos ERP complexos e PostgreSQL (Supabase) para consultas de alta velocidade dos clientes.",
-          "ai": "Integração do OpenAI para automatizar a gestão de estoque, prevendo escassez e gerando pedidos de compra de fornecedores automaticamente."
-        },
-        "title": "Cafeteria Damore",
         "id": "11",
+        "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
-        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800",
         "technologies": [
           "Laravel 12",
-          "Inertia.js",
           "Expo",
-          "Supabase",
-          "OpenAI"
+          "Supabase"
         ],
-        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
+        "description": {
+          "fullstack": "Plataforma End-to-End combinando e-commerce e sistema de gestão (ERP), projetada com UX focada em conversão e controle logístico operacional.",
+          "frontend": "Dashboard administrativo reativo com React/Inertia e aplicativo móvel corporativo nativo construído com Expo (React Native).",
+          "backend": "Arquitetura híbrida utilizando Laravel 12 para core logic de negócios e Supabase para sincronização stateful em tempo real.",
+          "devops": "Esteira CI/CD configurada para build automatizado de artefatos Web e geração de builds móveis (APK/AAB).",
+          "database": "Design de arquitetura de dados particionada: MySQL otimizado para o ERP e PostgreSQL (Supabase) para client-facing apps.",
+          "ai": "R&D integrando capacidades preditivas (OpenAI) para forecast de estoque e automatização de reposição logística."
+        }
       },
       "jynsge-news": {
-        "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido.",
-          "frontend": "Interface moderna e responsiva utilizando templates Blade e Tailwind CSS, otimizada para leitura e descoberta de conteúdo.",
-          "backend": "Arquitetura MVC robusta conectando APIs RSS externas e gerenciando papéis/permissões de usuários via Laravel Breeze.",
-          "devops": "Deploy no Azure App Service com pipelines de testes automatizados utilizando o framework PEST.",
-          "database": "Esquema relacional MySQL projetado para lidar eficientemente com notícias categorizadas, comentários e perfis de usuários.",
-          "ai": "Curadoria algorítmica de feeds e potencial integração para checagem de fatos automatizada e verificação de conteúdo."
-        },
-        "title": "JYNSGE News",
         "id": "9",
+        "title": "JYNSGE News",
         "slug": "jynsge-news",
         "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
         "technologies": [
           "Laravel",
           "Tailwind",
-          "MySQL",
           "Azure"
         ],
-        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
+        "description": {
+          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido.",
+          "frontend": "Interface de ultra-baixa latência implementada via Blade templates (SSR) e Tailwind CSS v4 para styling utility-first.",
+          "backend": "Design arquitetural MVC robusto responsável pela agregação e sanitização em tempo real de feeds RSS externos.",
+          "devops": "Deploy estruturado em instâncias Azure App Service acoplado a pipelines de integração contínua rigorosos.",
+          "database": "Modelagem relacional avançada no MySQL 8 garantindo consultas de alta performance para conteúdo indexado.",
+          "ai": "Implementação de curadoria algorítmica para recomendação de conteúdo inteligente baseada em engine semântica."
+        }
       }
     }
   },
