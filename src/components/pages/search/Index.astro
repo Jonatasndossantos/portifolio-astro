@@ -148,14 +148,17 @@ const searchItems = [
                         type="text"
                         id="global-search-input"
                         placeholder={__("Search...")}
-                        class="w-full bg-transparent border-none outline-none py-4 px-3 text-base-content text-lg placeholder-base-content/30"
+                        class="w-full bg-transparent border-none outline-none py-4 pl-3 pr-[70px] text-base-content text-lg placeholder-base-content/30"
                         autocomplete="off"
                         autofocus
                     />
+                    <div class="absolute right-3 flex items-center gap-2 pointer-events-none">
+                        <kbd id="search-kbd-hint" class="kbd kbd-sm opacity-50 hidden sm:inline-flex">/</kbd>
+                    </div>
                     <button
                         type="button"
                         id="search-clear-btn"
-                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden"
+                        class="btn btn-ghost btn-sm btn-circle mr-3 hidden absolute right-0"
                         aria-label={__("Clear")}
                     >
                         <Icon name="lucide:x" class="size-5" />
@@ -225,6 +228,7 @@ const searchItems = [
     // Retrieve DOM elements
     const searchInput = document.getElementById("global-search-input");
     const clearBtn = document.getElementById("search-clear-btn");
+    const kbdHint = document.getElementById("search-kbd-hint");
     const resultsGrid = document.getElementById("search-results-grid");
     const noResultsBanner = document.getElementById("no-results-banner");
     const tabsContainer = document.getElementById("search-tabs");
@@ -381,8 +385,12 @@ const searchItems = [
 
         if (value.trim()) {
             clearBtn.classList.remove("hidden");
+            kbdHint?.classList.remove("sm:inline-flex");
+            kbdHint?.classList.add("hidden");
         } else {
             clearBtn.classList.add("hidden");
+            kbdHint?.classList.remove("hidden");
+            kbdHint?.classList.add("sm:inline-flex");
         }
 
         // Sync query parameter in URL address bar
@@ -402,6 +410,8 @@ const searchItems = [
         searchInput.value = "";
         currentQuery = "";
         clearBtn.classList.add("hidden");
+        kbdHint?.classList.remove("hidden");
+        kbdHint?.classList.add("sm:inline-flex");
 
         const url = new URL(window.location);
         url.searchParams.delete("q");
@@ -409,6 +419,17 @@ const searchItems = [
 
         renderResults();
         searchInput.focus();
+    });
+
+    // Keyboard shortcut listener to focus search input
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "/") {
+            const activeTag = document.activeElement?.tagName;
+            if (activeTag !== "INPUT" && activeTag !== "TEXTAREA" && activeTag !== "SELECT") {
+                e.preventDefault();
+                searchInput?.focus();
+            }
+        }
     });
 
     // Tabs filtering click listener

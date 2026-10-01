@@ -104,6 +104,22 @@ const __ = await useTranslator(lang);
 		/>
 		<link rel="manifest" href="/site.webmanifest" />
 
+		<!-- Global Search Shortcut -->
+		<script is:inline>
+			document.addEventListener("keydown", (e) => {
+				if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA" && document.activeElement?.tagName !== "SELECT") {
+					// Only navigate if we're not already on the search page
+					if (!window.location.pathname.includes("/search")) {
+						e.preventDefault();
+						const pathParts = window.location.pathname.replace(/^\/|\/$/g, "").split("/");
+						const supportedLocales = ["pt", "fr", "es", "zh", "ja"];
+						const langPrefix = (pathParts.length > 0 && supportedLocales.includes(pathParts[0])) ? `/${pathParts[0]}` : "";
+						window.location.href = `${langPrefix}/search`;
+					}
+				}
+			});
+		</script>
+
 		<!-- Theme Initialization -->
 		<script is:inline>
 			(function () {
