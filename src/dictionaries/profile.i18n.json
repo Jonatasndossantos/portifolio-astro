@@ -133,67 +133,67 @@
             "en-GB": "Software Architect & Senior Full-Stack Engineer."
         },
         "exploreWork": {
-            "en": "Explore Work",
-            "pt": "Explorar Trabalho",
+            "en": "Explore End-to-End Architectures",
+            "pt": "Explorar Arquiteturas End-to-End",
             "fr": "Explorer le travail",
             "es": "Explorar Trabajo",
             "zh": "探索工作",
             "ja": "仕事を見る",
-            "en-GB": "Explore Work"
+            "en-GB": "Explore End-to-End Architectures"
         },
         "universeActive": {
-            "en": "Universe Active",
-            "pt": "Universo Ativo",
+            "en": "High-Performance Runtime Active",
+            "pt": "Ambiente de Runtime de Alta Performance Ativo",
             "fr": "Univers Actif",
             "es": "Universo Activo",
             "zh": "宇宙活跃",
             "ja": "ユニバースアクティブ",
-            "en-GB": "Universe Active"
+            "en-GB": "High-Performance Runtime Active"
         },
         "providingSolutionsFor": {
-            "en": "Providing Solutions for",
-            "pt": "Criando Soluções para",
+            "en": "Architecting resilient solutions for",
+            "pt": "Arquitetando soluções resilientes para",
             "fr": "Fournissant des Solutions pour",
             "es": "Creando Soluciones para",
             "zh": "为以下对象提供解决方案",
             "ja": "ソリューションの提供対象",
-            "en-GB": "Providing Solutions for"
+            "en-GB": "Architecting resilient solutions for"
         },
         "designers": {
-            "en": "Designers",
-            "pt": "Designers",
+            "en": "UI/UX Engineers",
+            "pt": "Engenheiros de UI/UX",
             "fr": "Designers",
             "es": "Diseñadores",
             "zh": "设计师",
             "ja": "デザイナー",
-            "en-GB": "Designers"
+            "en-GB": "UI/UX Engineers"
         },
         "developers": {
-            "en": "Developers",
-            "pt": "Desenvolvedores",
+            "en": "Product Engineering Teams",
+            "pt": "Times de Engenharia de Produto",
             "fr": "Développeurs",
             "es": "Desarrolladores",
             "zh": "开发者",
             "ja": "開発者",
-            "en-GB": "Developers"
+            "en-GB": "Product Engineering Teams"
         },
         "managers": {
-            "en": "Managers",
-            "pt": "Gestores",
+            "en": "CTOs & Tech Leads",
+            "pt": "CTOs e Tech Leads",
             "fr": "Managers",
             "es": "Gerentes",
             "zh": "管理者",
             "ja": "マネージャー",
-            "en-GB": "Managers"
+            "en-GB": "CTOs & Tech Leads"
         },
         "scroll": {
-            "en": "SCROLL TO NAVIGATE",
-            "pt": "ROLE PARA NAVEGAR",
+            "en": "SCROLL TO INITIALIZE RUNTIME",
+            "pt": "ROLE PARA INICIALIZAR O RUNTIME",
             "fr": "DÉFILEZ POUR NAVIGUER",
             "es": "DESPLÁCESE PARA NAVEGAR",
             "zh": "滚动导航",
             "ja": "スクロールしてナビゲート",
-            "en-GB": "SCROLL TO NAVIGATE"
+            "en-GB": "SCROLL TO INITIALIZE RUNTIME"
         }
     }
 }
