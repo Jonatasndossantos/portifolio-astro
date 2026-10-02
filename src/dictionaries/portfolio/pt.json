@@ -150,12 +150,12 @@
         ],
         "title": "Alura Plus",
         "description": {
-          "fullstack": "Aplicação end-to-end com foco exclusivo em engenharia visual de alta precisão.",
-          "frontend": "Implementação avançada de layouts responsivos com CSS Grid e Flexbox, priorizando acessibilidade (A11y) e semântica HTML5 para máxima fidelidade ao design.",
-          "backend": "Backend configurado para fornecimento rápido de assets estáticos otimizados.",
-          "devops": "Continuous Deployment orquestrado com GitHub Actions para publicações instantâneas em infraestrutura serverless.",
-          "database": "Gestão de estado estático sem dependência de banco de dados ativo, focado em performance absoluta de carregamento.",
-          "ai": "Pipeline isolado livre de integrações LLM ativas no ambiente de produção."
+          "fullstack": "Aplicação front-end end-to-end pixel-perfect, totalmente focada em engenharia visual de alta precisão e adesão estrita aos padrões web modernos.",
+          "frontend": "Implementação arquitetural avançada de layouts responsivos aproveitando CSS Grid e Flexbox nativos, priorizando agressivamente acessibilidade WCAG (A11y) e semântica HTML5 pura para fidelidade absoluta ao design.",
+          "backend": "Arquitetura estática configurada explicitamente para a entrega ultrarrápida de assets otimizados, eliminando completamente a sobrecarga de processamento backend.",
+          "devops": "Pipeline de Continuous Deployment com zero-downtime orquestrado perfeitamente com GitHub Actions para publicação instantânea e automatizada em infraestrutura serverless na edge.",
+          "database": "Arquitetura puramente stateless utilizando gerenciamento de estado estático em memória, evitando intencionalmente dependências de banco de dados ativo para atingir performance de carregamento absoluta abaixo de um segundo.",
+          "ai": "Pipeline totalmente isolado e intencionalmente livre de integrações LLM ativas, demonstrando capacidade de engenharia pura sem dependências de inteligência externa."
         }
       },
       "adventure-text-game": {
@@ -217,8 +217,7 @@
           "devops": "Gerenciamento de pipelines de build modernos para web apps baseados em Vite e geração de APK mobile, garantindo atualizações sem atrito em todas as plataformas.",
           "database": "Implementação de estratégia de banco de dados split-stack: MySQL para relacionamentos ERP complexos e PostgreSQL (Supabase) para consultas de alta velocidade dos clientes.",
           "ai": "Integração via OpenAI para automatizar a gestão de estoque, prevendo escassez e gerando pedidos de compra de fornecedores automaticamente."
-        },
-        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
+        }
       },
       "jynsge-news": {
         "id": "9",
@@ -240,6 +239,90 @@
           "ai": "Curadoria algorítmica de feeds com potencial integração de LLMs para checagem de fatos e verificação de conteúdo automatizada."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
+      },
+      "vitanexus": {
+        "id": "8",
+        "slug": "vitanexus",
+        "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
+        "technologies": [
+          "Laravel 10",
+          "PHP 8",
+          "SQLite",
+          "Bootstrap 5"
+        ],
+        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
+        "title": "VitaNexus",
+        "description": {
+          "fullstack": "Aplicação abrangente de monitoramento de saúde utilizando Laravel para orquestrar cálculos complexos com retenção de estado, integrando layouts responsivos para rastreamento de dados biométricos críticos em tempo real.",
+          "frontend": "Interface acessível e de alta fidelidade projetada com Bootstrap 5, priorizando renderização rápida e entrada de dados sem atrito para estatísticas vitais em qualquer resolução de tela.",
+          "backend": "Arquitetura backend robusta alimentada pelo Laravel, gerenciando cálculos biométricos complexos e garantindo autenticação segura de usuários via Laravel Breeze com rígidos controles de acesso.",
+          "devops": "Implantação de infraestrutura simplificada baseada em um motor SQLite leve, otimizada para ambientes de homologação ágeis e provisionamento rápido sem a sobrecarga de bancos de dados pesados.",
+          "database": "Esquema relacional SQLite eficientemente normalizado, projetado expressamente para persistir métricas históricas de saúde e preservar a privacidade dos dados com máxima velocidade de consulta.",
+          "ai": "Motor algorítmico de processamento de dados projetado para calcular autonomamente necessidades calóricas complexas e metas diárias de hidratação derivadas do perfil contínuo do usuário."
+        }
+      },
+      "zk-business-support": {
+        "id": "10",
+        "slug": "zk-business-support",
+        "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://o8u.64c.myftpupload.com/",
+        "technologies": [
+          "WordPress",
+          "Custom CSS",
+          "PHP",
+          "SEO"
+        ],
+        "title": "ZK Business Support",
+        "description": {
+          "fullstack": "Solução CMS sob medida de alta performance projetada para máxima visibilidade em SEO, aproveitando camadas agressivas de cache e uma arquitetura WordPress otimizada.",
+          "frontend": "Identidade visual pixel-perfect implementada com CSS customizado, garantindo um design responsivo de alta fidelidade que reflete a marca corporativa sem depender de construtores de página inflados.",
+          "backend": "Arquitetura core do WordPress profundamente customizada para gerenciar eficientemente portfólios complexos de serviços, custom post types dinâmicos e entrega de conteúdo localizado.",
+          "devops": "Configuração avançada de infraestrutura implementando estratégias agressivas de cache e minificação de assets para atingir métricas de elite no Google PageSpeed Insights e latência ultra-baixa.",
+          "database": "Consultas de banco de dados fortemente otimizadas para custom post types e metadados, eliminando gargalos de performance N+1 e garantindo renderização instantânea de conteúdo.",
+          "ai": "Integração de ferramentas de SEO semântico orientadas por IA para analisar autonomamente lacunas de palavras-chave e estruturar conteúdo corporativo visando domínio nas buscas locais."
+        }
+      },
+      "la-pool-club": {
+        "id": "12",
+        "slug": "la-pool-club",
+        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://lapoolclub.co.uk/",
+        "technologies": [
+          "WordPress",
+          "UI/UX Design",
+          "CSS",
+          "Performance"
+        ],
+        "title": "LA Pool Club",
+        "description": {
+          "fullstack": "Presença digital ponta-a-ponta abrangente para um clube premium, focada em estabilização profunda de layout, modernização de UX e recuperação avançada de banco de dados no ecossistema WordPress.",
+          "frontend": "Reestruturação completa da interface do usuário utilizando CSS sob medida, entregando uma experiência de reserva imersiva, responsiva e direcionada ao público premium.",
+          "backend": "Otimização rigorosa do backend em WordPress, assegurando estabilidade estrutural e recuperando com sucesso dados críticos perdidos através de técnicas avançadas de restauração.",
+          "devops": "Ajustes estratégicos de performance focados em Core Web Vitals, implementando técnicas de estabilização de layout para garantir carregamento ultra-rápido e retenção de usuários.",
+          "database": "Recuperação complexa, sanitização e reestruturação de dados críticos de reservas e informações de membros, garantindo a continuidade do negócio e integridade dos dados sem tempo de inatividade.",
+          "ai": "Aplicação de heurísticas de design inteligente e padrões de UX baseados em dados para mapear e elevar a jornada do usuário, maximizando agressivamente as taxas de conversão."
+        }
+      },
+      "brighton-cakes": {
+        "id": "13",
+        "slug": "brighton-cakes",
+        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://brightoncakes.co.uk",
+        "technologies": [
+          "WordPress",
+          "PHP",
+          "CSS",
+          "SEO"
+        ],
+        "title": "Brighton Cakes",
+        "description": {
+          "fullstack": "Plataforma web CMS sob medida projetada do zero com um tema customizado, focando estritamente em otimização de assets e uma experiência de usuário focada em alta conversão.",
+          "frontend": "Frontend responsivo, visualmente cativante e codificado manualmente com semântica HTML limpa e CSS customizado para substituir temas de prateleira não otimizados.",
+          "backend": "Backend WordPress enxuto e meticulosamente configurado para impor um gerenciamento de conteúdo seguro e eficiente, garantindo recuperação rápida de dados e estabilidade administrativa.",
+          "devops": "Implementação de estratégias de cache na edge e pipelines agressivos de otimização de imagens, garantindo a entrega confiável e em alta velocidade de páginas pesadas em mídia.",
+          "database": "Refatoração dos esquemas de banco de dados padrão do WordPress e estratégias de indexação para facilitar consultas rápidas e a execução eficiente de custom post types complexos.",
+          "ai": "Utilização de estruturação de conteúdo auxiliada por IA e geração dinâmica de assets para construir landing pages altamente engajadoras e otimizadas para dominar o tráfego orgânico."
+        }
       }
     }
   },
