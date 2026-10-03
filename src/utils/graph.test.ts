@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // Mock astro:content package
 vi.mock("astro:content", () => {
@@ -15,11 +15,13 @@ vi.mock("astro:content", () => {
     };
 });
 
+import { getSafeIcon, getIconUrl } from "./icon-helper";
+
 // Mock icon-helper
 vi.mock("./icon-helper", () => {
     return {
-        getSafeIcon: () => "lucide:cpu",
-        getIconUrl: () => "/icons/cpu.svg"
+        getSafeIcon: vi.fn(() => "lucide:cpu"),
+        getIconUrl: vi.fn(() => "/icons/cpu.svg")
     };
 });
 
@@ -30,6 +32,7 @@ import {
     mapTaxonomyNodes,
     calculateWeights,
     filterFocalGraph,
+    resolveIconUrl,
     type Node,
     type Link
 } from "../pages/graph.json";
@@ -40,6 +43,45 @@ describe("graph endpoint utilities", () => {
             expect(cleanGraphId("pt/my-article.mdx")).toBe("my-article");
             expect(cleanGraphId("en/sub/topic.md")).toBe("sub/topic");
             expect(cleanGraphId("non-localized-file.md")).toBe("non-localized-file");
+        });
+    });
+
+    describe("resolveIconUrl", () => {
+        beforeEach(() => {
+            vi.clearAllMocks();
+        });
+
+        it("should call getSafeIcon with default fallbacks and return getIconUrl result", () => {
+            const data = {};
+            const result = resolveIconUrl(data);
+
+            expect(getSafeIcon).toHaveBeenCalledWith({
+                icon: undefined,
+                id: "",
+                title: "",
+                category: "tool"
+            });
+            expect(getIconUrl).toHaveBeenCalledWith("lucide:cpu");
+            expect(result).toBe("/icons/cpu.svg");
+        });
+
+        it("should call getSafeIcon with provided values", () => {
+            const data = {
+                icon: "custom-icon",
+                id: "test-id",
+                title: "Test Title",
+                category: "language"
+            };
+            const result = resolveIconUrl(data);
+
+            expect(getSafeIcon).toHaveBeenCalledWith({
+                icon: "custom-icon",
+                id: "test-id",
+                title: "Test Title",
+                category: "language"
+            });
+            expect(getIconUrl).toHaveBeenCalledWith("lucide:cpu");
+            expect(result).toBe("/icons/cpu.svg");
         });
     });
 
