@@ -168,11 +168,12 @@ const searchItems = [
             </div>
 
             <!-- Filters/Tabs -->
-            <div class="flex flex-wrap justify-center gap-2 mb-10" id="search-tabs">
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="search-tabs" role="group" aria-label={__("Search Filters")}>
                 <button
                     type="button"
                     data-filter="all"
                     class="btn btn-sm btn-outline rounded-full font-mono text-xs px-4 border-base-content/10 bg-base-200/30 active-tab btn-primary"
+                    aria-pressed="true"
                 >
                     {__("All")}
                 </button>
@@ -180,6 +181,7 @@ const searchItems = [
                     type="button"
                     data-filter="project"
                     class="btn btn-sm btn-outline rounded-full font-mono text-xs px-4 border-base-content/10 bg-base-200/30"
+                    aria-pressed="false"
                 >
                     {__("Projects")}
                 </button>
@@ -187,6 +189,7 @@ const searchItems = [
                     type="button"
                     data-filter="blog"
                     class="btn btn-sm btn-outline rounded-full font-mono text-xs px-4 border-base-content/10 bg-base-200/30"
+                    aria-pressed="false"
                 >
                     {__("Blog")}
                 </button>
@@ -194,6 +197,7 @@ const searchItems = [
                     type="button"
                     data-filter="service"
                     class="btn btn-sm btn-outline rounded-full font-mono text-xs px-4 border-base-content/10 bg-base-200/30"
+                    aria-pressed="false"
                 >
                     {__("Services")}
                 </button>
@@ -201,6 +205,7 @@ const searchItems = [
                     type="button"
                     data-filter="tech"
                     class="btn btn-sm btn-outline rounded-full font-mono text-xs px-4 border-base-content/10 bg-base-200/30"
+                    aria-pressed="false"
                 >
                     {__("Technologies")}
                 </button>
@@ -439,10 +444,12 @@ const searchItems = [
             // Remove active classes
             tabs.forEach(t => {
                 t.classList.remove("btn-primary", "active-tab");
+                t.setAttribute("aria-pressed", "false");
             });
 
             // Set clicked active
             tab.classList.add("btn-primary", "active-tab");
+            tab.setAttribute("aria-pressed", "true");
 
             currentFilter = tab.getAttribute("data-filter") || "all";
             renderResults();

@@ -119,6 +119,7 @@ const themesList = themeKeys.map((key) => ({
                         <button
                             type="button"
                             data-set-theme={theme.name}
+                            aria-pressed="false"
                             class="w-full flex items-center justify-between p-2 rounded-box text-sm font-medium hover:bg-primary/10 hover:text-primary transition-all group/item object-selected"
                         >
                             <div
@@ -155,11 +156,15 @@ const themesList = themeKeys.map((key) => ({
         const activeClasses = ["bg-primary/10", "text-primary"];
 
         // Reset all buttons first to be safe when layout re-renders
-        themeButtons.forEach((b) => b.classList.remove(...activeClasses));
+        themeButtons.forEach((b) => {
+            b.classList.remove(...activeClasses);
+            b.setAttribute("aria-pressed", "false");
+        });
 
         themeButtons.forEach((btn) => {
             if (btn.getAttribute("data-set-theme") === currentTheme) {
                 btn.classList.add(...activeClasses);
+                btn.setAttribute("aria-pressed", "true");
             }
 
             // Prevent double initialization if run multiple times
@@ -172,11 +177,15 @@ const themesList = themeKeys.map((key) => ({
                     document.documentElement.setAttribute("data-theme", theme);
                     localStorage.setItem("theme", theme);
 
-                    themeButtons.forEach((b) => b.classList.remove(...activeClasses));
+                    themeButtons.forEach((b) => {
+                        b.classList.remove(...activeClasses);
+                        b.setAttribute("aria-pressed", "false");
+                    });
                     
                     // Sync up all other buttons pointing to this theme across the UI
                     document.querySelectorAll(`[data-set-theme="${theme}"]`).forEach(b => {
                         b.classList.add(...activeClasses);
+                        b.setAttribute("aria-pressed", "true");
                     });
 
                     // Optional: Close dropdown on select

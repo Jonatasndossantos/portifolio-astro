@@ -84,6 +84,7 @@ const __ = await useTranslator(currentLocale);
                     <a
                         href={getRelativeLocaleUrl(locale, currentPath)}
                         data-locale-link={locale}
+                        aria-current={currentLocale === locale ? "true" : undefined}
                         class:list={[
                             "w-full flex items-center justify-between p-3 rounded-box transition-all group/item",
                             currentLocale === locale 
