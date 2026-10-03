@@ -146,9 +146,9 @@
           "Responsive Design"
         ],
         "description": {
-          "fullstack": "Implementação focada em estruturação semântica e layouts responsivos avançados, aplicando técnicas modernas de CSS Grid e Flexbox com alta fidelidade.",
-          "frontend": "Implementação prática de Flexbox, Grid e boas práticas de estruturação HTML5.",
-          "ai": "Deploy automatizado integrado ao GitHub para visualização pública instantânea."
+          "fullstack": "Implementação focada em estruturação semântica e layouts responsivos avançados, aplicando técnicas modernas de CSS Grid e Flexbox com alta fidelidade ao design system.",
+          "frontend": "Implementação prática de Flexbox, CSS Grid e boas práticas de estruturação semântica HTML5 e acessibilidade (a11y).",
+          "devops": "Deploy automatizado integrado ao GitHub Pages com CI para visualização pública instantânea e versionamento rigoroso."
         }
       },
       "adventure-text-game": {
@@ -162,29 +162,68 @@
           "CSS"
         ],
         "description": {
-          "fullstack": "Motor de narrativa interativa em JS puro, manipulando o DOM em tempo real baseado nas decisões do jogador e ramificando o fluxo da história dinamicamente.",
-          "backend": "Lógica de estados em JS puro que gerencia as escolhas do usuário e ramificações da história.",
-          "frontend": "Interface minimalista e imersiva com mudanças dinâmicas de cenário via DOM manipulation.",
-          "ai": "História ramificada permitindo múltiplas experiências baseadas no perfil de decisão do jogador."
+          "fullstack": "Motor de narrativa interativa em JS puro, manipulando o DOM em tempo real baseado nas decisões do jogador e ramificando o fluxo da história dinamicamente com estado em memória.",
+          "backend": "Lógica de estados complexa em JS Vanilla (Closure/Patterns) gerenciando escolhas do usuário, inventário e ramificações da história.",
+          "frontend": "Interface imersiva com mudanças dinâmicas de cenário, injeção segura via manipulação de DOM e reflows otimizados.",
+          "devops": "Configuração de bundler básico para minificação de assets e deploy em CDN estática."
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800",
+        "technologies": [
+          "OpenAI API",
+          "JSON Schema",
+          "Node.js",
+          "RAG"
+        ],
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade e sem alucinações.",
+          "backend": "Orquestração de chamadas assíncronas em Node.js com controle de concorrência para processamento em batch.",
+          "frontend": "Integração reativa para feedback de geração de documentos em tempo real.",
+          "ai": "Engenharia de prompts avançada com RAG e Function Calling para injeção de contexto proprietário.",
+          "devops": "Pipeline de testes unitários para validação determinística de outputs de IA."
+        }
       },
       "espresso-d-amore": {
+        "id": "8",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=800",
+        "technologies": [
+          "React",
+          "Tailwind CSS",
+          "Supabase",
+          "Stripe"
+        ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local com integração Stripe.",
+          "backend": "Arquitetura Serverless com Supabase (PostgreSQL), gerenciando auth, regras de RLS (Row Level Security) e webhooks transacionais.",
+          "frontend": "Componentização SPA otimizada em React com Zustand para estado global e framer-motion para micro-interações fluidas.",
+          "database": "Modelagem relacional para catálogo, pedidos e gestão de estoque via Supabase.",
+          "devops": "Hospedagem em Vercel com CI/CD contínuo e monitoramento de performance web."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "Prisma",
+          "PostgreSQL"
+        ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com arquitetura flexível para entregar conteúdo no formato Server-Side Rendering (SSR) e Static Site Generation (SSG) rápido.",
+          "backend": "API Routes em Next.js interagindo com PostgreSQL via Prisma ORM, com rotinas de cache (ISR) agressivas.",
+          "frontend": "Core Web Vitals otimizados via SSR, imagens Next-Gen e hidratação seletiva para performance máxima em conexões lentas.",
+          "database": "Esquema relacional em PostgreSQL otimizado para alta taxa de leituras concorrentes.",
+          "devops": "Pipeline CI/CD com checagem de tipos estrita (TypeScript) e deploys edge-cached na Vercel."
+        }
       }
     }
   },

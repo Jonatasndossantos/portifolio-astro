@@ -146,9 +146,9 @@
           "Figma"
         ],
         "description": {
-          "fullstack": "Semantic structuring implementation with advanced responsive layouts, applying modern CSS Grid and Flexbox techniques for true-to-design fidelity.",
-          "frontend": "Practical implementation of Flexbox and Grid layouts optimized for cross-browser compatibility.",
-          "ai": "Automated deployment integrated with GitHub for instant public visualization of the project."
+          "fullstack": "Semantic structuring implementation with advanced responsive layouts, applying modern CSS Grid and Flexbox techniques for true-to-design system fidelity.",
+          "frontend": "Practical implementation of Flexbox, CSS Grid, HTML5 semantic structuring best practices, and accessibility (a11y) standards.",
+          "devops": "Automated deployment integrated with GitHub Pages via CI for instant public visualization and strict versioning."
         }
       },
       "adventure-text-game": {
@@ -162,29 +162,68 @@
           "CSS"
         ],
         "description": {
-          "fullstack": "Pure JS interactive narrative engine, mutating the DOM in real-time based on complex player decisions and branching story states dynamically.",
-          "backend": "Pure JS state management logic handling narrative branching and player choices.",
-          "frontend": "Minimalist, immersive interface with dynamic scene updates through DOM manipulation.",
-          "ai": "Branched storytelling allowing multiple player experiences based on decision-making profiles."
+          "fullstack": "Pure JS interactive narrative engine, mutating the DOM in real-time based on complex player decisions and branching story states dynamically with in-memory state.",
+          "backend": "Complex state logic in Vanilla JS (Closures/Patterns) managing user choices, inventory, and story branching trees.",
+          "frontend": "Immersive interface with dynamic scene updates, secure injection via DOM manipulation, and optimized reflows.",
+          "devops": "Basic bundler configuration for asset minification and static CDN deployment."
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800",
+        "technologies": [
+          "OpenAI API",
+          "JSON Schema",
+          "Node.js",
+          "RAG"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallucination-free structured government contracts dynamically.",
+          "backend": "Orchestration of asynchronous Node.js calls with concurrency control for heavy batch processing.",
+          "frontend": "Reactive integration providing real-time feedback for streaming document generation.",
+          "ai": "Advanced prompt engineering leveraging RAG and Function Calling to inject proprietary context.",
+          "devops": "Unit testing pipeline for deterministic validation of AI outputs and prompt regression testing."
+        }
       },
       "espresso-d-amore": {
+        "id": "8",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=800",
+        "technologies": [
+          "React",
+          "Tailwind CSS",
+          "Supabase",
+          "Stripe"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business with Stripe integration.",
+          "backend": "Serverless architecture with Supabase (PostgreSQL), managing auth, Row Level Security (RLS) rules, and transactional webhooks.",
+          "frontend": "Optimized SPA componentization in React using Zustand for global state and framer-motion for fluid micro-interactions.",
+          "database": "Relational modeling for catalog, orders, and inventory management via Supabase.",
+          "devops": "Vercel hosting with continuous CI/CD and core web performance monitoring."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "Prisma",
+          "PostgreSQL"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered (SSR) and Static Site Generation (SSG) content globally.",
+          "backend": "Next.js API Routes interacting with PostgreSQL via Prisma ORM, utilizing aggressive caching routines (ISR).",
+          "frontend": "Core Web Vitals optimized via SSR, Next-Gen image processing, and selective hydration for maximum performance on slow connections.",
+          "database": "Relational PostgreSQL schema tuned for high concurrent read operations.",
+          "devops": "CI/CD pipeline enforcing strict type checking (TypeScript) and edge-cached deployments on Vercel."
+        }
       }
     }
   },
