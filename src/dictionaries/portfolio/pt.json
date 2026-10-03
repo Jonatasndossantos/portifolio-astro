@@ -60,7 +60,7 @@
     "items": {
       "plataforma-lumen": {
         "id": "1",
-        "title": "Plataforma Lumen",
+        "title": "Lumen Platform",
         "slug": "plataforma-lumen",
         "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
         "technologies": [
@@ -71,7 +71,7 @@
           "OpenAI"
         ],
         "description": {
-          "fullstack": "SaaS Enterprise B2G de alta performance com Laravel Octane, processando fluxos complexos de licitações públicas com estado em memória e zero latência.",
+          "fullstack": "Plataforma B2G SaaS Enterprise de alta performance, impulsionada por Laravel Octane. Fui responsável pela arquitetura do zero, orquestrando fluxos complexos de licitações públicas com estado retido em memória, eliminando a latência nas consultas massivas aos bancos de dados do governo.",
           "backend": "Arquitetura de alta performance com Laravel Octane e FrankenPHP, reduzindo o tempo de boot em requisições pesadas.",
           "frontend": "Componentes dinâmicos com Alpine.js e blocos de conteúdo gerados por IA via JSON Schemas granulares.",
           "ai": "Geração de blocos de conteúdo legal dinâmicos, permitindo regeneração parcial sem perda de dados.",
@@ -90,7 +90,7 @@
           "OpenAI Assistants"
         ],
         "description": {
-          "fullstack": "Assistente virtual avançado impulsionado por IA e RAG nativo, capaz de interagir em tempo real com contextos legais complexos e analisar arquivos proprietários via Vector Search.",
+          "fullstack": "Assistente de IA integrado por Function Calling nativo e pipeline RAG. Forcei o modelo a responder via Strict JSON Schemas restritos e ler bancos de dados SQL em tempo real, mitigando 100% das alucinações para documentação de risco do governo.",
           "backend": "Implementação de RAG nativo via OpenAI Assistants API para indexação precisa de decretos e documentos.",
           "frontend": "Interface real-time com React 19 e Server-Sent Events (SSE) para eliminação de estados de carregamento.",
           "ai": "Uso extensivo de Function Calling (Tools) permitindo que o LLM consulte o banco de dados SQL em tempo real.",
@@ -109,7 +109,7 @@
           "CI/CD"
         ],
         "description": {
-          "fullstack": "Pipeline automatizado que transformou a geração de documentos licitatórios de meses para minutos usando processamento assíncrono e workflows pesados.",
+          "fullstack": "Motor de automação que reduziu semanas de trabalho burocrático de licitações para menos de 5 minutos, gerando contratos estruturados e DFDs. A stack multi-tenant com filas (Queues/Workers) no backend protege os limites da API da OpenAI.",
           "backend": "Backend robusto em Laravel 11 gerenciando filas (Queues & Jobs) para processamento assíncrono.",
           "frontend": "Dashboard administrativo e histórico de arquivos construído com React e Inertia.js.",
           "ai": "Integração via JSON Schemas com OpenAI para garantir outputs estruturados sem alucinações técnicas.",
@@ -128,7 +128,7 @@
           "GovTech"
         ],
         "description": {
-          "fullstack": "Refatoração profunda de um sistema legado governamental, eliminando Race Conditions críticas e estabilizando a arquitetura obsoleta com padrões reativos.",
+          "fullstack": "Auditoria, estabilização e refatoração de um sistema governamental obsoleto sob dívida técnica altíssima. Acessei as matrizes via SSH e atuei mitigando Race Conditions por meio de padrões reativos (RxJS) e orquestração de APIs legadas com n8n.",
           "backend": "Resolução de complexas Race Conditions usando padrões reativos RxJS no módulo de chat.",
           "frontend": "Refatoração de arquivos monolíticos e correção de bugs de responsividade em monitores governamentais antigos.",
           "ai": "Auditoria técnica quantificada que demonstrou a insustentabilidade financeira do stack atual para os stakeholders.",
@@ -176,13 +176,13 @@
       },
       "espresso-d-amore": {
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
+          "fullstack": "Plataforma End-to-End para gestão de storefront. Um ecossistema completo com painel administrativo rico em dados via React (Inertia.js), consumindo APIs com Supabase e Stripe para processamento instantâneo de pagamentos locais."
         },
         "title": "Cafeteria Damore"
       },
       "jynsge-news": {
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
+          "fullstack": "Portal otimizado e focado em velocidade extrema. Estruturação flexível e nativa para garantir SEO e Server-Side Rendering (SSR) eficiente para rápida indexação global do conteúdo em motores de busca."
         },
         "title": "JYNSGE News"
       }
