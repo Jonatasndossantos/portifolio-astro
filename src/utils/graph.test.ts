@@ -28,6 +28,7 @@ import {
     addNode,
     addLink,
     mapTaxonomyNodes,
+    mapProjectNodes,
     calculateWeights,
     filterFocalGraph,
     type Node,
@@ -76,6 +77,62 @@ describe("graph endpoint utilities", () => {
                 icon: "/icons/cpu.svg",
                 hasRoute: true
             });
+        });
+    });
+
+    describe("mapProjectNodes", () => {
+        it("should transform project items into graph nodes and links", () => {
+            const nodes: Node[] = [];
+            const links: Link[] = [];
+            const mockProjects = [
+                {
+                    id: "en/my-project",
+                    data: {
+                        title: "My Project",
+                        relatedTopics: ["docker", { id: "kubernetes" }],
+                        tags: ["typescript"],
+                        relatedServices: [{ id: "consulting" }],
+                        relatedPosts: ["my-post"]
+                    }
+                }
+            ];
+
+            mapProjectNodes(nodes, links, mockProjects);
+
+            expect(nodes).toHaveLength(1);
+            expect(nodes[0]).toEqual({
+                id: "projects/my-project",
+                group: "projects",
+                label: "My Project",
+                icon: "/icons/cpu.svg", // From mock icon-helper
+                hasRoute: true
+            });
+
+            expect(links).toHaveLength(5);
+            expect(links).toContainEqual({ source: "projects/my-project", target: "topics/docker" });
+            expect(links).toContainEqual({ source: "projects/my-project", target: "topics/kubernetes" });
+            expect(links).toContainEqual({ source: "projects/my-project", target: "tags/typescript" });
+            expect(links).toContainEqual({ source: "projects/my-project", target: "services/consulting" });
+            expect(links).toContainEqual({ source: "projects/my-project", target: "blog/my-post" });
+        });
+
+        it("should handle projects with no relations gracefully", () => {
+            const nodes: Node[] = [];
+            const links: Link[] = [];
+            const mockProjects = [
+                {
+                    id: "en/simple-project",
+                    data: {
+                        title: "Simple Project"
+                    }
+                }
+            ];
+
+            mapProjectNodes(nodes, links, mockProjects);
+
+            expect(nodes).toHaveLength(1);
+            expect(nodes[0].id).toBe("projects/simple-project");
+            expect(links).toHaveLength(0);
         });
     });
 
