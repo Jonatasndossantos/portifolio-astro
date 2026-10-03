@@ -30,6 +30,7 @@ import {
     mapTaxonomyNodes,
     calculateWeights,
     filterFocalGraph,
+    ensureDeadLinksExist,
     type Node,
     type Link
 } from "../pages/graph.json";
@@ -108,6 +109,62 @@ describe("graph endpoint utilities", () => {
             expect(result.nodes.map(n => n.id)).toContain("focal");
             expect(result.nodes.map(n => n.id)).toContain("connected");
             expect(result.nodes.map(n => n.id)).not.toContain("isolated");
+        });
+    });
+
+    describe("ensureDeadLinksExist", () => {
+        it("should do nothing if all targets exist", () => {
+            const nodes: Node[] = [
+                { id: "node1", group: "g", label: "Node 1", hasRoute: true },
+                { id: "node2", group: "g", label: "Node 2", hasRoute: true }
+            ];
+            const links: Link[] = [
+                { source: "node1", target: "node2" }
+            ];
+
+            ensureDeadLinksExist(nodes, links);
+
+            expect(nodes).toHaveLength(2);
+        });
+
+        it("should create a fallback node if target is missing (without slashes)", () => {
+            const nodes: Node[] = [
+                { id: "node1", group: "g", label: "Node 1", hasRoute: true }
+            ];
+            const links: Link[] = [
+                { source: "node1", target: "missing-node" }
+            ];
+
+            ensureDeadLinksExist(nodes, links);
+
+            expect(nodes).toHaveLength(2);
+            expect(nodes[1]).toEqual({
+                id: "missing-node",
+                group: "unknown",
+                label: "missing-node",
+                icon: undefined,
+                hasRoute: false
+            });
+        });
+
+        it("should create a fallback node and extract label if target is missing (with slashes)", () => {
+            const nodes: Node[] = [
+                { id: "node1", group: "g", label: "Node 1", hasRoute: true }
+            ];
+            const links: Link[] = [
+                { source: "node1", target: "projects/missing-project" }
+            ];
+
+            ensureDeadLinksExist(nodes, links);
+
+            expect(nodes).toHaveLength(2);
+            expect(nodes[1]).toEqual({
+                id: "projects/missing-project",
+                group: "unknown",
+                label: "missing-project",
+                icon: undefined,
+                hasRoute: false
+            });
         });
     });
 });
