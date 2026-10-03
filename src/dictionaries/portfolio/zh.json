@@ -25,9 +25,19 @@
         "id": "7",
         "title": "Public Docs AI",
         "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800",
+        "technologies": [
+          "Laravel Octane",
+          "OpenAI API",
+          "JSON Schema",
+          "RAG"
+        ],
         "description": {
-          "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
-          "frontend": "使用React和Inertia.js构建的现代响应式Web界面。"
+          "fullstack": "Enterprise AI engine orchestrating the generation of complex government documents. Leverages native RAG and strict JSON Schemas to mitigate hallucinations and reduce weeks of bureaucratic labor to minutes.",
+          "backend": "Advanced integration with the OpenAI Assistant API, heavily utilizing Function Calling to execute real-time relational database queries and stream responses via Server-Sent Events (SSE).",
+          "frontend": "Segmented editing interface fragmented into structured Markdown blocks, optimizing token overhead and enabling granular content regeneration without a full page reload.",
+          "ai": "Prompt engineering anchored in rigid system constraints and mandatory JSON Mode, ensuring zero technical hallucinations during the formulation of critical legal contracts (ETP, DFD).",
+          "devops": "Strict CI/CD pipeline focused on frictionless deployment of the AI engine, combined with intensive background Worker queue monitoring to prevent deadlocks under high government concurrency."
         }
       },
       "vitanexus": {
@@ -42,8 +52,19 @@
         "id": "9",
         "title": "JYNSGE News",
         "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+        "technologies": [
+          "Next.js",
+          "React",
+          "SSR",
+          "Edge Computing"
+        ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally."
+          "fullstack": "News portal optimized for global scale, designed with hybrid rendering capabilities to deliver content in milliseconds and dominate technical SEO and Core Web Vitals.",
+          "backend": "Architecture driven by low-latency APIs and a multi-layered caching strategy, ensuring immediate data delivery under intense read-heavy traffic.",
+          "frontend": "Aggressive technical implementation of Server-Side Rendering (SSR) and Static Site Generation (SSG), eliminating Cumulative Layout Shift (CLS) for a blazing-fast user experience.",
+          "ai": "Automated metadata enrichment engine focused on organic search rankings, guaranteeing precise distribution of journalistic content across search engines.",
+          "devops": "Deployment topology geared towards Edge Computing, providing absolute fault tolerance and elastic scalability tailored for viral traffic surges."
         }
       },
       "zk-business-support": {
@@ -55,11 +76,22 @@
         }
       },
       "espresso-d-amore": {
-        "id": "11",
+        "id": "8",
         "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800",
+        "technologies": [
+          "React",
+          "Supabase",
+          "Stripe",
+          "Tailwind CSS"
+        ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business."
+          "fullstack": "End-to-End web architecture for digital storefronts and delivery management. A high-availability solution engineered for resilient operational control and scalable payment conversions.",
+          "backend": "High-performance serverless integration with Supabase for robust relational data modeling and Stripe webhook orchestration within a secure, stateful transaction flow.",
+          "frontend": "Reactive SPA interface built with deep accessibility validation (Lighthouse/Axe-core) and a dynamic design system, supporting fluid micro-interactions across the catalog without performance penalties.",
+          "ai": "Strategic utilization of generative tooling for conversion copy enrichment and rapid database schema prototyping, drastically reducing the overall Time-to-Market.",
+          "devops": "CI/CD automation shielding the production environment from unstable commits, guaranteeing maximum uptime during intense local order spikes."
         }
       },
       "la-pool-club": {

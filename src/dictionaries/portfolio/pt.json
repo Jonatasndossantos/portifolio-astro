@@ -169,22 +169,61 @@
         }
       },
       "gov-docs-ai": {
+        "id": "7",
+        "title": "Public Docs AI",
+        "slug": "gov-docs-ai",
+        "imageUrl": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800",
+        "technologies": [
+          "Laravel Octane",
+          "OpenAI API",
+          "JSON Schema",
+          "RAG"
+        ],
         "description": {
-          "fullstack": "Motor de inteligência artificial autônomo baseado em JSON Schemas rígidos para geração de contratos governamentais estruturados de altíssima complexidade."
-        },
-        "title": "Public Docs AI"
+          "fullstack": "Motor corporativo de IA que orquestra a geração de documentos governamentais complexos. Aplicação de RAG nativo e JSON Schemas estritos para mitigar alucinações e reduzir semanas de trabalho burocrático para minutos.",
+          "backend": "Integração avançada com OpenAI Assistant API, utilizando Function Calling para execução de consultas no banco de dados relacional em tempo real e streaming de dados via Server-Sent Events (SSE).",
+          "frontend": "Interface de edição segmentada em blocos Markdown estruturados, otimizando o consumo de tokens e viabilizando a regeneração granular de conteúdo sem recarregar toda a interface.",
+          "ai": "Engenharia de prompts com restrições rígidas de sistema e modo JSON obrigatório, assegurando zero alucinações técnicas na formulação de contratos legais (ETP, DFD).",
+          "devops": "Pipeline de CI/CD rigoroso focado no deploy sem fricção do motor de IA, além de monitoramento intensivo de filas de jobs (Workers) para evitar deadlocks sob alta concorrência governamental."
+        }
       },
       "espresso-d-amore": {
+        "id": "8",
+        "title": "Cafeteria Damore",
+        "slug": "espresso-d-amore",
+        "imageUrl": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800",
+        "technologies": [
+          "React",
+          "Supabase",
+          "Stripe",
+          "Tailwind CSS"
+        ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End para gestão e vitrine digital, focada em UX responsiva e controle operacional robusto para expansão de delivery local."
-        },
-        "title": "Cafeteria Damore"
+          "fullstack": "Arquitetura Web End-to-End para vitrine digital e gestão de delivery. Solução de alta disponibilidade desenhada para controle operacional blindado e conversão de pagamentos escalável.",
+          "backend": "Integração serverless de alta performance com Supabase para modelagem de dados relacional e orquestração de webhooks da Stripe em um fluxo de transações stateful.",
+          "frontend": "Interface SPA reativa, construída com validação profunda de acessibilidade (Lighthouse/Axe-core) e design system dinâmico, suportando micro-interações no catálogo sem perda de performance.",
+          "ai": "Utilização estratégica de ferramentas generativas para enriquecimento de copy de conversão e prototipagem do esquema de banco de dados, reduzindo drasticamente o Time-to-Market.",
+          "devops": "Automação de CI/CD através de repositório centralizado, blindando a branch de produção contra commits instáveis e garantindo uptime máximo durante picos de pedidos locais."
+        }
       },
       "jynsge-news": {
+        "id": "9",
+        "title": "JYNSGE News",
+        "slug": "jynsge-news",
+        "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+        "technologies": [
+          "Next.js",
+          "React",
+          "SSR",
+          "Edge Computing"
+        ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo no formato Server-Side Rendering rápido."
-        },
-        "title": "JYNSGE News"
+          "fullstack": "Portal de notícias otimizado para escala global, projetado com renderização híbrida para entregar conteúdo em milissegundos e dominar métricas de SEO e Core Web Vitals.",
+          "backend": "Arquitetura baseada em APIs de baixa latência e cache em camadas, assegurando a entrega imediata de dados sob estresse intenso de tráfego de leitura.",
+          "frontend": "Implementação técnica agressiva de Server-Side Rendering (SSR) e Static Site Generation (SSG), suprimindo Cumulative Layout Shift (CLS) e proporcionando UX ultrarrápida.",
+          "ai": "Enriquecimento automatizado de metadados focados em ranqueamento orgânico, garantindo distribuição precisa do conteúdo jornalístico nos motores de busca.",
+          "devops": "Topologia de implantação orientada à Edge Computing (infraestrutura de borda), conferindo tolerância a falhas absoluta e escalabilidade elástica em cenários de tráfego viral."
+        }
       }
     }
   },
