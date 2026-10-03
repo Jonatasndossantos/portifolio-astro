@@ -198,9 +198,12 @@ const __ = await useTranslator(lang);
                     id="submit-button"
                     type="submit"
                     class="btn btn-primary w-full tracking-widest uppercase group"
+                    aria-live="polite"
+                    aria-busy="false"
                 >
+                    <span id="submit-spinner" class="loading loading-spinner hidden" aria-hidden="true"></span>
                     <span id="submit-text">{__("Send Message")}</span>
-                    <Icon name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    <Icon id="submit-icon" name="lucide:send" class="size-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </button>
             </form>
         </div>
@@ -210,7 +213,7 @@ const __ = await useTranslator(lang);
 <script>
     // Handles form submission via Vanilla JS to avoid React Hydration.
     // Encapsulate inside an event listener to support Astro View Transitions if enabled.
-    document.addEventListener("astro:page-load", () => {
+    const initContactForm = () => {
         const form = document.getElementById("contact-form") as HTMLFormElement;
         const successOverlay = document.getElementById("form-success");
         const errorAlert = document.getElementById("form-error");
@@ -218,6 +221,8 @@ const __ = await useTranslator(lang);
             "submit-button",
         ) as HTMLButtonElement;
         const submitText = document.getElementById("submit-text");
+        const submitIcon = document.getElementById("submit-icon");
+        const submitSpinner = document.getElementById("submit-spinner");
         const resetBtn = document.getElementById("btn-reset-form");
 
         if (!form) return;
@@ -227,6 +232,11 @@ const __ = await useTranslator(lang);
 
             // Disable button during flight
             submitBtn.disabled = true;
+            submitBtn.setAttribute("aria-busy", "true");
+
+            if (submitIcon) submitIcon.classList.add("hidden");
+            if (submitSpinner) submitSpinner.classList.remove("hidden");
+
             const originalText = submitText!.innerText;
             const sendingText = form.getAttribute("data-sending-text") || "SENDING...";
             submitText!.innerText = sendingText;
@@ -258,7 +268,11 @@ const __ = await useTranslator(lang);
                 errorAlert!.classList.add("flex");
             } finally {
                 submitBtn.disabled = false;
+                submitBtn.setAttribute("aria-busy", "false");
                 submitText!.innerText = originalText;
+
+                if (submitIcon) submitIcon.classList.remove("hidden");
+                if (submitSpinner) submitSpinner.classList.add("hidden");
             }
         });
 
@@ -267,5 +281,8 @@ const __ = await useTranslator(lang);
             successOverlay!.classList.add("hidden");
             successOverlay!.classList.remove("flex");
         });
-    });
+    };
+
+    // Run on view transitions and initial load
+    document.addEventListener("astro:page-load", initContactForm);
 </script>
