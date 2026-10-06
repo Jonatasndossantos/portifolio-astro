@@ -150,12 +150,12 @@
         ],
         "title": "Alura Plus",
         "description": {
-          "fullstack": "Aplicação end-to-end com foco exclusivo em engenharia visual de alta precisão.",
-          "frontend": "Implementação avançada de layouts responsivos com CSS Grid e Flexbox, priorizando acessibilidade (A11y) e semântica HTML5 para máxima fidelidade ao design.",
-          "backend": "Backend configurado para fornecimento rápido de assets estáticos otimizados.",
-          "devops": "Continuous Deployment orquestrado com GitHub Actions para publicações instantâneas em infraestrutura serverless.",
-          "database": "Gestão de estado estático sem dependência de banco de dados ativo, focado em performance absoluta de carregamento.",
-          "ai": "Pipeline isolado livre de integrações LLM ativas no ambiente de produção."
+          "fullstack": "Aplicação web end-to-end estritamente focada em renderização de layout de alta precisão e arquitetura de engenharia visual.",
+          "frontend": "Implementação avançada de UI responsiva utilizando CSS Grid e Flexbox, aderindo rigorosamente aos padrões A11y e semântica HTML5 para fidelidade pixel-perfect.",
+          "backend": "Backend de alta performance configurado para resolução e entrega imediata de payloads estáticos.",
+          "devops": "Pipeline de Continuous Deployment orquestrado via GitHub Actions garantindo publicações sem downtime em infraestrutura edge serverless.",
+          "database": "Arquitetura front-end stateless livre de sobrecarga de banco de dados relacional, maximizando a performance absoluta de carregamento.",
+          "ai": "Ambiente de produção operando de forma totalmente independente de integrações ativas com LLMs."
         }
       },
       "adventure-text-game": {
@@ -169,12 +169,12 @@
         ],
         "title": "Adventure Text Game",
         "description": {
-          "fullstack": "Motor de narrativa interativa em Vanilla JS, orquestrando manipulações complexas de DOM em tempo real e gerenciamento de estado complexo baseado em decisões mutáveis.",
-          "frontend": "Interface minimalista e imersiva construída sem frameworks, focada em transições de estado ultra-rápidas e otimização de repaint/reflow.",
-          "backend": "Lógica de estados em JS puro que gerencia as escolhas do usuário e ramificações da história.",
-          "devops": "Hospedagem estática Serverless focada em tempo de disponibilidade (Uptime) de 99.9% e otimização agresiva de cache de assets na edge.",
-          "database": "Gestão de estado imutável puramente em memória, com persistência local estratégica, dispensando infraestrutura pesada de SGBDs relacionais para maximizar velocidade.",
-          "ai": "História ramificada permitindo múltiplas experiências baseadas no perfil de decisão do jogador."
+          "fullstack": "Motor de narrativa interativa totalmente arquitetado em Vanilla JS, gerenciando manipulações complexas de DOM e ramificações lógicas sem o overhead de frameworks modernos.",
+          "frontend": "Interface imersiva e livre de dependências, projetada para transições de estado ultrarrápidas e otimização agressiva de repaint/reflow.",
+          "backend": "Máquina de estados resiliente em JS orquestrando dinamicamente árvores de decisão mutáveis em tempo real.",
+          "devops": "Hospedagem serverless na edge meticulosamente configurada para 99.9% de uptime e cache agressivo de assets leves.",
+          "database": "Gerenciamento de estado estratégico em memória acoplado à persistência local, contornando a latência de RDBMS tradicionais para resolução narrativa instantânea.",
+          "ai": "Lógica complexa de storytelling ramificado suportando experiências dinâmicas multi-caminho via perfis de decisão algorítmicos."
         }
       },
       "gov-docs-ai": {
@@ -211,12 +211,12 @@
           "OpenAI"
         ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End focada em UX responsiva, integração fluída de cardápio e controle operacional robusto para expansão de delivery local.",
-          "frontend": "Construção de duas interfaces distintas: um dashboard de administração rico em dados com React/Inertia e uma experiência de pedido mobile fluida usando Expo.",
-          "backend": "Arquitetura híbrida de backend utilizando Laravel 12 para lógica de negócios central e Supabase para dados de clientes e autenticação em tempo real.",
-          "devops": "Gerenciamento de pipelines de build modernos para web apps baseados em Vite e geração de APK mobile, garantindo atualizações sem atrito em todas as plataformas.",
-          "database": "Implementação de estratégia de banco de dados split-stack: MySQL para relacionamentos ERP complexos e PostgreSQL (Supabase) para consultas de alta velocidade dos clientes.",
-          "ai": "Integração via OpenAI para automatizar a gestão de estoque, prevendo escassez e gerando pedidos de compra de fornecedores automaticamente."
+          "fullstack": "Plataforma digital abrangente e ERP interno focados em UX fluida e ferramentas operacionais de alta disponibilidade para negócios locais de ritmo acelerado.",
+          "frontend": "Arquitetura de interface dupla: Um dashboard robusto em React/Inertia para back-office, e uma aplicação mobile altamente fluida em Expo para pedidos.",
+          "backend": "Ecossistema de API híbrido combinando Laravel 12 para lógica de negócios pesada e Supabase para autenticação em tempo real e atualizações instantâneas no cliente.",
+          "devops": "Pipelines CI/CD otimizados gerenciando deploys web baseados em Vite e geração automatizada de APKs mobile.",
+          "database": "Topologia de banco de dados split-stack: MySQL lidando com dados relacionais complexos de ERP, enquanto PostgreSQL (Supabase) atende consultas de alta velocidade do cliente.",
+          "ai": "Previsão inteligente de estoque integrada via OpenAI, prevendo de forma autônoma anomalias de inventário e gerando pedidos de compra de fornecedores."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
       },
@@ -232,12 +232,12 @@
           "Azure"
         ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo via Server-Side Rendering (SSR) de forma global.",
-          "frontend": "Interface moderna e responsiva utilizando templates Blade e Tailwind CSS, otimizada para leitura e descoberta de conteúdo.",
-          "backend": "Arquitetura MVC robusta conectando APIs RSS externas e gerenciando papéis/permissões de usuários via Laravel Breeze.",
-          "devops": "Deploy contínuo no Azure App Service com pipelines de testes automatizados utilizando o framework PEST.",
-          "database": "Modelagem relacional em MySQL otimizada para consultas pesadas em notícias categorizadas, comentários e perfis de usuários.",
-          "ai": "Curadoria algorítmica de feeds com potencial integração de LLMs para checagem de fatos e verificação de conteúdo automatizada."
+          "fullstack": "Agregador de notícias full-stack de alta performance, projetado para entrega rápida de conteúdo via Server-Side Rendering (SSR) em escala global.",
+          "frontend": "Interface moderna e otimizada para SEO arquitetada com Laravel Blade e Tailwind CSS, focada na descoberta imediata de conteúdo e legibilidade.",
+          "backend": "Backend MVC robusto capaz de ingerir feeds RSS externos enquanto gerencia permissões granulares (RBAC) através do Laravel Breeze.",
+          "devops": "Pipeline de Continuous Deployment rigidamente hospedado no Azure App Service, protegido por testes de regressão automatizados via framework PEST.",
+          "database": "Schema relacional MySQL meticulosamente otimizado para consultas pesadas de leitura, lidando com feeds categorizados massivos e dados complexos de usuários.",
+          "ai": "Motor algorítmico de curadoria de conteúdo preparado para futura integração LLM, viabilizando fact-checking automatizado e verificação de feeds em tempo real."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
       }
