@@ -217,8 +217,7 @@
           "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
           "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
           "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
-        },
-        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
+        }
       },
       "jynsge-news": {
         "id": "9",
@@ -240,6 +239,90 @@
           "ai": "Algorithmic feed curation with potential LLM integration for automated fact-checking and content verification."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
+      },
+      "vitanexus": {
+        "id": "8",
+        "slug": "vitanexus",
+        "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
+        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
+        "technologies": [
+          "Laravel 10",
+          "PHP 8",
+          "SQLite",
+          "Bootstrap 5"
+        ],
+        "title": "VitaNexus",
+        "description": {
+          "fullstack": "Full-Stack health telemetry application orchestrated in Laravel, strictly focused on the immutable processing of vital data and longitudinal metrics.",
+          "frontend": "Reactive Server-Side Rendered (SSR) interface built with Bootstrap 5, optimized for rapid, zero-latency perceptual data input.",
+          "backend": "Robust Backend architecture natively built in Laravel 10 (PHP 8), mitigating complex asynchronous computations for BMI and metabolic rates.",
+          "devops": "Lightweight deployment strategy provisioning SQLite on resource-constrained environments to guarantee high availability and portability.",
+          "database": "Privacy-by-Design database modeling leveraging SQLite, ensuring ACID compliance and integrity for storing historical health and biometric habits.",
+          "ai": "Predictive algorithmic engine based on biometric profiling, setting up the foundation for future Machine Learning (ML) integrations on caloric inference."
+        }
+      },
+      "zk-business-support": {
+        "id": "10",
+        "slug": "zk-business-support",
+        "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://o8u.64c.myftpupload.com/",
+        "technologies": [
+          "WordPress",
+          "Custom CSS",
+          "PHP",
+          "SEO"
+        ],
+        "title": "ZK Business Support",
+        "description": {
+          "fullstack": "Enterprise CMS solution engineered for high performance, structurally designed to dominate organic traffic through aggressive technical SEO optimization.",
+          "frontend": "Rigorous semantic CSS implementation over native templates, eliminating layout shifts (CLS) and ensuring blazing-fast First Contentful Paint (FCP).",
+          "backend": "Customized monolithic core leveraging relational Custom Post Types (CPT), enabling non-destructive management of corporate service portfolios.",
+          "devops": "Aggressive Edge Caching and server-side asset minification strategies implemented to achieve flawless Lighthouse and PageSpeed metrics.",
+          "database": "Granular optimization of internal MySQL queries, indexing taxonomies to resolve chronic read bottlenecks inherent to the EAV (Entity-Attribute-Value) model.",
+          "ai": "Pragmatic application of AI-driven analytical engines for semantic keyword research, engineering a conversion-focused information architecture."
+        }
+      },
+      "la-pool-club": {
+        "id": "12",
+        "slug": "la-pool-club",
+        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://lapoolclub.co.uk/",
+        "technologies": [
+          "WordPress",
+          "UI/UX Design",
+          "CSS",
+          "Performance"
+        ],
+        "title": "LA Pool Club",
+        "description": {
+          "fullstack": "System re-engineering focused on usability and conversion (UI/UX) for a premium physical business, rescuing a decommissioned information architecture.",
+          "frontend": "Interface reconstruction via deep CSS Grid and Flexbox manipulation, patching critical layout breaks and stabilizing the cross-browser experience.",
+          "backend": "Technical audit and persistence core recovery, safely re-establishing severed connections to legacy booking APIs with Zero Downtime.",
+          "devops": "Refactored the visual asset pipeline, employing modern compression (WebP) and deferred lazy-loading to mitigate heavy network bottlenecks.",
+          "database": "Transactional recovery of the relational database, restructuring fragmented tables to ensure absolute consistency within the booking workflow.",
+          "ai": "Refinement of the user flow Choice Architecture, applying modern heuristics and design intelligence geared towards Growth and conversion maximization."
+        }
+      },
+      "brighton-cakes": {
+        "id": "13",
+        "slug": "brighton-cakes",
+        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://brightoncakes.co.uk",
+        "technologies": [
+          "WordPress",
+          "PHP",
+          "CSS",
+          "SEO"
+        ],
+        "title": "Brighton Cakes",
+        "description": {
+          "fullstack": "Boutique e-commerce development focused on conversion rate optimization (CRO) and tangible speed, leveraging deep bespoke customizations.",
+          "frontend": "Responsive visual interfaces orchestrated without the overhead of heavy Page Builders, drastically reducing Total Blocking Time (TBT).",
+          "backend": "Architecture strictly configured for robust Hardening and isolation of the product portfolio management layer against SQL injections.",
+          "devops": "Object Caching (Redis/Memcached) layer orchestration, effectively mitigating database overload during unpredictable traffic spikes.",
+          "database": "Strategic indexing and query normalization designed for the performant, randomized extraction of complex catalog item galleries.",
+          "ai": "Systematic taxonomy structuring computationally assisted by LLMs, ensuring semantic SEO that dominates vertical searches and long-tail intents."
+        }
       }
     }
   },

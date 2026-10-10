@@ -217,8 +217,7 @@
           "devops": "Gerenciamento de pipelines de build modernos para web apps baseados em Vite e geração de APK mobile, garantindo atualizações sem atrito em todas as plataformas.",
           "database": "Implementação de estratégia de banco de dados split-stack: MySQL para relacionamentos ERP complexos e PostgreSQL (Supabase) para consultas de alta velocidade dos clientes.",
           "ai": "Integração via OpenAI para automatizar a gestão de estoque, prevendo escassez e gerando pedidos de compra de fornecedores automaticamente."
-        },
-        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
+        }
       },
       "jynsge-news": {
         "id": "9",
@@ -240,6 +239,90 @@
           "ai": "Curadoria algorítmica de feeds com potencial integração de LLMs para checagem de fatos e verificação de conteúdo automatizada."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
+      },
+      "vitanexus": {
+        "id": "8",
+        "slug": "vitanexus",
+        "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
+        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
+        "technologies": [
+          "Laravel 10",
+          "PHP 8",
+          "SQLite",
+          "Bootstrap 5"
+        ],
+        "title": "VitaNexus",
+        "description": {
+          "fullstack": "Aplicação Full-Stack de telemetria de saúde orquestrada em Laravel, focada no processamento imutável de dados vitais e métricas longitudinais.",
+          "frontend": "Interface reativa renderizada no servidor (SSR) com Bootstrap 5, otimizada para inserção rápida de métricas sem latência perceptual no input.",
+          "backend": "Arquitetura Backend robusta em Laravel 10 (PHP 8), mitigando complexidades no cálculo assíncrono de índices de massa e taxas metabólicas.",
+          "devops": "Estratégia de deploy simplificado (Lightweight Deployment) provisionando SQLite em ambientes de recursos restritos para garantir alta disponibilidade.",
+          "database": "Modelagem de dados baseada em Privacy-by-Design sobre SQLite, garantindo integridade ACID no armazenamento histórico de hábitos de saúde do usuário.",
+          "ai": "Cálculo preditivo e algorítmico baseado no perfil biométrico, preparando a infraestrutura para futuras integrações de aprendizado de máquina (ML) na inferência calórica."
+        }
+      },
+      "zk-business-support": {
+        "id": "10",
+        "slug": "zk-business-support",
+        "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://o8u.64c.myftpupload.com/",
+        "technologies": [
+          "WordPress",
+          "Custom CSS",
+          "PHP",
+          "SEO"
+        ],
+        "title": "ZK Business Support",
+        "description": {
+          "fullstack": "Solução corporativa desenhada em CMS de alta performance, estruturada para domínio absoluto de tráfego orgânico via otimização técnica de SEO.",
+          "frontend": "Implementação rigorosa de CSS semântico sobre templates nativos, eliminando layout shifts (CLS) e garantindo um First Contentful Paint (FCP) ultra-rápido.",
+          "backend": "Core monolítico customizado com Custom Post Types (CPT) relacionais, permitindo uma gestão não-destrutiva de catálogos de serviços corporativos.",
+          "devops": "Implementação de estratégias agressivas de Edge Caching e minificação de assets em nível de servidor para atingir pontuações perfeitas no Lighthouse/PageSpeed.",
+          "database": "Otimização granular de queries MySQL internas do CMS, indexando taxonomias para resolver gargalos crônicos de leitura do modelo EAV (Entity-Attribute-Value).",
+          "ai": "Aplicação pragmática de motores analíticos baseados em IA para pesquisa semântica de palavras-chave, desenhando a arquitetura de informação focada em conversão."
+        }
+      },
+      "la-pool-club": {
+        "id": "12",
+        "slug": "la-pool-club",
+        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://lapoolclub.co.uk/",
+        "technologies": [
+          "WordPress",
+          "UI/UX Design",
+          "CSS",
+          "Performance"
+        ],
+        "title": "LA Pool Club",
+        "description": {
+          "fullstack": "Reengenharia de sistema voltada para usabilidade e conversão (UI/UX) em negócios físicos premium, resgatando arquitetura de informação desativada.",
+          "frontend": "Reconstrução de interface via manipulação profunda de CSS Grid e Flexbox, corrigindo quebras críticas de layout e estabilizando a experiência cross-browser.",
+          "backend": "Auditoria técnica e recuperação do núcleo de persistência, reabilitando conexões perdidas de APIs legadas de reserva sem downtime (Zero Downtime).",
+          "devops": "Refatoração da pipeline de assets visuais, empregando compressão moderna (WebP) e lazy-loading para mitigar gargalos de rede (Network Bottlenecks).",
+          "database": "Recuperação transacional do banco de dados relacional, reestruturando tabelas fragmentadas para garantir consistência e estabilidade no fluxo de reservas.",
+          "ai": "Refinamento de arquitetura de decisão (Choice Architecture) do fluxo de usuário, aplicando heurísticas e inteligência de design voltadas ao crescimento (Growth)."
+        }
+      },
+      "brighton-cakes": {
+        "id": "13",
+        "slug": "brighton-cakes",
+        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://brightoncakes.co.uk",
+        "technologies": [
+          "WordPress",
+          "PHP",
+          "CSS",
+          "SEO"
+        ],
+        "title": "Brighton Cakes",
+        "description": {
+          "fullstack": "Desenvolvimento e-commerce focado em otimização de conversão e velocidade tangível, utilizando customizações profundas sob medida.",
+          "frontend": "Interfaces visuais responsivas orquestradas sem dependências de construtores de página pesados (Page Builders), reduzindo drasticamente o bloqueio da thread principal (TBT).",
+          "backend": "Arquitetura configurada para alta segurança (Hardening) e isolamento da camada de gestão de portfólio de produtos contra injeções SQL.",
+          "devops": "Orquestração de camadas de Object Caching (Redis/Memcached) mitigando sobrecarga no banco de dados durante picos de tráfego não-previsíveis.",
+          "database": "Indexação estratégica e normalização de consultas para extração performática e randômica de galerias de itens de catálogo complexos.",
+          "ai": "Estruturação sistemática de taxonomias com auxílio computacional e LLMs, garantindo SEO semântico que domina as buscas verticais e intenções de cauda longa."
+        }
       }
     }
   },
