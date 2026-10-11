@@ -150,12 +150,12 @@
         ],
         "title": "Alura Plus",
         "description": {
-          "fullstack": "End-to-end application exclusively focused on high-precision visual engineering.",
-          "frontend": "Advanced implementation of responsive layouts with CSS Grid and Flexbox, prioritizing accessibility (A11y) and HTML5 semantics for pixel-perfect design fidelity.",
-          "backend": "Backend configured for rapid delivery of optimized static assets.",
-          "devops": "Continuous Deployment orchestrated with GitHub Actions for instant publishing on serverless infrastructure.",
-          "database": "Static state management independent of an active database, focused on absolute loading performance.",
-          "ai": "Isolated pipeline completely free of active LLM integrations in production environment."
+          "fullstack": "End-to-End platform optimized for high-precision visual asset delivery, utilizing a Serverless architecture heavily focused on reducing network latency on the presentation layer.",
+          "frontend": "Frontend Architecture built on pure CSS Grid and Flexbox, ensuring flawless responsive design fidelity while strictly prioritizing HTML5 semantics and robust accessibility (A11y) standards.",
+          "backend": "Streamlined, edge-caching oriented backend for ultra-fast dispatching of static assets and lightweight payloads, mitigating I/O bottlenecks in read-heavy operations.",
+          "devops": "Continuous Deployment pipeline seamlessly orchestrated via GitHub Actions, enabling instant idempotent deployments onto Serverless Edge infrastructure.",
+          "database": "Static state design devoid of active transactional database persistence dependencies, heavily focused on absolute TTI (Time to Interactive) performance metrics.",
+          "ai": "Intentionally isolated pipeline completely free of active LLM integrations in the production environment to maintain absolute performance predictability."
         }
       },
       "adventure-text-game": {
@@ -169,12 +169,12 @@
         ],
         "title": "Adventure Text Game",
         "description": {
-          "fullstack": "Interactive narrative engine in Vanilla JS, orchestrating complex real-time DOM manipulations and state management based on mutable player decisions.",
-          "frontend": "Minimalist and immersive interface built without frameworks, focused on ultra-fast state transitions and repaint/reflow optimization.",
-          "backend": "Pure JS state management logic handling narrative branching and player choices.",
-          "devops": "Serverless static hosting focused on 99.9% uptime availability and aggressive edge asset caching optimization.",
-          "database": "Immutable state management purely in-memory, leveraging strategic local persistence to maximize speed without the overhead of heavy relational DBMS infrastructure.",
-          "ai": "Branched storytelling allowing multiple player experiences based on decision-making profiles."
+          "fullstack": "Interactive narrative engine built in Vanilla JS, orchestrating intensive real-time DOM manipulations and resilient immutable state management based on highly-branched decision trees.",
+          "frontend": "Immersive, minimalist interface built entirely without external frameworks, optimizing ultra-fast state transitions and aggressive mitigation of the browser's critical repaint and reflow pipelines.",
+          "backend": "Client-side backend logic implemented in pure JavaScript designed to process mutable decision trees and asynchronous narrative branching without main thread blocking.",
+          "devops": "Serverless static hosting strategy focused on delivering a 99.9% uptime Service Level Agreement alongside aggressive edge-caching invalidation protocols.",
+          "database": "Pure in-memory state management coupled with strategic local persistence (Local Storage API), completely bypassing the latency overhead associated with heavy relational RDBMS infrastructure.",
+          "ai": "Branched algorithmic logic simulating artificial intelligence by adapting narrative flows, enabling cohesive multilinear experiences driven by the user's behavioral decision profile."
         }
       },
       "gov-docs-ai": {
@@ -211,14 +211,13 @@
           "OpenAI"
         ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
-          "frontend": "Built two distinct interfaces: a data-rich administration dashboard with React/Inertia and a fluid mobile ordering experience using Expo.",
-          "backend": "Hybrid backend architecture utilizing Laravel 12 for core business logic and Supabase for real-time client data and authentication.",
-          "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
-          "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
-          "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
-        },
-        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
+          "fullstack": "End-to-End SaaS platform focused on responsive UX, fluid ERP integration for dynamic menus, and real-time operational oversight for scalable local delivery expansion.",
+          "frontend": "Split Front-End architecture: a data-rich administrative SPA via React/Inertia.js and a frictionless mobile ordering App using React Native (Expo) to ensure maximum user retention and minimal conversion drop-off.",
+          "backend": "Hybrid backend architecture orchestrating Laravel 12 for asynchronous core business logic processing, securely coupled with Supabase for client provisioning and real-time JWT authentication.",
+          "devops": "Advanced modern build pipeline management for Vite-based web apps alongside automated mobile APK/AAB generation, ensuring frictionless cross-platform Continuous Delivery.",
+          "database": "Split-Stack database strategy: rigorous relational modeling in MySQL handling complex ERP transactions, and PostgreSQL via Supabase optimized for high-throughput concurrent client queries.",
+          "ai": "R&D Automation pipeline leveraging the OpenAI API for algorithmic inventory scarcity prediction, triggering automated supplier purchase order generation streams (Procurement Automation)."
+        }
       },
       "jynsge-news": {
         "id": "9",
@@ -232,12 +231,12 @@
           "Azure"
         ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered (SSR) content globally.",
-          "frontend": "Modern, responsive interface using Blade templates and Tailwind CSS, optimized for readability and content discovery.",
-          "backend": "Robust MVC architecture connecting external RSS APIs and managing user roles/permissions via Laravel Breeze.",
-          "devops": "Continuous deployment on Azure App Service with automated testing pipelines using PEST framework.",
-          "database": "Relational MySQL schema optimized for heavy queries on categorized news, comments, and user profiles.",
-          "ai": "Algorithmic feed curation with potential LLM integration for automated fact-checking and content verification."
+          "fullstack": "Highly optimized high-traffic publishing platform designed with a flexible architecture relying on Server-Side Rendering (SSR) to deliver global content with minimal latency and maximum SEO indexability.",
+          "frontend": "Hyper-responsive interface architected with Blade templates and Tailwind CSS v4, adopting modern Core Web Vitals approaches to prioritize readability, accessibility, and robust content retention across diverse devices.",
+          "backend": "Robust MVC architecture connecting middleware to external RSS APIs while orchestrating enterprise ACL for granular role-based access control and permissions via Laravel Breeze.",
+          "devops": "Continuous Deployment pipeline fully integrated within a Microsoft Azure App Service cloud environment, fortified by automated Unit and E2E test batteries utilizing the PEST framework.",
+          "database": "Transactional relational modeling in MySQL featuring structural indexing tuning, designed to efficiently handle heavy-read query loads involving categorization taxonomy, threaded comments, and isolated user profiles.",
+          "ai": "Scalable algorithmic curatorial engine designed to support integrated LLM workflows for automated fact-checking, narrative summarization, and advanced content integrity validation."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
       }
