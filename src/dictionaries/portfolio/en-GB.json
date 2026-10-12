@@ -18,6 +18,7 @@
     "items": {
       "plataforma-lumen": {
         "id": "1",
+        "title": "Lumen Platform",
         "slug": "plataforma-lumen",
         "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
         "technologies": [
@@ -27,7 +28,6 @@
           "Multi-Tenancy",
           "OpenAI"
         ],
-        "title": "Lumen Platform",
         "description": {
           "fullstack": "High-performance Enterprise B2G SaaS powered by Laravel Octane, handling complex public procurement workflows with in-memory state and zero latency.",
           "backend": "High-performance architecture with Laravel Octane and FrankenPHP, drastically reducing boot times for heavy requests.",
@@ -38,6 +38,7 @@
       },
       "rag-legal-chatbot": {
         "id": "2",
+        "title": "RAG Legal Chatbot",
         "slug": "rag-legal-chatbot",
         "imageUrl": "https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=800",
         "technologies": [
@@ -46,7 +47,6 @@
           "Inertia 2.0",
           "OpenAI Assistants"
         ],
-        "title": "RAG Legal Chatbot",
         "description": {
           "fullstack": "Advanced virtual assistant driven by AI and native RAG, capable of querying complex legal contexts and analyzing proprietary files via real-time Vector Search.",
           "backend": "Migration to OpenAI Assistants API for native File Search and high-precision document indexing.",
@@ -57,6 +57,7 @@
       },
       "doc-automation-saas": {
         "id": "3",
+        "title": "Doc Automation SaaS",
         "slug": "doc-automation-saas",
         "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800",
         "technologies": [
@@ -65,7 +66,6 @@
           "OpenAI",
           "CI/CD"
         ],
-        "title": "Doc Automation SaaS",
         "description": {
           "fullstack": "Automated pipeline that reduced public document generation from months to minutes using asynchronous background queues and heavy processing workflows.",
           "backend": "High-performance SPA backend with Laravel 11 and asynchronous queues handling heavy background loads.",
@@ -76,6 +76,7 @@
       },
       "gov-lumen-rescue": {
         "id": "4",
+        "title": "GovTech Rescue",
         "slug": "gov-lumen-rescue",
         "imageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800",
         "technologies": [
@@ -84,7 +85,6 @@
           "Firebase",
           "GovTech"
         ],
-        "title": "GovTech Rescue",
         "description": {
           "fullstack": "Deep refactoring of a legacy government system, eliminating critical Race Conditions and stabilizing an obsolete state-machine architecture with RxJS.",
           "backend": "Resolved complex Race Conditions in a Document Chat module using RxJS Observables and reactive patterns.",
@@ -95,6 +95,7 @@
       },
       "alura-plus": {
         "id": "5",
+        "title": "Alura Plus",
         "slug": "alura-plus",
         "imageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800",
         "technologies": [
@@ -102,15 +103,18 @@
           "CSS",
           "Responsive Design"
         ],
-        "title": "Alura Plus",
         "description": {
-          "fullstack": "Semantic structuring implementation with advanced responsive layouts, applying modern CSS Grid and Flexbox techniques for true-to-design fidelity.",
-          "frontend": "Practical implementation of Flexbox and Grid layouts optimized for cross-browser compatibility.",
-          "ai": "Automated deployment integrated with GitHub for instant public visualization of the project."
+          "fullstack": "High-fidelity static front-end architecture, focused on aggressive asset optimization and zero-latency delivery via Edge Networks.",
+          "frontend": "Robust semantic HTML5 implementation with advanced CSS engineering (Grid/Flexbox). Strict prioritization of accessibility (A11y) and structural SEO, ensuring pixel-perfect rendering across multiple viewports.",
+          "backend": "Total server decoupling in favor of a serverless topology. Ultra-optimized static asset delivery orchestrated through high-performance Content Delivery Networks (CDN).",
+          "devops": "Automated Continuous Deployment (CD) pipeline via GitHub Actions, enforcing immutable builds and instant edge publishing with zero downtime.",
+          "database": "Pure Stateless architecture. State management handled entirely in client memory, completely eliminating database query overhead to maximize absolute performance metrics (TTFB/LCP).",
+          "ai": "Isolated and highly predictable production environment, intentionally designed without AI inference dependencies or external LLM calls to guarantee maximum stability and speed."
         }
       },
       "adventure-text-game": {
         "id": "6",
+        "title": "Adventure Text Game",
         "slug": "adventure-text-game",
         "imageUrl": "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800",
         "technologies": [
@@ -118,16 +122,18 @@
           "HTML",
           "CSS"
         ],
-        "title": "Adventure Text Game",
         "description": {
-          "fullstack": "Pure JS interactive narrative engine, mutating the DOM in real-time based on complex player decisions and branching story states dynamically.",
-          "backend": "Pure JS state management logic handling narrative branching and player choices.",
-          "frontend": "Minimalist, immersive interface with dynamic scene updates through DOM manipulation.",
-          "ai": "Branched storytelling allowing multiple player experiences based on decision-making profiles."
+          "fullstack": "Interactive narrative engine built entirely in Vanilla JS, engineered with a finite state machine pattern to orchestrate complex DOM manipulations without heavy framework overhead.",
+          "frontend": "High-performance immersive UI built on pure JavaScript. Strict optimization of the Critical Rendering Path, actively mitigating repaint and reflow bottlenecks during asynchronous state transitions.",
+          "backend": "Client-Side State Engine encapsulating complex conditional branching logic, efficiently computing the player's algorithmic decision tree in real-time.",
+          "devops": "Serverless hosting structured for absolute high availability (99.9% Uptime). Aggressive cache policies (Cache-Control) deployed on edge nodes to minimize initial load latency.",
+          "database": "In-memory architecture leveraging Web Storage API for high-speed progress persistence, completely bypassing heavy relational database (RDBMS) infrastructure and driving operational costs to zero.",
+          "ai": "Probabilistic branching engine relying on deterministic decision algorithms, generating a dynamic and responsive environment without active LLM dependencies."
         }
       },
       "gov-docs-ai": {
         "id": "7",
+        "title": "Public Docs AI",
         "slug": "gov-docs-ai",
         "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
         "technologies": [
@@ -136,7 +142,6 @@
           "OpenAI",
           "GCP"
         ],
-        "title": "Public Docs AI",
         "description": {
           "fullstack": "Autonomous AI engine enforcing strict JSON Schemas to generate highly complex, hallcuniation-free structured government contracts dynamically.",
           "frontend": "Modern, responsive Web Interface built with React and Inertia.js, focussed on user experience for document management.",
@@ -148,6 +153,7 @@
       },
       "espresso-d-amore": {
         "id": "11",
+        "title": "Cafeteria Damore",
         "slug": "espresso-d-amore",
         "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
         "repoUrl": "https://github.com/Jonatasndossantos/cafeteria",
@@ -158,49 +164,48 @@
           "Supabase",
           "OpenAI"
         ],
-        "title": "Cafeteria Damore",
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
-          "frontend": "Built two distinct interfaces: a data-rich administration dashboard with React/Inertia and a fluid mobile ordering experience using Expo.",
-          "backend": "Hybrid backend architecture utilising Laravel 12 for core business logic and Supabase for real-time client data and authentication.",
-          "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
-          "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
-          "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
+          "fullstack": "End-to-End SaaS platform engineered for operational management and delivery logistics. Distributed architecture focused on resilience, distributed transactions, and real-time predictive UX.",
+          "frontend": "Multi-interface strategy: a reactive corporate Single Page Application (SPA) (React 19 + Inertia.js) for heavy order orchestration, seamlessly coupled with a native mobile ecosystem optimized via Expo.",
+          "backend": "Scalable Hybrid Architecture (Laravel 12 + Supabase). The core ERP handles complex centralized business logic, while Supabase manages JWT authentication and real-time client events via WebSockets.",
+          "devops": "Advanced Continuous Integration & Delivery (CI/CD) pipelines. Automated web dashboard deployment via GitHub Actions, executing parallel build processes for continuous APK/AAB artifact generation on mobile.",
+          "database": "Sophisticated Split-Stack database architecture. Utilization of strictly indexed transactional MySQL for billing integrity (ERP), paired with managed PostgreSQL (Supabase) to deliver ultra-low latency on edge client queries.",
+          "ai": "Autonomous integration via OpenAI API (Function Calling) tied to intelligent inventory telemetry. Predictive algorithms proactively infer supply shortages and dispatch real-time automated purchase orders to suppliers."
         }
       },
       "jynsge-news": {
         "id": "9",
+        "title": "JYNSGE News",
         "slug": "jynsge-news",
         "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
         "technologies": [
           "Laravel",
           "Tailwind",
           "MySQL",
           "Azure"
         ],
-        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
-        "title": "JYNSGE News",
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered content globally.",
-          "frontend": "Modern, responsive interface using Blade templates and Tailwind CSS, optimised for readability and content discovery.",
-          "backend": "Robust MVC architecture connecting external RSS APIs and managing user roles/permissions via Laravel Breeze.",
-          "devops": "Deployed on Azure App Service with automated testing pipelines using PEST framework.",
-          "database": "Relational MySQL schema designed to efficiently handle categorised news, comments, and user profiles.",
-          "ai": "Algorithmic feed curation and potential integration for automated fact-checking and content verification."
+          "fullstack": "Distributed media portal architecture engineered for high traffic spike tolerance (High Availability) and massive dynamic content delivery via aggressive Server-Side Rendering (SSR).",
+          "frontend": "Server-rendered presentation layer (Blade Templates + Tailwind CSS v4) rigorously focused on Time to Interactive (TTI) metrics and deep Core Web Vitals optimization to maximize user retention and structural SEO.",
+          "backend": "Advanced MVC architecture on the Laravel ecosystem. Implemented background Jobs (Queues) for asynchronous ingestion and normalization of multiple third-party REST APIs and RSS feeds, effectively preventing main-thread blocking.",
+          "devops": "Enterprise Cloud infrastructure hosted on Azure App Service. Strict CI/CD pipeline integrated with continuous unit and feature testing (PEST Framework), guaranteeing immutable and zero-downtime deployments.",
+          "database": "Relational MySQL modeling with severe b-tree index tuning. Architectural optimization targeted at Read-Heavy workloads, supporting complex joins across millions of records for categorization, threaded comments, and granular ACL (Role-Based Access Control).",
+          "ai": "Structural blueprint provisioned for future MLOps and LLM pipeline integrations. The architectural goal aims at asynchronous Natural Language Processing (NLP) to perform autonomous fact-checking and automated taxonomy classification."
         }
       },
       "vitanexus": {
         "id": "8",
+        "title": "VitaNexus",
         "slug": "vitanexus",
         "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
+        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
         "technologies": [
           "Laravel 10",
           "PHP 8",
           "SQLite",
           "Bootstrap 5"
         ],
-        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
-        "title": "VitaNexus",
         "description": {
           "fullstack": "Comprehensive health monitoring application tracking metrics like BMI, hydration, and blood pressure using Laravel and Bootstrap.",
           "frontend": "Responsive, accessible interface designed with Bootstrap 5 to ensure easy data entry for vital health stats across devices.",
@@ -212,16 +217,15 @@
       },
       "zk-business-support": {
         "id": "10",
+        "title": "ZK Business Support",
         "slug": "zk-business-support",
         "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
-        "demoUrl": "https://o8u.64c.myftpupload.com/",
         "technologies": [
           "WordPress",
           "Custom CSS",
           "PHP",
           "SEO"
         ],
-        "title": "ZK Business Support",
         "description": {
           "fullstack": "Custom WordPress solution tailored for high performance with advanced caching, local SEO optimisation, and bespoke CSS styling.",
           "frontend": "Developed a unique visual identity using custom CSS and high-fidelity responsive design to reflect the professional brand image.",
@@ -229,20 +233,20 @@
           "devops": "Implemented aggressive caching layers and asset optimisation to achieve top-tier PageSpeed insights scores.",
           "database": "Optimised database queries for custom post types, ensuring minimal latency for dynamic content rendering.",
           "ai": "Leveraged AI-driven SEO tools for keyword analysis and content structuring to maximise local search visibility."
-        }
+        },
+        "demoUrl": "https://o8u.64c.myftpupload.com/"
       },
       "la-pool-club": {
         "id": "12",
+        "title": "LA Pool Club",
         "slug": "la-pool-club",
         "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
-        "demoUrl": "https://lapoolclub.co.uk/",
         "technologies": [
           "WordPress",
           "UI/UX Design",
           "CSS",
           "Performance"
         ],
-        "title": "LA Pool Club",
         "description": {
           "fullstack": "Complete WordPress solution for a premium billiards club, focussed on UI/UX improvements, CSS styling, and system layout recovery.",
           "frontend": "Revamped the user interface with customised CSS, ensuring a responsive and visually appealing booking and membership experience.",
@@ -250,20 +254,20 @@
           "devops": "Implemented performance adjustments and layout stabilisations for a smoother user experience and faster load times.",
           "database": "Recovered and structured booking data and club information, ensuring continuous operation.",
           "ai": "Leveraged design intelligence to elevate the overall layout and user journey for membership conversions."
-        }
+        },
+        "demoUrl": "https://lapoolclub.co.uk/"
       },
       "brighton-cakes": {
         "id": "13",
+        "title": "Brighton Cakes",
         "slug": "brighton-cakes",
         "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
-        "demoUrl": "https://brightoncakes.co.uk",
         "technologies": [
           "WordPress",
           "PHP",
           "CSS",
           "SEO"
         ],
-        "title": "Brighton Cakes",
         "description": {
           "fullstack": "Custom WordPress site for Makecakes, featuring a bespoke theme, performance optimisation, and tailored user experience.",
           "frontend": "Designed and developed a responsive, visually appealing frontend using custom CSS and WordPress themes.",
@@ -271,7 +275,8 @@
           "devops": "Implemented caching strategies and performance optimisations for reliable delivery of high-quality image assets.",
           "database": "Optimised WordPress database for fast queries and efficient execution of custom post types.",
           "ai": "Utilised AI-generated assets and content structuring for improved SEO and user engagement."
-        }
+        },
+        "demoUrl": "https://brightoncakes.co.uk"
       }
     }
   },
