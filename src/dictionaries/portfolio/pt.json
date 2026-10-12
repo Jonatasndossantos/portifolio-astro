@@ -60,6 +60,7 @@
     "items": {
       "plataforma-lumen": {
         "id": "1",
+        "title": "Plataforma Lumen",
         "slug": "plataforma-lumen",
         "imageUrl": "https://github.com/Jonatasndossantos/Jonatasndossantos/blob/main/src/lumen.png?raw=true",
         "technologies": [
@@ -69,7 +70,6 @@
           "Multi-Tenancy",
           "OpenAI"
         ],
-        "title": "Plataforma Lumen",
         "description": {
           "fullstack": "SaaS Enterprise B2G de altíssima performance, processando pipelines críticos de licitações públicas em memória via Laravel Octane para mitigar latência estrutural.",
           "frontend": "Ecossistema frontend reativo orquestrado com Alpine.js, gerenciando blocos de conteúdo complexos injetados dinamicamente via JSON Schemas granulares.",
@@ -81,6 +81,7 @@
       },
       "rag-legal-chatbot": {
         "id": "2",
+        "title": "RAG Legal Chatbot",
         "slug": "rag-legal-chatbot",
         "imageUrl": "https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=800",
         "technologies": [
@@ -89,7 +90,6 @@
           "Inertia 2.0",
           "OpenAI Assistants"
         ],
-        "title": "RAG Legal Chatbot",
         "description": {
           "fullstack": "Sistema RAG de precisão absoluta (Retrieval-Augmented Generation) integrado via OpenAI Assistant API, focado na extração e correlação autônoma de jurisprudências e licitações.",
           "frontend": "Interface Web interativa construída com React 19, implementando Server-Sent Events (SSE) para renderização progressiva (Streaming) da inteligência artificial.",
@@ -101,6 +101,7 @@
       },
       "doc-automation-saas": {
         "id": "3",
+        "title": "Doc Automation SaaS",
         "slug": "doc-automation-saas",
         "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800",
         "technologies": [
@@ -109,7 +110,6 @@
           "OpenAI",
           "CI/CD"
         ],
-        "title": "Doc Automation SaaS",
         "description": {
           "fullstack": "Pipeline End-to-End automatizado que reduziu drasticamente a complexidade burocrática e o tempo de geração de ETPs e DFDs de semanas para poucos minutos.",
           "frontend": "Dashboard administrativo Single Page Application (SPA) hiper-responsivo arquitetado em React e Inertia.js.",
@@ -121,6 +121,7 @@
       },
       "gov-lumen-rescue": {
         "id": "4",
+        "title": "GovTech Rescue",
         "slug": "gov-lumen-rescue",
         "imageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800",
         "technologies": [
@@ -129,7 +130,6 @@
           "Firebase",
           "GovTech"
         ],
-        "title": "GovTech Rescue",
         "description": {
           "fullstack": "Refatoração profunda de um sistema legado governamental, eliminando Race Conditions críticas e estabilizando a arquitetura obsoleta com padrões reativos avançados.",
           "frontend": "Refatoração profunda de componentes monolíticos React e Angular, garantindo estado imutável e correção de layouts em monitores legados governamentais.",
@@ -141,6 +141,7 @@
       },
       "alura-plus": {
         "id": "5",
+        "title": "Alura Plus",
         "slug": "alura-plus",
         "imageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800",
         "technologies": [
@@ -148,18 +149,18 @@
           "CSS",
           "Responsive Design"
         ],
-        "title": "Alura Plus",
         "description": {
-          "fullstack": "Aplicação end-to-end com foco exclusivo em engenharia visual de alta precisão.",
-          "frontend": "Implementação avançada de layouts responsivos com CSS Grid e Flexbox, priorizando acessibilidade (A11y) e semântica HTML5 para máxima fidelidade ao design.",
-          "backend": "Backend configurado para fornecimento rápido de assets estáticos otimizados.",
-          "devops": "Continuous Deployment orquestrado com GitHub Actions para publicações instantâneas em infraestrutura serverless.",
-          "database": "Gestão de estado estático sem dependência de banco de dados ativo, focado em performance absoluta de carregamento.",
-          "ai": "Pipeline isolado livre de integrações LLM ativas no ambiente de produção."
+          "fullstack": "Arquitetura front-end estática de alta fidelidade visual, focada em otimização agressiva de assets e tempo de resposta zero (Zero-Latency) via Edge Networks.",
+          "frontend": "Implementação semântica robusta em HTML5 com engenharia CSS avançada (Grid/Flexbox). Priorização estrita de acessibilidade (A11y) e SEO estrutural, garantindo renderização pixel-perfect através de múltiplos viewports.",
+          "backend": "Desacoplamento total de servidor em favor de uma topologia serverless. Fornecimento de assets estáticos ultra-otimizados através de redes de distribuição de conteúdo (CDN).",
+          "devops": "Pipeline de Continuous Deployment (CD) automatizado via GitHub Actions, garantindo build imutável e publicações instantâneas na edge sem interrupção de serviço.",
+          "database": "Arquitetura Stateless pura. Gestão de estado gerenciada inteiramente em memória do cliente, eliminando a sobrecarga de queries em bancos de dados para maximizar a performance absoluta (TTFB/LCP).",
+          "ai": "Ambiente de produção isolado e altamente previsível, projetado intencionalmente sem dependências de inferência de IA ou chamadas externas a LLMs para garantir estabilidade e velocidade máximas."
         }
       },
       "adventure-text-game": {
         "id": "6",
+        "title": "Adventure Text Game",
         "slug": "adventure-text-game",
         "imageUrl": "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800",
         "technologies": [
@@ -167,14 +168,13 @@
           "HTML",
           "CSS"
         ],
-        "title": "Adventure Text Game",
         "description": {
-          "fullstack": "Motor de narrativa interativa em Vanilla JS, orquestrando manipulações complexas de DOM em tempo real e gerenciamento de estado complexo baseado em decisões mutáveis.",
-          "frontend": "Interface minimalista e imersiva construída sem frameworks, focada em transições de estado ultra-rápidas e otimização de repaint/reflow.",
-          "backend": "Lógica de estados em JS puro que gerencia as escolhas do usuário e ramificações da história.",
-          "devops": "Hospedagem estática Serverless focada em tempo de disponibilidade (Uptime) de 99.9% e otimização agresiva de cache de assets na edge.",
-          "database": "Gestão de estado imutável puramente em memória, com persistência local estratégica, dispensando infraestrutura pesada de SGBDs relacionais para maximizar velocidade.",
-          "ai": "História ramificada permitindo múltiplas experiências baseadas no perfil de decisão do jogador."
+          "fullstack": "Motor de narrativa interativa desenvolvido puramente em Vanilla JS, projetado com uma máquina de estados finitos para orquestrar manipulações complexas do DOM sem frameworks pesados.",
+          "frontend": "Interface imersiva de alta performance construída sobre Vanilla JS. Otimização rigorosa do Critical Rendering Path, mitigando gargalos de repaint e reflow durante transições de estado assíncronas.",
+          "backend": "Lógica de ramificação condicional encapsulada no cliente (Client-Side State Engine), processando de forma eficiente a árvore de decisões algorítmicas do jogador.",
+          "devops": "Hospedagem Serverless estruturada para alta disponibilidade (Uptime 99.9%). Implementação de políticas de cache agressivas (Cache-Control) em instâncias edge para reduzir a latência inicial.",
+          "database": "Arquitetura baseada em memória local (Local Storage API) para persistência de progresso de alta velocidade, dispensando infraestrutura relacional (RDBMS) pesada e reduzindo custos operacionais a zero.",
+          "ai": "Motor de ramificação probabilística e algoritmos de decisão determinística, simulando um ambiente dinâmico sem dependência ativa de modelos baseados em LLMs."
         }
       },
       "gov-docs-ai": {
@@ -211,20 +211,20 @@
           "OpenAI"
         ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End focada em UX responsiva, integração fluída de cardápio e controle operacional robusto para expansão de delivery local.",
-          "frontend": "Construção de duas interfaces distintas: um dashboard de administração rico em dados com React/Inertia e uma experiência de pedido mobile fluida usando Expo.",
-          "backend": "Arquitetura híbrida de backend utilizando Laravel 12 para lógica de negócios central e Supabase para dados de clientes e autenticação em tempo real.",
-          "devops": "Gerenciamento de pipelines de build modernos para web apps baseados em Vite e geração de APK mobile, garantindo atualizações sem atrito em todas as plataformas.",
-          "database": "Implementação de estratégia de banco de dados split-stack: MySQL para relacionamentos ERP complexos e PostgreSQL (Supabase) para consultas de alta velocidade dos clientes.",
-          "ai": "Integração via OpenAI para automatizar a gestão de estoque, prevendo escassez e gerando pedidos de compra de fornecedores automaticamente."
-        },
-        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
+          "fullstack": "Plataforma SaaS End-to-End para gestão operacional e logística de delivery. Arquitetura distribuída focada em resiliência, transações distribuídas e UX preditiva em tempo real.",
+          "frontend": "Estratégia de multi-interface: um Single Page Application (SPA) reativo corporativo (React 19 + Inertia.js) para orquestração de pedidos, acoplado a um ecossistema mobile nativo otimizado via Expo.",
+          "backend": "Arquitetura Híbrida escalável (Laravel 12 + Supabase). O core do ERP processa complexas lógicas de negócio centralizadas, enquanto o Supabase gere autenticação JWT e eventos em tempo real para os clientes (WebSockets).",
+          "devops": "Pipelines avançados de Continuous Integration & Delivery (CI/CD). Deploy automatizado do painel web via GitHub Actions, com processos de build paralelos para a geração contínua de artefatos APK/AAB no ecossistema mobile.",
+          "database": "Arquitetura de banco de dados Split-Stack sofisticada. Uso de MySQL transacional e indexado para integridade rigorosa de faturamento (ERP), acoplado ao PostgreSQL gerenciado (Supabase) para latência ultrabaixa em queries de cliente na ponta.",
+          "ai": "Integração autônoma via OpenAI API (Function Calling) com monitoramento inteligente de dados de inventário. Algoritmos preditivos atuam proativamente inferindo escassez de estoque e acionando ordens de compra em tempo real."
+        }
       },
       "jynsge-news": {
         "id": "9",
         "title": "JYNSGE News",
         "slug": "jynsge-news",
         "imageUrl": "https://github.com/user-attachments/assets/33006547-eee8-445c-a724-4b0af26f1cb4",
+        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE",
         "technologies": [
           "Laravel",
           "Tailwind",
@@ -232,14 +232,13 @@
           "Azure"
         ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo via Server-Side Rendering (SSR) de forma global.",
-          "frontend": "Interface moderna e responsiva utilizando templates Blade e Tailwind CSS, otimizada para leitura e descoberta de conteúdo.",
-          "backend": "Arquitetura MVC robusta conectando APIs RSS externas e gerenciando papéis/permissões de usuários via Laravel Breeze.",
-          "devops": "Deploy contínuo no Azure App Service com pipelines de testes automatizados utilizando o framework PEST.",
-          "database": "Modelagem relacional em MySQL otimizada para consultas pesadas em notícias categorizadas, comentários e perfis de usuários.",
-          "ai": "Curadoria algorítmica de feeds com potencial integração de LLMs para checagem de fatos e verificação de conteúdo automatizada."
-        },
-        "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
+          "fullstack": "Arquitetura distribuída de portal de mídia, concebida para alta tolerância a picos de tráfego (High Availability) e entrega massiva de conteúdo dinâmico através de Server-Side Rendering (SSR) agressivo.",
+          "frontend": "Camada de apresentação renderizada no servidor (Blade Templates + Tailwind CSS v4), focada na métrica de Time to Interactive (TTI) e otimização pesada de Core Web Vitals para retenção de usuários e SEO estrutural.",
+          "backend": "Arquitetura MVC avançada no ecossistema Laravel. Implementação de Jobs em background (Queues) para ingestão e normalização assíncrona de múltiplas APIs REST e feeds RSS externos, mitigando o bloqueio da thread principal.",
+          "devops": "Infraestrutura Cloud corporativa hospedada no Azure App Service. Pipeline de CI/CD rigoroso com testes de unidade e integração contínuos (PEST Framework) assegurando deploys imutáveis e zero-downtime.",
+          "database": "Modelagem relacional em MySQL com tuning severo de índices b-tree. Otimização arquitetural focada em leitura pesada (Read-Heavy), suportando joins complexos em milhões de registros para categorização, comentários e ACL granular (Role-Based Access Control).",
+          "ai": "Planejamento estrutural preparado para integração com pipelines MLOps e LLMs. O objetivo arquitetônico visa processamento de linguagem natural (NLP) assíncrono para fact-checking autônomo e classificação automatizada de taxonomias."
+        }
       }
     }
   },
