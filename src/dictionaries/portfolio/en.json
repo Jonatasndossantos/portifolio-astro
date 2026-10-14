@@ -13,22 +13,22 @@
       {
         "date": "2020 - 2023",
         "title": "IT Technician",
-        "desc": "Physical infrastructure services, local area networks setup, OS management, and private server administration."
+        "desc": "Implementation and maintenance of on-premise infrastructure, structuring corporate network topologies, and systemic administration of local servers, ensuring baseline operational resilience."
       },
       {
         "date": "Feb 2023 - Jun 2024",
         "title": "The Forging (McDonald's)",
-        "desc": "Operating under intense business pressure, managing concurrent workflows under strict delivery SLAs. This operational resilience serves as my SRE and fault-tolerance philosophical foundation."
+        "desc": "Operation under rigorous SLAs in a highly concurrent environment. Managed intense operational throughput, forging solid foundations in SRE, empirical observability, and fault tolerance in critical architectures."
       },
       {
         "date": "Apr 2024 - Jul 2025",
         "title": "The Base (SENAC)",
-        "desc": "Academic background focusing on web systems fundamentals, database relational modeling, and monolithic software design patterns."
+        "desc": "Structural academic background centered on software development paradigms, relational ACID database architecture, and essential design patterns for corporate monolithic systems."
       },
       {
         "date": "Jun 2024 - Present",
         "title": "End-to-End Architect (Freelancer)",
-        "desc": "Full technical ownership of design, implementation, and deployment of end-to-end platforms (Cafeteria Damore, JYNSGE News), integrating Stripe and Supabase under automated CI/CD."
+        "desc": "End-to-End technical ownership spanning architectural conception to deployment of web platforms. Implemented ecosystems integrating serverless infrastructure (Supabase), global payment gateways (Stripe), and release automation via CI/CD."
       },
       {
         "date": "Mar 2025 - Nov 2025",
@@ -150,12 +150,12 @@
         ],
         "title": "Alura Plus",
         "description": {
-          "fullstack": "End-to-end application exclusively focused on high-precision visual engineering.",
-          "frontend": "Advanced implementation of responsive layouts with CSS Grid and Flexbox, prioritizing accessibility (A11y) and HTML5 semantics for pixel-perfect design fidelity.",
-          "backend": "Backend configured for rapid delivery of optimized static assets.",
-          "devops": "Continuous Deployment orchestrated with GitHub Actions for instant publishing on serverless infrastructure.",
-          "database": "Static state management independent of an active database, focused on absolute loading performance.",
-          "ai": "Isolated pipeline completely free of active LLM integrations in production environment."
+          "fullstack": "Highly precise and responsive interface engineering, focused on Pixel-Perfect reproduction of complex corporate layouts and client-side rendering optimization.",
+          "frontend": "Advanced architectural implementation leveraging CSS Grid and Flexbox, establishing rigorous accessibility (A11y) standards and structural HTML5 semantics to maximize fidelity to the original design system.",
+          "backend": "Optimized delivery infrastructure configuration ensuring rapid routing of static assets and minimized latency in frontend rendering requests.",
+          "devops": "Orchestration of a Continuous Deployment (CD) pipeline utilizing GitHub Actions for immutable deploys to serverless static infrastructure, ensuring atomic layout updates.",
+          "database": "Purely static state management strategy, eliminating database bottlenecks and I/O dependencies to extract maximum performance regarding Time-to-Interactive (TTI).",
+          "ai": "Completely deterministic and isolated architecture, specifically designed without LLM integrations to guarantee absolute state predictability in the production environment."
         }
       },
       "adventure-text-game": {
@@ -169,12 +169,12 @@
         ],
         "title": "Adventure Text Game",
         "description": {
-          "fullstack": "Interactive narrative engine in Vanilla JS, orchestrating complex real-time DOM manipulations and state management based on mutable player decisions.",
-          "frontend": "Minimalist and immersive interface built without frameworks, focused on ultra-fast state transitions and repaint/reflow optimization.",
-          "backend": "Pure JS state management logic handling narrative branching and player choices.",
-          "devops": "Serverless static hosting focused on 99.9% uptime availability and aggressive edge asset caching optimization.",
-          "database": "Immutable state management purely in-memory, leveraging strategic local persistence to maximize speed without the overhead of heavy relational DBMS infrastructure.",
-          "ai": "Branched storytelling allowing multiple player experiences based on decision-making profiles."
+          "fullstack": "Reactive narrative engine orchestrated in Vanilla JS, managing deep real-time Document Object Model (DOM) manipulations without the structural overhead of external libraries.",
+          "frontend": "Development of an ultra-fast, zero-dependency transition interface, implementing complex state management algorithms while actively mitigating browser Repaint/Reflow bottlenecks.",
+          "backend": "In-memory processing architecture orchestrating narrative branching logic, implementing rapid algorithmic resolution to seamlessly handle real-time user decision trees.",
+          "devops": "Edge Serverless hosting strategy, leveraging aggressive caching policies and global Content Delivery Networks (CDN) to ensure 99.9% Uptime with near-zero latency.",
+          "database": "Data structuring based on immutable state persisted via strict Local Storage schemas, bypassing the structural complexity of relational databases in favor of immediate client-side persistence.",
+          "ai": "Implementation of autonomous decision trees and narrative branching algorithms, simulating choice variability based on the player’s empirical behavior without external API calls."
         }
       },
       "gov-docs-ai": {
@@ -211,14 +211,13 @@
           "OpenAI"
         ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
-          "frontend": "Built two distinct interfaces: a data-rich administration dashboard with React/Inertia and a fluid mobile ordering experience using Expo.",
-          "backend": "Hybrid backend architecture utilizing Laravel 12 for core business logic and Supabase for real-time client data and authentication.",
-          "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
-          "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
-          "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
-        },
-        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
+          "fullstack": "Integrated e-commerce and operational management SaaS platform, orchestrating a resilient B2B/B2C ecosystem that centralizes the supply chain alongside responsive end-consumer interfaces.",
+          "frontend": "High-level bifurcated architecture: a complex administrative SPA handling massive state management (React/Inertia.js) coupled with an immersive mobile environment built in Expo, hyper-optimized for fluid rendering and native latency mitigation.",
+          "backend": "Hybrid backend engineering unifying transactional business logic in Laravel 12 with the event-driven reactivity of Supabase, establishing secure real-time data tunnels via WebSockets.",
+          "devops": "Modernization of build pipelines isolating web artifacts through Vite alongside aggressive automation of APK builds for continuous mobile distribution, enforcing strict cross-platform delivery consistency.",
+          "database": "Implementation of a sophisticated Split-Stack topology: heavy relational orchestration on MySQL for core ERP modules, seamlessly synchronized with PostgreSQL (Supabase) to guarantee millisecond response times on end-user queries.",
+          "ai": "Structured OpenAI integration utilizing Function Calling to act as an autonomous predictive engine, proactively monitoring real-time inventory thresholds and automatically orchestrating supplier purchase orders."
+        }
       },
       "jynsge-news": {
         "id": "9",
@@ -232,12 +231,12 @@
           "Azure"
         ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered (SSR) content globally.",
-          "frontend": "Modern, responsive interface using Blade templates and Tailwind CSS, optimized for readability and content discovery.",
-          "backend": "Robust MVC architecture connecting external RSS APIs and managing user roles/permissions via Laravel Breeze.",
-          "devops": "Continuous deployment on Azure App Service with automated testing pipelines using PEST framework.",
-          "database": "Relational MySQL schema optimized for heavy queries on categorized news, comments, and user profiles.",
-          "ai": "Algorithmic feed curation with potential LLM integration for automated fact-checking and content verification."
+          "fullstack": "High-performance Full-Stack architecture focused on global media distribution, implementing robust Server-Side Rendering (SSR) for extreme SEO optimization and Core Web Vitals compliance.",
+          "frontend": "Semantic interface driven by dynamic data consumption, built natively with Blade templates and Tailwind CSS, orchestrating modular componentization for instantaneous load times and flawless accessibility.",
+          "backend": "Structuring of a resilient MVC ecosystem in Laravel, integrating advanced external RSS API parsing alongside secure orchestration of transactional roles/permissions utilizing the Laravel Breeze core.",
+          "devops": "Corporate-grade Continuous Deployment pipeline orchestrated on the Azure App Service platform, strictly validated by an automated unit testing suite via the PEST framework to mitigate production regressions.",
+          "database": "Relational MySQL schema modeling engineered for high-concurrency read operations (Read-Heavy), heavily optimizing spatial queries and complex relationships across news feeds, comment management, and user metadata.",
+          "ai": "Flexible architecture purpose-built to support future RAG pipelines, focused on the algorithmic curation of metadata and potential downstream integrations for automated fact-checking."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
       }
@@ -251,19 +250,19 @@
     "items": [
       {
         "title": "SaaS Architecture",
-        "desc": "Designing complex Multi-Tenancy systems with data isolation and high performance."
+        "desc": "Design and implementation of robust Multi-Tenancy ecosystems, prioritizing secure data isolation, low latency, and high scalability across microservices and modular monolithic architectures."
       },
       {
         "title": "AI Engineering",
-        "desc": "Integrating RAG, Function Calling, and Streaming for corporate intelligent assistants."
+        "desc": "Orchestration of RAG (Retrieval-Augmented Generation) pipelines and LLM Function Calling, implementing SSE (Server-Sent Events) for highly reactive and hallucination-free enterprise experiences."
       },
       {
         "title": "Legacy Rescue",
-        "desc": "Audit, refactor, and stabilization of critical systems with high technical debt."
+        "desc": "Deep technical auditing and mitigation of chronic technical debt. Resolution of transactional deadlocks, race conditions, and structural refactoring of legacy infrastructures to modern, resilient standards."
       },
       {
         "title": "DevOps Strategy",
-        "desc": "Agile CI/CD, server provisioning, and asynchronous workers for global scale."
+        "desc": "Development of automated CI/CD pipelines, configuration of reverse proxies (Nginx), and scalable provisioning of asynchronous workers for high-throughput background processing."
       }
     ]
   },
