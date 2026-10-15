@@ -211,12 +211,12 @@
           "OpenAI"
         ],
         "description": {
-          "fullstack": "Plataforma Web End-to-End focada em UX responsiva, integração fluída de cardápio e controle operacional robusto para expansão de delivery local.",
-          "frontend": "Construção de duas interfaces distintas: um dashboard de administração rico em dados com React/Inertia e uma experiência de pedido mobile fluida usando Expo.",
-          "backend": "Arquitetura híbrida de backend utilizando Laravel 12 para lógica de negócios central e Supabase para dados de clientes e autenticação em tempo real.",
-          "devops": "Gerenciamento de pipelines de build modernos para web apps baseados em Vite e geração de APK mobile, garantindo atualizações sem atrito em todas as plataformas.",
-          "database": "Implementação de estratégia de banco de dados split-stack: MySQL para relacionamentos ERP complexos e PostgreSQL (Supabase) para consultas de alta velocidade dos clientes.",
-          "ai": "Integração via OpenAI para automatizar a gestão de estoque, prevendo escassez e gerando pedidos de compra de fornecedores automaticamente."
+          "fullstack": "Ecossistema digital de alta performance para storefront e ERP, projetado para processamento de pedidos em tempo real e orquestração omnichannel fluida entre interfaces web e mobile.",
+          "frontend": "Desenvolvimento de uma arquitetura reativa multi-client: um dashboard administrativo intensivo construído com React 19 e Inertia.js, e um aplicativo mobile fluido utilizando Expo (React Native).",
+          "backend": "Backend híbrido e desacoplado, alavancando Laravel 12 para orquestração de regras de negócio complexas e Supabase para sincronização de clientes em tempo real com ultrabaixa latência via WebSockets.",
+          "devops": "Pipelines de build multiplataforma automatizados via GitHub Actions, orquestrando a compilação Vite para a SPA web e a geração autônoma de APK/IPA para implantação mobile.",
+          "database": "Topologia de banco de dados split-stack: modelagem relacional estruturada em MySQL para garantir a integridade transacional do ERP, operando em paralelo com PostgreSQL (Supabase) para alta concorrência e resolução rápida de queries no front-end.",
+          "ai": "Implementação de algoritmos operacionais baseados em IA através de APIs da OpenAI para gestão preditiva de estoque, mitigando anomalias de demanda dinamicamente e gerando ordens de reabastecimento autônomas junto a fornecedores."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
       },
@@ -232,12 +232,12 @@
           "Azure"
         ],
         "description": {
-          "fullstack": "Portal de notícias full-stack altamente otimizado, projetado com uma arquitetura flexível para entregar conteúdo via Server-Side Rendering (SSR) de forma global.",
-          "frontend": "Interface moderna e responsiva utilizando templates Blade e Tailwind CSS, otimizada para leitura e descoberta de conteúdo.",
-          "backend": "Arquitetura MVC robusta conectando APIs RSS externas e gerenciando papéis/permissões de usuários via Laravel Breeze.",
-          "devops": "Deploy contínuo no Azure App Service com pipelines de testes automatizados utilizando o framework PEST.",
-          "database": "Modelagem relacional em MySQL otimizada para consultas pesadas em notícias categorizadas, comentários e perfis de usuários.",
-          "ai": "Curadoria algorítmica de feeds com potencial integração de LLMs para checagem de fatos e verificação de conteúdo automatizada."
+          "fullstack": "Plataforma de agregação de notícias com renderização no servidor (SSR) e alta disponibilidade, arquitetada para suportar cargas massivas de leitura simultânea e indexação de SEO agressiva.",
+          "frontend": "Interface crítica para performance desenvolvida com Laravel Blade e Tailwind CSS, alavancando CSS atômico e estruturas de DOM otimizadas para atingir métricas de First Contentful Paint (FCP) quase instantâneas.",
+          "backend": "Core MVC escalável em Laravel, orquestrando a ingestão concorrente de APIs externas, autorização robusta via ACL (Access Control Lists) com Laravel Breeze e filas de background resilientes.",
+          "devops": "Pipeline de Continuous Deployment (CD) automatizado no Azure App Service, protegido por uma suíte abrangente de testes de unidade e feature através do framework PEST.",
+          "database": "Esquema relacional MySQL fortemente desnormalizado com indexação estratégica, garantindo execução de queries em tempos sub-milissegundo em conteúdos hierárquicos e categorizados, suportando interações intensas de usuários.",
+          "ai": "Camada de curadoria algorítmica de dados estruturada para integração RAG, pavimentando o caminho para fluxos autônomos de fact-checking e estruturação de conteúdo conduzidos por LLMs."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
       }
