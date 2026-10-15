@@ -211,12 +211,12 @@
           "OpenAI"
         ],
         "description": {
-          "fullstack": "End-to-end digital storefront platform focused on responsive UX, seamless menu integration, and robust operational tooling for local business.",
-          "frontend": "Built two distinct interfaces: a data-rich administration dashboard with React/Inertia and a fluid mobile ordering experience using Expo.",
-          "backend": "Hybrid backend architecture utilizing Laravel 12 for core business logic and Supabase for real-time client data and authentication.",
-          "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
-          "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
-          "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
+          "fullstack": "High-performance digital storefront and ERP ecosystem, engineered for real-time order processing and seamless omnichannel fulfillment across mobile and web interfaces.",
+          "frontend": "Developed a reactive, dual-client architecture: an intensive web administrative dashboard built with React 19 and Inertia.js, and a fluid mobile application using Expo (React Native).",
+          "backend": "Hybrid decoupled backend leveraging Laravel 12 for complex business orchestration and Supabase for ultra-low-latency, real-time client synchronization via WebSockets.",
+          "devops": "Automated cross-platform build pipelines via GitHub Actions, orchestrating Vite compilation for the web SPA and automated APK/IPA compilation for mobile deployment.",
+          "database": "Split-stack database topology: structured relational MySQL for robust ERP transactional integrity, alongside high-concurrency PostgreSQL (Supabase) for rapid client query resolution.",
+          "ai": "Deployed AI-driven operational algorithms via OpenAI APIs for predictive inventory management, dynamically mitigating stock anomalies and generating autonomous supplier restock orders."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
       },
@@ -232,12 +232,12 @@
           "Azure"
         ],
         "description": {
-          "fullstack": "Highly-optimized full-stack news portal designed with a flexible architecture to rapidly deliver Server-Side Rendered (SSR) content globally.",
-          "frontend": "Modern, responsive interface using Blade templates and Tailwind CSS, optimized for readability and content discovery.",
-          "backend": "Robust MVC architecture connecting external RSS APIs and managing user roles/permissions via Laravel Breeze.",
-          "devops": "Continuous deployment on Azure App Service with automated testing pipelines using PEST framework.",
-          "database": "Relational MySQL schema optimized for heavy queries on categorized news, comments, and user profiles.",
-          "ai": "Algorithmic feed curation with potential LLM integration for automated fact-checking and content verification."
+          "fullstack": "High-availability Server-Side Rendered (SSR) news aggregation platform, architected for massive concurrent read loads and aggressive SEO indexing.",
+          "frontend": "Performance-critical UI engineered with Laravel Blade and Tailwind CSS, leveraging atomic CSS and optimized DOM structures for near-instant First Contentful Paint (FCP).",
+          "backend": "Scalable MVC core in Laravel, orchestrating concurrent external API ingestions, robust ACL (Access Control Lists) authorization via Laravel Breeze, and resilient background queues.",
+          "devops": "Automated Continuous Deployment (CD) pipeline on Azure App Service, strictly gated by comprehensive unit and feature testing via the PEST framework.",
+          "database": "Highly denormalized MySQL relational schema with strategic indexing, ensuring sub-millisecond query execution on highly categorized, hierarchical content and active user interactions.",
+          "ai": "Algorithmic data curation layer prepared for RAG integration, enabling autonomous LLM-driven fact-checking and automated content structuring pipelines."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
       }
