@@ -217,8 +217,7 @@
           "devops": "Managed modern build pipelines for Vite-based web apps and mobile APK generation, ensuring seamless updates across platforms.",
           "database": "Implemented a split-stack database strategy: MySQL for complex ERP relationships and PostgreSQL (Supabase) for high-speed client queries.",
           "ai": "Integrated OpenAI to automate inventory management, predicting stock shortages and auto-generating supplier purchase orders."
-        },
-        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
+        }
       },
       "jynsge-news": {
         "id": "9",
@@ -240,6 +239,90 @@
           "ai": "Algorithmic feed curation with potential LLM integration for automated fact-checking and content verification."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
+      },
+      "vitanexus": {
+        "id": "8",
+        "slug": "vitanexus",
+        "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
+        "technologies": [
+          "Laravel 10",
+          "PHP 8",
+          "SQLite",
+          "Bootstrap 5"
+        ],
+        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
+        "title": "VitaNexus",
+        "description": {
+          "fullstack": "Comprehensive health monitoring application tracking metrics like BMI, hydration, and blood pressure using Laravel and Bootstrap.",
+          "frontend": "Responsive, accessible interface designed with Bootstrap 5 to ensure easy data entry for vital health stats across devices.",
+          "backend": "Secure Laravel architecture handling complex health calculations and user authentication with Laravel Breeze.",
+          "devops": "Lightweight deployment strategy using SQLite, optimized for easy installation and maintenance.",
+          "database": "Efficient SQLite schema designed to store historical health data and user habits with privacy in mind.",
+          "ai": "Algorithmic calculation of caloric needs and hydration targets based on individual user data profiles."
+        }
+      },
+      "zk-business-support": {
+        "id": "10",
+        "slug": "zk-business-support",
+        "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://o8u.64c.myftpupload.com/",
+        "technologies": [
+          "WordPress",
+          "Custom CSS",
+          "PHP",
+          "SEO"
+        ],
+        "title": "ZK Business Support",
+        "description": {
+          "fullstack": "Custom WordPress solution tailored for high performance with advanced caching, local SEO optimization, and bespoke CSS styling.",
+          "frontend": "Developed a unique visual identity using custom CSS and high-fidelity responsive design to reflect the professional brand image.",
+          "backend": "Customized WordPress CMS architecture to efficiently manage service portfolios and client testimonials.",
+          "devops": "Implemented aggressive caching layers and asset optimization to achieve top-tier PageSpeed insights scores.",
+          "database": "Optimized database queries for custom post types, ensuring minimal latency for dynamic content rendering.",
+          "ai": "Leveraged AI-driven SEO tools for keyword analysis and content structuring to maximize local search visibility."
+        }
+      },
+      "la-pool-club": {
+        "id": "12",
+        "slug": "la-pool-club",
+        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://lapoolclub.co.uk/",
+        "technologies": [
+          "WordPress",
+          "UI/UX Design",
+          "CSS",
+          "Performance"
+        ],
+        "title": "LA Pool Club",
+        "description": {
+          "fullstack": "Complete WordPress solution for a premium billiards club, focused on UI/UX improvements, CSS styling, and system layout recovery.",
+          "frontend": "Revamped the user interface with customized CSS, ensuring a responsive and visually appealing booking and membership experience.",
+          "backend": "Optimized the WordPress core, improved layout stability, and recovered lost data through advanced database restoration techniques.",
+          "devops": "Implemented performance adjustments and layout stabilizations for a smoother user experience and faster load times.",
+          "database": "Recovered and structured booking data and club information, ensuring continuous operation.",
+          "ai": "Leveraged design intelligence to elevate the overall layout and user journey for membership conversions."
+        }
+      },
+      "brighton-cakes": {
+        "id": "13",
+        "slug": "brighton-cakes",
+        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://brightoncakes.co.uk",
+        "technologies": [
+          "WordPress",
+          "PHP",
+          "CSS",
+          "SEO"
+        ],
+        "title": "Brighton Cakes",
+        "description": {
+          "fullstack": "Custom WordPress site for Makecakes, featuring a bespoke theme, performance optimization, and tailored user experience.",
+          "frontend": "Designed and developed a responsive, visually appealing frontend using custom CSS and WordPress themes.",
+          "backend": "Configured and optimized the WordPress backend for secure content management and fast loading times.",
+          "devops": "Implemented caching strategies and performance optimizations for reliable delivery of high-quality image assets.",
+          "database": "Optimized WordPress database for fast queries and efficient execution of custom post types.",
+          "ai": "Utilized AI-generated assets and content structuring for improved SEO and user engagement."
+        }
       }
     }
   },

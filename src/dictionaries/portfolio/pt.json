@@ -217,8 +217,7 @@
           "devops": "Gerenciamento de pipelines de build modernos para web apps baseados em Vite e geração de APK mobile, garantindo atualizações sem atrito em todas as plataformas.",
           "database": "Implementação de estratégia de banco de dados split-stack: MySQL para relacionamentos ERP complexos e PostgreSQL (Supabase) para consultas de alta velocidade dos clientes.",
           "ai": "Integração via OpenAI para automatizar a gestão de estoque, prevendo escassez e gerando pedidos de compra de fornecedores automaticamente."
-        },
-        "repoUrl": "https://github.com/Jonatasndossantos/cafeteria"
+        }
       },
       "jynsge-news": {
         "id": "9",
@@ -240,6 +239,90 @@
           "ai": "Curadoria algorítmica de feeds com potencial integração de LLMs para checagem de fatos e verificação de conteúdo automatizada."
         },
         "repoUrl": "https://github.com/Jonatasndossantos/JYNSGE"
+      },
+      "vitanexus": {
+        "id": "8",
+        "slug": "vitanexus",
+        "imageUrl": "https://github.com/user-attachments/assets/b4de6b35-398c-4e82-b6f8-6dfcf5f71103",
+        "technologies": [
+          "Laravel 10",
+          "PHP 8",
+          "SQLite",
+          "Bootstrap 5"
+        ],
+        "repoUrl": "https://github.com/Jonatasndossantos/vitaNexus",
+        "title": "VitaNexus",
+        "description": {
+          "fullstack": "Aplicação end-to-end de monitoramento de saúde integrando Laravel e Bootstrap, rastreando ativamente métricas corporais complexas (IMC, hidratação e pressão arterial).",
+          "frontend": "Interface responsiva e semântica projetada com Bootstrap 5 para máxima acessibilidade (A11y) e precisão de input de dados vitais.",
+          "backend": "Backend seguro em Laravel que processa regras de negócio para cálculos biométricos complexos acoplado à autenticação sólida via Laravel Breeze.",
+          "devops": "Abordagem serverless/lightweight em SQLite para implantação sem atritos em infraestrutura modesta de testes e estabilidade contínua.",
+          "database": "Modelagem relacional otimizada em SQLite focada em consultas seguras de longo prazo para histórico clínico do usuário.",
+          "ai": "Cálculo algorítmico dinâmico de necessidades calóricas baseado no perfil persistido do paciente sem sobrecarga na base de dados principal."
+        }
+      },
+      "zk-business-support": {
+        "id": "10",
+        "slug": "zk-business-support",
+        "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://o8u.64c.myftpupload.com/",
+        "technologies": [
+          "WordPress",
+          "Custom CSS",
+          "PHP",
+          "SEO"
+        ],
+        "title": "ZK Business Support",
+        "description": {
+          "fullstack": "Arquitetura WordPress de alto desempenho otimizada com engenharia robusta de cache, foco em SEO local de alto impacto e estilização customizada rigorosa.",
+          "frontend": "Desenvolvimento de um design system visual de alta fidelidade usando CSS customizado para construir a presença corporativa limpa.",
+          "backend": "Personalização profunda de funcionalidades CMS em PHP, estendendo a lógica do core do WordPress para gerenciar complexas hierarquias de portfólio.",
+          "devops": "Implementação implacável de camadas de cache no nível de servidor reduzindo radicalmente a carga e alavancando os PageSpeed Insights.",
+          "database": "Análise técnica em banco de dados para indexação de custom post types (CPTs) com eliminação de query overlaps e ganhos de velocidade.",
+          "ai": "Estruturação inteligente de conteúdo e tags usando IA com foco analítico no algoritmo local do motor de busca."
+        }
+      },
+      "la-pool-club": {
+        "id": "12",
+        "slug": "la-pool-club",
+        "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://lapoolclub.co.uk/",
+        "technologies": [
+          "WordPress",
+          "UI/UX Design",
+          "CSS",
+          "Performance"
+        ],
+        "title": "LA Pool Club",
+        "description": {
+          "fullstack": "Plataforma WordPress totalmente revitalizada para um clube de bilhar britânico com refatoração focada em estabilidade estrutural e UI/UX otimizada.",
+          "frontend": "Transformação completa da jornada de usuário integrando CSS modular e design system responsivo visando alavancar métricas de usabilidade.",
+          "backend": "Auditoria, resgate e estabilização de arquitetura legada WordPress mitigando instabilidades críticas que derrubavam a aplicação.",
+          "devops": "Correção de gargalos contínuos de memória através de otimização pesada no gerenciamento dos recursos e caching do core system.",
+          "database": "Auditoria emergencial de tabelas órfãs para a recuperação e restauração integral do ambiente de reservas e clientes perdidos.",
+          "ai": "Uso inteligente de wireframes voltados à conversão maximizando as métricas interativas no sistema de pagamentos de associação."
+        }
+      },
+      "brighton-cakes": {
+        "id": "13",
+        "slug": "brighton-cakes",
+        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
+        "demoUrl": "https://brightoncakes.co.uk",
+        "technologies": [
+          "WordPress",
+          "PHP",
+          "CSS",
+          "SEO"
+        ],
+        "title": "Brighton Cakes",
+        "description": {
+          "fullstack": "Plataforma WordPress corporativa desenvolvida do zero entregando performance imbatível via temas limpos customizados e otimização arquitetural profunda.",
+          "frontend": "Composição de templates flexíveis altamente otimizados e orientados à conversão em todos os breakpoints através de CSS responsivo puro.",
+          "backend": "Revisão detalhada de hooks/filtros do ecossistema de post types em PHP, eliminando as perigosas sobrecargas de plugins de terceiros.",
+          "devops": "Otimização absoluta de processamento e latência via CDNs dinâmicas focadas exclusivamente para os massivos fluxos de imagens das galerias.",
+          "database": "Auditoria de carga garantindo execução precisa e higienização robusta na indexação de dados para o WordPress transacional.",
+          "ai": "Inteligência analítica integrada a ferramentas SEO avançadas definindo uma malha interativa focada em aquisição orgânica (Growth)."
+        }
       }
     }
   },
